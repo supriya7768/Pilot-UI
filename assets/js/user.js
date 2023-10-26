@@ -1,5 +1,10 @@
          //========addlead.html==========
-
+         function submitForm(event) {
+          event.preventDefault(); // Prevent the default form submission behavior
+        
+          // Your form submission logic here
+        }
+        
          async function addlead() {
             const name = $('#name').val();
             const email = $('#email').val();
@@ -56,4 +61,60 @@
                  } else {
                      $('#dt').html("Error:- Your email is already in use. Please use new email"); 
                  }
-            } 
+                 // After adding the lead, fetch and update the lead data in leadlist.html
+                 fetchLeadData()
+            }
+
+             function fetchLeadData() {
+              fetch('http://localhost:8080/get-lead-data')
+                  .then(response => response.json())
+                  .then(data => {
+                      const leadData = document.getElementById('leadData');
+                      // Clear existing data
+                      // leadData.innerHTML = '';
+          
+                      data.forEach(lead => {
+                          const row = document.createElement('tr');
+                          row.innerHTML = `
+                              <td>${lead.name}</td>
+                              <td>${lead.mobile}</td>
+                              <td>${lead.email}</td>
+                              <td>${lead.courseIntrested}</td>
+                              <td class="${getButtonClass(lead.status)}">${lead.status}</td>
+                              <td><div class="action">
+                              <button class="text-danger">
+                                <i class="lni lni-trash-can"></i>
+                              </button>
+                            </div></td>
+                          `;
+                          leadData.appendChild(row);
+                      });
+                  })
+                  .catch(error => {
+                      console.error('Error fetching data: ' + error);
+                  });
+          }
+          
+          function getButtonClass(status) {
+            // Trim the status and convert to lowercase for comparison
+            const lowerCaseStatus = status.trim().toLowerCase();
+            
+            switch (lowerCaseStatus) {
+                case 'active':
+                    return 'newbtnact';
+                case 'done':
+                    return 'newbtndone';
+                case 'close':
+                    return 'newbtnclose';
+                case 'pending':
+                    return 'newbtnpending';
+                default:
+                    return 'default-btn'; // You can define a default class for other statuses
+            }
+        }
+        
+          
+          // Call the fetchLeadData function when the page loads
+          window.onload = fetchLeadData;
+          
+              

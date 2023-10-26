@@ -14,6 +14,15 @@
     <link rel="stylesheet" href="assets/css/fullcalendar.css" />
     <link rel="stylesheet" href="assets/css/fullcalendar.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+      td{
+        color: grey;
+        font-size: 12px;
+        margin:10px;
+        align-items: center;
+      }
+      
+    </style>
   </head>
   <body>
     <!-- ======== Preloader =========== -->
@@ -92,36 +101,8 @@
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <!-- <span class="icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M14.9211 10.1294C15.1652 9.88534 15.1652 9.48967 14.9211 9.24559L10.7544 5.0789C10.5103 4.83482 10.1147 4.83482 9.87057 5.0789C9.62649 5.32297 9.62649 5.71871 9.87057 5.96278L12.9702 9.06251H1.97916C1.63398 9.06251 1.35416 9.34234 1.35416 9.68751C1.35416 10.0327 1.63398 10.3125 1.97916 10.3125H12.9702L9.87057 13.4123C9.62649 13.6563 9.62649 14.052 9.87057 14.2961C10.1147 14.5402 10.5103 14.5402 10.7544 14.2961L14.9211 10.1294Z" />
-                  <path
-                    d="M11.6383 15.18L15.805 11.0133C16.5373 10.2811 16.5373 9.09391 15.805 8.36166L11.6383 4.195C11.2722 3.82888 10.7923 3.64582 10.3125 3.64582V3.02082C10.3125 2.10035 11.0587 1.35416 11.9792 1.35416H16.9792C17.8997 1.35416 18.6458 2.10035 18.6458 3.02082V16.3542C18.6458 17.2747 17.8997 18.0208 16.9792 18.0208H11.9792C11.0587 18.0208 10.3125 17.2747 10.3125 16.3542V15.7292C10.7923 15.7292 11.2722 15.5461 11.6383 15.18Z" />
-                </svg>
-              </span>
-              <span class="text">Auth</span>
-            </a>
-            <ul id="ddmenu_3" class="collapse dropdown-nav">
-              <li>
-                <a href="signin.html"> Sign In </a>
-              </li>
-              <li>
-                <a href="signup.html"> Sign Up </a>
-              </li>
-            </ul>
-          </li> -->
-          <!-- <span class="divider"><hr /></span>
-          <li class="nav-item nav-item-has-children">
-            <a
-              href="#0"
-              class="collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#ddmenu_4"
-              aria-controls="ddmenu_4"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            > -->
+             
+           
               <span class="icon">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -246,16 +227,7 @@
           </li>
         </ul>
       </nav>
-      <!-- <div class="promo-box">
-        <div class="promo-icon">
-          <img class="mx-auto" src="./assets/images/logo/logo-icon-big.svg" alt="Logo">
-        </div>
-        <h3>Upgrade to PRO</h3>
-        <p>Improve your development process and start doing more with PlainAdmin PRO!</p>
-        <a href="https://plainadmin.com/pro" target="_blank" rel="nofollow" class="main-btn primary-btn btn-hover">
-          Upgrade to PRO
-        </a>
-      </div> -->
+      
     </aside>
     <div class="overlay"></div>
     <!-- ======== sidebar-nav end =========== -->
@@ -502,10 +474,10 @@
                             <h6>Name</h6>
                           </th>
                           <th>
-                            <h6>Email</h6>
+                            <h6>Mobile No</h6>
                           </th>
                           <th>
-                            <h6>Mobile No</h6>
+                            <h6>Email</h6>
                           </th>
                           <th>
                             <h6>Course</h6>
@@ -519,144 +491,17 @@
                         
                         </tr>
                         <!-- end table row-->
-                      <!-- </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <div class="employee-image">
-                              <img src="assets/images/lead/lead-1.png" alt="" />
-                            </div>
-                          </td>
-                          <td class="min-width">
-                            <p>Esther Howard</p>
-                          </td>
-                          <td class="min-width">
-                            <p><a href="#0">yourmail@gmail.com</a></p>
-                          </td>
-                          <td class="min-width">
-                            <p>Admin Dashboard Design</p>
-                          </td>
-                          <td class="min-width">
-                            <span class="status-btn active-btn">Active</span>
-                          </td>
-                          <td>
-                            <div class="action">
-                              <button class="text-danger">
-                                <i class="lni lni-trash-can"></i>
-                              </button>
-                            </div>
-                          </td>
-                        </tr> -->
-                        <!-- end table row -->
+                    
+                        
+                          <tbody id="leadData">
+                            <!-- Lead data will be dynamically added here -->
+
+                        </tbody>
+
+                        
+                        
+                       
                         <!-- <tr>
-                          <td>
-                            <div class="employee-image">
-                              <img src="assets/images/lead/lead-2.png" alt="" />
-                            </div>
-                          </td>
-                          <td class="min-width">
-                            <p>D. Jonathon</p>
-                          </td>
-                          <td class="min-width">
-                            <p><a href="#0">yourmail@gmail.com</a></p>
-                          </td>
-                          <td class="min-width">
-                            <p>React Dashboard</p>
-                          </td>
-                          <td class="min-width">
-                            <span class="status-btn active-btn">Active</span>
-                          </td>
-                          <td>
-                            <div class="action">
-                              <button class="text-danger">
-                                <i class="lni lni-trash-can"></i>
-                              </button>
-                            </div>
-                          </td>
-                        </tr> -->
-                        <!-- end table row -->
-                        <tr>
-                          <td>
-                            <div class="employee-image">
-                              <img src="assets/images/lead/lead-3.png" alt="" />
-                            </div>
-                          </td>
-                          <td>
-                            <p>John Doe</p>
-                          </td>
-                          <td>
-                            <p><a href="#0">yourmail@gmail.com</a></p>
-                          </td>
-                          <td>
-                            <p>Bootstrap Template</p>
-                          </td>
-                          <td>
-                            <span class="status-btn success-btn">Done</span>
-                          </td>
-                          <td>
-                            <div class="action">
-                              <button class="text-danger">
-                                <i class="lni lni-trash-can"></i>
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                        <!-- end table row -->
-                        <tr>
-                          <td>
-                            <div class="employee-image">
-                              <img src="assets/images/lead/lead-4.png" alt="" />
-                            </div>
-                          </td>
-                          <td>
-                            <p>Rayhan Jamil</p>
-                          </td>
-                          <td>
-                            <p><a href="#0">yourmail@gmail.com</a></p>
-                          </td>
-                          <td>
-                            <p>Css Grid Template</p>
-                          </td>
-                          <td>
-                            <span class="status-btn info-btn">Pending</span>
-                          </td>
-                          <td>
-                            <div class="action">
-                              <button class="text-danger">
-                                <i class="lni lni-trash-can"></i>
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                        <!-- end table row -->
-                        <tr>
-                          <td>
-                            <div class="employee-image">
-                              <img src="assets/images/lead/lead-5.png" alt="" />
-                            </div>
-                          </td>
-                          <td>
-                            <p>Esther Howard</p>
-                          </td>
-                          <td>
-                            <p><a href="#0">yourmail@gmail.com</a></p>
-                          </td>
-                          <td>
-                            <p>Admin Dashboard Design</p>
-                          </td>
-                          <td>
-                            <span class="status-btn close-btn">Close</span>
-                          </td>
-                          <td>
-                            <div class="action">
-                              <button class="text-danger">
-                                <i class="lni lni-trash-can"></i>
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                        <!-- end table row -->
-                        <tr>
                           <td>
                             <div class="employee-image">
                               <img src="assets/images/lead/lead-6.png" alt="" />
@@ -681,7 +526,7 @@
                               </button>
                             </div>
                           </td>
-                        </tr>
+                        </tr> -->
                         <!-- end table row -->
                       </tbody>
                     </table>
@@ -745,5 +590,7 @@
       <script src="assets/js/world-merc.js"></script>
       <script src="assets/js/polyfill.js"></script>
       <script src="assets/js/main.js"></script>
+      <script src="assets/js/jquery.js"></script>
+      <script src="assets/js/user.js"></script>
     </body>
   </html>

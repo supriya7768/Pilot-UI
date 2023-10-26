@@ -715,6 +715,15 @@ h6,
 .info-btn {
   background: #97ca31;
   color: #fff;
+  padding: 7px 15px;
+  margin-left: 10px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 400;
+
+}
+.info2{
+  background-color: #97ca31;
 }
 .info-btn:hover {
   color: #fff;
@@ -929,10 +938,52 @@ h6,
 /* ====== Status Button ====== */
 .status-btn {
   padding: 7px 15px;
+  margin-left: 10px;
   border-radius: 30px;
   font-size: 14px;
   font-weight: 400;
 }
+.newbtnact{
+  padding: 7px 15px;
+  margin-left: 10px;
+  /* border-radius: 30px; */
+  font-size: 14px;
+  font-weight: 400;
+  color: #365CF5;
+  background: rgba(54, 92, 245, 0.1);
+  
+}
+.newbtndone{
+  padding: 7px 15px;
+  margin-left: 10px;
+  /* border-radius: 30px; */
+  font-size: 14px;
+  font-weight: 400;
+  color:green
+  /* background: rgba(54, 92, 245, 0.1); */
+  
+}
+.newbtnclose{
+  padding: 7px 15px;
+  margin-left: 10px;
+  /* border-radius: 30px; */
+  font-size: 14px;
+  font-weight: 400;
+  color:#d50100
+  /* background: rgba(54, 92, 245, 0.1); */
+  
+}
+.newbtnpending{
+  padding: 7px 15px;
+  margin-left: 10px;
+  /* border-radius: 30px; */
+  font-size: 14px;
+  font-weight: 400;
+  color:#F0950C
+  /* background: rgba(54, 92, 245, 0.1); */
+  
+}
+
 .status-btn.primary-btn {
   color: #fff;
   background: #365cf5;
@@ -1689,6 +1740,7 @@ h6,
 }
 .table > :not(:last-child) > :last-child > * {
   border-bottom-color: #efefef;
+  
 }
 .table tbody tr:first-child > * {
   padding-top: 20px;
