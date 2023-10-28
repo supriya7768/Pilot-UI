@@ -530,22 +530,22 @@
               </div>
               <div class="col-xxl-4">
                 <div class="select-style-1">
-                  <label>Course Done In Other Institute</label>
+                  <label for="yesNoSelect">Course Done In Other Institute</label>
                   <div class="select-position">
-                    <select class="light-bg" id="courseInOtherInstitute">
+                    <select class="light-bg" id="courseInOtherInstitute" >
                       <!-- <option value="">Select category</option> -->
-                      <option value="">No</option>
-                      <option value="">Yes</option>
+                      <option value="no">No</option>
+                      <option value="yes">Yes</option>
                       
                     </select>
                   </div>
                 </div>
               </div>
-              <div class="input-style-1">
+              <div class="input-style-1" id="otherOptions" style="display: none;">
                 <label>Institute Name</label>
                 <input type="text" id="institute" placeholder="Institute Name" />
               </div>
-              <div class="input-style-1">
+              <div class="input-style-1" id="otherOption" style="display: none;">
                 <label>Reason for Changing</label>
                 <input type="text" id="reason" placeholder="Reason" />
               </div>
@@ -611,21 +611,21 @@ Crafted for – Business, Startup, SaaS, Apps, Event, Software, Agency, Resume a
                     <div class="select-position">
                       <select class="light-bg" id="experience">
                         <option value="">Select category</option>
-                        <option value="">IT</option>
-                        <option value="">Non IT</option>
+                        <option value="it">IT</option>
+                        <option value="nonit">Non IT</option>
                        
                       </select>
                     </div>
                   </div>
                 </div>
                 </div>
-                <div class="col-xxl-4">
-                  <div class="input-style-1">
+                <div class="col-xxl-4" id="selectYearOfExperience" style="display: none;">
+                  <div class="input-style-1" >
                     <label>Year of Experience</label>
                     <input type="text" id="yearOfExperience" placeholder="Experience in IT" />
                   </div>
                 </div>
-                <div class="col-xxl-4">
+                <div class="col-xxl-4" id="selectDesignation" style="display: none;" >
                   <div class="input-style-1">
                     <label>Designation</label>
                     <input type="text" id="designation" placeholder="Position in Office" />
@@ -642,21 +642,21 @@ Crafted for – Business, Startup, SaaS, Apps, Event, Software, Agency, Resume a
                         <option>Facebook</option>
                         <option>Google</option>
                         <option>Search near by area</option>
-                        <option>Reference</option>
+                        <option  value="ref">Reference</option>
                         <option>Other</option>
                       </select>
                     </div>
                   </div>
                 </div>
 
-                <div class="col-xxl-4">
+                <div class="col-xxl-4" id = "selectRef" style="display: none;">
                   <div class="input-style-1">
                     <label>Reference Name</label>
                     <input type="text" id="reference" placeholder="Name of reference" />
                   </div>
                 </div>
 
-                <div class="col-xxl-4">
+                <div class="col-xxl-4" id = "selectBatch" style="display: none;" >
                   <div class="input-style-1">
                     <label>Batch Code</label>
                     <input type="text" id="batchCode" placeholder="Code of Batch" />
@@ -746,5 +746,7 @@ Crafted for – Business, Startup, SaaS, Apps, Event, Software, Agency, Resume a
 <script src="assets/js/main.js"></script>
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/user.js"></script>
+<script src="assets/js/roshan.js"></script>
+<script src="assets/js/roshan1.js"></script>
 </body>
 </html>
