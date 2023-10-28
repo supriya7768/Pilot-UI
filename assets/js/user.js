@@ -1,4 +1,8 @@
-         //========addlead.html==========
+        
+        
+        //================addlead.html=================
+
+
          function submitForm(event) {
           event.preventDefault(); // Prevent the default form submission behavior
         
@@ -65,6 +69,11 @@
                  fetchLeadData()
             }
 
+
+
+        //=================================leadlist.html=====================    
+
+
              function fetchLeadData() {
               fetch('http://localhost:8080/get-lead-data')
                   .then(response => response.json())
@@ -116,5 +125,55 @@
           
           // Call the fetchLeadData function when the page loads
           window.onload = fetchLeadData;
+
+
+       //===========================field in addlead.html========================
+       
+       
+       const selectElement = document.getElementById("courseInOtherInstitute");
+       const otherOptionsElement = document.getElementById("otherOptions");
+       const otherOptionElement = document.getElementById("otherOption"); 
+     
+       selectElement.addEventListener("change", function () {
+           if (selectElement.value === "yes") {
+               otherOptionsElement.style.display = "block";
+               otherOptionElement.style.display = "block";
+           } else {
+               otherOptionsElement.style.display = "none";
+               otherOptionElement.style.display = "none";
+           }
+       });
+     
+     
+       const selectExperience = document.getElementById("experience");
+       const yearOfExperienceElement = document.getElementById("selectYearOfExperience");
+       const designationElement = document.getElementById("selectDesignation");
+     
+         selectExperience.addEventListener("change", function(){
+     
+             if(selectExperience.value === "it"){
+                 yearOfExperienceElement.style.display = "block";
+                 designationElement.style.display= "block";
+             }else{
+                 yearOfExperienceElement.style.display = "none";
+                 designationElement.style.display = "none";
+             }
+         });
+       
+    //==========================================================
+    
+    const selectApproach = document.getElementById("approach");
+    const refElement = document.getElementById("selectRef");
+    const  batchElement  = document.getElementById("selectBatch");
+  
+    selectApproach.addEventListener("change", function(){
+      if(selectApproach.value === "ref"){
+          refElement.style.display = "block";
+          batchElement.style.display = "block";
+      }else {
+          refElement.style.display = "none";
+          batchElement.style.display = "none";
+      }
+    });
           
               
