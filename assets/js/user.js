@@ -61,7 +61,7 @@
                 const finalData = await result.json();
         
                  if (finalData.email != null || finalData.mobile != null) {
-                    $('#dt').html(finalData.name  + " is registered");        
+                    $('#dt').html(finalData.name  + " is added as lead");        
                  } else {
                      $('#dt').html("Error:- Your email is already in use. Please use new email"); 
                  }
@@ -74,40 +74,64 @@
         //=================================leadlist.html=====================    
 
 
-             function fetchLeadData() {
-              fetch('http://localhost:8080/get-lead-data')
-                  .then(response => response.json())
-                  .then(data => {
-                      const leadData = document.getElementById('leadData');
-                      // Clear existing data
-                      // leadData.innerHTML = '';
-          
-                      data.forEach(lead => {
-                          const row = document.createElement('tr');
-                          row.innerHTML = `
-                              <td>${lead.name}</td>
-                              <td>${lead.mobile}</td>
-                              <td>${lead.email}</td>
-                              <td>${lead.courseIntrested}</td>
-                              <td class="${getButtonClass(lead.status)}">${lead.status}</td>
-                              <td><div class="action">
-                              <button class="text-danger">
-                                <i class="lni lni-trash-can"></i>
-                              </button>
+        function fetchLeadData() {
+            fetch('http://localhost:8080/get-lead-data')
+                .then(response => response.json())
+                .then(data => {
+                    const leadData = document.getElementById('leadData');
+                    // Clear existing data
+                    // leadData.innerHTML = '';
+        
+                    data.forEach(lead => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${lead.name}</td>
+                            <td>${lead.mobile}</td>
+                            <td>${lead.email}</td>
+                            <td>${lead.courseIntrested}</td>
+                            <td class="${getButtonClass(lead.status)}">${lead.status}</td>
+                            <td><div class="action">
+                                ${
+                                    (lead.status.toLowerCase().trim() === 'pending') ? `
+                                        <select onchange="changeStatus(this)">
+                                            <option value="">Edit</option>
+                                            <option value="active">Active</option>
+                                            <option value="done">Done</option>
+                                            <option value="close">Close</option>
+                                        </select>
+                                    ` :
+                                    (lead.status.toLowerCase().trim() === 'active') ? `
+                                        <select onchange="changeStatus(this)">
+                                            <option value="">Edit</option>
+                                            <option value="pending">Pending</option>
+                                            <option value="done">Done</option>
+                                            <option value="close">Close</option>
+                                        </select>
+                                    ` :
+                                    (lead.status.toLowerCase().trim() === 'done') ? `
+                                        <a href="invoice.html" class="create-invoice-link">
+                                            Invoice
+                                        </a>
+                                    ` :
+                                    (lead.status.toLowerCase().trim() === 'close') ? `
+                                        <a style="color: red;">Delete</a>
+                                    ` :
+                                    ''
+                                }
                             </div></td>
-                          `;
-                          leadData.appendChild(row);
-                      });
-                  })
-                  .catch(error => {
-                      console.error('Error fetching data: ' + error);
-                  });
-          }
-          
-          function getButtonClass(status) {
+                        `;
+                        leadData.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data: ' + error);
+                });
+        }
+        
+        function getButtonClass(status) {
             // Trim the status and convert to lowercase for comparison
             const lowerCaseStatus = status.trim().toLowerCase();
-            
+        
             switch (lowerCaseStatus) {
                 case 'active':
                     return 'newbtnact';
@@ -122,9 +146,70 @@
             }
         }
         
-          
-          // Call the fetchLeadData function when the page loads
-          window.onload = fetchLeadData;
+        function changeStatus(selectElement) {
+            const selectedStatus = selectElement.value;
+            const row = selectElement.closest('tr');
+            const statusCell = row.querySelector('td:nth-child(5)');
+            if (selectedStatus === 'done') {
+                if (confirm('Do you want to change status as Done?')) {
+                    statusCell.textContent = selectedStatus;
+                    statusCell.className = getButtonClass(selectedStatus);
+                    const actionCell = row.querySelector('td:nth-child(6)');
+                    actionCell.innerHTML = getActionHTML(selectedStatus);
+                } else {
+                    // Revert to the previous status (assuming you have a way to track it)
+                    selectElement.value = statusCell.textContent;
+                }
+            } else {
+                statusCell.textContent = selectedStatus;
+                statusCell.className = getButtonClass(selectedStatus);
+                const actionCell = row.querySelector('td:nth-child(6)');
+                actionCell.innerHTML = getActionHTML(selectedStatus);
+            }
+        }
+        
+        // Rest of your code...
+        
+        
+        function getActionHTML(status) {
+            if (status === 'done') {
+                return `
+                    <a href="invoice.html" class="create-invoice-link">
+                        Invoice
+                    </a>
+                `;
+            } else if (status === 'close') {
+                return `
+                   <a style="color: red;">Delete</a>
+                `;
+            } else if (status === 'active') {
+                return `
+                <select onchange="changeStatus(this)">
+                <option value="">Edit</option>
+                <option value="pending">Pending</option>
+                <option value="done">Done</option>
+                <option value="close">Close</option>
+            </select>
+                `;
+            } else if (status === 'pending') {
+                return `
+                <select onchange="changeStatus(this)">
+                <option value="">Edit</option>
+                <option value="active">Active</option>
+                <option value="done">Done</option>
+                <option value="close">Close</option>
+            </select>
+                `;
+            } else {
+                return '';
+            }
+        }
+        
+        // Call the fetchLeadData function when the page loads
+        window.onload = fetchLeadData;
+        
+        
+        
 
 
        //===========================field in addlead.html========================
@@ -159,8 +244,7 @@
                  designationElement.style.display = "none";
              }
          });
-       
-    //==========================================================
+
     
     const selectApproach = document.getElementById("approach");
     const refElement = document.getElementById("selectRef");
@@ -175,5 +259,10 @@
           batchElement.style.display = "none";
       }
     });
+
+    
+    //===========================================================
+
+    
           
               
