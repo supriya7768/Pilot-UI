@@ -446,14 +446,13 @@
           <!-- ========== title-wrapper start ========== -->
           <div class="title-wrapper pt-30">
             <div class="row align-items-center">
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <div class="title d-flex align-items-center flex-wrap">
                   <h2 class="mr-40">Invoice</h2>
-                  <a href="edit-invoice.html" class="main-btn primary-btn btn-hover btn-sm" id="editInvoiceButton">
-                    <i class="lni lni-plus mr-5"></i> Edit Invoice
-                </a>
+                  <a href="#0" class="main-btn primary-btn btn-hover btn-sm">
+                    <i class="lni lni-plus mr-5"></i> Edit Invoice</a>
                 </div>
-              </div>
+              </div> -->
               <!-- end col -->
               <!-- <div class="col-md-6">
                 <div class="breadcrumb-wrapper">
@@ -491,7 +490,7 @@
                       <img src="./assets/images/logo.png" alt="" />
                     </div> -->
                     <div class="invoice-date">
-                      <p><span>Invoice ID:</span> </p>
+                      <p><span>Invoice ID:</span><input type="text"> </p>
                       <Span>Date:</Span><span style="padding-left: 25px;"><p id="myId"></p></span> 
                       <!-- <p><span>Date Due:</span> <input type="date"></p> -->
                       
@@ -510,7 +509,7 @@
                       </p>
                     </div>
                     <div class="address-item">
-                      <h5 class="text-bold">Bill To</h5>
+                      <h5 class="text-bold">Bill to</h5>
                       <!-- <input style="font-weight: 500; font-family:Plus Jakarta Sans" type="text"> -->
                       <h1 id="leadName"></h1>
                       <!-- <p class="text-sm">
@@ -527,10 +526,11 @@
                       <thead>
                         <tr>
                           <th class="service">
-                            <h6 class="text-sm text-medium">Sr.No</h6>
+                            <h6 class="text-sm text-medium" >Sr.No</h6>
                           </th>
                           <th class="desc">
                             <h6 class="text-sm text-medium">Course</h6>
+                            
                           </th>
                           <th class="qty">
                             <h6 class="text-sm text-medium">Rate</h6>
@@ -543,20 +543,43 @@
                       <tbody>
                         <tr>
                           <td>
-                            <p class="text-sm">Admin Dashboard</p>
+                            <!-- <p class="text-sm">Admin Dashboard</p> -->
+                            <input type="text" class="input-style-1" id="srNo">
                           </td>
                           <td>
                             <p class="text-sm">
-                              Design and Development Service
+                              <!-- Design and Development Service -->
+                              <div class="col-xxl-4">
+                                <div class="select-style-1">
+                                  
+                                  <div class="select-position">
+                                    <select class="light-bg" id="course">
+                                      <option value="">Select category</option>
+                                      <option>Software Testing(Java Selenium)</option>
+                                      <option>Automation Testing(Python Selenium)</option>
+                                      <option>Rest API Testing</option>
+                                      <option>Java Full Stack Development</option>
+                                      <option>MERN Java Full Stack Development</option>
+                                      <option>.NET Full Stack Development</option>
+                                      <option>Diploma in UI/UX Design</option>
+                                    </select>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
                             </p>
                           </td>
                           <td>
-                            <p class="text-sm">3</p>
+                            <!-- <p class="text-sm">3</p> -->
+                            <input type="text" class="input-style-1" id="rate">
                           </td>
                           <td>
-                            <p class="text-sm">$700</p>
+                            <!-- <p class="text-sm">$700</p> -->
+                            <input type="text" class="input-style-1" id="amount">
                           </td>
                         </tr>
+                        <td><button>Add item</button></td>
+                        
                         <tr>
                           <td>
                             <p class="text-sm">Landing Page</p>
@@ -596,7 +619,8 @@
                             <h6 class="text-sm text-medium">Subtotal</h6>
                           </td>
                           <td>
-                            <h6 class="text-sm text-bold">$5700</h6>
+                            <!-- <h6 class="text-sm text-bold" id="subtotal"></h6> -->
+                            <input type="text" id="subtotal">
                           </td>
                         </tr>
                         <tr>
@@ -606,7 +630,7 @@
                             <h6 class="text-sm text-medium">Due Date</h6>
                           </td>
                           <td>
-                            <h6 class="text-sm text-bold">45%</h6>
+                            <h6 class="text-sm text-bold"><input type="date" id="dueDate"></h6>
                           </td>
                         </tr>
                         <tr>
@@ -616,7 +640,8 @@
                             <h6 class="text-sm text-medium">Due Amount</h6>
                           </td>
                           <td>
-                            <h6 class="text-sm text-bold">Free</h6>
+                            <!-- <h6 class="text-sm text-bold" id="dueAmount"></h6> -->
+                            <input type="text" id="dueAmount">
                           </td>
                         </tr>
                         <tr>
@@ -626,7 +651,8 @@
                             <h4>Total</h4>
                           </td>
                           <td>
-                            <h4>$3135</h4>
+                            <!-- <h4 id="total"></h4> -->
+                            <input type="text" id="total">
                           </td>
                         </tr>
                       </tbody>
@@ -648,18 +674,8 @@
                   <div class="invoice-action">
                     <ul class="d-flex flex-wrap align-items-center justify-content-center">
                       <li class="m-2">
-                        <a href="#0" class="main-btn primary-btn-outline btn-hover">
-                          Download pdf
-                        </a>
-                      </li>
-                      <li class="m-2">
-                        <a href="#0" class="main-btn primary-btn-outline btn-hover">
-                          Send via whatsapp
-                        </a>
-                      </li>
-                      <li class="m-2">
-                        <a href="#0" class="main-btn primary-btn-outline btn-hover">
-                          Send via email
+                        <a href="#0" onclick="addinvoice()" class="main-btn primary-btn-outline btn-hover">
+                          Save Invoice
                         </a>
                       </li>
                       <!-- <li class="m-2">

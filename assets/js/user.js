@@ -109,7 +109,7 @@
                                         </select>
                                     ` :
                                     (lead.status.toLowerCase().trim() === 'done') ? `
-                                        <a href="invoice.html" class="create-invoice-link">
+                                        <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
                                             Invoice
                                         </a>
                                     ` :
@@ -174,7 +174,7 @@
         function getActionHTML(status) {
             if (status === 'done') {
                 return `
-                    <a href="invoice.html" class="create-invoice-link">
+                    <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
                         Invoice
                     </a>
                 `;
