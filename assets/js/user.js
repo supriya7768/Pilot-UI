@@ -150,12 +150,14 @@
             const selectedStatus = selectElement.value;
             const row = selectElement.closest('tr');
             const statusCell = row.querySelector('td:nth-child(5)');
+            const actionCell = row.querySelector('td:nth-child(6)');
+        
             if (selectedStatus === 'done') {
                 if (confirm('Do you want to change status as Done?')) {
                     statusCell.textContent = selectedStatus;
                     statusCell.className = getButtonClass(selectedStatus);
-                    const actionCell = row.querySelector('td:nth-child(6)');
-                    actionCell.innerHTML = getActionHTML(selectedStatus);
+                    // Change action cell content to a link to invoice.html with name and email
+                    actionCell.innerHTML = getActionHTML(selectedStatus, row.cells[0].textContent, row.cells[2].textContent);
                 } else {
                     // Revert to the previous status (assuming you have a way to track it)
                     selectElement.value = statusCell.textContent;
@@ -163,47 +165,49 @@
             } else {
                 statusCell.textContent = selectedStatus;
                 statusCell.className = getButtonClass(selectedStatus);
-                const actionCell = row.querySelector('td:nth-child(6)');
                 actionCell.innerHTML = getActionHTML(selectedStatus);
             }
         }
         
+        
+        
         // Rest of your code...
         
         
-        function getActionHTML(status) {
+        function getActionHTML(status, name, email) {
             if (status === 'done') {
                 return `
-                    <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
+                    <a href="invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
                         Invoice
                     </a>
                 `;
             } else if (status === 'close') {
                 return `
-                   <a style="color: red;">Delete</a>
+                    <a style="color: red;">Delete</a>
                 `;
             } else if (status === 'active') {
                 return `
-                <select onchange="changeStatus(this)">
-                <option value="">Edit</option>
-                <option value="pending">Pending</option>
-                <option value="done">Done</option>
-                <option value="close">Close</option>
-            </select>
+                    <select onchange="changeStatus(this)">
+                        <option value="">Edit</option>
+                        <option value="pending">Pending</option>
+                        <option value="done">Done</option>
+                        <option value="close">Close</option>
+                    </select>
                 `;
             } else if (status === 'pending') {
                 return `
-                <select onchange="changeStatus(this)">
-                <option value="">Edit</option>
-                <option value="active">Active</option>
-                <option value="done">Done</option>
-                <option value="close">Close</option>
-            </select>
+                    <select onchange="changeStatus(this)">
+                        <option value="">Edit</option>
+                        <option value="active">Active</option>
+                        <option value="done">Done</option>
+                        <option value="close">Close</option>
+                    </select>
                 `;
             } else {
                 return '';
             }
         }
+        
         
         // Call the fetchLeadData function when the page loads
         window.onload = fetchLeadData;
