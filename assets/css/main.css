@@ -525,6 +525,7 @@ h6,
 .primary-btn {
   background: #365CF5;
   color: #fff;
+  /* border-radius: 8px; */
 }
 .primary-btn:hover {
   color: #fff;
@@ -2138,15 +2139,17 @@ h6,
   background: rgba(239, 239, 239, 0.5);
   border: 1px solid #e5e5e5;
   border-radius: 4px;
-  padding: 16px;
+  padding: 10px;
   color: #5d657b;
   resize: none;
   transition: all 0.3s;
+  font-size: 12px;
+  font-weight: 500;
 }
 @media (max-width: 767px) {
   .input-style-1 input,
   .input-style-1 textarea {
-    font-size: 14px;
+    font-size: 9px;
   }
 }
 .input-style-1 input:focus,
@@ -2188,7 +2191,7 @@ h6,
   background: rgba(239, 239, 239, 0.5);
   border: 1px solid #e5e5e5;
   border-radius: 4px;
-  padding: 16px;
+  padding: 8px;
   color: #5d657b;
   resize: none;
   transition: all 0.3s;
@@ -2293,7 +2296,7 @@ h6,
   padding-bottom: 8px;
   font-size: 14px;
 }
-.select-style-1 .select-position select {
+/* .select-style-1 .select-position select {
   width: 100%;
   background: transparent;
   border: 1px solid #e5e5e5;
@@ -2309,7 +2312,26 @@ h6,
   -ms-transition: all 0.3s ease-out 0s;
   -o-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
+} */
+.select-style-1 .select-position select {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgb(229, 229, 229);
+  border-radius: 10px;
+  padding: 8px 37px 10px 4px;
+  color: rgb(93, 101, 123);
+  font-size: 12px;
+  font-weight: 500;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
 }
+
 .select-style-1 .select-position select:focus {
   border-color: #365CF5;
   outline: none;
@@ -2741,7 +2763,7 @@ h6,
 
 /* ========== header css ========== */
 .header {
-  padding: 22px 0;
+  padding: 11px 0;
   background: #fff;
   position: sticky;
   top: 0;
