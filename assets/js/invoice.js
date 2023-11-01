@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function addinvoice() {
     const srNo = $('#srno').val();
-    const name = $('#leadName').val();
-    const email = $('#leadEmail').val();
+    const name = $('#leadName').text();;
+    const email = $('#leadEmail').text();;
     const mobile = $('#mobile').val();
     const course = $('#course').val();
     const rate = $('#rate').val();
@@ -61,6 +61,6 @@ async function addinvoice() {
     
         const finalData = await result.json();
 
-            $('#dt').html(finalData.name  + "invoice is edited");        
+            $('#dt').html(finalData.name  + " invoice is edited");        
         
     }

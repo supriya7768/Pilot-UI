@@ -84,6 +84,9 @@
         
                     data.forEach(lead => {
                         const row = document.createElement('tr');
+                        // let sts = lead.status;
+                        // sts = sts.charAt(0).toUpperCase()+sts.slice(1);
+                        // console.log(sts);
                         row.innerHTML = `
                             <td>${lead.name}</td>
                             <td>${lead.mobile}</td>
@@ -120,7 +123,9 @@
                                 }
                             </div></td>
                         `;
+                        console.log(row);
                         leadData.appendChild(row);
+                        
                     });
                 })
                 .catch(error => {
@@ -148,6 +153,7 @@
         
         function changeStatus(selectElement) {
             const selectedStatus = selectElement.value;
+            console.log(selectedStatus);
             const row = selectElement.closest('tr');
             const statusCell = row.querySelector('td:nth-child(5)');
             const actionCell = row.querySelector('td:nth-child(6)');
