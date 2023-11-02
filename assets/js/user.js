@@ -31,6 +31,8 @@
             const referenceName = $('#reference').val();
             const batchCode = $('#batchCode').val();
             const status = $('#status').val();
+            const comment = $('#comment').val();
+            const date = $('#date').val();
         
                 const url = 'http://localhost:8080/add-lead';
                 const result = await fetch(url, {method:'POST', body: JSON.stringify({
@@ -54,7 +56,9 @@
                     approach: approach,
                     referenceName: referenceName,
                     batchCode: batchCode,
-                    status: status
+                    status: status,
+                    comment:comment,
+                    date: date
             
                 }), headers: {"Content-Type": "application/json" } });
             
@@ -272,7 +276,5 @@
 
     
     //===========================================================
-
+ 
     
-          
-              
