@@ -436,6 +436,7 @@
           <div class="col-md-6">
             <div class="title">
               <h2>Add lead</h2>
+              <Span>Date:</Span><span style="padding-left: 25px;"><p id="date"></p></span> 
             </div>
           </div>
          
@@ -647,6 +648,11 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="input-style-1">
+                  <label>Comment</label>
+                  <input id="comment" type="text" placeholder="Add comment"  />
+                </div>
               
                 
                 <!-- <div class="col-12">
@@ -696,6 +702,17 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/user.js"></script>
+
+<script> 
+  var date = new Date(); 
+  var dd = date.getDate(); 
+  var mm = date.getMonth() + 1; 
+  var yyyy = date.getFullYear(); 
+  var newDate = dd + "-" + mm + "-" +yyyy; 
+  var p = document.getElementById("date"); 
+  p.innerHTML = newDate; 
+  </script> 
+
 
 </body>
 </html>
