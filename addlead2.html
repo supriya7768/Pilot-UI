@@ -435,8 +435,8 @@
         <div class="row align-items-center">
           <div class="col-md-6">
             <div class="title">
-              <h2>New Lead</h2>
-              <Span>Date:</Span><span style="padding-left: 5px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><p id="date"></p></span> 
+              <h2>Add lead</h2>
+              <Span>Date:</Span><span style="padding-left: 25px;"><p id="date"></p></span> 
             </div>
           </div>
          
@@ -444,239 +444,105 @@
         <!-- end row -->
       </div>
       <!-- ========== title-wrapper end ========== -->
-
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="card-style settings-card-1 mb-30">
-            <div class="title mb-30 d-flex justify-content-between align-items-center">
-              <h6>Personal Details</h6>
-             
-            </div>
-            <div class="profile-info">
-              <div class="d-flex align-items-center ">
-              </div>
-          <form onsubmit="submitForm(event)">   
-              <div class="input-style-1">
-                <label for="name">Lead Name<span style="color: red;">*</span></label>
-                <input id="name" type="text" placeholder="Full Name" title="Enter the full name of the lead" required />
-              </div>
-              <div class="input-style-1">
-                <label for="email">Email<span style="color: red;">*</span></label>
-                <input type="email" id="email" required placeholder="" title="Enter a valid email address" />
-              </div>
-              <div class="input-style-1">
-                <label for="mobile">Mobile No<span style="color: red;">*</span></label>
-                <input type="tel" id="mobile" placeholder="" title="Enter the mobile number" required />
-              </div>
-              
-              <div class="input-style-1">
-                <label for="address">Address</label>
-                <input type="text" id="address" placeholder="" title="Enter the address" />
-              </div>
-              
-              <div class="col-xxl-4">
-                <div class="select-style-1">
-                  <label>Course Intrested<span style="color: red;">*</span></label>
-                  <div class="select-position">
-                    <select class="light-bg" id="course" required>
-                      <option value="">Select Course</option>
-                      <option>Software Testing(Java Selenium)</option>
-                      <option>Automation Testing(Python Selenium)</option>
-                      <option>Rest API Testing</option>
-                      <option>Java Full Stack Development</option>
-                      <option>MERN Java Full Stack Development</option>
-                      <option>.NET Full Stack Development</option>
-                      <option>Diploma in UI/UX Design</option>
-                    </select>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xxl-4">
-                <div class="select-style-1">
-                  <label>Mode</label>
-                  <div class="select-position">
-                    <select class="light-bg" id="mode">
-                      <option value="">Offline</option>
-                      <option value="">Online</option>
-                      
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xxl-4">
-                <div class="select-style-1">
-                  <label for="yesNoSelect">Course Done In Other Institute</label>
-                  <div class="select-position">
-                    <select class="light-bg" id="courseInOtherInstitute" >
-                      
-                      
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                      
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="input-style-1" id="otherOptions" style="display: none;">
-                <label>Institute Name</label>
-                <input type="text" id="institute" placeholder="" />
-              </div>
-              <div class="input-style-1" id="otherOption" style="display: none;">
-                <label>Reason if any</label>
-                <input type="text" id="reason" placeholder="" />
-              </div>
-
-              <div class="col-xxl-4">
-                <div class="select-style-1">
-                  <label>Interest</label>
-                  <div class="select-position">
-                    <select class="light-bg" id="interest">
-                     
-                      <option value="">High</option>
-                      <option value="">Medium</option>
-                      <option value="">Low</option>
-                  
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-             
-            </div>
-          </div>
-          <!-- end card -->
+      <div class="container">
+        <div class="text">
+           Contact us Form
         </div>
-        <!-- end col -->
-
-        <div class="col-lg-6">
-          <div class="card-style settings-card-2 mb-30">
-            <div class="title mb-30">
-              <h6>Qualification</h6>
+        <form action="#">
+           <div class="form-row">
+              <div class="input-data">
+                 <input type="text" required>
+                 <div class="underline"></div>
+                 <label for="">Name</label>
+              </div>
+              <div class="input-data">
+                 <input type="text" required>
+                 <div class="underline"></div>
+                 <label for="">Email</label>
+              </div>
+           </div>
+           <div class="form-row">
+              <div class="input-data">
+                 <input type="text" required>
+                 <div class="underline"></div>
+                 <label for="">Mobile</label>
+              </div>
+              <div class="input-data">
+                 <input type="text">
+                 <div class="underline"></div>
+                 <label for="">Address</label>
+              </div>
+           </div>
+           <div class="form-row">
+            <div class="input-data">
+               <input type="text" >
+               <div class="underline"></div>
+               <label for="">Degree</label>
             </div>
+            <div class="input-data">
+               <input type="text" >
+               <div class="underline"></div>
+               <label for="">Field</label>
+            </div>
+         </div>
+         <div class="form-row">
+            <div class="input-data">
+               <input type="text">
+               <div class="underline"></div>
+               <label for="">Passing Year</label>
+            </div>
+            <div class="input-data">
+               <input type="text" required>
+               <div class="underline"></div>
+               <label for="">College Name</label>
+            </div>
+         </div>
+         <div class="form-row">
+            <div class="input-data">
+               <input type="text" required>
+               <div class="underline"></div>
+               <label for="">Email Address</label>
+            </div>
+            <div class="input-data">
+               <input type="text" required>
+               <div class="underline"></div>
+               <label for="">Website Name</label>
+            </div>
+         </div>
+         <div class="form-row">
+            <div class="input-data">
+                <select id="mainDropdown" onchange="showSubDropdown(this)">
+                    <option value="" selected disabled>Select an option</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <!-- Add more options as needed -->
+                </select>
+                
+                <div id="subDropdown1" style="display: none;">
+                    <select>
+                        <option value="" selected disabled>Select a sub-option for Option 1</option>
+                        <option value="suboption1">Sub-Option 1</option>
+                        <option value="suboption2">Sub-Option 2</option>
+                        <!-- Add more sub-options as needed -->
+                    </select>
+                </div>
+                
+                <div id="subDropdown2" style="display: none;">
+                    <select>
+                        <option value="" selected disabled>Select a sub-option for Option 2</option>
+                        <option value="suboption3">Sub-Option 3</option>
+                        <option value="suboption4">Sub-Option 4</option>
+                        <!-- Add more sub-options as needed -->
+                    </select>
+                </div>
+            </div>
+        </div>
+         
             
-              <div class="row">
-                <div class="col-12">
-                  <div class="input-style-1">
-                    <label>Degree</label>
-                    <input type="text" id="degree" placeholder="" />
-                  </div>
-                  <div class="input-style-1">
-                    <label>Specialization</label>
-                    <input type="text" id="field" placeholder="" />
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="input-style-1">
-                    <label>Passing Year</label>
-                    <input type="number" id="passingYear" placeholder="" />
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="input-style-1">
-                    <label>College Name</label>
-                    <input type="text" id="collegeName" placeholder="" />
-                  </div>
-                </div>
-                <div class="col-xxl-4">
-                  <div class="select-style-1">
-                    <label>Experience</label>
-                    <div class="select-position">
-                      <select class="light-bg" id="experience">
-                        <option value="">Select category</option>
-                        <option value="it">IT</option>
-                        <option value="nonit">Non IT</option>
-                       
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                </div>
-                <div class="col-xxl-4" id="selectYearOfExperience" style="display: none;">
-                  <div class="input-style-1" >
-                    <label>Years of Experience</label>
-                    <input type="text" id="yearOfExperience" placeholder="YYYY" />
-                  </div>
-                </div>
-                <div class="col-xxl-4" id="selectDesignation" style="display: none;" >
-                  <div class="input-style-1">
-                    <label>Designation</label>
-                    <input type="text" id="designation" placeholder="" />
-                  </div>
-                </div>
-
-                <div class="col-xxl-4">
-                  <div class="select-style-1">
-                    <label>Approach</label>
-                    <div class="select-position">
-                      <select class="light-bg" id="approach">
-                        <option value="">Select category</option>
-                        <option  value="ref">Reference</option>
-                        <option>Instagram</option>
-                        <option>Facebook</option>
-                        <option>Google</option>
-                        <option>Offline Search</option>
-                        <option>Other</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-xxl-4" id = "selectRef" style="display: none;">
-                  <div class="input-style-1">
-                    <label>Reference Name</label>
-                    <input type="text" id="reference" placeholder="" />
-                  </div>
-                </div>
-
-                <div class="col-xxl-4" id = "selectBatch" style="display: none;" >
-                  <div class="input-style-1">
-                    <label>Batch Code</label>
-                    <input type="text" id="batchCode" placeholder="" />
-                  </div>
-                </div>
-
-                <div class="col-xxl-4">
-                  <div class="select-style-1">
-                    <label>Status</label>
-                    <div class="select-position">
-                      <select class="light-bg" id="status">
-                        <option value="">Select category</option>
-                        <option value="Active">Active</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Done">Done</option>
-                        <option value="Close">Close</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="input-style-1">
-                  <label>Comment</label>
-                  <input id="comment" type="text" placeholder="Add comment"  />
-                </div>
-              </div>
-              <button class="main-btn primary-btn btn-hover" type="submit" onclick="addlead()" style="height: 20px; width: 20px;">Add Lead</button>
-          </form>
-            <div id="dt"></div>
-          </div>
-          <!-- end card -->
+            
+            </form>
         </div>
-        <!-- end col -->
-      </div>
-      <!-- end row -->
-    </div>
-    <!-- end container -->
-  </section>
-  <!-- ========== section end ========== -->
-
-  <!-- ========== footer start =========== -->
- 
-    </div>
-    <!-- end container -->
-  </footer>
-  <!-- ========== footer end =========== -->
-</main>
+     
 <!-- ======== main-wrapper end =========== -->
 
 <!-- ========= All Javascript files linkup ======== -->

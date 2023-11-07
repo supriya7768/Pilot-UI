@@ -3,11 +3,46 @@
         //================addlead.html=================
 
 
-         function submitForm(event) {
-          event.preventDefault(); // Prevent the default form submission behavior
-        
-          // Your form submission logic here
+        function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+            if (validateForm()) {
+              addlead(); // If form is valid, proceed with adding the lead
+            }
+          }
+          
+          function validateForm() {
+            let isValid = true;
+            const formFields = document.querySelectorAll('input[required]');
+          
+            formFields.forEach(field => {
+              if (!field.value) {
+                isValid = false;
+                field.classList.add('error'); // You can style this using CSS for better visibility
+                field.setAttribute('title', 'Please enter mandatory fields*');
+              } else {
+                field.classList.remove('error');
+                field.removeAttribute('title');
+              }
+            });
+          
+            return isValid;
+          }
+          function displayTooltipsForRequiredFields() {
+            const formFields = document.querySelectorAll('input[required]');
+            
+            formFields.forEach(field => {
+                if (!field.value) {
+                    field.classList.add('error'); // Apply error class to highlight the field
+                    field.setAttribute('title', 'Please enter mandatory fields*'); // Show tooltip
+                } else {
+                    field.classList.remove('error');
+                    field.removeAttribute('title');
+                }
+            });
         }
+          
+         
+         
         
          async function addlead() {
             const name = $('#name').val();
@@ -223,7 +258,7 @@
         window.onload = fetchLeadData;
         
         
-        
+
 
 
        //===========================field in addlead.html========================
@@ -273,6 +308,21 @@
           batchElement.style.display = "none";
       }
     });
+
+   
+function showSubDropdown(dropdown) {
+    const selectedOption = dropdown.value;
+    
+    document.getElementById('subDropdown1').style.display = 'none';
+    document.getElementById('subDropdown2').style.display = 'none';
+
+    if (selectedOption === 'option1') {
+        document.getElementById('subDropdown1').style.display = 'block';
+    } else if (selectedOption === 'option2') {
+        document.getElementById('subDropdown2').style.display = 'block';
+    }
+}
+
 
     
     //===========================================================
