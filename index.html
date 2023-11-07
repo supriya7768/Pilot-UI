@@ -35,7 +35,8 @@
     <aside class="sidebar-nav-wrapper">
       <div class="navbar-logo">
         <a href="index.html">
-          <h2>Pilot</h2>
+          <!-- <h2>Pilot</h2> -->
+          <img style="height: 50%; width: 50%; padding-left: 10%;" src="/assets/images/SHEPHERD.png" alt="">
         </a>
       </div>
       <nav class="sidebar-nav">
@@ -451,14 +452,16 @@
 
               
             
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="card-style calendar-card mb-30">
-                <div id="calendar-mini"></div>
+            <div> 
+              <div class="row">
+                <div class="col-lg-5">
+                  <div class="card-style calendar-card mb-30">
+                    <div id="calendar-mini" class="calendar2"></div>
+                  </div>
               </div>
-            </div>
+              
             <!-- End Col -->
-            <div class="col-lg-8" >
+            <div class="col-lg-7">
               <div class="card-style mb-30">
                 <div class="title d-flex flex-wrap align-items-center justify-content-between">
                   <div class="left">
@@ -499,15 +502,9 @@
                             Date <i class="lni "></i>
                           </h6>
                         </th>
-                        <th class="min-width">
-                          <h6 class="text-sm text-medium">
-                            Status <i class="lni "></i>
-                          </h6>
-                        </th>
                         <th>
                           <h6 class="text-sm text-medium text-end">
-                            Actions 
-                            <!-- <i class="lni lni-arrows-vertical"></i> -->
+                            Actions <i class="lni lni-arrows-vertical"></i>
                           </h6>
                         </th>
                       </tr>
@@ -517,46 +514,7 @@
                       <!-- Lead data will be dynamically added here -->
 
                   </tbody>
-                    <!-- <tbody>
-                      <tr>
-                        <td>
-                          <div class="product">
-                            <p class="text-sm">Supriya Mahajan</p>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-sm">7768083050</p>
-                        </td>
-                        <td>
-                          <p class="text-sm">Lorem ipsum dolor</p>
-                        </td>
-                        <td>
-                           <span class="status-btn close-btn">Pending</span> -->
-                          <!-- <input type="date">
-                        </td>
-                        <td>
-                          <div class="action justify-content-end">
-                            <button class="edit">
-                              <i class="lni lni-pencil"></i>
-                            </button>
-                            <button class="more-btn ml-10 dropdown-toggle" id="moreAction1" data-bs-toggle="dropdown"
-                              aria-expanded="false">
-                              <i class="lni lni-more-alt"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction1">
-                              <li class="dropdown-item">
-                                <a href="#0" class="text-gray">Remove</a>
-                              </li>
-                              <li class="dropdown-item">
-                                <a href="#0" class="text-gray">Edit</a>
-                              </li>
-                            </ul>
-                          </div>
-                        </td>
-                      </tr>  
-                      
-                    </tbody>-->
-                  </table>
+                   </table>
                   <!-- End Table -->
                 </div>
               </div>
@@ -570,7 +528,7 @@
       <!-- ========== section end ========== -->
 
       <!-- ========== footer start =========== -->
-      <!-- <footer class="footer">
+      <footer class="footer">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6 order-last order-md-first">
@@ -582,15 +540,15 @@
                   </a>
                 </p>
               </div>
-            </div> -->
+            </div>
             <!-- end col-->
-            <!-- <div class="col-md-6">
+            <div class="col-md-6">
               <div class="terms d-flex justify-content-center justify-content-md-end">
                 <a href="#0" class="text-sm">Term & Conditions</a>
                 <a href="#0" class="text-sm ml-15">Privacy & Policy</a>
               </div>
             </div>
-          </div> -->
+          </div>
           <!-- end row -->
         </div>
         <!-- end container -->
@@ -1147,5 +1105,7 @@
       });
         // =========== chart four end
     </script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/newcalender.js"></script>
   </body>
 </html>

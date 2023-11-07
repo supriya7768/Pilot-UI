@@ -435,8 +435,8 @@
         <div class="row align-items-center">
           <div class="col-md-6">
             <div class="title">
-              <h2>Add lead</h2>
-              <Span>Date:</Span><span style="padding-left: 25px;"><p id="date"></p></span> 
+              <h2>New Lead</h2>
+              <Span>Date:</Span><span style="padding-left: 5px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><p id="date"></p></span> 
             </div>
           </div>
          
@@ -454,29 +454,31 @@
             </div>
             <div class="profile-info">
               <div class="d-flex align-items-center ">
-               
+              </div>
+          <form onsubmit="submitForm(event)">   
+              <div class="input-style-1">
+                <label for="name">Lead Name<span style="color: red;">*</span></label>
+                <input id="name" type="text" placeholder="Full Name" title="Enter the full name of the lead" required />
               </div>
               <div class="input-style-1">
-                <label>Lead Name</label>
-                <input id="name" type="text" placeholder="Full Name"  />
+                <label for="email">Email<span style="color: red;">*</span></label>
+                <input type="email" id="email" required placeholder="" title="Enter a valid email address" />
               </div>
               <div class="input-style-1">
-                <label>Email</label>
-                <input type="email" id="email" placeholder=""/>
+                <label for="mobile">Mobile No<span style="color: red;">*</span></label>
+                <input type="tel" id="mobile" placeholder="" title="Enter the mobile number" required />
               </div>
+              
               <div class="input-style-1">
-                <label>Mobile No</label>
-                <input type="number" id="mobile" placeholder="" />
+                <label for="address">Address</label>
+                <input type="text" id="address" placeholder="" title="Enter the address" />
               </div>
-              <div class="input-style-1">
-                <label>Address</label>
-                <input type="text" id="address" placeholder=""  />
-              </div>
+              
               <div class="col-xxl-4">
                 <div class="select-style-1">
-                  <label>Course Intrested</label>
+                  <label>Course Intrested<span style="color: red;">*</span></label>
                   <div class="select-position">
-                    <select class="light-bg" id="course">
+                    <select class="light-bg" id="course" required>
                       <option value="">Select Course</option>
                       <option>Software Testing(Java Selenium)</option>
                       <option>Automation Testing(Python Selenium)</option>
@@ -552,7 +554,7 @@
             <div class="title mb-30">
               <h6>Qualification</h6>
             </div>
-            <form onsubmit="submitForm(event)">
+            
               <div class="row">
                 <div class="col-12">
                   <div class="input-style-1">
@@ -653,23 +655,10 @@
                   <label>Comment</label>
                   <input id="comment" type="text" placeholder="Add comment"  />
                 </div>
-              
-                
-                <!-- <div class="col-12">
-                  <button style="height: 40px; width: 100px;" onclick="addlead()" class="main-btn primary-btn btn-hover">
-                    Add Lead
-                  </button>
-                </div>
-                <div class="h-20"><h1 id="dt"></h1></div> -->
-                
               </div>
-            </form>
-            <div style="margin-right: 5px;" class="col-12">
-              <button style="height: 40px; width: 100px;" onclick="addlead()" class="main-btn primary-btn btn-hover">
-                Add Lead
-              </button>
-            </div>
-            <div class="h-20"><h1 id="dt"></h1></div>
+              <button class="main-btn primary-btn btn-hover" type="submit" onclick="addlead()" style="height: 20px; width: 20px;">Add Lead</button>
+          </form>
+            <div id="dt"></div>
           </div>
           <!-- end card -->
         </div>
