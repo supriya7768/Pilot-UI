@@ -20,6 +20,7 @@
                 field.classList.add('error'); // You can style this using CSS for better visibility
                 field.setAttribute('title', 'Please enter mandatory fields*');
               } else {
+                
                 field.classList.remove('error');
                 field.removeAttribute('title');
               }
@@ -348,15 +349,15 @@ function showSubDropdown(dropdown) {
                             <td><div class="action">
                                 ${
                                     (lead.status.toLowerCase().trim() === 'pending') ? `
-                                        <select onchange="changeStatus(this)">
-                                            <option value="">Edit</option>
-                                            <option value="active">Active</option>
-                                            <option value="done">Done</option>
-                                            <option value="close">Close</option>
-                                        </select>
+                                    <select onchange="changeStatus(this, ${lead.id})">
+                                    <option value="">Edit</option>
+                                    <option value="active">Active</option>
+                                    <option value="done">Done</option>
+                                    <option value="close">Close</option>
+                                </select>
                                     ` :
                                     (lead.status.toLowerCase().trim() === 'active') ? `
-                                        <select onchange="changeStatus(this)">
+                                        <select onchange="changeStatus(this, ${lead.id})">
                                             <option value="">Edit</option>
                                             <option value="pending">Pending</option>
                                             <option value="done">Done</option>
@@ -403,33 +404,57 @@ function showSubDropdown(dropdown) {
             }
         }
         
-        function changeStatus(selectElement) {
+        function changeStatus(selectElement, leadId) {
             const selectedStatus = selectElement.value;
-            console.log(selectedStatus);
             const row = selectElement.closest('tr');
             const statusCell = row.querySelector('td:nth-child(5)');
-            const actionCell = row.querySelector('td:nth-child(6)');
+            const actionCell = row.querySelector('td:nth-child(6)'); // Corrected the typo here
         
-            if (selectedStatus === 'done') {
-                if (confirm('Do you want to change status as Done?')) {
-                    statusCell.textContent = selectedStatus;
-                    statusCell.className = getButtonClass(selectedStatus);
-                    // Change action cell content to a link to invoice.html with name and email
-                    actionCell.innerHTML = getActionHTML(selectedStatus, row.cells[0].textContent, row.cells[2].textContent);
-                } else {
-                    // Revert to the previous status (assuming you have a way to track it)
-                    selectElement.value = statusCell.textContent;
-                }
+            if (confirm(`Do you want to change status to '${selectedStatus}'?`)) {
+                updateLeadStatus(leadId, selectedStatus, statusCell, actionCell, row); // Call the updated function
+                
             } else {
-                statusCell.textContent = selectedStatus;
-                statusCell.className = getButtonClass(selectedStatus);
-                actionCell.innerHTML = getActionHTML(selectedStatus);
+                // Revert to the previous status (assuming you have a way to track it)
+                selectElement.value = statusCell.textContent;
+            }
+
+          
+        }
+
+        async function updateLeadStatus(leadId, selectedStatus, statusCell, actionCell, row) {
+            try {
+                const response = await fetch(`http://localhost:8080/update-lead/${leadId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ status: selectedStatus })
+                });
+        
+                if (response.ok) {
+                    const data = await response.json();
+                    const updatedStatus = data.status;
+                   
+        
+                    // Update the status and action cells
+                    statusCell.textContent = updatedStatus;
+                    statusCell.className = getButtonClass(updatedStatus);
+                    actionCell.innerHTML = getActionHTML(updatedStatus, row.cells[0].textContent, row.cells[2].textContent);
+                    console.log("Before status changed")
+                    alert(`Status changed to '${updatedStatus}'`);
+                    console.log("Before return statement");
+                    return updatedStatus; 
+                    // Return the updated status
+                } else {
+                    console.error('Failed to update lead status');
+                    // Handle error cases
+                }
+            } catch (error) {
+                console.error('Error updating lead status: ' + error);
             }
         }
         
-        
-        
-        // Rest of your code...
+
         
         
         function getActionHTML(status, name, email) {
