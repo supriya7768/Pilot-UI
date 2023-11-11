@@ -4242,7 +4242,7 @@ only screen and (min-width: 768px) and (max-width: 991px),
   padding: 20px 0px;
   height: 100vh;
   position: fixed;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   overflow-x: hidden;
   top: 0;
   left: 0;
@@ -4412,7 +4412,7 @@ only screen and (min-width: 768px) and (max-width: 991px),
 .sidebar-nav-wrapper .sidebar-nav ul .nav-item a {
   display: flex;
   align-items: center;
-  color: #4064F6;
+  color: #000;
   font-size: 14px;
   font-weight: 500;
   width: 100%;
@@ -4468,7 +4468,7 @@ only screen and (min-width: 768px) and (max-width: 991px),
 .sidebar-nav-wrapper .sidebar-nav ul .nav-item.active>a.collapsed,
 .sidebar-nav-wrapper .sidebar-nav ul .nav-item:hover>a,
 .sidebar-nav-wrapper .sidebar-nav ul .nav-item:hover>a.collapsed {
-  color: #1A2142;
+  color: #365CF5;
 }
 
 .sidebar-nav-wrapper .sidebar-nav ul .nav-item.active>a .icon,
