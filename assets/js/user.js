@@ -326,8 +326,6 @@ function showSubDropdown(dropdown) {
     }
 }
 
-
-    
     
     //=========================index.html==================================
  
@@ -346,7 +344,7 @@ function showSubDropdown(dropdown) {
                         <td>${lead.name}</td>
                         <td>${lead.mobile}</td>
                         <td>${lead.comment}</td>
-                        <td>${lead.date}</td>
+                        <td>${lead.follow}</td>
                         <td class="${getButtonClass(lead.status)}">${lead.status}</td>
                             <td><div class="action">
                                 ${
@@ -455,9 +453,6 @@ function showSubDropdown(dropdown) {
                 console.error('Error updating lead status: ' + error);
             }
         }
-        
-
-        
         
         function getActionHTML(status, name, email) {
             if (status === 'done') {
