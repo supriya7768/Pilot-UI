@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="assets/css/fullcalendar.css" />
   <link rel="stylesheet" href="assets/css/fullcalendar.css" />
   <link rel="stylesheet" href="assets/css/main.css" />
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
 
@@ -429,29 +430,6 @@
         <!-- ========== title-wrapper start ========== -->
         <div class="title-wrapper pt-30">
           <div class="row align-items-center">
-            <!-- <div class="col-md-6">
-                <div class="title d-flex align-items-center flex-wrap">
-                  <h2 class="mr-40">Invoice</h2>
-                  <a href="#0" class="main-btn primary-btn btn-hover btn-sm">
-                    <i class="lni lni-plus mr-5"></i> Edit Invoice</a>
-                </div>
-              </div> -->
-            <!-- end col -->
-            <!-- <div class="col-md-6">
-                <div class="breadcrumb-wrapper">
-                  <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item">
-                        <a href="#0">Dashboard</a>
-                      </li>
-                      <li class="breadcrumb-item active" aria-current="page">
-                        Invoice
-                      </li>
-                    </ol>
-                  </nav>
-                </div>
-              </div> -->
-            <!-- end col -->
           </div>
           <!-- end row -->
         </div>
@@ -468,20 +446,12 @@
                         alt="" /></span><br> <span style="padding-top: 5px;">
                       <h2 class="mb-10">Invoice</h2>
                     </span>
-                    <!-- <p class="text-sm">
-                        Testing Shastra
-                      </p> -->
                   </div>
-                  <!-- <div class="invoice-logo">
-                      <img src="./assets/images/logo.png" alt="" />
-                    </div> -->
                   <div class="invoice-date">
                     <p><span>Invoice ID:</span><input type="text"> </p>
                     <Span>Date:</Span><span style="padding-left: 25px;">
                       <p id="myId"></p>
                     </span>
-                    <!-- <p><span>Date Due:</span> <input type="date"></p> -->
-
                   </div>
                 </div>
                 <div class="invoice-address">
@@ -498,11 +468,7 @@
                   </div>
                   <div class="address-item">
                     <h5 class="text-bold">Bill to</h5>
-                    <!-- <input style="font-weight: 500; font-family:Plus Jakarta Sans" type="text"> -->
                     <h1 id="leadName"></h1>
-                    <!-- <p class="text-sm">
-                        2972 Westheimer Rd. Santa Ana, Illinois 85486
-                      </p> -->
                     <p class="text-sm">
                       <span class="text-medium">Email:</span>
                       <span id="leadEmail"></span>
@@ -518,7 +484,6 @@
                         </th>
                         <th class="desc">
                           <h6 class="text-sm text-medium">Course</h6>
-
                         </th>
                         <th class="qty">
                           <h6 class="text-sm text-medium">Rate</h6>
@@ -528,18 +493,15 @@
                         </th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="invoiceBody">
                       <tr>
                         <td>
-                          <!-- <p class="text-sm">Admin Dashboard</p> -->
                           <input type="text" class="input-style-1" id="srNo">
                         </td>
                         <td>
                           <p class="text-sm">
-                            <!-- Design and Development Service -->
                           <div class="col-xxl-4">
                             <div class="select-style-1">
-
                               <div class="select-position">
                                 <select class="light-bg" id="course">
                                   <option value="">Select category</option>
@@ -551,101 +513,119 @@
                                   <option>.NET Full Stack Development</option>
                                   <option>Diploma in UI/UX Design</option>
                                 </select>
-                                </select>
                               </div>
                             </div>
                           </div>
                           </p>
                         </td>
                         <td>
-                          <!-- <p class="text-sm">3</p> -->
                           <input type="text" class="input-style-1" id="rate">
                         </td>
                         <td>
-                          <!-- <p class="text-sm">$700</p> -->
                           <input type="text" class="input-style-1" id="amount">
-                        </td>
-                      </tr>
-                      <td><button>Add item</button></td>
-
-                      <tr>
-                        <td>
-                          <p class="text-sm">Landing Page</p>
-                        </td>
-                        <td>
-                          <p class="text-sm">
-                            Landing Page Ui kit design and Development
-                          </p>
-                        </td>
-                        <td>
-                          <p class="text-sm">1</p>
-                        </td>
-                        <td>
-                          <p class="text-sm">$1000</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <p class="text-sm">Web design</p>
-                        </td>
-                        <td>
-                          <p class="text-sm">
-                            Web Design and Development and Seo
-                          </p>
-                        </td>
-                        <td>
-                          <p class="text-sm">2</p>
-                        </td>
-                        <td>
-                          <p class="text-sm">$4000</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                          <h6 class="text-sm text-medium">Subtotal</h6>
-                        </td>
-                        <td>
-                          <!-- <h6 class="text-sm text-bold" id="subtotal"></h6> -->
-                          <input type="text" id="subtotal">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                          <h6 class="text-sm text-medium">Due Date</h6>
-                        </td>
-                        <td>
-                          <h6 class="text-sm text-bold"><input type="date" id="dueDate"></h6>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                          <h6 class="text-sm text-medium">Due Amount</h6>
-                        </td>
-                        <td>
-                          <!-- <h6 class="text-sm text-bold" id="dueAmount"></h6> -->
-                          <input type="text" id="dueAmount">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                          <h4>Total</h4>
-                        </td>
-                        <td>
-                          <!-- <h4 id="total"></h4> -->
-                          <input type="text" id="total">
                         </td>
                       </tr>
                     </tbody>
                   </table>
+                  <button class="primary-btn" onclick="addItem()">Add item</button>
+                  <button class="primary-btn" onclick="displayList()">Display List</button>
                 </div>
+
+                <!-- Table to display the list of items -->
+                <div class="table-responsive">
+                  <table class="list-table table" style="display: none;">
+                    <thead>
+                      <tr>
+                        <th>Sr.No</th>
+                        <th>Course</th>
+                        <th>Rate</th>
+                        <th>Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody id="listBody">
+                      <!-- List items will be added here dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- <tr>
+                  <td>
+                    <p class="text-sm">Landing Page</p>
+                  </td>
+                  <td>
+                    <p class="text-sm">
+                      Landing Page Ui kit design and Development
+                    </p>
+                  </td>
+                  <td>
+                    <p class="text-sm">1</p>
+                  </td>
+                  <td>
+                    <p class="text-sm">$1000</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p class="text-sm">Web design</p>
+                  </td>
+                  <td>
+                    <p class="text-sm">
+                      Web Design and Development and Seo
+                    </p>
+                  </td>
+                  <td>
+                    <p class="text-sm">2</p>
+                  </td>
+                  <td>
+                    <p class="text-sm">$4000</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <h6 class="text-sm text-medium">Subtotal</h6>
+                  </td>
+                  <td>
+                   
+                    <input type="text" id="subtotal">
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <h6 class="text-sm text-medium">Due Date</h6>
+                  </td>
+                  <td>
+                    <h6 class="text-sm text-bold"><input type="date" id="dueDate"></h6>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <h6 class="text-sm text-medium">Due Amount</h6>
+                  </td>
+                  <td>
+                   
+                    <input type="text" id="dueAmount">
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <h4>Total</h4>
+                  </td>
+                  <td>
+                
+                    <input type="text" id="total">
+                  </td>
+                </tr>
+                </tbody>
+                </table>
+              </div> -->
                 <!-- <div class="note-wrapper warning-alert py-4 px-sm-3 px-lg-5">
                     <div class="alert">
                       <h5 class="text-bold mb-15">Notes:</h5>
@@ -755,6 +735,47 @@
       document.getElementById("leadEmail").textContent = leadEmail;
     }
   </script>
+  <script>
+    var invoiceItems = [];
+
+    function addItem() {
+      var srNo = $('#srNo').val();
+      var course = $('#course').val();
+      var rate = $('#rate').val();
+      var amount = $('#amount').val();
+
+      var newItem = {
+        srNo: srNo,
+        course: course,
+        rate: rate,
+        amount: amount
+      };
+
+      invoiceItems.push(newItem);
+
+      var newRow = $('#invoiceBody tr:first').clone();
+      $('#invoiceBody').append(newRow);
+      newRow.find('input').val('');
+    }
+
+    function displayList() {
+      // Display the list of items in the second table
+      var listTable = $('.list-table');
+      var listBody = $('#listBody');
+      listBody.empty(); // Clear existing entries
+
+      for (var i = 0; i < invoiceItems.length; i++) {
+        var item = invoiceItems[i];
+        var row = '<tr><td>' + item.srNo + '</td><td>' + item.course + '</td><td>' + item.rate + '</td><td>' + item.amount + '</td></tr>';
+        listBody.append(row);
+      }
+
+      listTable.show(); // Display the second table
+    }
+  </script>
+
+
+
 </body>
 
 </html>
