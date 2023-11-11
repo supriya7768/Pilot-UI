@@ -338,7 +338,13 @@ function showSubDropdown(dropdown) {
                 // Clear existing data
                 //leadData.innerHTML = '';
 
+            const currentDate = new Date();
+            const currentDateString = currentDate.toISOString().split('T')[0]; // Get the current date in 'YYYY-MM-DD' format
+
+
                 data.forEach(lead => {
+                    const followDate = lead.follow.split('T')[0]; // Assuming the follow date is in 'YYYY-MM-DD' format
+                    if (followDate === currentDateString) {
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${lead.name}</td>
@@ -378,7 +384,7 @@ function showSubDropdown(dropdown) {
                         `;
                         console.log(row);
                         leadData.appendChild(row);
-                        
+                            }
                     });
                 })
                 .catch(error => {
