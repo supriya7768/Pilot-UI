@@ -68,6 +68,7 @@
             const batchCode = $('#batchCode').val();
             const status = $('#status').val();
             const comment = $('#comment').val();
+            const follow = $('#follow').val();
             const date = $('#date').val();
         
                 const url = 'http://localhost:8080/add-lead';
@@ -94,6 +95,7 @@
                     batchCode: batchCode,
                     status: status,
                     comment:comment,
+                    follow: follow,
                     date: date
             
                 }), headers: {"Content-Type": "application/json" } });
