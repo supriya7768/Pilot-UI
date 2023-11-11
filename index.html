@@ -314,12 +314,14 @@
                   </div>
                   <div class="right">
                     <div class="select-style-1">
-                      <div class="select-position select-sm">
+                      <!-- <div class="select-position select-sm">
                         <select class="light-bg">
                           <option value="">Today</option>
                           <option value="">Yesterday</option>
                         </select>
-                      </div>
+                      </div> -->
+                      <h4>Check leads on</h4>
+                      <input type="date" id="followDateInput">
                     </div>
                     <!-- end select -->
                   </div>
@@ -919,6 +921,47 @@
   <script src="./assets/js/newcalender.js"></script>
   <script src="./assets/js/user.js"></script>
   <script src="./assets/js/jquery.js"></script>
+
+  <script>
+    // Function to fetch and display leads based on the selected follow date
+    function fetchLeadsByDate(selectedDate) {
+        fetch('http://localhost:8080/get-lead-data-dashboard')
+            .then(response => response.json())
+            .then(data => {
+                const leadData = document.getElementById('leadTable');
+                leadData.innerHTML = ''; // Clear existing data
+
+                data.forEach(lead => {
+                    const followDate = lead.follow.split('T')[0]; // Assuming the follow date is in 'YYYY-MM-DD' format
+
+                    if (followDate === selectedDate) {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${lead.name}</td>
+                            <td>${lead.mobile}</td>
+                            <td>${lead.comment}</td>
+                            <td>${lead.follow}</td>
+                            <td class="${getButtonClass(lead.status)}">${lead.status}</td>
+                            <td><div class="action">
+                                ${getActionHTML(lead.status, lead.name, lead.email)}
+                            </div></td>
+                        `;
+                        leadData.appendChild(row);
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data: ' + error);
+            });
+    }
+
+    // Listen for changes on the date input field
+    const dateInput = document.getElementById('followDateInput');
+    dateInput.addEventListener('change', function() {
+        const selectedDate = dateInput.value; // Get the selected date from the input
+        fetchLeadsByDate(selectedDate);
+    });
+</script>
 
 </body>
 
