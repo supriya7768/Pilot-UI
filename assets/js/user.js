@@ -152,6 +152,19 @@ function submitForm(event) {
       batchElement.style.display = "none";
     }
   });
+
+  const statusElement = document.getElementById("status");
+    const followOnFieldElement = document.getElementById("followOnField");
+
+    statusElement.addEventListener("change", function () {
+      if (statusElement.value === "Active" || statusElement.value === "Pending") {
+        followOnFieldElement.style.display = "block";
+      } else {
+        followOnFieldElement.style.display = "none";
+        // Optionally, you can clear the followOnField value when it's hidden
+        document.getElementById("follow").value = "";
+      }
+    });
   
   function showSubDropdown(dropdown) {
     const selectedOption = dropdown.value;
@@ -165,190 +178,4 @@ function submitForm(event) {
       document.getElementById("subDropdown2").style.display = "block";
     }
   }
-  
-//   //=========================index.html==================================
-  
-//   function fetchLeadData() {
-//     fetch("http://localhost:8080/get-lead-data-dashboard")
-//       .then((response) => response.json())
-//       .then((data) => {
-//         const leadData = document.getElementById("leadTable");
-//         // Clear existing data
-//         //leadData.innerHTML = '';
-  
-//         const currentDate = new Date();
-//         const currentDateString = currentDate.toISOString().split("T")[0]; // Get the current date in 'YYYY-MM-DD' format
-  
-//         data.forEach((lead) => {
-//           const followDate = lead.follow.split("T")[0]; // Assuming the follow date is in 'YYYY-MM-DD' format
-//           if (followDate === currentDateString) {
-//             const row = document.createElement("tr");
-//             row.innerHTML = `
-//                           <td>${lead.name}</td>
-//                           <td>${lead.mobile}</td>
-//                           <td>${lead.comment}</td>
-//                           <td>${lead.follow}</td>
-//                           <td class="${getButtonClass(lead.status)}">${
-//               lead.status
-//             }</td>
-//                               <td><div class="action">
-//                                   ${
-//                                     lead.status.toLowerCase().trim() === "pending"
-//                                       ? `
-//                                       <select onchange="changeStatus(this, ${lead.id})">
-//                                       <option value="">Edit</option>
-//                                       <option value="active">Active</option>
-//                                       <option value="done">Done</option>
-//                                       <option value="close">Close</option>
-//                                   </select>
-//                                       `
-//                                       : lead.status.toLowerCase().trim() ===
-//                                         "active"
-//                                       ? `
-//                                           <select onchange="changeStatus(this, ${lead.id})">
-//                                               <option value="">Edit</option>
-//                                               <option value="pending">Pending</option>
-//                                               <option value="done">Done</option>
-//                                               <option value="close">Close</option>
-//                                           </select>
-//                                       `
-//                                       : lead.status.toLowerCase().trim() ===
-//                                         "done"
-//                                       ? `
-//                                           <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
-//                                               Invoice
-//                                           </a>
-//                                       `
-//                                       : lead.status.toLowerCase().trim() ===
-//                                         "close"
-//                                       ? `
-//                                           <a style="color: red;">Delete</a>
-//                                       `
-//                                       : ""
-//                                   }
-//                               </div></td>
-//                           `;
-//             console.log(row);
-//             leadData.appendChild(row);
-//           }
-//         });
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching data: " + error);
-//       });
-//   }
-  
-//   function getButtonClass(status) {
-//     // Trim the status and convert to lowercase for comparison
-//     const lowerCaseStatus = status.trim().toLowerCase();
-  
-//     switch (lowerCaseStatus) {
-//       case "active":
-//         return "newbtnact";
-//       case "done":
-//         return "newbtndone";
-//       case "close":
-//         return "newbtnclose";
-//       case "pending":
-//         return "newbtnpending";
-//       default:
-//         return "default-btn"; // You can define a default class for other statuses
-//     }
-//   }
-  
-//   function changeStatus(selectElement, leadId) {
-//     const selectedStatus = selectElement.value;
-//     const row = selectElement.closest("tr");
-//     const statusCell = row.querySelector("td:nth-child(5)");
-//     const actionCell = row.querySelector("td:nth-child(6)"); // Corrected the typo here
-  
-//     if (confirm(`Do you want to change status to '${selectedStatus}'?`)) {
-//       updateLeadStatus(leadId, selectedStatus, statusCell, actionCell, row); // Call the updated function
-//     } else {
-//       // Revert to the previous status (assuming you have a way to track it)
-//       selectElement.value = statusCell.textContent;
-//     }
-//   }
-  
-//   async function updateLeadStatus(
-//     leadId,
-//     selectedStatus,
-//     statusCell,
-//     actionCell,
-//     row
-//   ) {
-//     try {
-//       const response = await fetch(
-//         `http://localhost:8080/update-lead/${leadId}`,
-//         {
-//           method: "PUT",
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify({ status: selectedStatus }),
-//         }
-//       );
-  
-//       if (response.ok) {
-//         const data = await response.json();
-//         const updatedStatus = data.status;
-  
-//         // Update the status and action cells
-//         statusCell.textContent = updatedStatus;
-//         statusCell.className = getButtonClass(updatedStatus);
-//         actionCell.innerHTML = getActionHTML(
-//           updatedStatus,
-//           row.cells[0].textContent,
-//           row.cells[2].textContent
-//         );
-//         console.log("Before status changed");
-//         alert(`Status changed to '${updatedStatus}'`);
-//         console.log("Before return statement");
-//         return updatedStatus;
-//         // Return the updated status
-//       } else {
-//         console.error("Failed to update lead status");
-//         // Handle error cases
-//       }
-//     } catch (error) {
-//       console.error("Error updating lead status: " + error);
-//     }
-//   }
-  
-//   function getActionHTML(status, name, email) {
-//     if (status === "done") {
-//       return `
-//                       <a href="invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
-//                           Invoice
-//                       </a>
-//                   `;
-//     } else if (status === "close") {
-//       return `
-//                       <a style="color: red;">Delete</a>
-//                   `;
-//     } else if (status === "active") {
-//       return `
-//                       <select onchange="changeStatus(this)">
-//                           <option value="">Edit</option>
-//                           <option value="pending">Pending</option>
-//                           <option value="done">Done</option>
-//                           <option value="close">Close</option>
-//                       </select>
-//                   `;
-//     } else if (status === "pending") {
-//       return `
-//                       <select onchange="changeStatus(this)">
-//                           <option value="">Edit</option>
-//                           <option value="active">Active</option>
-//                           <option value="done">Done</option>
-//                           <option value="close">Close</option>
-//                       </select>
-//                   `;
-//     } else {
-//       return "";
-//     }
-//   }
-  
-//   // Call the fetchLeadData function when the page loads
-//   window.onload = fetchLeadData;
   
