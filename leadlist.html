@@ -137,12 +137,15 @@
                 </div>
                 <div class="header-search d-none d-md-flex">
                   <form action="#" id="leadSearchForm">
-                    <input type="text" id="leadSearchInput" placeholder="Search by Lead Name..." />
+                    <input
+                      type="text"
+                      id="leadSearchInput"
+                      placeholder="Search by Lead Name..."
+                    />
                     <button type="button" onclick="searchLeads()">
                       <i class="lni lni-search-alt"></i>
                     </button>
                   </form>
-                  
                 </div>
               </div>
             </div>
@@ -235,7 +238,9 @@
             // Clear existing data
             leadData.innerHTML = "";
 
-            data.forEach((lead) => {
+            data
+            .filter((lead) => lead.status === "Active" || lead.status === "Pending")
+            .forEach((lead) => {
               const row = document.createElement("tr");
               // Set the lead id as a data attribute
               row.dataset.leadId = lead.id; // Assuming lead has a property called 'id'
@@ -442,21 +447,23 @@
     </script>
     <script>
       function searchLeads() {
-  var searchTerm = document.getElementById("leadSearchInput").value.toLowerCase();
-  var leadRows = document.querySelectorAll("#leadData tr");
+        var searchTerm = document
+          .getElementById("leadSearchInput")
+          .value.toLowerCase();
+        var leadRows = document.querySelectorAll("#leadData tr");
 
-  leadRows.forEach(function (leadRow) {
-    var leadNameText = leadRow.querySelector("td:nth-child(1)").textContent.toLowerCase();
+        leadRows.forEach(function (leadRow) {
+          var leadNameText = leadRow
+            .querySelector("td:nth-child(1)")
+            .textContent.toLowerCase();
 
-    if (leadNameText.includes(searchTerm)) {
-      leadRow.style.display = "table-row";
-    } else {
-      leadRow.style.display = "none";
-    }
-  });
-}
-
+          if (leadNameText.includes(searchTerm)) {
+            leadRow.style.display = "table-row";
+          } else {
+            leadRow.style.display = "none";
+          }
+        });
+      }
     </script>
-    
   </body>
 </html>

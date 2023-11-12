@@ -25,7 +25,6 @@
       type="text/css"
     />
     <link rel="stylesheet" href="assets/css/fullcalendar.css" />
-    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
   </head>
 
@@ -125,7 +124,6 @@
                     <i class="lni lni-chevron-left me-2"></i> Menu
                   </button>
                 </div>
-               
               </div>
             </div>
             <div class="col-lg-7 col-md-7 col-6">
@@ -998,61 +996,109 @@
                   const leadData = document.getElementById("leadTable");
                   leadData.innerHTML = ""; // Clear existing data
 
-                  data.forEach((lead) => {
-                    const followDate = lead.follow.split("T")[0]; // Assuming the follow date is in 'YYYY-MM-DD' format
+                  // Filter leads based on status and follow date
+                  const filteredLeads = data.filter(
+                    (lead) =>
+                      (lead.status === "Active" || lead.status === "Pending") &&
+                      lead.follow.split("T")[0] === selectedDate
+                  );
 
-                    if (followDate === selectedDate) {
-                      const row = document.createElement("tr");
-                      row.dataset.leadId = lead.id;
+                  filteredLeads.forEach((lead) => {
+                    const row = document.createElement("tr");
+                    row.dataset.leadId = lead.id;
+
+                    if (lead.status !== "Done" && lead.status !== "Close") {
                       row.innerHTML = `
-                            <td>${lead.name}</td>
-                            <td>${lead.mobile}</td>
-                            <td>${lead.comment}</td>
-                            <td>${lead.follow}</td>
-                            <td>${lead.status}</td>
-                            <td>
-                          <div class="action">
-                              ${
-                                lead.status === "Pending"
-                                  ? `
-                                      <select onchange="changeStatus(this)">
-                                          <option value="">Edit</option>
-                                          <option value="Active">Active</option>
-                                          <option value="Done">Done</option>
-                                          <option value="Close">Close</option>
-                                      </select>
-                                  `
-                                  : lead.status === "Active"
-                                  ? `
-                                      <select onchange="changeStatus(this)">
-                                          <option value="">Edit</option>
-                                          <option value="Pending">Pending</option>
-                                          <option value="Done">Done</option>
-                                          <option value="Close">Close</option>
-                                      </select>
-                                  `
-                                  : lead.status === "Done"
-                                  ? `
-                                      <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
-                                          Invoice
-                                      </a>
-                                  `
-                                  : lead.status === "Close"
-                                  ? `
-                                      <a style="color: red;">Delete</a>
-                                  `
-                                  : ""
-                              }
-                          </div>
-                      </td>
-                        `;
-                      leadData.appendChild(row);
+                                <td>${lead.name}</td>
+                                <td>${lead.mobile}</td>
+                                <td>${lead.comment}</td>
+                                <td>${lead.follow}</td>
+                                <td>${lead.status}</td>
+                                <td>
+                              <div class="action">
+                                  ${
+                                    lead.status === "Pending"
+                                      ? `
+                                          <select onchange="changeStatus(this)">
+                                              <option value="">Edit</option>
+                                              <option value="Active">Active</option>
+                                              <option value="Done">Done</option>
+                                              <option value="Close">Close</option>
+                                          </select>
+                                      `
+                                      : lead.status === "Active"
+                                      ? `
+                                          <select onchange="changeStatus(this)">
+                                              <option value="">Edit</option>
+                                              <option value="Pending">Pending</option>
+                                              <option value="Done">Done</option>
+                                              <option value="Close">Close</option>
+                                          </select>
+                                      `
+                                      : lead.status === "Done"
+                                      ? `
+                                          <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
+                                              Invoice
+                                          </a>
+                                      `
+                                      : lead.status === "Close"
+                                      ? `
+                                          <a style="color: red;">Delete</a>
+                                      `
+                                      : ""
+                                  }
+                              </div>
+                          </td>
+                            `;
+                    } else {
+                      console.log(`Entry with status "${lead.status}" skipped`);
                     }
+                    leadData.appendChild(row);
                   });
+
+                  // Update the calendar with the filtered leads
+                  updateCalendar(filteredLeads);
                 })
                 .catch((error) => {
                   console.error("Error fetching data: " + error);
                 });
+            }
+
+            function updateCalendar(filteredLeads) {
+              const calendarEntries = {};
+
+              // Iterate through filteredLeads and update the calendar entries
+              filteredLeads.forEach((lead) => {
+                const leadDate = lead.follow.split("T")[0];
+
+                // Check if the date is already in calendarEntries
+                if (calendarEntries.hasOwnProperty(leadDate)) {
+                  // Consider all entries of the same date for the quantity calculation
+                  const entriesOnSameDate = filteredLeads.filter(
+                    (otherLead) => otherLead.follow.split("T")[0] === leadDate
+                  );
+
+                  // Calculate the quantity based on the status of all entries on the same date
+                  const quantity = entriesOnSameDate.reduce((total, entry) => {
+                    if (entry.status === "Done" || entry.status === "Close") {
+                      return total - 1;
+                    }
+                    return total;
+                  }, entriesOnSameDate.length);
+
+                  // Update the quantity for the date
+                  calendarEntries[leadDate] = quantity;
+
+                  // You can add more logic here based on your specific requirements
+                } else {
+                  // Create a new entry if the date is not in calendarEntries
+                  calendarEntries[leadDate] = 1; // Set initial quantity
+                }
+              });
+
+              // Now, log or update the UI with the updated calendarEntries
+              console.log("Updated calendar entries:", calendarEntries);
+              // Update UI logic goes here
             }
 
             function getButtonClass(status) {
@@ -1090,6 +1136,20 @@
                 return;
               }
 
+              const followDateCell = row.querySelector("td:nth-child(4)");
+
+              if (selectedStatus === "Done" || selectedStatus === "Close") {
+                // Update the follow date to empty when the status is "Done" or "Close"
+                const removedLeadDate = followDateCell.textContent;
+                followDateCell.textContent = "";
+
+                // Remove the row from the table
+                row.remove();
+
+                // Update the calendar with the removed lead's date
+                updateCalendarAfterRemove(removedLeadDate);
+              }
+
               fetch(`http://localhost:8080/update-lead/${leadId}`, {
                 method: "PUT",
                 headers: {
@@ -1114,9 +1174,27 @@
                     row.cells[0].textContent,
                     row.cells[2].textContent
                   );
+                  updateCalendarAfterRemove(row.dataset.leadId);
                 })
                 .catch((error) => {
                   console.error("Error updating status: " + error);
+                });
+            }
+
+            function updateCalendarAfterRemove(removedLeadId) {
+              // Fetch the updated lead data and update the calendar
+              fetch("http://localhost:8080/get-lead-data-dashboard")
+                .then((response) => response.json())
+                .then((data) => {
+                  const filteredLeads = data.filter(
+                    (lead) => lead.id !== removedLeadId
+                  );
+
+                  // Update the calendar with the filtered leads
+                  updateCalendar(filteredLeads);
+                })
+                .catch((error) => {
+                  console.error("Error fetching data: " + error);
                 });
             }
 
@@ -1126,48 +1204,48 @@
 
               if (status === "Done") {
                 return `
-            <a href="invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
-                Invoice
-            </a>
-        `;
+                <a href="invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
+                    Invoice
+                </a>
+            `;
               } else if (status === "Close") {
                 return `
-            <a style="color: red;">Delete</a>
-        `;
+                <a style="color: red;">Delete</a>
+            `;
               } else if (status === "Active") {
                 return `
-          <select onchange="changeStatus(this)">
-                <option value="" ${
-                  status === "Active" ? "selected" : ""
-                }>Edit</option>
-                <option value="Pending" ${
-                  status === "Pending" ? "selected" : ""
-                }>Pending</option>
-                <option value="Done" ${
-                  status === "Done" ? "selected" : ""
-                }>Done</option>
-                <option value="Close" ${
-                  status === "Close" ? "selected" : ""
-                }>Close</option>
-            </select>
-          `;
+              <select onchange="changeStatus(this)">
+                    <option value="" ${
+                      status === "Active" ? "selected" : ""
+                    }>Edit</option>
+                    <option value="Pending" ${
+                      status === "Pending" ? "selected" : ""
+                    }>Pending</option>
+                    <option value="Done" ${
+                      status === "Done" ? "selected" : ""
+                    }>Done</option>
+                    <option value="Close" ${
+                      status === "Close" ? "selected" : ""
+                    }>Close</option>
+                </select>
+              `;
               } else if (status === "Pending") {
                 return `
-          <select onchange="changeStatus(this)">
-                <option value="" ${
-                  status === "Pending" ? "selected" : ""
-                }>Edit</option>
-                <option value="Active" ${
-                  status === "Active" ? "selected" : ""
-                }>Active</option>
-                <option value="Done" ${
-                  status === "Done" ? "selected" : ""
-                }>Done</option>
-                <option value="Close" ${
-                  status === "Close" ? "selected" : ""
-                }>Close</option>
-            </select>
-          `;
+              <select onchange="changeStatus(this)">
+                    <option value="" ${
+                      status === "Pending" ? "selected" : ""
+                    }>Edit</option>
+                    <option value="Active" ${
+                      status === "Active" ? "selected" : ""
+                    }>Active</option>
+                    <option value="Done" ${
+                      status === "Done" ? "selected" : ""
+                    }>Done</option>
+                    <option value="Close" ${
+                      status === "Close" ? "selected" : ""
+                    }>Close</option>
+                </select>
+              `;
               } else {
                 return "";
               }

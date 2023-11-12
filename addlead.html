@@ -1,107 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.svg"
+      type="image/x-icon"
+    />
+    <title>Shepherd</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
-  <title>Shepherd</title>
+    <!-- ========== All CSS files linkup ========= -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="assets/css/lineicons.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/css/materialdesignicons.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+      td {
+        color: grey;
+        font-size: 12px;
+        margin: 10px;
+        align-items: center;
+      }
+    </style>
+  </head>
 
-  <!-- ========== All CSS files linkup ========= -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="assets/css/lineicons.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="assets/css/fullcalendar.css" />
-  <link rel="stylesheet" href="assets/css/fullcalendar.css" />
-  <link rel="stylesheet" href="assets/css/main.css" />
-</head>
-
-<body>
-  <!-- ======== Preloader =========== -->
-  <div id="preloader">
-    <div class="spinner"></div>
-  </div>
-  <!-- ======== Preloader =========== -->
-
-  <!-- ======== sidebar-nav start =========== -->
-  <aside class="sidebar-nav-wrapper">
-    <div class="navbar-logo">
-      <a href="index.html">
-        <img style="height: 150px; width: 150px;" src="./assets/images/SHEPHERD 2.jpg">
-      </a>
+  <body>
+    <!-- ======== Preloader =========== -->
+    <div id="preloader">
+      <div class="spinner"></div>
     </div>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item">
-          <a href="index.html">
-            <span class="icon">
-              <img class="hi" src="./assets/images/dashboard.png" alt="">
-            </span>
-            <span class="text">Dashboard</span>
-          </a>
-        </li>
-      </ul>
+    <!-- ======== Preloader =========== -->
 
-
+    <!-- ======== sidebar-nav start =========== -->
+    <aside class="sidebar-nav-wrapper">
+      <div class="navbar-logo">
+        <a href="index.html">
+          <img
+            style="height: 150px; width: 150px"
+            src="./assets/images/SHEPHERD 2.jpg"
+          />
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="index.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/dashboard.png" alt="" />
+              </span>
+              <span class="text">Dashboard</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
       <nav class="sidebar-nav">
         <ul>
           <li class="nav-item">
             <a href="addlead.html">
               <span class="icon">
-                <img class="hi" src="./assets/images/user.png" alt="">
+                <img class="hi" src="./assets/images/user.png" alt="" />
               </span>
               <span class="text">Add Lead</span>
             </a>
           </li>
         </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="leadlist.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/group.png" alt="" />
+              </span>
+              <span class="text">Lead List</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="invoice.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/invoice.png" alt="" />
+              </span>
+              <span class="text">Invoice</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="studentpanel.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/students.png" alt="" />
+              </span>
+              <span class="text">Student Panel</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- ======== sidebar-nav end =========== -->
 
-        <nav class="sidebar-nav">
-          <ul>
-            <li class="nav-item">
-              <a href="leadlist.html">
-                <span class="icon">
-                  <img class="hi" src="./assets/images/group.png" alt="">
-                </span>
-                <span class="text">Lead List</span>
-              </a>
-            </li>
-          </ul>
-
-
-          <nav class="sidebar-nav">
-            <ul>
-              <li class="nav-item">
-                <a href="invoice.html">
-                  <span class="icon">
-
-                    <img class="hi" src="./assets/images/invoice.png" alt="">
-
-                  </span>
-
-
-
-
-                  <span class="text">Invoice</span>
-                </a>
-              </li>
-
-              <nav class="sidebar-nav">
-                <ul>
-                  <li class="nav-item">
-                    <a href="studentpanel.html">
-                      <span class="icon">
-                        <img class="hi" src="./assets/images/students.png" alt="">
-                      </span>
-                      <span class="text">Student Panel</span>
-                    </a>
-                  </li>
-                </ul>
-            </ul>
-          </nav>
-
-  </aside>
-  <div class="overlay"></div>
+    <div class="overlay"></div>
   <!-- ======== sidebar-nav end =========== -->
 
   <!-- ======== main-wrapper start =========== -->
@@ -156,7 +172,6 @@
             <div class="card-style settings-card-1 mb-30">
               <div class="title mb-30 d-flex justify-content-between align-items-center">
                 <h6>Personal Details</h6>
-
               </div>
               <div class="profile-info">
                 <div class="d-flex align-items-center ">
@@ -169,21 +184,19 @@
                   </div>
                   <div class="input-style-1">
                     <label for="email">Email<span style="color: red;">*</span></label>
-                    <input type="email" id="email" required placeholder="" title="Enter a valid email address" />
+                    <input type="email" id="email" placeholder="Email Id" title="Enter a valid email address" required/>
                   </div>
                   <div class="input-style-1">
                     <label for="mobile">Mobile No<span style="color: red;">*</span></label>
-                    <input type="tel" id="mobile" placeholder="" title="Enter the mobile number" required />
+                    <input type="number" id="mobile" placeholder="Mobile" title="Enter the mobile number" required />
                   </div>
-
                   <div class="input-style-1">
                     <label for="address">Address</label>
-                    <input type="text" id="address" placeholder="" title="Enter the address" />
+                    <input type="text" id="address" placeholder="Address" title="Enter the address" />
                   </div>
-
                   <div class="col-xxl-4">
                     <div class="select-style-1">
-                      <label>Course Intrested<span style="color: red;">*</span></label>
+                      <label>Course Interested<span style="color: red;">*</span></label>
                       <div class="select-position">
                         <select class="light-bg" id="course" required>
                           <option value="">Select Course</option>
@@ -195,7 +208,6 @@
                           <option>.NET Full Stack Development</option>
                           <option>Diploma in UI/UX Design</option>
                         </select>
-                        </select>
                       </div>
                     </div>
                   </div>
@@ -204,9 +216,9 @@
                       <label>Mode</label>
                       <div class="select-position">
                         <select class="light-bg" id="mode">
-                          <option value="">Offline</option>
-                          <option value="">Online</option>
-
+                          <option value="">Select Mode</option>
+                          <option>Offline</option>
+                          <option>Online</option>
                         </select>
                       </div>
                     </div>
@@ -216,40 +228,32 @@
                       <label for="yesNoSelect">Course Done In Other Institute</label>
                       <div class="select-position">
                         <select class="light-bg" id="courseInOtherInstitute">
-
-
-                          <option value="yes">Yes</option>
                           <option value="no">No</option>
-
+                          <option value="yes">Yes</option>
                         </select>
                       </div>
                     </div>
                   </div>
                   <div class="input-style-1" id="otherOptions" style="display: none;">
                     <label>Institute Name</label>
-                    <input type="text" id="institute" placeholder="" />
+                    <input type="text" id="institute" placeholder="Institute Name" />
                   </div>
                   <div class="input-style-1" id="otherOption" style="display: none;">
                     <label>Reason if any</label>
                     <input type="text" id="reason" placeholder="" />
                   </div>
-
                   <div class="col-xxl-4">
                     <div class="select-style-1">
                       <label>Interest</label>
                       <div class="select-position">
                         <select class="light-bg" id="interest">
-
                           <option value="">High</option>
                           <option value="">Medium</option>
                           <option value="">Low</option>
-
                         </select>
                       </div>
                     </div>
                   </div>
-
-
               </div>
             </div>
             <!-- end card -->
@@ -261,28 +265,27 @@
               <div class="title mb-30">
                 <h6>Qualification</h6>
               </div>
-
               <div class="row">
                 <div class="col-12">
                   <div class="input-style-1">
                     <label>Degree</label>
-                    <input type="text" id="degree" placeholder="" />
+                    <input type="text" id="degree" placeholder="Degree/ Graduation" />
                   </div>
                   <div class="input-style-1">
                     <label>Specialization</label>
-                    <input type="text" id="field" placeholder="" />
+                    <input type="text" id="field" placeholder="Specialization/ Stream" />
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="input-style-1">
                     <label>Passing Year</label>
-                    <input type="number" id="passingYear" placeholder="" />
+                    <input type="number" id="passingYear" placeholder="College Passing Year" onblur="validatePassingYear()" />
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="input-style-1">
                     <label>College Name</label>
-                    <input type="text" id="collegeName" placeholder="" />
+                    <input type="text" id="collegeName" placeholder="College Name" />
                   </div>
                 </div>
                 <div class="col-xxl-4">
@@ -293,7 +296,6 @@
                         <option value="">Select category</option>
                         <option value="it">IT</option>
                         <option value="nonit">Non IT</option>
-
                       </select>
                     </div>
                   </div>
@@ -311,7 +313,6 @@
                   <input type="text" id="designation" placeholder="" />
                 </div>
               </div>
-
               <div class="col-xxl-4">
                 <div class="select-style-1">
                   <label>Approach</label>
@@ -328,24 +329,21 @@
                   </div>
                 </div>
               </div>
-
               <div class="col-xxl-4" id="selectRef" style="display: none;">
                 <div class="input-style-1">
                   <label>Reference Name</label>
                   <input type="text" id="reference" placeholder="" />
                 </div>
               </div>
-
               <div class="col-xxl-4" id="selectBatch" style="display: none;">
                 <div class="input-style-1">
                   <label>Batch Code</label>
                   <input type="text" id="batchCode" placeholder="" />
                 </div>
               </div>
-
               <div class="col-xxl-4">
                 <div class="select-style-1">
-                  <label>Status</label>
+                  <label>Status<span style="color: red;">*</span></label>
                   <div class="select-position">
                     <select class="light-bg" id="status" required>
                       <option value="">Select category</option>
@@ -357,7 +355,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="input-style-1">
                 <label>Comment</label>
                 <input id="comment" type="text" placeholder="Add comment" />
@@ -366,7 +363,6 @@
                 <label>Follow On</label>
                 <input id="follow" type="date" />
               </div>
-
             </div>
             <button class="main-btn primary-btn btn-hover" type="submit" style="height: 20px; width: 20px;">Add
               Lead</button>
@@ -387,7 +383,7 @@
 
     </div>
     <!-- end container -->
-    </footer>
+    <!-- </footer> -->
     <!-- ========== footer end =========== -->
   </main>
   <!-- ======== main-wrapper end =========== -->
@@ -415,6 +411,25 @@
     p.innerHTML = newDate; 
   </script>
 
+<script>
+  function validatePassingYear() {
+    const passingYearInput = document.getElementById("passingYear");
+    const currentYear = new Date().getFullYear();
+    const minYear = 2001;
+    const maxYear = currentYear + 2;
+
+    // Parse the input value as an integer
+    const passingYear = parseInt(passingYearInput.value);
+
+    // Check if the passing year is within the allowed range
+    if (passingYear < minYear || passingYear > maxYear) {
+      alert(`Passing year must be between ${minYear} and ${maxYear}`);
+      // Optionally, you can reset the input to a valid value
+      passingYearInput.value = currentYear;
+      passingYearInput.focus(); // Keep the focus on the input for correction
+    }
+  }
+</script>
 
 </body>
 
