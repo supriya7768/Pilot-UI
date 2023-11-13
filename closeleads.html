@@ -176,7 +176,7 @@
             <div class="row align-items-center">
               <div class="col-md-6">
                 <div class="title">
-                  <h2>Lead List</h2>
+                  <h2>Close Lead List</h2>
                 </div>
               </div>
               <!-- end col -->
@@ -184,8 +184,9 @@
             <!-- end row -->
           </div>
       
-          <a href="closeleads.html" class="main-btn danger-btn square-btn btn-hover">
-            Close Leads
+          <a href="leadlist.html" class="main-btn primary-btn square-btn btn-hover">
+           
+            Leads
           </a>
 
           <div class="row">
@@ -251,10 +252,10 @@
           .then((data) => {
             const leadData = document.getElementById("leadData");
             // Clear existing data
-            //leadData.innerHTML = "";
+            leadData.innerHTML = "";
 
             data
-            .filter((lead) => lead.status === "Active" || lead.status === "Pending")
+            .filter((lead) => lead.status === "Close" )
             .forEach((lead) => {
               const row = document.createElement("tr");
               // Set the lead id as a data attribute
