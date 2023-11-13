@@ -320,13 +320,8 @@
                   </div>
                   <div class="right">
                     <div class="select-style-1">
-                      <!-- <div class="select-position select-sm">
-                        <select class="light-bg">
-                          <option value="">Today</option>
-                          <option value="">Yesterday</option>
-                        </select>
-                      </div> -->
-                      <h4>Check leads on</h4>
+
+                      <!-- <h4>Check leads on</h4> -->
                       <input type="date" id="followDateInput" />
                     </div>
                     <!-- end select -->
@@ -360,6 +355,7 @@
                     </thead>
 
                     <tbody id="leadTable">
+
                       <!--Adding Leads Dynamically-->
                     </tbody>
                   </table>
@@ -937,7 +933,6 @@
         <script src="./assets/js/jquery.js"></script>
 
         <script>
-          // Function to fetch and display leads based on the selected follow date
           function fetchLeadsByDate(selectedDate) {
             fetch("http://localhost:8080/get-lead-data-dashboard")
               .then((response) => response.json())
@@ -952,46 +947,50 @@
                     const row = document.createElement("tr");
                     row.dataset.leadId = lead.id;
                     row.innerHTML = `
-                            <td>${lead.name}</td>
-                            <td>${lead.mobile}</td>
-                            <td>${lead.comment}</td>
-                            <td>${lead.follow}</td>
-                            <td>${lead.status}</td>
-                            <td>
-                          <div class="action">
-                              ${lead.status === "Pending"
+            <td>${lead.name}</td>
+            <td>${lead.mobile}</td>
+            <td>${lead.comment}</td>
+            <td>${lead.follow}</td>
+            <td>${lead.status}</td>
+           
+            <td>    
+  <div class="action">
+    ${lead.status === "Pending"
                         ? `
-                                      <select onchange="changeStatus(this)">
-                                          <option value="">Edit</option>
-                                          <option value="Active">Active</option>
-                                          <option value="Done">Done</option>
-                                          <option value="Close">Close</option>
-                                      </select>
-                                  `
+        <select onchange="changeStatus(this)" style="color: black;">
+          <option value="">Select</option>
+          <option value="Active">Active</option>
+          <option value="Done">Done</option>
+          <option value="Close">Close</option>
+        </select>
+      `
                         : lead.status === "Active"
                           ? `
-                                      <select onchange="changeStatus(this)">
-                                          <option value="">Edit</option>
-                                          <option value="Pending">Pending</option>
-                                          <option value="Done">Done</option>
-                                          <option value="Close">Close</option>
-                                      </select>
-                                  `
+          <select onchange="changeStatus(this)" style="color: black;">
+            <option value="">Select</option>
+            <option value="Pending">Pending</option>
+            <option value="Done">Done</option>
+            <option value="Close">Close</option>
+          </select>
+        `
                           : lead.status === "Done"
                             ? `
-                                      <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
-                                          Invoice
-                                      </a>
-                                  `
+            <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link" style="color: purple;">Invoice</a>
+          `
                             : lead.status === "Close"
                               ? `
-                                      <a style="color: red;">Delete</a>
-                                  `
+              <a style="color: red;">Delete</a>
+            `
                               : ""
                       }
-                          </div>
-                      </td>
-                        `;
+  </div>
+</td>
+<td>
+              <div class="action">
+                <!-- Edit option -->
+                <a href="#" onclick="editLead(event, ${lead.id})">Edit</a>
+            </td>
+          `;
                     leadData.appendChild(row);
                   }
                 });
@@ -1000,6 +999,53 @@
                 console.error("Error fetching data: " + error);
               });
           }
+
+          // Function to handle editing a lead
+          function editLead(event, leadId) {
+            // Prevent the default behavior of the link
+            event.preventDefault();
+            // Remove any existing edit sections
+            const existingEditSections = document.querySelectorAll('.edit-section');
+            existingEditSections.forEach(section => section.remove());
+
+            const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
+
+            // Create and append the edit section
+            const editSection = document.createElement("tr");
+            editSection.classList.add('edit-section');
+            editSection.innerHTML = `
+            <td colspan="6">
+  <!-- Your edit form or content goes here -->
+  <label for="newFollowUpDate">New Follow-Up Date:</label>
+  <input type="date" id="newFollowUpDate" placeholder="DD/MM/YYYY" style="text-transform: uppercase; vertical-align: middle; margin-left: 5px; font-size:10px;">
+  <label style="margin-left:10px" for="newComment">New Comment:</label>
+  <textarea id="newComment" rows="1" style="vertical-align: middle; margin-left: 5px;" placeholder="Add new comment"></textarea>
+  <button class="main-btn primary-btn btn-hover" style="height: 5px; width: 5px; vertical-align: middle; margin-left: 5px; font-size:14px;" onclick="saveEdits(${leadId})">Save</button>
+</td>
+
+  `;
+            row.insertAdjacentElement('afterend', editSection);
+          }
+
+          // Function to save follow-up date and comment edits
+          function saveEdits(leadId) {
+            const newFollowUpDateInput = document.getElementById("newFollowUpDate");
+            const newCommentInput = document.getElementById("newComment");
+
+            const newFollowUpDate = newFollowUpDateInput.value;
+            const newComment = newCommentInput.value;
+
+            // Implement the logic to save follow-up date and comment edits
+            console.log("Saving edits for lead ID:", leadId);
+            console.log("New Follow-Up Date:", newFollowUpDate);
+            console.log("New Comment:", newComment);
+
+            // Remove the edit section after saving
+            const editSection = document.querySelector('.edit-section');
+            editSection.remove();
+          }
+
+
 
           function getButtonClass(status) {
             switch (status) {
