@@ -38,8 +38,24 @@ function displayTooltipsForRequiredFields() {
   });
 }
 
+function formatName(name) {
+  // Split the name into words
+  const words = name.split(" ");
+
+  // Capitalize the first letter of each word
+  const formattedWords = words.map((word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  });
+
+  // Join the formatted words back into a string
+  const formattedName = formattedWords.join(" ");
+
+  return formattedName;
+}
+
 async function addlead() {
   const name = $("#name").val();
+  const formattedName = formatName(name);
   const email = $("#email").val();
   const mobile = $("#mobile").val();
   const address = $("#address").val();
@@ -78,7 +94,7 @@ async function addlead() {
   const result = await fetch(url, {
     method: "POST",
     body: JSON.stringify({
-      name: name,
+      name: formattedName,
       email: email,
       mobile: mobile,
       address: address,
@@ -109,9 +125,17 @@ async function addlead() {
   const finalData = await result.json();
 
   if (finalData.email != null || finalData.mobile != null) {
-    $("#dt").html(finalData.name + " is added as lead");
+    $("#dt").html(formattedName + " is added as lead");
+    setTimeout(() => {
+      location.reload();
+    }, 3000);
   } else {
-    $("#dt").html("Error:- Your email or mobile number is already in use. Please use new email or mobile number.");
+    $("#dt").html(
+      "Error:- Your email or mobile number is already in use. Please use new email or mobile number."
+    );
+    setTimeout(() => {
+      location.reload();
+    }, 3000);
   }
   // After adding the lead, fetch and update the lead data in leadlist.html
   fetchLeadData();
