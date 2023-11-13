@@ -44,69 +44,86 @@
     </div>
     <!-- ======== Preloader =========== -->
 
-    <!-- ======== sidebar-nav start =========== -->
-    <aside class="sidebar-nav-wrapper">
-      <div class="navbar-logo">
-        <a href="index.html">
-          <img
-            style="height: 150px; width: 150px"
-            src="./assets/images/SHEPHERD 2.jpg"
-          />
-        </a>
-      </div>
-      <nav class="sidebar-nav">
-        <ul>
-          <li class="nav-item">
-            <a href="index.html">
-              <span class="icon">
-                <img class="hi" src="./assets/images/dashboard.png" alt="" />
-              </span>
-              <span class="text">Dashboard</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <nav class="sidebar-nav">
-        <ul>
-
+     <!-- ======== sidebar-nav start =========== -->
+  <aside class="sidebar-nav-wrapper">
+    <div class="navbar-logo">
+      <a href="index.html">
+        <img style="height: 150px; width: 150px" src="./assets/images/SHEPHERD 2.jpg" />
+      </a>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item">
+          <a href="index.html">
+            <span class="icon">
+              <img class="hi" src="./assets/images/dashboard.png" alt="" />
+            </span>
+            <span class="text">Dashboard</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item">
+          <a href="addlead.html">
+            <span class="icon">
+              <img class="hi" src="./assets/images/user.png" alt="" />
+            </span>
+            <span class="text">Add Lead</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item">
+          <a href="leadlist.html">
+            <span class="icon">
+              <img class="hi" src="./assets/images/group.png" alt="" />
+            </span>
+            <span class="text">Lead List</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="sidebar-nav">
+      <ul>
         <li class="nav-item">
           <a href="invoice.html">
             <span class="icon">
-              
-              <img class="hi" src="./assets/images/invoice.png" alt="">
-           
+              <img class="hi" src="./assets/images/invoice.png" alt="" />
             </span>
-
-
             <span class="text">Invoice</span>
           </a>
         </li>
-
-        <nav class="sidebar-nav">
-          <ul>
-            <li class="nav-item">
-              <a href="studentpanel.html">
-                <span class="icon">
-                  <img class="hi" src="./assets/images/students.png" alt="">
-                </span>
-                <span class="text">Student Panel</span>
-              </a>
-            </li>
-          </ul>
-          <nav class="sidebar-nav">
-            <ul>
-              <li class="nav-item">
-                <a href="adminpanel.html">
-                  <span class="icon">
-                    <img class="hi" src="./assets/images/admin.png" alt="">
-                  </span>
-                  <span class="text">Admin Panel</span>
-                </a>
-              </li>
-            </ul>
-
-    </aside>
-    <!-- ======== sidebar-nav end =========== -->
+      </ul>
+    </nav>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item">
+          <a href="studentpanel.html">
+            <span class="icon">
+              <img class="hi" src="./assets/images/students.png" alt="" />
+            </span>
+            <span class="text">Student Panel</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item">
+          <a href="adminpanel.html">
+            <span class="icon">
+              <img class="hi" src="./assets/images/admin.png" alt="">
+            </span>
+            <span class="text">Admin Panel</span>
+          </a>
+        </li>
+      </ul>
+  </aside>
+  <!-- ======== sidebar-nav end =========== --> 
 
     <div class="overlay"></div>
 
@@ -232,7 +249,7 @@
 
             data
               .filter(
-                (lead) => lead.status === "Done" || lead.status === "Close"
+                (lead) => lead.status === "Done" 
               )
               .forEach((lead) => {
                 const row = document.createElement("tr");
@@ -241,7 +258,7 @@
 
                 // Check if the status is "Done" or "Close"
                 const followOnContent =
-                  lead.status === "Done" || lead.status === "Close"
+                  lead.status === "Done" 
                     ? "" // Set to empty if status is "Done" or "Close"
                     : `<input id="follow" type="date" />`;
 

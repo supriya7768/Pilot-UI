@@ -943,9 +943,11 @@
               .then((response) => response.json())
               .then((data) => {
                 const leadData = document.getElementById("leadTable");
-                leadData.innerHTML = ""; // Clear existing data
+                //leadData.innerHTML = ""; // Clear existing data
 
-                data.forEach((lead) => {
+                data
+                .filter((lead) => lead.status === "Active" || lead.status === "Pending")
+                .forEach((lead) => {
                   const followDate = lead.follow.split("T")[0]; // Assuming the follow date is in 'YYYY-MM-DD' format
 
                   if (followDate === selectedDate) {
