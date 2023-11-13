@@ -4,26 +4,39 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.svg"
+      type="image/x-icon"
+    />
     <title>Shepherd</title>
 
     <!-- ========== All CSS files linkup ========= -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/lineicons.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <link
+      rel="stylesheet"
+      href="assets/css/lineicons.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/css/materialdesignicons.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <link rel="stylesheet" href="assets/css/fullcalendar.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <style>
-      td{
+      td {
         color: grey;
         font-size: 12px;
-        margin:10px;
+        margin: 10px;
         align-items: center;
       }
-      
     </style>
   </head>
+
   <body>
     <!-- ======== Preloader =========== -->
     <div id="preloader">
@@ -31,54 +44,31 @@
     </div>
     <!-- ======== Preloader =========== -->
 
-   <!-- ======== sidebar-nav start =========== -->
-   <aside class="sidebar-nav-wrapper">
-    <div class="navbar-logo">
-      <a href="index.html">
-        <h2>Shepherd</h2>
-      </a>
-    </div>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item">
-          <a href="index.html">
-            <span class="icon">
-              <img class="hi" src="./assets/images/dashboard.png" alt="">
-            </span>
-            <span class="text">Dashboard</span>
-          </a>
-        </li>
-      </ul>
-          
-          
+    <!-- ======== sidebar-nav start =========== -->
+    <aside class="sidebar-nav-wrapper">
+      <div class="navbar-logo">
+        <a href="index.html">
+          <img
+            style="height: 150px; width: 150px"
+            src="./assets/images/SHEPHERD 2.jpg"
+          />
+        </a>
+      </div>
       <nav class="sidebar-nav">
         <ul>
           <li class="nav-item">
-            <a href="addlead.html">
+            <a href="index.html">
               <span class="icon">
-                <img class="hi" src="./assets/images/user.png" alt="">
+                <img class="hi" src="./assets/images/dashboard.png" alt="" />
               </span>
-              <span class="text">Add Lead</span>
+              <span class="text">Dashboard</span>
             </a>
           </li>
         </ul>
-      
-        <nav class="sidebar-nav">
-          <ul>
-            <li class="nav-item">
-              <a href="leadlist.html">
-                <span class="icon">
-                  <img class="hi" src="./assets/images/group.png" alt="">
-                </span>
-                <span class="text">Lead List</span>
-              </a>
-            </li>
-          </ul>
-              
-
-       
-        <nav class="sidebar-nav">
+      </nav>
+      <nav class="sidebar-nav">
         <ul>
+
         <li class="nav-item">
           <a href="invoice.html">
             <span class="icon">
@@ -114,284 +104,367 @@
                 </a>
               </li>
             </ul>
-      
+
     </aside>
-    <div class="overlay"></div>
     <!-- ======== sidebar-nav end =========== -->
+
+    <div class="overlay"></div>
 
     <!-- ======== main-wrapper start =========== -->
     <main class="main-wrapper">
-        <!-- ========== header start ========== -->
-        <header class="header">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-lg-5 col-md-5 col-6">
-                <div class="header-left d-flex align-items-center">
-                  <div class="menu-toggle-btn mr-15">
-                    <button id="menu-toggle" class="main-btn primary-btn btn-hover">
-                      <i class="lni lni-chevron-left me-2"></i> Menu
+      <!-- ========== header start ========== -->
+      <header class="header">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-6">
+              <div class="header-left d-flex align-items-center">
+                <div class="menu-toggle-btn mr-15">
+                  <button
+                    id="menu-toggle"
+                    class="main-btn primary-btn btn-hover"
+                  >
+                    <i class="lni lni-chevron-left me-2"></i> Menu
+                  </button>
+                </div>
+                <div class="header-search d-none d-md-flex">
+                  <form action="#" id="leadSearchForm">
+                    <input
+                      type="text"
+                      id="leadSearchInput"
+                      placeholder="Search by Lead Name..."
+                    />
+                    <button type="button" onclick="searchLeads()">
+                      <i class="lni lni-search-alt"></i>
                     </button>
-                  </div>
-                  <div class="header-search d-none d-md-flex">
-                    <form action="#">
-                      <input type="text" placeholder="Search..." />
-                      <button><i class="lni lni-search-alt"></i></button>
-                    </form>
-                  </div>
+                  </form>
                 </div>
               </div>
-              <div class="col-lg-7 col-md-7 col-6">
-                <div class="header-right">
-                 
-                </div>
-              </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-6">
+              <div class="header-right"></div>
             </div>
           </div>
-        </header>
-        <!-- ========== header end ========== -->
-  
-        <!-- ========== section start ========== -->
-        <section class="section">
-          <div class="container-fluid">
-            <!-- ========== title-wrapper start ========== -->
-            <div class="title-wrapper pt-30">
-              <div class="row align-items-center">
-                <div class="col-md-6">
-                  <div class="title">
-                    <h2>Student List</h2>
-                  </div>
+        </div>
+      </header>
+      <!-- ========== header end ========== -->
+
+      <!-- ========== section start ========== -->
+      <section class="section">
+        <div class="container-fluid">
+          <!-- ========== title-wrapper start ========== -->
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <div class="title">
+                  <h2>Student Panel</h2>
                 </div>
-                
-              </div>
-              <!-- end row -->
-            </div>
-
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="card-style mb-30">
-                  <h6 class="mb-10">Data Table</h6>
-                  <!-- <p class="text-sm mb-20">
-                    For basic styling—light padding and only horizontal
-                    dividers—use the class table.
-                  </p> -->
-                  <div class="table-wrapper table-responsive">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>
-                            <h6>Name</h6>
-                          </th>
-                          <th>
-                            <h6>Mobile No</h6>
-                          </th>
-                          <th>
-                            <h6>Email</h6>
-                          </th>
-                          <th>
-                            <h6>Course</h6>
-                          </th>
-                          <th>
-                            <h6>Status</h6>
-                          </th>
-                          <th>
-                            <h6>Action</h6>
-                          </th>
-                        
-                        </tr>
-                        <!-- end table row-->
-                    
-                        
-                          <tbody id="leadData">
-                            <!-- Lead data will be dynamically added here -->
-
-                        </tbody>
-
-                        
-                        <!-- end table row -->
-                      </tbody>
-                    </table>
-                    <!-- end table -->
-                  </div>
-                </div>
-                <!-- end card -->
               </div>
               <!-- end col -->
             </div>
             <!-- end row -->
           </div>
-          <!-- ========== tables-wrapper end ========== -->
-        </div>
-        <!-- end container -->
-      </section>
-      <!-- ========== table components end ========== -->
-            <!-- ========== title-wrapper end ========== -->
+
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card-style mb-30">
+                <h6 class="mb-10">Data Table</h6>
+                <div class="table-wrapper table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>
+                          <h6>Name</h6>
+                        </th>
+                        <th>
+                          <h6>Mobile No</h6>
+                        </th>
+                        <th>
+                          <h6>Email</h6>
+                        </th>
+                        <th>
+                          <h6>Course</h6>
+                        </th>
+                        <th>
+                          <h6>Status</h6>
+                        </th>
+                        <th>
+                          <h6>Action</h6>
+                        </th>
+                      </tr>
+                      <!-- end table row-->
+                    </thead>
+
+                    <tbody id="leadData">
+                      <!-- Lead data will be dynamically added here -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
-          <!-- end container -->
-        </section>
-        <!-- ========== section end ========== -->
+        </div>
+      </section>
+      <!-- ========== section end ========== -->
+    </main>
+    <!-- ======== main-wrapper end =========== -->
 
-        
 
-      </main>
-      <!-- ======== main-wrapper end =========== -->
-  
-      <!-- ========= All Javascript files linkup ======== -->
-      <script src="assets/js/bootstrap.bundle.min.js"></script>
-      <script src="assets/js/Chart.min.js"></script>
-      <script src="assets/js/dynamic-pie-chart.js"></script>
-      <script src="assets/js/moment.min.js"></script>
-      <script src="assets/js/fullcalendar.js"></script>
-      <script src="assets/js/jvectormap.min.js"></script>
-      <script src="assets/js/world-merc.js"></script>
-      <script src="assets/js/polyfill.js"></script>
-      <script src="assets/js/main.js"></script>
-      <script src="assets/js/jquery.js"></script>
-      <script src="assets/js/user.js"></script>
-      <script>
-        function fetchLeadData() {
-            fetch('http://localhost:8080/get-lead-data')
-                .then(response => response.json())
-                .then(data => {
-                    const leadData = document.getElementById('leadData');
-                    // Clear existing data
-                    // leadData.innerHTML = '';
-        
-                    data.forEach(lead => {
-                        const row = document.createElement('tr');
-                        // let sts = lead.status;
-                        // sts = sts.charAt(0).toUpperCase()+sts.slice(1);
-                        // console.log(sts);
-                        row.innerHTML = `
-                            <td>${lead.name}</td>
-                            <td>${lead.mobile}</td>
-                            <td>${lead.email}</td>
-                            <td>${lead.courseIntrested}</td>
-                            <td class="${getButtonClass(lead.status)}">${lead.status}</td>
-                            <td><div class="action">
-                                ${
-                                    (lead.status.toLowerCase().trim() === 'pending') ? `
-                                        <select onchange="changeStatus(this)">
-                                            <option value="">Edit</option>
-                                            <option value="active">Active</option>
-                                            <option value="done">Done</option>
-                                            <option value="close">Close</option>
-                                        </select>
-                                    ` :
-                                    (lead.status.toLowerCase().trim() === 'active') ? `
-                                        <select onchange="changeStatus(this)">
-                                            <option value="">Edit</option>
-                                            <option value="pending">Pending</option>
-                                            <option value="done">Done</option>
-                                            <option value="close">Close</option>
-                                        </select>
-                                    ` :
-                                    (lead.status.toLowerCase().trim() === 'done') ? `
-                                        <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
-                                            Invoice
-                                        </a>
-                                    ` :
-                                    (lead.status.toLowerCase().trim() === 'close') ? `
-                                        <a style="color: red;">Delete</a>
-                                    ` :
-                                    ''
-                                }
-                            </div></td>
-                        `;
-                        console.log(row);
-                        leadData.appendChild(row);
-                        
-                    });
-                })
-                .catch(error => {
-                    console.error('Error fetching data: ' + error);
-                });
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/Chart.min.js"></script>
+    <script src="assets/js/dynamic-pie-chart.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/fullcalendar.js"></script>
+    <script src="assets/js/jvectormap.min.js"></script>
+    <script src="assets/js/world-merc.js"></script>
+    <script src="assets/js/polyfill.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <!-- <script src="assets/js/user.js"></script> -->
+    <script>
+      function fetchLeadData() {
+        fetch("http://localhost:8080/get-lead-data")
+          .then((response) => response.json())
+          .then((data) => {
+            const leadData = document.getElementById("leadData");
+            // Clear existing data
+            leadData.innerHTML = "";
+
+            data
+              .filter(
+                (lead) => lead.status === "Done" || lead.status === "Close"
+              )
+              .forEach((lead) => {
+                const row = document.createElement("tr");
+                // Set the lead id as a data attribute
+                row.dataset.leadId = lead.id; // Assuming lead has a property called 'id'
+
+                // Check if the status is "Done" or "Close"
+                const followOnContent =
+                  lead.status === "Done" || lead.status === "Close"
+                    ? "" // Set to empty if status is "Done" or "Close"
+                    : `<input id="follow" type="date" />`;
+
+                row.innerHTML = `
+                      <td>${lead.name}</td>
+                      <td>${lead.mobile}</td>
+                      <td>${lead.email}</td>
+                      <td>${lead.courseIntrested}</td>
+                      <td>${lead.status}</td>
+                      <td>
+                          <div class="action">
+                              ${
+                                lead.status === "Pending"
+                                  ? `
+                                      <select onchange="changeStatus(this)">
+                                          <option value="">Edit</option>
+                                          <option value="Active">Active</option>
+                                          <option value="Done">Done</option>
+                                          <option value="Close">Close</option>
+                                      </select>
+                                  `
+                                  : lead.status === "Active"
+                                  ? `
+                                      <select onchange="changeStatus(this)">
+                                          <option value="">Edit</option>
+                                          <option value="Pending">Pending</option>
+                                          <option value="Done">Done</option>
+                                          <option value="Close">Close</option>
+                                      </select>
+                                  `
+                                  : lead.status === "Done"
+                                  ? `
+                                      <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
+                                          Invoice
+                                      </a>
+                                  `
+                                  : lead.status === "Close"
+                                  ? `
+                                      <a style="color: red;">Delete</a>
+                                  `
+                                  : ""
+                              }
+                          </div>
+                      </td>
+                  `;
+
+                // console.log(row);
+                leadData.appendChild(row);
+              });
+          })
+          .catch((error) => {
+            console.error("Error fetching data: " + error);
+          });
+      }
+
+      function getButtonClass(status) {
+        switch (status) {
+          case "Active":
+            return "newbtnact";
+          case "Done":
+            return "newbtndone";
+          case "Close":
+            return "newbtnclose";
+          case "Pending":
+            return "newbtnpending";
+          default:
+            return "default-btn"; // You can define a default class for other statuses
+
         }
-        
-        function getButtonClass(status) {
-            // Trim the status and convert to lowercase for comparison
-            const lowerCaseStatus = status.trim().toLowerCase();
-        
-            switch (lowerCaseStatus) {
-                case 'active':
-                    return 'newbtnact';
-                case 'done':
-                    return 'newbtndone';
-                case 'close':
-                    return 'newbtnclose';
-                case 'pending':
-                    return 'newbtnpending';
-                default:
-                    return 'default-btn'; // You can define a default class for other statuses
+      }
+
+      function showConfirmationDialog(selectedStatus, row) {
+        const currentStatus = row.querySelector("td:nth-child(5)").textContent;
+        return confirm(
+          `Do you want to change status from ${currentStatus} to ${selectedStatus}?`
+        );
+      }
+
+      function changeStatus(selectElement) {
+        const selectedStatus = selectElement.value;
+        const row = selectElement.closest("tr");
+        const leadId = row.dataset.leadId;
+
+        if (!showConfirmationDialog(selectedStatus, row)) {
+          // User clicked Cancel in the confirmation dialog
+          selectElement.value =
+            row.querySelector("td:nth-child(5)").textContent;
+          return;
+        }
+
+        fetch(`http://localhost:8080/update-lead/${leadId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ status: selectedStatus }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
             }
-        }
-        
-        function changeStatus(selectElement) {
-            const selectedStatus = selectElement.value;
-            console.log(selectedStatus);
-            const row = selectElement.closest('tr');
-            const statusCell = row.querySelector('td:nth-child(5)');
-            const actionCell = row.querySelector('td:nth-child(6)');
-        
-            if (selectedStatus === 'done') {
-                if (confirm('Do you want to change status as Done?')) {
-                    statusCell.textContent = selectedStatus;
-                    statusCell.className = getButtonClass(selectedStatus);
-                    // Change action cell content to a link to invoice.html with name and email
-                    actionCell.innerHTML = getActionHTML(selectedStatus, row.cells[0].textContent, row.cells[2].textContent);
-                } else {
-                    // Revert to the previous status (assuming you have a way to track it)
-                    selectElement.value = statusCell.textContent;
-                }
+            return response.json();
+          })
+          .then((updatedStatus) => {
+            const statusCell = row.querySelector("td:nth-child(5)");
+            const actionCell = row.querySelector("td:nth-child(6)");
+
+            statusCell.textContent = updatedStatus;
+            statusCell.className = getButtonClass(updatedStatus);
+            actionCell.innerHTML = getActionHTML(
+              updatedStatus,
+              row.cells[0].textContent,
+              row.cells[2].textContent
+            );
+
+            if (updatedStatus === "Done") {
+              if (confirm("Do you want to change status as Done?")) {
+                statusCell.textContent = updatedStatus;
+                statusCell.className = getButtonClass(updatedStatus);
+                actionCell.innerHTML = getActionHTML(
+                  updatedStatus,
+                  row.cells[0].textContent,
+                  row.cells[2].textContent
+                );
+              } else {
+                // Revert to the previous status
+                selectElement.value = statusCell.textContent;
+              }
             } else {
-                statusCell.textContent = selectedStatus;
-                statusCell.className = getButtonClass(selectedStatus);
-                actionCell.innerHTML = getActionHTML(selectedStatus);
+              statusCell.textContent = updatedStatus;
+              statusCell.className = getButtonClass(updatedStatus);
+              actionCell.innerHTML = getActionHTML(updatedStatus);
             }
+
+            // Reload the page after updating the status
+            window.location.reload();
+          })
+          .catch((error) => {
+            console.error("Error updating status: " + error);
+          });
+      }
+
+      function getActionHTML(status, name, email) {
+        // Remove double quotes from status if present
+        // status = status.replaceAll('"', "");
+
+        if (status === "Done") {
+          return `
+            <a href="invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
+                Invoice
+            </a>
+        `;
+        } else if (status === "Close") {
+          return `
+            <a style="color: red;">Delete</a>
+        `;
+        } else if (status === "Active") {
+          return `
+          <select onchange="changeStatus(this)">
+                <option value="" ${
+                  status === "Active" ? "selected" : ""
+                }>Edit</option>
+                <option value="Pending" ${
+                  status === "Pending" ? "selected" : ""
+                }>Pending</option>
+                <option value="Done" ${
+                  status === "Done" ? "selected" : ""
+                }>Done</option>
+                <option value="Close" ${
+                  status === "Close" ? "selected" : ""
+                }>Close</option>
+            </select>
+          `;
+        } else if (status === "Pending") {
+          return `
+          <select onchange="changeStatus(this)">
+                <option value="" ${
+                  status === "Pending" ? "selected" : ""
+                }>Edit</option>
+                <option value="Active" ${
+                  status === "Active" ? "selected" : ""
+                }>Active</option>
+                <option value="Done" ${
+                  status === "Done" ? "selected" : ""
+                }>Done</option>
+                <option value="Close" ${
+                  status === "Close" ? "selected" : ""
+                }>Close</option>
+            </select>
+          `;
+        } else {
+          return "";
         }
-        
-        
-        
-        // Rest of your code...
-        
-        
-        function getActionHTML(status, name, email) {
-            if (status === 'done') {
-                return `
-                    <a href="invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
-                        Invoice
-                    </a>
-                `;
-            } else if (status === 'close') {
-                return `
-                    <a style="color: red;">Delete</a>
-                `;
-            } else if (status === 'active') {
-                return `
-                    <select onchange="changeStatus(this)">
-                        <option value="">Edit</option>
-                        <option value="pending">Pending</option>
-                        <option value="done">Done</option>
-                        <option value="close">Close</option>
-                    </select>
-                `;
-            } else if (status === 'pending') {
-                return `
-                    <select onchange="changeStatus(this)">
-                        <option value="">Edit</option>
-                        <option value="active">Active</option>
-                        <option value="done">Done</option>
-                        <option value="close">Close</option>
-                    </select>
-                `;
-            } else {
-                return '';
-            }
-        }
-        
-        
-        // Call the fetchLeadData function when the page loads
-        window.onload = fetchLeadData;
-        
-      </script>
-    </body>
-  </html>
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        fetchLeadData();
+        document.addEventListener("change", function (event) {
+          if (event.target.tagName === "SELECT") {
+            changeStatus(event.target);
+          }
+        });
+      });
+    </script>
+    <script>
+      function searchLeads() {
+        var searchTerm = document
+          .getElementById("leadSearchInput")
+          .value.toLowerCase();
+        var leadRows = document.querySelectorAll("#leadData tr");
+
+        leadRows.forEach(function (leadRow) {
+          var leadNameText = leadRow
+            .querySelector("td:nth-child(1)")
+            .textContent.toLowerCase();
+
+          if (leadNameText.includes(searchTerm)) {
+            leadRow.style.display = "table-row";
+          } else {
+            leadRow.style.display = "none";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
