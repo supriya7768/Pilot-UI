@@ -1,482 +1,562 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.svg"
+      type="image/x-icon"
+    />
+    <title>Shepherd</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
-  <title> Shepherd</title>
+    <!-- ========== All CSS files linkup ========= -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="assets/css/lineicons.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/css/materialdesignicons.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+  </head>
 
-  <!-- ========== All CSS files linkup ========= -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="assets/css/lineicons.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="assets/css/fullcalendar.css" />
-  <link rel="stylesheet" href="assets/css/fullcalendar.css" />
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
-
-
-</head>
-
-<body>
-
-  <!-- ======== Preloader =========== -->
-  <div id="preloader">
-    <div class="spinner"></div>
-  </div>
-  <!-- ======== Preloader =========== -->
-
-  <!-- ======== sidebar-nav start =========== -->
-  <aside class="sidebar-nav-wrapper">
-    <div class="navbar-logo">
-      <a href="index.html">
-        <img style="height: 150px; width: 150px;" src="./assets/images/SHEPHERD 2.jpg">
-      </a>
+  <body>
+    <!-- ======== Preloader =========== -->
+    <div id="preloader">
+      <div class="spinner"></div>
     </div>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item">
-          <a href="index.html">
-            <span class="icon">
-              <img class="hi" src="./assets/images/dashboard.png" alt="">
-            </span>
-            <span class="text">Dashboard</span>
-          </a>
-        </li>
-      </ul>
+    <!-- ======== Preloader =========== -->
 
+    <!-- ======== sidebar-nav start =========== -->
+    <aside class="sidebar-nav-wrapper">
+      <div class="navbar-logo">
+        <a href="index.html">
+          <img
+            style="height: 150px; width: 150px"
+            src="./assets/images/SHEPHERD 2.jpg"
+          />
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="index.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/dashboard.png" alt="" />
+              </span>
+              <span class="text">Dashboard</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
 
       <nav class="sidebar-nav">
         <ul>
           <li class="nav-item">
             <a href="addlead.html">
               <span class="icon">
-                <img class="hi" src="./assets/images/user.png" alt="">
+                <img class="hi" src="./assets/images/user.png" alt="" />
               </span>
               <span class="text">Add Lead</span>
             </a>
           </li>
         </ul>
+      </nav>
 
-        <nav class="sidebar-nav">
-          <ul>
-            <li class="nav-item">
-              <a href="leadlist.html">
-                <span class="icon">
-                  <img class="hi" src="./assets/images/group.png" alt="">
-                </span>
-                <span class="text">Lead List</span>
-              </a>
-            </li>
-          </ul>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="leadlist.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/group.png" alt="" />
+              </span>
+              <span class="text">Lead List</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
 
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="invoice.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/invoice.png" alt="" />
+              </span>
 
+              <span class="text">Invoice</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="studentpanel.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/students.png" alt="" />
+              </span>
+              <span class="text">Student Panel</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="overlay"></div>
+    <!-- ======== sidebar-nav end =========== -->
 
-          <nav class="sidebar-nav">
-            <ul>
-              <li class="nav-item">
-                <a href="invoice.html">
-                  <span class="icon">
-
-                    <img class="hi" src="./assets/images/invoice.png" alt="">
-
-                  </span>
-
-
-                  <span class="text">Invoice</span>
-                </a>
-              </li>
-
-              <nav class="sidebar-nav">
-                <ul>
-                  <li class="nav-item">
-                    <a href="studentpanel.html">
-                      <span class="icon">
-                        <img class="hi" src="./assets/images/students.png" alt="">
-                      </span>
-                      <span class="text">Student Panel</span>
-                    </a>
-                  </li>
-                </ul>
-
-            </ul>
-          </nav>
-
-  </aside>
-  <div class="overlay"></div>
-  <!-- ======== sidebar-nav end =========== -->
-
-  <!-- ======== main-wrapper start =========== -->
-  <main class="main-wrapper">
-    <!-- ========== header start ========== -->
-    <header class="header">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-5 col-md-5 col-6">
-            <div class="header-left d-flex align-items-center">
-              <div class="menu-toggle-btn mr-15">
-                <button id="menu-toggle" class="main-btn primary-btn btn-hover">
-                  <i class="lni lni-chevron-left me-2"></i> Menu
-                </button>
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <header class="header">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-6">
+              <div class="header-left d-flex align-items-center">
+                <div class="menu-toggle-btn mr-15">
+                  <button
+                    id="menu-toggle"
+                    class="main-btn primary-btn btn-hover"
+                  >
+                    <i class="lni lni-chevron-left me-2"></i> Menu
+                  </button>
+                </div>
               </div>
-
             </div>
-          </div>
-          <div class="col-lg-7 col-md-7 col-6">
-            <div class="header-right">
-              <!-- profile start -->
-              <div class="profile-box ml-15">
-                <button class="dropdown-toggle bg-transparent border-0" type="button" id="profile"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  <div class="profile-info">
-                    <div class="info">
-                      <div class="image">
-                        <img src="assets/images/logo.png" alt="" />
-                      </div>
-                      <div>
-                        <h6 class="fw-500">Testing Shastra</h6>
-                        <p>Admin</p>
-                      </div>
-                    </div>
-                  </div>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
-                  <li>
-                    <div class="author-info flex items-center !p-1">
-                      <div class="image">
-                        <img src="assets/images/profile/profile-image.png" alt="image">
-                      </div>
-                      <div class="content">
-                        <h4 class="text-sm">Adam Joe</h4>
-                        <a class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs"
-                          href="#">Email@gmail.com</a>
+            <div class="col-lg-7 col-md-7 col-6">
+              <div class="header-right">
+                <!-- profile start -->
+                <div class="profile-box ml-15">
+                  <button
+                    class="dropdown-toggle bg-transparent border-0"
+                    type="button"
+                    id="profile"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <div class="profile-info">
+                      <div class="info">
+                        <div class="image">
+                          <img src="assets/images/logo.png" alt="" />
+                        </div>
+                        <div>
+                          <h6 class="fw-500">Testing Shastra</h6>
+                          <p>Admin</p>
+                        </div>
                       </div>
                     </div>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                    <a href="#0">
-                      <i class="lni lni-user"></i> View Profile
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#0">
-                      <i class="lni lni-alarm"></i> Notifications
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
-                  </li>
-                  <li>
-                    <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                    <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
-                  </li>
-                </ul>
+                  </button>
+                  <ul
+                    class="dropdown-menu dropdown-menu-end"
+                    aria-labelledby="profile"
+                  >
+                    <li>
+                      <div class="author-info flex items-center !p-1">
+                        <div class="image">
+                          <img
+                            src="assets/images/profile/profile-image.png"
+                            alt="image"
+                          />
+                        </div>
+                        <div class="content">
+                          <h4 class="text-sm">Adam Joe</h4>
+                          <a
+                            class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs"
+                            href="#"
+                            >Email@gmail.com</a
+                          >
+                        </div>
+                      </div>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#0">
+                        <i class="lni lni-user"></i> View Profile
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#0">
+                        <i class="lni lni-alarm"></i> Notifications
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
+                    </li>
+                    <li>
+                      <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- profile end -->
               </div>
-              <!-- profile end -->
             </div>
           </div>
         </div>
-      </div>
-    </header>
-    <!-- ========== header end ========== -->
+      </header>
+      <!-- ========== header end ========== -->
 
-    <!-- ========== section start ========== -->
-    <section>
-      <div class="container-fluid">
-        <!-- ========== title-wrapper start ========== -->
-        <div class="title-wrapper pt-30">
-          <div class="row align-items-center">
+      <!-- ========== section start ========== -->
+      <section>
+        <div class="container-fluid">
+          <!-- ========== title-wrapper start ========== -->
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center"></div>
+            <!-- end row -->
+          </div>
+          <!-- ========== title-wrapper end ========== -->
+
+          <!-- Invoice Wrapper Start -->
+          <div class="invoice-wrapper">
+            <div class="row">
+              <div class="col-12">
+                <div class="invoice-card card-style mb-30">
+                  <div class="invoice-header">
+                    <div class="invoice-for">
+                      <span
+                        ><img
+                          style="padding-left: 30px; width: 55px"
+                          src="./assets/images/logo.png"
+                          alt="" /></span
+                      ><br />
+                      <span style="padding-top: 5px">
+                        <h2 class="mb-10">Invoice</h2>
+                      </span>
+                    </div>
+                    <div class="invoice-date">
+                      <p>
+                        <span>Invoice ID:</span
+                        ><input
+                          style="width: 25%"
+                          type="text"
+                          id="invoiceId"
+                          readonly
+                        />
+                      </p>
+                      <span>Date:</span
+                      ><span style="padding-left: 25px">
+                        <p id="myId"></p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="invoice-address">
+                    <div class="address-item">
+                      <h5 class="text-bold">Bill from</h5>
+                      <h1>Testing Shastra</h1>
+                      <p class="text-sm">
+                        504, Ganeesham E, Pimple Saudagar, Pune
+                      </p>
+                      <p class="text-sm">
+                        <span class="text-medium">Email:</span>
+                        info@testingshastra.com
+                      </p>
+                    </div>
+                    <div class="address-item">
+                      <h5 class="text-bold">Bill to</h5>
+                      <h1 id="leadName"></h1>
+                      <p class="text-sm">
+                        <span class="text-medium">Email:</span>
+                        <span id="leadEmail"></span>
+                      </p>
+                      <p class="text-sm">
+                        <span class="text-medium">Mobile No:</span>
+                        <span id="mobile"></span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                    <table id="invoiceTable">
+                      <thead>
+                        <tr>
+                          <th class="service">
+                            <h6 class="text-sm text-medium">Sr.No</h6>
+                          </th>
+                          <th class="desc">
+                            <h6
+                              style="padding-left: 25%"
+                              class="text-sm text-medium"
+                            >
+                              Course
+                            </h6>
+                          </th>
+                          <th class="rate">
+                            <h6 class="text-sm text-medium">Rate</h6>
+                          </th>
+                          <th class="amount">
+                            <h6 class="text-sm text-medium">Amount</h6>
+                          </th>
+                          <th class="text-sm">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- Initial row for demonstration -->
+                        <tr>
+                          <td>1</td>
+                          <td>
+                            <select class="course tablestyle" id="course">
+                              <option value="">Select category</option>
+                              <option>Software Testing(Java Selenium)</option>
+                              <option>
+                                Automation Testing(Python Selenium)
+                              </option>
+                              <option>Rest API Testing</option>
+                              <option>Java Full Stack Development</option>
+                              <option>MERN Java Full Stack Development</option>
+                              <option>.NET Full Stack Development</option>
+                              <option>Diploma in UI/UX Design</option>
+                            </select>
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="rate tablestyle"
+                              id="rate"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="amount tablestyle"
+                              id="amount"
+                            />
+                          </td>
+                          <td>
+                            <button class="deleteRow delbtn">Delete</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <button
+                      style="margin-left: 40px; background-color: green"
+                      class="primary-btn closebtn"
+                      id="addRow"
+                    >
+                      Add
+                    </button>
+                    <!-- <button id="savePDF">Save as PDF</button> -->
+                  </div>
+
+                  <!-- Table to display the list of items -->
+                  <div class="table-responsive">
+                    <table class="list-table table" style="display: none">
+                      <thead>
+                        <tr>
+                          <th>Sr.No</th>
+                          <th>Course</th>
+                          <th>rate</th>
+                          <th>Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody id="listBody">
+                        <!-- List items will be added here dynamically -->
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="invoice-action">
+                    <ul
+                      class="d-flex flex-wrap align-items-center justify-content-center"
+                    >
+                      <li class="m-2">
+                        <a
+                          href="#0"
+                          onclick="addinvoice()"
+                          class="main-btn primary-btn-outline btn-hover"
+                          style="height: 30px; width: 30px"
+                        >
+                          Save
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- End Card -->
+              </div>
+              <!-- ENd Col -->
+            </div>
+            <!-- End Row -->
+          </div>
+          <!-- Invoice Wrapper End -->
+        </div>
+        <div class="h-20">
+          <h1 id="dt"></h1>
+        </div>
+        <!-- end container -->
+      </section>
+      <!-- ========== section end ========== -->
+
+      <!-- ========== footer start =========== -->
+      <footer class="footer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 order-last order-md-first">
+              <div class="copyright text-center text-md-start">
+                <p class="text-sm">
+                  Designed and Developed by
+                  <a
+                    href="https://TestingShastra.com"
+                    rel="nofollow"
+                    target="_blank"
+                  >
+                    TestingShastra
+                  </a>
+                </p>
+              </div>
+            </div>
+            <!-- end col-->
+            <div class="col-md-6">
+              <div
+                class="terms d-flex justify-content-center justify-content-md-end"
+              >
+                <a href="#0" class="text-sm">Term & Conditions</a>
+                <a href="#0" class="text-sm ml-15">Privacy & Policy</a>
+              </div>
+            </div>
           </div>
           <!-- end row -->
         </div>
-        <!-- ========== title-wrapper end ========== -->
+        <!-- end container -->
+      </footer>
+      <!-- ========== footer end =========== -->
+    </main>
+    <!-- ======== main-wrapper end =========== -->
 
-        <!-- Invoice Wrapper Start -->
-        <div class="invoice-wrapper">
-          <div class="row">
-            <div class="col-12">
-              <div class="invoice-card card-style mb-30">
-                <div class="invoice-header">
-                  <div class="invoice-for">
-                    <span><img style="padding-left: 30px; width: 55px;" src="./assets/images/logo.png"
-                        alt="" /></span><br> <span style="padding-top: 5px;">
-                      <h2 class="mb-10">Invoice</h2>
-                    </span>
-                  </div>
-                  <div class="invoice-date">
-                    <p><span>Invoice ID:</span><input style="width: 25%" type="text" id="invoiceId" readonly></p>
-                    <span>Date:</span><span style="padding-left: 25px;">
-                      <p id="myId"></p>
-                    </span>
-                  </div>
-                </div>
-                <div class="invoice-address">
-                  <div class="address-item">
-                    <h5 class="text-bold">Bill from</h5>
-                    <h1>Testing Shastra</h1>
-                    <p class="text-sm">
-                      504, Ganeesham E, Pimple Saudagar, Pune
-                    </p>
-                    <p class="text-sm">
-                      <span class="text-medium">Email:</span>
-                      info@testingshastra.com
-                    </p>
-                  </div>
-                  <div class="address-item">
-                    <h5 class="text-bold">Bill to</h5>
-                    <h1 id="leadName"></h1>
-                    <p class="text-sm">
-                      <span class="text-medium">Email:</span>
-                      <span id="leadEmail"></span>
-                    </p>
-                    <p class="text-sm">
-                      <span class="text-medium">Mobile No:</span>
-                      <span id="mobile"></span>
-                    </p>
-                  </div>
-                </div>
-                <div class="table-responsive">
-                  <table id="invoiceTable">
-                    <thead>
-                      <tr>
-                        <th class="service">
-                          <h6 class="text-sm text-medium">Sr.No</h6>
-                        </th>
-                        <th class="desc">
-                          <h6 style="padding-left: 25%;" class="text-sm text-medium">Course</h6>
-                        </th>
-                        <th class="rate">
-                          <h6 class="text-sm text-medium">Rate</h6>
-                        </th>
-                        <th class="amount">
-                          <h6 class="text-sm text-medium">Amount</h6>
-                        </th>
-                        <th class="text-sm">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <!-- Initial row for demonstration -->
-                      <tr>
-                        <td>1</td>
-                        <td>
-                          <select class="course tablestyle" id="course">
-                            <option value="">Select category</option>
-                            <option>Software Testing(Java Selenium)</option>
-                            <option>Automation Testing(Python Selenium)</option>
-                            <option>Rest API Testing</option>
-                            <option>Java Full Stack Development</option>
-                            <option>MERN Java Full Stack Development</option>
-                            <option>.NET Full Stack Development</option>
-                            <option>Diploma in UI/UX Design</option>
-                          </select>
-                        </td>
-                        <td><input type="text" class="rate tablestyle" id="rate"></td>
-                        <td><input type="text" class="amount tablestyle" id="amount">
-                        </td>
-                        <td><button class="deleteRow delbtn">Delete</button>
-                        </td>
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/Chart.min.js"></script>
+    <script src="assets/js/dynamic-pie-chart.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/fullcalendar.js"></script>
+    <script src="assets/js/jvectormap.min.js"></script>
+    <script src="assets/js/world-merc.js"></script>
+    <script src="assets/js/polyfill.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/invoice.js"></script>
+    <script>
+      var date = new Date();
+      var dd = date.getDate();
+      var mm = date.getMonth() + 1;
+      var yyyy = date.getFullYear();
+      var newDate = dd + "-" + mm + "-" + yyyy;
+      var p = document.getElementById("myId");
+      p.innerHTML = newDate;
+    </script>
 
-                      </tr>
-                    </tbody>
-                  </table>
+    <script>
+      // Extract the lead's name from the URL parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const leadName = urlParams.get("leadName");
+      const leadEmail = urlParams.get("leadEmail");
 
-                  <button style="margin-left: 40px; background-color: green;" class="primary-btn closebtn"
-                    id="addRow">Add</button>
-                  <!-- <button id="savePDF">Save as PDF</button> -->
+      // Update the <h1> tag with the lead's name
+      if (leadName) {
+        document.getElementById("leadName").textContent = leadName;
+      }
+      if (leadEmail) {
+        document.getElementById("leadEmail").textContent = leadEmail;
+      }
+    </script>
+    <script>
+      var invoiceItems = [];
 
-                </div>
+      function addItem() {
+        var srNo = $("#srNo").val();
+        var course = $("#course").val();
+        var rate = $("#rate").val();
+        var amount = $("#amount").val();
 
-                <!-- Table to display the list of items -->
-                <div class="table-responsive">
-                  <table class="list-table table" style="display: none;">
-                    <thead>
-                      <tr>
-                        <th>Sr.No</th>
-                        <th>Course</th>
-                        <th>rate</th>
-                        <th>Amount</th>
-                      </tr>
-                    </thead>
-                    <tbody id="listBody">
-                      <!-- List items will be added here dynamically -->
-                    </tbody>
-                  </table>
-                </div>
+        var newItem = {
+          srNo: srNo,
+          course: course,
+          rate: rate,
+          amount: amount,
+        };
 
-                <div class="invoice-action">
-                  <ul class="d-flex flex-wrap align-items-center justify-content-center">
-                    <li class="m-2">
-                      <a href="#0" onclick="addinvoice()" class="main-btn primary-btn-outline btn-hover"
-                        style="height: 30px; width: 30px;">
-                        Save
-                      </a>
-                    </li>
+        invoiceItems.push(newItem);
 
-                  </ul>
-                </div>
-              </div>
-              <!-- End Card -->
-            </div>
-            <!-- ENd Col -->
-          </div>
-          <!-- End Row -->
-        </div>
-        <!-- Invoice Wrapper End -->
-      </div>
-      <div class="h-20">
-        <h1 id="dt"></h1>
-      </div>
-      <!-- end container -->
-    </section>
-    <!-- ========== section end ========== -->
-
-    <!-- ========== footer start =========== -->
-    <footer class="footer">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 order-last order-md-first">
-            <div class="copyright text-center text-md-start">
-              <p class="text-sm">
-                Designed and Developed by
-                <a href="https://TestingShastra.com" rel="nofollow" target="_blank">
-                  TestingShastra
-                </a>
-              </p>
-            </div>
-          </div>
-          <!-- end col-->
-          <div class="col-md-6">
-            <div class="terms d-flex justify-content-center justify-content-md-end">
-              <a href="#0" class="text-sm">Term & Conditions</a>
-              <a href="#0" class="text-sm ml-15">Privacy & Policy</a>
-            </div>
-          </div>
-        </div>
-        <!-- end row -->
-      </div>
-      <!-- end container -->
-    </footer>
-    <!-- ========== footer end =========== -->
-  </main>
-  <!-- ======== main-wrapper end =========== -->
-
-  <!-- ========= All Javascript files linkup ======== -->
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/Chart.min.js"></script>
-  <script src="assets/js/dynamic-pie-chart.js"></script>
-  <script src="assets/js/moment.min.js"></script>
-  <script src="assets/js/fullcalendar.js"></script>
-  <script src="assets/js/jvectormap.min.js"></script>
-  <script src="assets/js/world-merc.js"></script>
-  <script src="assets/js/polyfill.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/jquery.js"></script>
-  <script src="assets/js/invoice.js"></script>
-  <script>
-    var date = new Date();
-    var dd = date.getDate();
-    var mm = date.getMonth() + 1;
-    var yyyy = date.getFullYear();
-    var newDate = dd + "-" + mm + "-" + yyyy;
-    var p = document.getElementById("myId");
-    p.innerHTML = newDate; 
-  </script>
-
-  <script>
-    // Extract the lead's name from the URL parameter
-    const urlParams = new URLSearchParams(window.location.search);
-    const leadName = urlParams.get("leadName");
-    const leadEmail = urlParams.get("leadEmail");
-
-    // Update the <h1> tag with the lead's name
-    if (leadName) {
-      document.getElementById("leadName").textContent = leadName;
-    }
-    if (leadEmail) {
-      document.getElementById("leadEmail").textContent = leadEmail;
-    }
-  </script>
-  <script>
-    var invoiceItems = [];
-
-    function addItem() {
-      var srNo = $('#srNo').val();
-      var course = $('#course').val();
-      var rate = $('#rate').val();
-      var amount = $('#amount').val();
-
-      var newItem = {
-        srNo: srNo,
-        course: course,
-        rate: rate,
-        amount: amount
-      };
-
-      invoiceItems.push(newItem);
-
-      var newRow = $('#invoiceBody tr:first').clone();
-      $('#invoiceBody').append(newRow);
-      newRow.find('input').val('');
-    }
-
-    function displayList() {
-      // Display the list of items in the second table
-      var listTable = $('.list-table');
-      var listBody = $('#listBody');
-      listBody.empty(); // Clear existing entries
-
-      for (var i = 0; i < invoiceItems.length; i++) {
-        var item = invoiceItems[i];
-        var row = '<tr><td>' + item.srNo + '</td><td>' + item.course + '</td><td>' + item.rate + '</td><td>' + item.amount + '</td></tr>';
-        listBody.append(row);
+        var newRow = $("#invoiceBody tr:first").clone();
+        $("#invoiceBody").append(newRow);
+        newRow.find("input").val("");
       }
 
-      listTable.show(); // Display the second table
-    }
-  </script>
-  <script>
-    $(document).ready(function () {
-      // Get the current date
-      var currentDate = new Date();
-      var formattedDate = currentDate.toISOString().slice(0, 10);
+      function displayList() {
+        // Display the list of items in the second table
+        var listTable = $(".list-table");
+        var listBody = $("#listBody");
+        listBody.empty(); // Clear existing entries
 
-      // Set the date in the #myId element
-      $("#myId").text(formattedDate);
+        for (var i = 0; i < invoiceItems.length; i++) {
+          var item = invoiceItems[i];
+          var row =
+            "<tr><td>" +
+            item.srNo +
+            "</td><td>" +
+            item.course +
+            "</td><td>" +
+            item.rate +
+            "</td><td>" +
+            item.amount +
+            "</td></tr>";
+          listBody.append(row);
+        }
 
-      // Generate Invoice ID starting from 2301
-      var startingInvoiceId = 2301;
-      var generatedInvoiceId = startingInvoiceId;
-
-      // Fetch the last used Invoice ID from storage (localStorage)
-      var lastUsedInvoiceId = localStorage.getItem("lastUsedInvoiceId");
-
-      // Check if there's a last used Invoice ID in storage
-      if (lastUsedInvoiceId) {
-        // If there is, use it as the starting point for the next Invoice ID
-        generatedInvoiceId = parseInt(lastUsedInvoiceId) + 1;
+        listTable.show(); // Display the second table
       }
+    </script>
+    <script>
+      $(document).ready(function () {
+        // Get the current date
+        var currentDate = new Date();
+        var formattedDate = currentDate.toISOString().slice(0, 10);
 
-      // Set the generated Invoice ID in the input field
-      $("#invoiceId").val(generatedInvoiceId);
+        // Set the date in the #myId element
+        $("#myId").text(formattedDate);
 
-      // Save the generated Invoice ID for future use
-      localStorage.setItem("lastUsedInvoiceId", generatedInvoiceId);
-    });
-  </script>
-  <script>
-    $(document).ready(function () {
-      // Add Row button functionality
-      $("#addRow").on("click", function () {
-        var newRow = $("<tr>");
-        newRow.append("<td>" + ($("#invoiceTable tbody tr").length + 1) + "</td>");
-        newRow.append(`
+        // Generate Invoice ID starting from 2301
+        var startingInvoiceId = 2301;
+        var generatedInvoiceId = startingInvoiceId;
+
+        // Fetch the last used Invoice ID from storage (localStorage)
+        var lastUsedInvoiceId = localStorage.getItem("lastUsedInvoiceId");
+
+        // Check if there's a last used Invoice ID in storage
+        if (lastUsedInvoiceId) {
+          // If there is, use it as the starting point for the next Invoice ID
+          generatedInvoiceId = parseInt(lastUsedInvoiceId) + 1;
+        }
+
+        // Set the generated Invoice ID in the input field
+        $("#invoiceId").val(generatedInvoiceId);
+
+        // Save the generated Invoice ID for future use
+        localStorage.setItem("lastUsedInvoiceId", generatedInvoiceId);
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        // Add Row button functionality
+        $("#addRow").on("click", function () {
+          var newRow = $("<tr>");
+          newRow.append(
+            "<td>" + ($("#invoiceTable tbody tr").length + 1) + "</td>"
+          );
+          newRow.append(`
             <td>
                 <select class="course tablestyle">
                     <option value="">Select category</option>
@@ -490,33 +570,31 @@
                 </select>
             </td>
         `);
-        newRow.append("<td><input type='text' class='rate tablestyle'></td>");
-        newRow.append("<td><input type='text' class='amount tablestyle'></td>");
-        newRow.append("<td><button class='deleteRow delbtn'>Delete</button></td>");
+          newRow.append("<td><input type='text' class='rate tablestyle'></td>");
+          newRow.append(
+            "<td><input type='text' class='amount tablestyle'></td>"
+          );
+          newRow.append(
+            "<td><button class='deleteRow delbtn'>Delete</button></td>"
+          );
 
-        $("#invoiceTable tbody").append(newRow);
-      });
-
-      // Delete Row button functionality
-      $(document).on("click", ".deleteRow", function () {
-        $(this).closest("tr").remove();
-      });
-
-      // Save as PDF button functionality
-      $("#savePDF").on("click", function () {
-        var pdf = new jsPDF();
-        pdf.autoTable({
-          html: '#invoiceTable'
+          $("#invoiceTable tbody").append(newRow);
         });
-        pdf.save('invoice.pdf');
+
+        // Delete Row button functionality
+        $(document).on("click", ".deleteRow", function () {
+          $(this).closest("tr").remove();
+        });
+
+        // Save as PDF button functionality
+        $("#savePDF").on("click", function () {
+          var pdf = new jsPDF();
+          pdf.autoTable({
+            html: "#invoiceTable",
+          });
+          pdf.save("invoice.pdf");
+        });
       });
-    });
-  </script>
-
-
-
-
-
-</body>
-
+    </script>
+  </body>
 </html>
