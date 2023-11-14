@@ -139,6 +139,7 @@
                 </div>
               </div>
             </div>
+
             <div class="col-lg-7 col-md-7 col-6">
               <div class="header-right">
                 <!-- notification start -->
@@ -208,6 +209,7 @@
                             Lorem ipsum dolor sit amet, consect etur adipiscing
                             elit Vivamus tortor.
                           </p>
+                          
                           <span>10 mins ago</span>
                         </div>
                       </a>
@@ -303,6 +305,7 @@
                           <h6 class="fw-500">Testing Shastra</h6>
                           <p>Admin</p>
                         </div>
+
                       </div>
                     </div>
                   </button>
@@ -323,31 +326,35 @@
                           <!-- <a class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs" href="#">Email@gmail.com</a> -->
                         </div>
                       </div>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="#0">
-                        <i class="lni lni-user"></i> View Profile
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#0">
-                        <i class="lni lni-alarm"></i> Notifications
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
-                    </li>
-                    <li>
-                      <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
-                    </li>
-                  </ul>
-                </div>
-                <!-- profile end -->
+
+                      <div class="content">
+                        <h4 class="text-sm">Adam Joe</h4>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="#0">
+                      <i class="lni lni-user"></i> View Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#0">
+                      <i class="lni lni-alarm"></i> Notifications
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
+                  </li>
+                  <li>
+                    <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
+                  </li>
+                </ul>
+
               </div>
             </div>
           </div>
@@ -1002,6 +1009,7 @@
                   const leadData = document.getElementById("leadTable");
                   //leadData.innerHTML = ""; // Clear existing data
 
+
                   data
                     .filter(
                       (lead) =>
@@ -1014,12 +1022,14 @@
                         const row = document.createElement("tr");
                         row.dataset.leadId = lead.id;
                         row.innerHTML = `
+
             <td>${lead.name}</td>
             <td>${lead.mobile}</td>
             <td>${lead.comment}</td>
             <td>${lead.follow}</td>
             <td>${lead.status}</td>
             <td>    
+
               <div class="action">
                 ${
                   lead.status === "Pending"
@@ -1053,11 +1063,13 @@
               </div>
             </td>
             <td>
+
               <div class="action">
                 <!-- Edit option -->
                 <a href="#" onclick="editLead(event, ${lead.id})">Edit</a>
             </td>
           `;
+
                         leadData.appendChild(row);
                       }
                     });
@@ -1066,6 +1078,7 @@
                   console.error("Error fetching data: " + error);
                 });
             }
+
 
             // Function to handle editing a lead
             function editLead(event, leadId) {
