@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 async function addinvoice() {
-    const srNo = $('#srno').val();
+    const invoiceId = $('#invoiceId').val();
     const name = $('#leadName').text();;
     const email = $('#leadEmail').text();;
     const mobile = $('#mobile').val();
@@ -45,7 +45,7 @@ async function addinvoice() {
 
         const url = 'http://localhost:8080/add-invoice';
         const result = await fetch(url, {method:'POST', body: JSON.stringify({
-            srNo: srNo,
+            invoiceId: invoiceId,
             name: name,
             email: email,
             mobile: mobile,
