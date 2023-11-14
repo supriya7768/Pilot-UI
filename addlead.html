@@ -1,121 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="shortcut icon"
-      href="assets/images/favicon.svg"
-      type="image/x-icon"
-    />
-    <title>Shepherd</title>
 
-    <!-- ========== All CSS files linkup ========= -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link
-      rel="stylesheet"
-      href="assets/css/lineicons.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/css/materialdesignicons.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <style>
-      td {
-        color: grey;
-        font-size: 12px;
-        margin: 10px;
-        align-items: center;
-      }
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
+  <title>Shepherd</title>
 
-  <body>
-    <!-- ======== Preloader =========== -->
-    <div id="preloader">
-      <div class="spinner"></div>
+  <!-- ========== All CSS files linkup ========= -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/lineicons.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    td {
+      color: grey;
+      font-size: 12px;
+      margin: 10px;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ======== Preloader =========== -->
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+  <!-- ======== Preloader =========== -->
+
+  <!-- ======== sidebar-nav start =========== -->
+  <aside class="sidebar-nav-wrapper">
+    <div class="navbar-logo">
+      <a href="index.html">
+        <img style="height: 150px; width: 150px" src="./assets/images/SHEPHERD 2.jpg" />
+      </a>
     </div>
-    <!-- ======== Preloader =========== -->
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item">
+          <a href="index.html">
+            <span class="icon">
+              <img class="hi" src="./assets/images/dashboard.png" alt="" />
+            </span>
+            <span class="text">Dashboard</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item">
+          <a href="addlead.html">
+            <span class="icon">
+              <img class="hi" src="./assets/images/user.png" alt="" />
+            </span>
+            <span class="text">Add Lead</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item">
+          <a href="leadlist.html">
+            <span class="icon">
+              <img class="hi" src="./assets/images/group.png" alt="" />
+            </span>
+            <span class="text">Lead List</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item">
+          <a href="invoice.html">
+            <span class="icon">
+              <img class="hi" src="./assets/images/invoice.png" alt="" />
+            </span>
+            <span class="text">Invoice</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item">
+          <a href="adminpanel.html">
+            <span class="icon">
+              <img class="hi" src="./assets/images/admin.png" alt="">
+            </span>
+            <span class="text">Admin Panel</span>
+          </a>
+        </li>
+      </ul>
 
-    <!-- ======== sidebar-nav start =========== -->
-    <aside class="sidebar-nav-wrapper">
-      <div class="navbar-logo">
-        <a href="index.html">
-          <img
-            style="height: 150px; width: 150px"
-            src="./assets/images/SHEPHERD 2.jpg"
-          />
-        </a>
-      </div>
-      <nav class="sidebar-nav">
-        <ul>
-          <li class="nav-item">
-            <a href="index.html">
-              <span class="icon">
-                <img class="hi" src="./assets/images/dashboard.png" alt="" />
-              </span>
-              <span class="text">Dashboard</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <nav class="sidebar-nav">
-        <ul>
-          <li class="nav-item">
-            <a href="addlead.html">
-              <span class="icon">
-                <img class="hi" src="./assets/images/user.png" alt="" />
-              </span>
-              <span class="text">Add Lead</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <nav class="sidebar-nav">
-        <ul>
-          <li class="nav-item">
-            <a href="leadlist.html">
-              <span class="icon">
-                <img class="hi" src="./assets/images/group.png" alt="" />
-              </span>
-              <span class="text">Lead List</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <nav class="sidebar-nav">
-        <ul>
-          <li class="nav-item">
-            <a href="invoice.html">
-              <span class="icon">
-                <img class="hi" src="./assets/images/invoice.png" alt="" />
-              </span>
-              <span class="text">Invoice</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <nav class="sidebar-nav">
-        <ul>
-          <li class="nav-item">
-            <a href="studentpanel.html">
-              <span class="icon">
-                <img class="hi" src="./assets/images/students.png" alt="" />
-              </span>
-              <span class="text">Student Panel</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-    <!-- ======== sidebar-nav end =========== -->
+    </nav>
+  </aside>
+  <!-- ======== sidebar-nav end =========== -->
 
   <!-- ======== main-wrapper start =========== -->
   <main class="main-wrapper">
@@ -135,7 +120,7 @@
           </div>
           <div class="col-lg-7 col-md-7 col-6">
             <div class="header-right">
-              
+
             </div>
           </div>
         </div>
@@ -181,7 +166,8 @@
                   </div>
                   <div class="input-style-1">
                     <label for="email">Email<span style="color: red;">*</span></label>
-                    <input type="email" id="email" placeholder="Email Id" title="Enter a valid email address" required/>
+                    <input type="email" id="email" placeholder="Email Id" title="Enter a valid email address"
+                      required />
                   </div>
                   <div class="input-style-1">
                     <label for="mobile">Mobile No<span style="color: red;">*</span></label>
@@ -276,7 +262,8 @@
                 <div class="col-12">
                   <div class="input-style-1">
                     <label>Passing Year</label>
-                    <input type="number" id="passingYear" placeholder="College Passing Year" onblur="validatePassingYear()" />
+                    <input type="number" id="passingYear" placeholder="College Passing Year"
+                      onblur="validatePassingYear()" />
                   </div>
                 </div>
                 <div class="col-12">
@@ -358,7 +345,7 @@
               </div>
               <div class="input-style-1" id="followOnField" style="display: none;">
                 <label>Follow On</label>
-                <input id="follow" type="date" />
+                <input id="follow" style="text-transform: uppercase;" type="date" />
               </div>
             </div>
             <button class="main-btn primary-btn btn-hover" type="submit" style="height: 20px; width: 20px;">Add
@@ -408,25 +395,25 @@
     p.innerHTML = newDate; 
   </script>
 
-<script>
-  function validatePassingYear() {
-    const passingYearInput = document.getElementById("passingYear");
-    const currentYear = new Date().getFullYear();
-    const minYear = 2001;
-    const maxYear = currentYear + 2;
+  <script>
+    function validatePassingYear() {
+      const passingYearInput = document.getElementById("passingYear");
+      const currentYear = new Date().getFullYear();
+      const minYear = 2001;
+      const maxYear = currentYear + 2;
 
-    // Parse the input value as an integer
-    const passingYear = parseInt(passingYearInput.value);
+      // Parse the input value as an integer
+      const passingYear = parseInt(passingYearInput.value);
 
-    // Check if the passing year is within the allowed range
-    if (passingYear < minYear || passingYear > maxYear) {
-      alert(`Passing year must be between ${minYear} and ${maxYear}`);
-      // Optionally, you can reset the input to a valid value
-      passingYearInput.value = currentYear;
-      passingYearInput.focus(); // Keep the focus on the input for correction
+      // Check if the passing year is within the allowed range
+      if (passingYear < minYear || passingYear > maxYear) {
+        alert(`Passing year must be between ${minYear} and ${maxYear}`);
+        // Optionally, you can reset the input to a valid value
+        passingYearInput.value = currentYear;
+        passingYearInput.focus(); // Keep the focus on the input for correction
+      }
     }
-  }
-</script>
+  </script>
 
 </body>
 
