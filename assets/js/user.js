@@ -122,23 +122,19 @@ async function addlead() {
     headers: { "Content-Type": "application/json" },
   });
 
-  const finalData = await result.json();
+  const finalData = await result.text(); // Assuming the response is plain text
 
-  if (finalData.email != null || finalData.mobile != null) {
-    $("#dt").html(formattedName + " is added as lead");
-    setTimeout(() => {
-      location.reload();
-    }, 3000);
+  if (finalData.includes("Entry not done. Email or mobile already exists.")) {
+    $("#dt").html("Error: Email or mobile already exists.");
   } else {
-    $("#dt").html(
-      "Error:- Your email or mobile number is already in use. Please use new email or mobile number."
-    );
+    $("#dt").html(finalData);
     setTimeout(() => {
       location.reload();
     }, 3000);
   }
+
   // After adding the lead, fetch and update the lead data in leadlist.html
-  fetchLeadData();
+  // fetchLeadData();
 }
 
 function isValidMobileNumber(mobile) {
