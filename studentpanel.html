@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
-  <title>Shepherd</title>
+  <title>Students Shepherd</title>
 
   <!-- ========== All CSS files linkup ========= -->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
@@ -262,7 +262,7 @@
                                   `
                   : lead.status === "Done"
                     ? `
-                                      <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
+                                      <a href="edit-invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
                                           Invoice
                                       </a>
                                   `
@@ -377,7 +377,7 @@
 
     if (status === "Done") {
       return `
-            <a href="invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
+            <a href="edit-invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
                 Invoice
             </a>
         `;
