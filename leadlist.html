@@ -187,9 +187,6 @@
                       <th>
                         <h6>Action</h6>
                       </th>
-                      <th>
-                        <h6>Details</h6>
-                      </th>
                     </tr>
                     <!-- end table row-->
                   </thead>
@@ -282,9 +279,6 @@
               }
                           </div>
                       </td>
-                      
-                      <td class="dropdown-ll" onclick="handleDropdownClick('${lead.id
-              }')">&#9660;</td>
                   `;
 
             leadData.appendChild(row);
@@ -455,100 +449,6 @@
       }
     });
   }
-</script>
-<script>
-  function createDropdownTable(parentElement, leadId) {
-    // Check if the dropdown table already exists
-    const existingDropdownTable = parentElement.querySelector("table");
-
-    if (existingDropdownTable) {
-      // If the table exists, remove it to recreate it
-      parentElement.removeChild(existingDropdownTable);
-    }
-
-    // Create a new table
-    const dropdownTable = document.createElement("table");
-    dropdownTable.style.border = "1px solid #ccc";
-    dropdownTable.style.backgroundColor = "#fff";
-
-    // Create table header (thead)
-    const thead = document.createElement("thead");
-    const headerRow = document.createElement("tr");
-    const headerName = document.createElement("th");
-    const headerStatus = document.createElement("th");
-
-    headerName.textContent = "Name";
-    headerStatus.textContent = "Status";
-
-    headerRow.appendChild(headerName);
-    headerRow.appendChild(headerStatus);
-    thead.appendChild(headerRow);
-    dropdownTable.appendChild(thead);
-
-    // Create table body (tbody) with sample data
-    const tbody = document.createElement("tbody");
-
-    const rowData1 = document.createElement("tr");
-    const cell1 = document.createElement("td");
-    const cell2 = document.createElement("td");
-
-    cell1.textContent = "DB2";
-    cell2.textContent = "Active";
-
-    rowData1.appendChild(cell1);
-    rowData1.appendChild(cell2);
-    tbody.appendChild(rowData1);
-
-    const rowData2 = document.createElement("tr");
-    const cell3 = document.createElement("td");
-    const cell4 = document.createElement("td");
-
-    cell3.textContent = "DB2 Parsing";
-    cell4.textContent = "Active";
-
-    rowData2.appendChild(cell3);
-    rowData2.appendChild(cell4);
-    tbody.appendChild(rowData2);
-
-    dropdownTable.appendChild(tbody);
-
-    // Append the new table to the parent element
-    parentElement.appendChild(dropdownTable);
-  }
-
-  function handleDropdownClick(leadId) {
-    const dropdownContainer = document.getElementById(
-      `dropdownContainer_${leadId}`
-    );
-
-    // Check if dropdownContainer exists
-    if (!dropdownContainer) {
-      console.error(`Dropdown container not found for lead ID: ${leadId}`);
-      return;
-    }
-
-    console.log(`Dropdown clicked for lead ID: ${leadId}`);
-    createDropdownTable(dropdownContainer, leadId);
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    fetchLeadData();
-    document.addEventListener("change", function (event) {
-      if (event.target.tagName === "SELECT") {
-        changeStatus(event.target);
-      }
-    });
-
-    // Add event listener to document body for handling clicks
-    document.body.addEventListener("click", function (event) {
-      // Check if the clicked element has a 'data-lead-id' attribute
-      const leadId = event.target.getAttribute("data-lead-id");
-
-      if (leadId) {
-        handleDropdownClick(leadId);
-      }
-    });
-  });
 </script>
 </body>
 
