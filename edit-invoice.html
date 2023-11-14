@@ -236,6 +236,10 @@
                       <span class="text-medium">Email:</span>
                       <span id="leadEmail"></span>
                     </p>
+                    <p class="text-sm">
+                      <span class="text-medium">Mobile No:</span>
+                      <span id="mobile"></span>
+                    </p>
                   </div>
                 </div>
                 <div class="table-responsive">
@@ -249,7 +253,7 @@
                           <h6 style="padding-left: 25%;" class="text-sm text-medium">Course</h6>
                         </th>
                         <th class="rate">
-                          <h6 class="text-sm text-medium">Qty</h6>
+                          <h6 class="text-sm text-medium">Rate</h6>
                         </th>
                         <th class="amount">
                           <h6 class="text-sm text-medium">Amount</h6>
@@ -262,7 +266,7 @@
                       <tr>
                         <td>1</td>
                         <td>
-                          <select class="course tablestyle">
+                          <select class="course tablestyle" id="course">
                             <option value="">Select category</option>
                             <option>Software Testing(Java Selenium)</option>
                             <option>Automation Testing(Python Selenium)</option>
@@ -273,8 +277,8 @@
                             <option>Diploma in UI/UX Design</option>
                           </select>
                         </td>
-                        <td><input type="text" class="rate tablestyle"></td>
-                        <td><input type="text" class="amount tablestyle">
+                        <td><input type="text" class="rate tablestyle" id="rate"></td>
+                        <td><input type="text" class="amount tablestyle" id="amount">
                         </td>
                         <td><button class="deleteRow delbtn">Delete</button>
                         </td>
