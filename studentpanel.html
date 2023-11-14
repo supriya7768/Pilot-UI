@@ -229,9 +229,9 @@
           leadData.innerHTML = "";
 
           data
-
-            .filter((lead) => lead.status === "Done")
-
+            .filter(
+              (lead) => lead.status === "Done"
+            )
             .forEach((lead) => {
               const row = document.createElement("tr");
               // Set the lead id as a data attribute
@@ -243,6 +243,21 @@
                   ? "" // Set to empty if status is "Done" or "Close"
                   : `<input id="follow" type="date" />`;
 
+=========
+          data
+            .filter((lead) => lead.status === "Done")
+            .forEach((lead) => {
+              const row = document.createElement("tr");
+              // Set the lead id as a data attribute
+              row.dataset.leadId = lead.id; // Assuming lead has a property called 'id'
+
+              // Check if the status is "Done" or "Close"
+              const followOnContent =
+                lead.status === "Done"
+                  ? "" // Set to empty if status is "Done" or "Close"
+                  : `<input id="follow" type="date" />`;
+
+>>>>>>>>> Temporary merge branch 2
               row.innerHTML = `
                       <td>${lead.name}</td>
                       <td>${lead.mobile}</td>
@@ -271,9 +286,11 @@
                                   `
                     : lead.status === "Done"
                       ? `
-
+<<<<<<<<< Temporary merge branch 1
+                                      <a href="edit-invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
+=========
                                       <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
-
+>>>>>>>>> Temporary merge branch 2
                                           Invoice
                                       </a>
                                   `
