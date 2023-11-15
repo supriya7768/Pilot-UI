@@ -565,8 +565,6 @@
           `;
               row.insertAdjacentElement("afterend", editSection);
             }
-
-            // Function to save follow-up date and comment edits
             function saveEdits(leadId) {
               const newFollowUpDateInput =
                 document.getElementById("newFollowUpDate");
@@ -595,6 +593,22 @@
                   // Remove the edit section after saving
                   const editSection = document.querySelector(".edit-section");
                   editSection.remove();
+
+                  // Update the calendar and table entry simultaneously
+                  const row = document.querySelector(
+                    `tr[data-lead-id="${leadId}"]`
+                  );
+                  const followDateCell = row.querySelector("td:nth-child(4)");
+                  followDateCell.textContent = newFollowUpDate;
+
+                  const commentCell = row.querySelector("td:nth-child(3)");
+                  commentCell.textContent = newComment;
+
+                  // Remove the row from the table
+                  row.remove();
+
+                  // Update the calendar with the removed lead's date
+                  updateCalendarAfterRemove(removedLeadDate);
                 })
                 .catch((error) => {
                   console.error("Error:", error);
