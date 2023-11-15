@@ -122,7 +122,8 @@ async function addlead() {
     headers: { "Content-Type": "application/json" },
   });
 
-  const finalData = await result.json();
+  const finalData = await result.text(); // Assuming the response is plain text
+
 
   if (finalData.email != null || finalData.mobile != null) {
     $("#dt").html(formattedName + " is added as lead");
@@ -133,8 +134,9 @@ async function addlead() {
     );
 
   }
+
   // After adding the lead, fetch and update the lead data in leadlist.html
-  fetchLeadData();
+  // fetchLeadData();
 }
 
 function isValidMobileNumber(mobile) {
