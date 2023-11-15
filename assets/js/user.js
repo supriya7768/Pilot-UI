@@ -126,16 +126,12 @@ async function addlead() {
 
   if (finalData.email != null || finalData.mobile != null) {
     $("#dt").html(formattedName + " is added as lead");
-    setTimeout(() => {
-      location.reload();
-    }, 3000);
+
   } else {
     $("#dt").html(
       "Error:- Your email or mobile number is already in use. Please use new email or mobile number."
     );
-    setTimeout(() => {
-      location.reload();
-    }, 3000);
+
   }
   // After adding the lead, fetch and update the lead data in leadlist.html
   fetchLeadData();
