@@ -124,13 +124,15 @@ async function addlead() {
 
   const finalData = await result.text(); // Assuming the response is plain text
 
-  if (finalData.includes("Entry not done. Email or mobile already exists.")) {
-    $("#dt").html("Error: Email or mobile already exists.");
+
+  if (finalData.email != null || finalData.mobile != null) {
+    $("#dt").html(formattedName + " is added as lead");
+
   } else {
-    $("#dt").html(finalData);
-    setTimeout(() => {
-      location.reload();
-    }, 3000);
+    $("#dt").html(
+      "Error:- Your email or mobile number is already in use. Please use new email or mobile number."
+    );
+
   }
 
   // After adding the lead, fetch and update the lead data in leadlist.html
