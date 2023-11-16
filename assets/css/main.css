@@ -6894,22 +6894,36 @@ input[type="number"]::-webkit-outer-spin-button {
 .closebtn {
   margin-bottom: 10px;
   margin-left: 90%;
-  border-radius: 150px;
   height: 30px;
   width: 50px;
   font-size: 10px;
-
+  background: rgba(54, 92, 245, 0.12);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-radius: 0px;
+  /* background: transparent; */
+  color: #365cf5;
+  border-color: #365cf5
 }
 
 .delbtn {
   margin-bottom: 10px;
-  border-radius: 150px;
   height: 30px;
   width: 50px;
   font-size: 10px;
   margin-left: 0px;
-  color: white;
-  background-color: red;
+  /* color: white; */
+  /* background-color: red; */
+  background: rgba(213, 1, 0, 0.12);
+  color: #d50100;
+  border-color: #d50100;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-radius: 0px;
 }
 
 .tablestyle {
