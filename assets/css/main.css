@@ -6902,10 +6902,10 @@ input[type="number"]::-webkit-outer-spin-button {
   border-bottom-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  border-radius: 0px;
+  border-radius: 10px;
   /* background: transparent; */
   color: #365cf5;
-  border-color: #365cf5
+  border-color: #365cf5;
 }
 
 .delbtn {
@@ -6913,7 +6913,7 @@ input[type="number"]::-webkit-outer-spin-button {
   height: 30px;
   width: 50px;
   font-size: 10px;
-  margin-left: 0px;
+  margin-left: 90%;
   /* color: white; */
   /* background-color: red; */
   background: rgba(213, 1, 0, 0.12);
@@ -6923,7 +6923,7 @@ input[type="number"]::-webkit-outer-spin-button {
   border-bottom-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  border-radius: 0px;
+  border-radius: 10px;
 }
 
 .tablestyle {
@@ -6931,6 +6931,11 @@ input[type="number"]::-webkit-outer-spin-button {
   padding-left: 5px;
   border-radius: 5px;
   font-size: small;
+}
+
+.headings {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
 }
 
 /* .table-responsive {

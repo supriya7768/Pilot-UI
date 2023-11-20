@@ -21,6 +21,10 @@
       margin: 10px;
       align-items: center;
     }
+
+    .arrow {
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -154,7 +158,7 @@
           <div class="row align-items-center">
             <div class="col-md-6">
               <div class="title">
-                <h2 style="color: red;">Closed Leads</h2>
+                <h2 style="color: red;" class="headings">Closed Leads</h2>
               </div>
             </div>
             <!-- end col -->
@@ -162,7 +166,7 @@
           <!-- end row -->
         </div>
 
-        <a href="leadlist.html" class="main-btn primary-btn square-btn btn-hover closebtn">
+        <a href="leadlist.html" class="main-btn primary-btn square-btn btn-hover closebtn headings">
           All Leads
         </a>
 
@@ -223,6 +227,7 @@
   <script src="assets/js/jquery.js"></script>
   <!-- <script src="assets/js/user.js"></script> -->
   <script>
+
     function fetchLeadData() {
       fetch("http://localhost:8080/get-lead-data")
         .then((response) => response.json())
@@ -238,56 +243,98 @@
               // Set the lead id as a data attribute
               row.dataset.leadId = lead.id; // Assuming lead has a property called 'id'
 
-              row.innerHTML = `
-                      <td>${lead.name}</td>
-                      <td>${lead.mobile}</td>
-                      <td>${lead.email}</td>
-                      <td>${lead.courseIntrested}</td>
-                      <td>${lead.status}</td>
-                      <td>
-                          <div class="action">
-                              ${lead.status === "Pending"
+              row.innerHTML += `
+              <td>${lead.name}</td>
+              <td>${lead.mobile}</td>
+              <td>${lead.email}</td>
+              <td>${lead.courseIntrested}</td>
+              <td>${lead.status}</td>
+              <td>
+                  <div class="action">
+                      ${lead.status === "Pending" || lead.status === "Active"
                   ? `
-                                      <select onchange="changeStatus(this)">
-                                          <option value="">Edit</option>
-                                          <option value="Active">Active</option>
-                                          <option value="Done">Done</option>
-                                          <option value="Close">Close</option>
-                                      </select>
-                                  `
-                  : lead.status === "Active"
+                          <select onchange="changeStatus(this)">
+                              <option value="">Edit</option>
+                              <option value="Active">Active</option>
+                              <option value="Done">Done</option>
+                              <option value="Close">Close</option>
+                          </select>
+                      `
+                  : lead.status === "Done"
                     ? `
-                                      <select onchange="changeStatus(this)">
-                                          <option value="">Edit</option>
-                                          <option value="Pending">Pending</option>
-                                          <option value="Done">Done</option>
-                                          <option value="Close">Close</option>
-                                      </select>
-                                  `
-                    : lead.status === "Done"
+                          <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
+                              Invoice
+                          </a>
+                      `
+                    : lead.status === "Close"
                       ? `
-                                      <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
-                                          Invoice
-                                      </a>
-                                  `
-                      : lead.status === "Close"
-                        ? `
-                                      <a style="color: red;">Delete</a>
-                                  `
-                        : ""
+                          <a style="color: red;">Delete</a>
+                      `
+                      : ""
                 }
-                          </div>
-                      </td>
-                  `;
+                  </div>
+              </td>
+          `;
+              const arrowCell = document.createElement("td");
+              const arrow = document.createElement("span");
+              arrow.className = "arrow";
+              arrow.innerHTML = "&#9660;"; // Down arrow by default
+              arrow.style.cursor = "pointer"; // Set cursor property to pointer
+              arrowCell.appendChild(arrow);
+              row.appendChild(arrowCell);
 
-              // console.log(row);
+              // Create a new row for the dropdown
+              const dropdownRow = document.createElement("tr");
+              dropdownRow.style.display = "none"; // Initially hide the row for the dropdown
+              const dropdownCell = document.createElement("td");
+              dropdownCell.colSpan = 6; // Set colspan to cover all columns
+              const dropdown = document.createElement("div");
+              dropdown.className = "dropdown";
+              dropdown.style.display = "none"; // Initially hide the dropdown
+
+              // Display some random examples initially
+              dropdown.innerHTML = `
+            <ul>
+              <li>2023-01-01: Example comment 1</li>
+              <li>2023-01-02: Example comment 2</li>
+            </ul>
+          `;
+
+              dropdownCell.appendChild(dropdown);
+              dropdownRow.appendChild(dropdownCell);
+
+              // Initially hide the lead row
+              row.style.display = "table-row";
+
               leadData.appendChild(row);
+              leadData.appendChild(dropdownRow);
+
+              // Toggle dropdown visibility and arrow direction on arrow click
+              arrow.addEventListener("click", () => {
+                if (dropdownRow.style.display === "none") {
+                  dropdownRow.style.display = "table-row"; // Show the row for the dropdown
+                  arrow.innerHTML = "&#9650;"; // Up arrow when dropdown is shown
+                } else {
+                  dropdownRow.style.display = "none"; // Hide the row for the dropdown
+                  arrow.innerHTML = "&#9660;"; // Down arrow when dropdown is hidden
+                }
+
+                // Toggle dropdown visibility
+                if (dropdown.style.display === "none") {
+                  dropdown.style.display = "block"; // Show the dropdown
+                } else {
+                  dropdown.style.display = "none"; // Hide the dropdown
+                }
+              });
             });
         })
         .catch((error) => {
           console.error("Error fetching data: " + error);
         });
     }
+
+  </script>
+  <script>
 
     function getButtonClass(status) {
       switch (status) {
