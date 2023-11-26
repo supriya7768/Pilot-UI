@@ -15,7 +15,7 @@ function validateForm() {
     if (!field.value) {
       isValid = false;
       field.classList.add("error"); // You can style this using CSS for better visibility
-      field.setAttribute("title", "Please enter mandatory fields*");
+      field.setAttribute("title", `Please enter ${getFieldLabel(field)}*`);
     } else {
       field.classList.remove("error");
       field.removeAttribute("title");
@@ -24,19 +24,48 @@ function validateForm() {
 
   return isValid;
 }
+
+function getFieldLabel(field) {
+  // This function assumes that each input field has a corresponding label with a 'for' attribute.
+  const label = document.querySelector(`label[for="${field.id}"]`);
+  return label ? label.textContent.trim() : "mandatory fields";
+}
+
 function displayTooltipsForRequiredFields() {
   const formFields = document.querySelectorAll("input[required]");
 
+  const fieldMessages = {
+    // Add more fields and messages as needed
+    "#name": "Name is required",
+    "#email": "Email is required",
+    // Add more fields and messages as needed
+  };
+
   formFields.forEach((field) => {
     if (!field.value) {
-      field.classList.add("error"); // Apply error class to highlight the field
-      field.setAttribute("title", "Please enter mandatory fields*"); // Show tooltip
+      const fieldName = field.name.toLowerCase(); // Adjust the field name as needed
+      const errorMessage = fieldMessages[fieldName];
+
+      field.classList.add("error");
+      field.setAttribute("title", errorMessage || `Please enter ${getFieldLabel(field)}*`);
     } else {
       field.classList.remove("error");
       field.removeAttribute("title");
     }
   });
 }
+
+document.getElementById("myForm").addEventListener("submit", function (event) {
+  event.preventDefault();
+  displayTooltipsForRequiredFields(); // Display tooltips on form submission
+  if (validateForm()) {
+    addlead(); // If form is valid, proceed with adding the lead
+  }
+});
+
+// You might also consider triggering the tooltips on other events, like input or blur
+document.getElementById("myForm").addEventListener("input", displayTooltipsForRequiredFields);
+
 
 function formatName(name) {
   // Split the name into words
