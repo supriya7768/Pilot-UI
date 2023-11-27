@@ -184,9 +184,9 @@
                       <th>
                         <h6>Status</h6>
                       </th>
-                      <th>
+                      <!-- <th>
                         <h6>Action</h6>
-                      </th>
+                      </th> -->
                     </tr>
                     <!-- end table row-->
                   </thead>
@@ -246,11 +246,11 @@
                       <td>${lead.courseIntrested}</td>
                       <td>${lead.status}</td>
                       <td>
-                          <div class="action">
+                          <div class="action" style="display: none;>
                               ${lead.status === "Pending"
                 ? `
                                       <select onchange="changeStatus(this)">
-                                          <option value="">Edit</option>
+                                          <option value="">Select</option>
                                           <option value="Active">Active</option>
                                           <option value="Done">Done</option>
                                           <option value="Close">Close</option>
@@ -259,7 +259,7 @@
                 : lead.status === "Active"
                   ? `
                                       <select onchange="changeStatus(this)">
-                                          <option value="">Edit</option>
+                                          <option value="">Select</option>
                                           <option value="Pending">Pending</option>
                                           <option value="Done">Done</option>
                                           <option value="Close">Close</option>
@@ -279,13 +279,19 @@
               }
                           </div>
                       </td>
-                  `; const arrowCell = document.createElement("td");
+                      <td>
+              <div class="action">
+                <!-- Edit option -->
+                <a href="#" onclick="editLead(event, ${lead.id})">Edit</a>
+            </td>    
+                  `;
+            const arrowCell = document.createElement("td");
             const arrow = document.createElement("span");
             arrow.className = "arrow";
             arrow.innerHTML = "&#9660;"; // Down arrow by default
             arrow.style.cursor = "pointer"; // Set cursor property to pointer
             arrowCell.appendChild(arrow);
-            row.appendChild(arrowCell);
+            // row.appendChild(arrowCell);
 
             // Create a new row for the dropdown
             const dropdownRow = document.createElement("tr");
@@ -311,7 +317,7 @@
             row.style.display = "table-row";
 
             leadData.appendChild(row);
-            leadData.appendChild(dropdownRow);
+            // leadData.appendChild(dropdownRow);
 
             // Toggle dropdown visibility and arrow direction on arrow click
             arrow.addEventListener("click", () => {
@@ -468,6 +474,109 @@
     } else {
       return "";
     }
+  }
+
+  // Function to handle editing a lead
+  function editLead(event, leadId) {
+    event.preventDefault();
+    const existingEditSections = document.querySelectorAll(".edit-section");
+    existingEditSections.forEach((section) => section.remove());
+
+    const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
+
+    // Create and append the edit section
+    const editSection = document.createElement("tr");
+    editSection.classList.add("edit-section");
+    editSection.innerHTML = `
+              <td colspan="6">
+                <!-- Your edit form or content goes here -->
+                <label for="newFollowUpDate">New Follow-Up Date:</label>
+                <input type="date" id="newFollowUpDate" placeholder="DD/MM/YYYY" style="text-transform: uppercase; vertical-align: middle; margin-left: 5px; font-size:10px;">
+                <label style="margin-left:10px" for="newComment">New Comment:</label>
+                <textarea id="newComment" rows="1" style="vertical-align: middle; margin-left: 5px;" placeholder="Add new comment"></textarea>
+          
+                <!-- Add a new select element for changing status -->
+                <label style="margin-left:10px" for="changeStatus">Change Status:</label>
+                <select id="changeStatus" style="color: black;">
+                  <option value="">Select</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Active">Active</option>
+                  <option value="Done">Done</option>
+                  <option value="Close">Close</option>
+                </select>
+
+                <button class="main-btn primary-btn btn-hover" style="height: 5px; width: 5px; vertical-align: middle; margin-left: 5px; font-size:14px;" onclick="saveEdits(${leadId})">Save</button>
+                <!-- Action part (initially hidden) -->
+                <div class="action" style="display: block;">
+                  <!-- Include your action content here -->
+                  <!-- Add a placeholder for the select element -->
+                  <select style="display: none;"></select>
+                  <button class="main-btn primary-btn btn-hover" style="font-size: 14px; margin-left: 5px;" onclick="changeAction(${leadId})">Action Change</button>
+                </div>
+              </td>
+              `;
+
+    row.insertAdjacentElement("afterend", editSection);
+
+    // Hide the action part in the row
+    const actionSection = row.querySelector(".action");
+    actionSection.style.display = "none";
+  }
+
+  function saveEdits(leadId) {
+    const newFollowUpDateInput = document.getElementById("newFollowUpDate");
+    const newCommentInput = document.getElementById("newComment");
+    const changeStatusInput = document.getElementById("changeStatus");
+
+    const newFollowUpDate = newFollowUpDateInput.value;
+    const newComment = newCommentInput.value;
+    const changeStatus = changeStatusInput.value;
+
+    // Validate that all three fields are filled
+    if (!newFollowUpDate || !newComment || !changeStatus) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    // Fetch API to send data to the server
+    const url = `http://localhost:8080/save-edits/${leadId}`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `newFollowUpDate=${newFollowUpDate}&newComment=${newComment}&changeStatus=${changeStatus}`,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error saving edits");
+        }
+        return response.text();
+      })
+      .then((data) => {
+        console.log(data); // Log the response from the server
+        // Remove the edit section after saving
+        const editSection = document.querySelector(".edit-section");
+        editSection.remove();
+
+        // Update the calendar and table entry simultaneously
+        const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
+        const followDateCell = row.querySelector("td:nth-child(4)");
+        followDateCell.textContent = newFollowUpDate;
+
+        const commentCell = row.querySelector("td:nth-child(3)");
+        commentCell.textContent = newComment;
+
+        // Remove the row from the table
+        row.remove();
+
+        // Update the calendar with the removed lead's date
+        updateCalendarAfterRemove(removedLeadDate);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle the error, show an alert, or perform other actions
+      });
   }
 
   document.addEventListener("DOMContentLoaded", function () {

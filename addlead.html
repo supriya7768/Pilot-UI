@@ -170,7 +170,7 @@
               <div class="profile-info">
                 <div class="d-flex align-items-center ">
                 </div>
-                <form onsubmit="submitForm(event)">
+                <form id="myForm" onsubmit="submitForm(event)">
                   <div class="input-style-1">
                     <label for="name">Lead Name<span style="color: red;">*</span></label>
                     <input id="name" type="text" placeholder="Full Name" title="Enter the full name of the lead"
@@ -242,9 +242,11 @@
                       <label>Interest</label>
                       <div class="select-position">
                         <select class="light-bg" id="interest">
+                          <option value="">Expected</option>
                           <option value="">High</option>
                           <option value="">Medium</option>
                           <option value="">Low</option>
+
                         </select>
                       </div>
                     </div>
