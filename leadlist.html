@@ -246,7 +246,7 @@
                       <td>${lead.courseIntrested}</td>
                       <td>${lead.status}</td>
                       <td>
-                          <div class="action" style="display: none;>
+                          <div class="action" style="display: none;">
                               ${lead.status === "Pending"
                 ? `
                                       <select onchange="changeStatus(this)">
@@ -354,7 +354,7 @@
       case "Close":
         return "newbtnclose";
       case "Pending":
-        return "newbtnpending";
+        return "newbtnPending";
       default:
         return "default-btn"; // You can define a default class for other statuses
     }
@@ -371,12 +371,33 @@
     const selectedStatus = selectElement.value;
     const row = selectElement.closest("tr");
     const leadId = row.dataset.leadId;
+    const comment = row.querySelector("td:nth-child(3)").textContent; // Assuming the comment is in the third column
+
+    // Check if a comment exists before allowing status change
+    if (!comment.trim()) {
+      alert("Please add a compulsory comment before changing the status.");
+      selectElement.value = row.querySelector("td:nth-child(5)").textContent; // Reset the select element
+      return;
+    }
 
     if (!showConfirmationDialog(selectedStatus, row)) {
       // User clicked Cancel in the confirmation dialog
-      selectElement.value =
-        row.querySelector("td:nth-child(5)").textContent;
+      selectElement.value = row.querySelector("td:nth-child(5)").textContent;
       return;
+    }
+
+    const followDateCell = row.querySelector("td:nth-child(4)");
+
+    if (selectedStatus === "Done" || selectedStatus === "Close") {
+      // Update the follow date to empty when the status is "Done" or "Close"
+      const removedLeadDate = followDateCell.textContent;
+      followDateCell.textContent = "";
+
+      // Remove the row from the table
+      row.remove();
+
+      // Update the calendar with the removed lead's date
+      updateCalendarAfterRemove(removedLeadDate);
     }
 
     fetch(`http://localhost:8080/update-lead/${leadId}`, {
@@ -396,40 +417,20 @@
         const statusCell = row.querySelector("td:nth-child(5)");
         const actionCell = row.querySelector("td:nth-child(6)");
 
-        statusCell.textContent = updatedStatus;
-        statusCell.className = getButtonClass(updatedStatus);
+        statusCell.textContent = selectedStatus;
+        statusCell.className = getButtonClass(selectedStatus);
         actionCell.innerHTML = getActionHTML(
-          updatedStatus,
+          selectedStatus,
           row.cells[0].textContent,
           row.cells[2].textContent
         );
-
-        if (updatedStatus === "Done") {
-          if (confirm("Do you want to change status as Done?")) {
-            statusCell.textContent = updatedStatus;
-            statusCell.className = getButtonClass(updatedStatus);
-            actionCell.innerHTML = getActionHTML(
-              updatedStatus,
-              row.cells[0].textContent,
-              row.cells[2].textContent
-            );
-          } else {
-            // Revert to the previous status
-            selectElement.value = statusCell.textContent;
-          }
-        } else {
-          statusCell.textContent = updatedStatus;
-          statusCell.className = getButtonClass(updatedStatus);
-          actionCell.innerHTML = getActionHTML(updatedStatus);
-        }
-
-        // Reload the page after updating the status
-        window.location.reload();
       })
       .catch((error) => {
         console.error("Error updating status: " + error);
       });
   }
+
+
 
   function getActionHTML(status, name, email) {
     // Remove double quotes from status if present
@@ -506,7 +507,7 @@
                 </select>
 
                 <button class="main-btn primary-btn btn-hover" style="height: 5px; width: 5px; vertical-align: middle; margin-left: 5px; font-size:14px;" onclick="saveEdits(${leadId})">Save</button>
-                <!-- Action part (initially hidden) -->
+               <!-- Action part (initially hidden) -->
                 <div class="action" style="display: block;">
                   <!-- Include your action content here -->
                   <!-- Add a placeholder for the select element -->
@@ -589,24 +590,49 @@
   });
 </script>
 <script>
+  // Function to reset the display of all leads
+  function resetLeadDisplay() {
+    var leadRows = document.querySelectorAll("#leadData tr");
+    leadRows.forEach(function (leadRow) {
+      leadRow.style.display = "table-row";
+    });
+  }
+
+  // Function to search leads
   function searchLeads() {
-    var searchTerm = document
-      .getElementById("leadSearchInput")
-      .value.toLowerCase();
+    var searchTerm = document.getElementById("leadSearchInput").value.toLowerCase();
     var leadRows = document.querySelectorAll("#leadData tr");
 
-    leadRows.forEach(function (leadRow) {
-      var leadNameText = leadRow
-        .querySelector("td:nth-child(1)")
-        .textContent.toLowerCase();
+    var matchingLeads = [];
 
-      if (leadNameText.includes(searchTerm)) {
-        leadRow.style.display = "table-row";
+    leadRows.forEach(function (leadRow) {
+      var leadNameText = leadRow.querySelector("td:nth-child(1)").textContent.toLowerCase();
+      var leadMobileText = leadRow.querySelector("td:nth-child(2)").textContent.toLowerCase();
+
+      if (leadNameText.includes(searchTerm) || leadMobileText.includes(searchTerm)) {
+        matchingLeads.push(leadRow);
       } else {
         leadRow.style.display = "none";
       }
     });
+
+    // Display only the matching leads
+    matchingLeads.forEach(function (matchingLead) {
+      matchingLead.style.display = "table-row";
+    });
   }
+
+  // Attach an event listener to the search input field
+  document.getElementById("leadSearchInput").addEventListener("input", function () {
+    // Reset display before searching
+    resetLeadDisplay();
+
+    // Perform the search
+    searchLeads();
+  });
+
+
+
 </script>
 </body>
 

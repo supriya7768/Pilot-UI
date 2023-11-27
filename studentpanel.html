@@ -294,7 +294,7 @@
       case "Close":
         return "newbtnclose";
       case "Pending":
-        return "newbtnpending";
+        return "newbtnPending";
       default:
         return "default-btn"; // You can define a default class for other statuses
     }
@@ -427,15 +427,11 @@
 </script>
 <script>
   function searchLeads() {
-    var searchTerm = document
-      .getElementById("leadSearchInput")
-      .value.toLowerCase();
+    var searchTerm = document.getElementById("leadSearchInput").value.toLowerCase();
     var leadRows = document.querySelectorAll("#leadData tr");
 
     leadRows.forEach(function (leadRow) {
-      var leadNameText = leadRow
-        .querySelector("td:nth-child(1)")
-        .textContent.toLowerCase();
+      var leadNameText = leadRow.querySelector("td:nth-child(1)").textContent.toLowerCase();
 
       if (leadNameText.includes(searchTerm)) {
         leadRow.style.display = "table-row";
@@ -444,6 +440,12 @@
       }
     });
   }
+
+  // Add an event listener for the "input" event on the search input field
+  document.getElementById("leadSearchInput").addEventListener("input", function () {
+    searchLeads();
+  });
+
 </script>
 </body>
 

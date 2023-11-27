@@ -193,9 +193,9 @@
                       <th>
                         <h6>Status</h6>
                       </th>
-                      <th>
+                      <!-- <th>
                         <h6>Action</h6>
-                      </th>
+                      </th> -->
                     </tr>
                     <!-- end table row-->
                   </thead>
@@ -250,7 +250,7 @@
               <td>${lead.courseIntrested}</td>
               <td>${lead.status}</td>
               <td>
-                  <div class="action">
+                  <div class="action"  style="display: none;">
                       ${lead.status === "Pending" || lead.status === "Active"
                   ? `
                           <select onchange="changeStatus(this)">
@@ -274,64 +274,139 @@
                 }
                   </div>
               </td>
+              <td>
+                <div class="action">
+                  <!-- Edit option -->
+                  <a href="#" onclick="editLead(event, ${lead.id})">Edit</a>
+                </div>
+              </td>
           `;
-              const arrowCell = document.createElement("td");
-              const arrow = document.createElement("span");
-              arrow.className = "arrow";
-              arrow.innerHTML = "&#9660;"; // Down arrow by default
-              arrow.style.cursor = "pointer"; // Set cursor property to pointer
-              arrowCell.appendChild(arrow);
-              row.appendChild(arrowCell);
-
-              // Create a new row for the dropdown
-              const dropdownRow = document.createElement("tr");
-              dropdownRow.style.display = "none"; // Initially hide the row for the dropdown
-              const dropdownCell = document.createElement("td");
-              dropdownCell.colSpan = 6; // Set colspan to cover all columns
-              const dropdown = document.createElement("div");
-              dropdown.className = "dropdown";
-              dropdown.style.display = "none"; // Initially hide the dropdown
-
-              // Display some random examples initially
-              dropdown.innerHTML = `
-            <ul>
-              <li>2023-01-01: Example comment 1</li>
-              <li>2023-01-02: Example comment 2</li>
-            </ul>
-          `;
-
-              dropdownCell.appendChild(dropdown);
-              dropdownRow.appendChild(dropdownCell);
-
-              // Initially hide the lead row
-              row.style.display = "table-row";
 
               leadData.appendChild(row);
-              leadData.appendChild(dropdownRow);
 
-              // Toggle dropdown visibility and arrow direction on arrow click
-              arrow.addEventListener("click", () => {
-                if (dropdownRow.style.display === "none") {
-                  dropdownRow.style.display = "table-row"; // Show the row for the dropdown
-                  arrow.innerHTML = "&#9650;"; // Up arrow when dropdown is shown
-                } else {
-                  dropdownRow.style.display = "none"; // Hide the row for the dropdown
-                  arrow.innerHTML = "&#9660;"; // Down arrow when dropdown is hidden
-                }
-
-                // Toggle dropdown visibility
-                if (dropdown.style.display === "none") {
-                  dropdown.style.display = "block"; // Show the dropdown
-                } else {
-                  dropdown.style.display = "none"; // Hide the dropdown
-                }
-              });
             });
         })
         .catch((error) => {
           console.error("Error fetching data: " + error);
         });
     }
+
+  </script>
+
+  <script>
+
+    // Function to handle editing a lead
+    function editLead(event, leadId) {
+      event.preventDefault();
+      const existingEditSections = document.querySelectorAll(".edit-section");
+      existingEditSections.forEach((section) => section.remove());
+
+      const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
+
+      // Create and append the edit section
+      const editSection = document.createElement("tr");
+      editSection.classList.add("edit-section");
+      editSection.innerHTML = `
+              <td colspan="6">
+                <!-- Your edit form or content goes here -->
+                <label for="newFollowUpDate">New Follow-Up Date:</label>
+                <input type="date" id="newFollowUpDate" placeholder="DD/MM/YYYY" style="text-transform: uppercase; vertical-align: middle; margin-left: 5px; font-size:10px;">
+                <label style="margin-left:10px" for="newComment">New Comment:</label>
+                <textarea id="newComment" rows="1" style="vertical-align: middle; margin-left: 5px;" placeholder="Add new comment"></textarea>
+          
+                <!-- Add a new select element for changing status -->
+                <label style="margin-left:10px" for="changeStatus">Change Status:</label>
+                <select id="changeStatus" style="color: black;">
+                  <option value="">Select</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Active">Active</option>
+                  <option value="Done">Done</option>
+                  <option value="Close">Close</option>
+                </select>
+
+                <button class="main-btn primary-btn btn-hover" style="height: 5px; width: 5px; vertical-align: middle; margin-left: 5px; font-size:14px;" onclick="saveEdits(${leadId})">Save</button>
+              
+                <!-- Action part (initially hidden) -->
+                <div class="action" style="display: block;">
+                  <!-- Include your action content here -->
+                  <!-- Add a placeholder for the select element -->
+                  <select style="display: none;"></select>
+                  <button class="main-btn primary-btn btn-hover" style="font-size: 14px; margin-left: 5px;" onclick="changeAction(${leadId})">Action Change</button>
+                </div>
+              </td>
+              `;
+
+      row.insertAdjacentElement("afterend", editSection);
+
+      // Hide the action part in the row
+      const actionSection = row.querySelector(".action");
+      actionSection.style.display = "none";
+    }
+
+    function saveEdits(leadId) {
+      const newFollowUpDateInput = document.getElementById("newFollowUpDate");
+      const newCommentInput = document.getElementById("newComment");
+      const changeStatusInput = document.getElementById("changeStatus");
+
+      const newFollowUpDate = newFollowUpDateInput.value;
+      const newComment = newCommentInput.value;
+      const changeStatus = changeStatusInput.value;
+
+      // Validate that all three fields are filled
+      if (!newFollowUpDate || !newComment || !changeStatus) {
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      // Fetch API to send data to the server
+      const url = `http://localhost:8080/save-edits/${leadId}`;
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `newFollowUpDate=${newFollowUpDate}&newComment=${newComment}&changeStatus=${changeStatus}`,
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Error saving edits");
+          }
+          return response.text();
+        })
+        .then((data) => {
+          console.log(data); // Log the response from the server
+          // Remove the edit section after saving
+          const editSection = document.querySelector(".edit-section");
+          editSection.remove();
+
+          // Update the calendar and table entry simultaneously
+          const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
+          const followDateCell = row.querySelector("td:nth-child(4)");
+          followDateCell.textContent = newFollowUpDate;
+
+          const commentCell = row.querySelector("td:nth-child(3)");
+          commentCell.textContent = newComment;
+
+          // Remove the row from the table
+          row.remove();
+
+          // Update the calendar with the removed lead's date
+          updateCalendarAfterRemove(removedLeadDate);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          // Handle the error, show an alert, or perform other actions
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      fetchLeadData();
+      document.addEventListener("change", function (event) {
+        if (event.target.tagName === "SELECT") {
+          changeStatus(event.target);
+        }
+      });
+    });
 
   </script>
   <script>
@@ -345,7 +420,7 @@
         case "Close":
           return "newbtnclose";
         case "Pending":
-          return "newbtnpending";
+          return "newbtnPending";
         default:
           return "default-btn"; // You can define a default class for other statuses
       }
@@ -478,15 +553,11 @@
   </script>
   <script>
     function searchLeads() {
-      var searchTerm = document
-        .getElementById("leadSearchInput")
-        .value.toLowerCase();
+      var searchTerm = document.getElementById("leadSearchInput").value.toLowerCase();
       var leadRows = document.querySelectorAll("#leadData tr");
 
       leadRows.forEach(function (leadRow) {
-        var leadNameText = leadRow
-          .querySelector("td:nth-child(1)")
-          .textContent.toLowerCase();
+        var leadNameText = leadRow.querySelector("td:nth-child(1)").textContent.toLowerCase();
 
         if (leadNameText.includes(searchTerm)) {
           leadRow.style.display = "table-row";
@@ -495,6 +566,13 @@
         }
       });
     }
+
+    // Add an event listener for the "input" event on the search input field
+    document.getElementById("leadSearchInput").addEventListener("input", function () {
+      // Call the searchLeads function whenever the user types or deletes characters
+      searchLeads();
+    });
+
   </script>
 </body>
 
