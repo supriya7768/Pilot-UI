@@ -1,11 +1,11 @@
 //===========================field in addlead.html========================
 
-function submitForm(event) {
-  event.preventDefault(); // Prevent the default form submission behavior
-  if (validateForm()) {
-    addlead(); // If form is valid, proceed with adding the lead
-  }
-}
+// function submitForm(event) {
+//   event.preventDefault(); // Prevent the default form submission behavior
+//   if (validateForm()) {
+//     addlead(); // If form is valid, proceed with adding the lead
+//   }
+// }
 
 function validateForm() {
   let isValid = true;
@@ -47,7 +47,10 @@ function displayTooltipsForRequiredFields() {
       const errorMessage = fieldMessages[fieldName];
 
       field.classList.add("error");
-      field.setAttribute("title", errorMessage || `Please enter ${getFieldLabel(field)}*`);
+      field.setAttribute(
+        "title",
+        errorMessage || `Please enter ${getFieldLabel(field)}*`
+      );
     } else {
       field.classList.remove("error");
       field.removeAttribute("title");
@@ -64,8 +67,9 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
 });
 
 // You might also consider triggering the tooltips on other events, like input or blur
-document.getElementById("myForm").addEventListener("input", displayTooltipsForRequiredFields);
-
+document
+  .getElementById("myForm")
+  .addEventListener("input", displayTooltipsForRequiredFields);
 
 function formatName(name) {
   // Split the name into words
@@ -151,21 +155,28 @@ async function addlead() {
     headers: { "Content-Type": "application/json" },
   });
 
-  const finalData = await result.text(); // Assuming the response is plain text
-
-
-  if (finalData.email != null || finalData.mobile != null) {
+  if (result.ok) {
     $("#dt").html(formattedName + " is added as lead");
-
   } else {
-    $("#dt").html(
-      "Error:- Your email or mobile number is already in use. Please use new email or mobile number."
-    );
-
+    $("#dt").html("Error: Failed to add lead. Please try again later.");
   }
 
   // After adding the lead, fetch and update the lead data in leadlist.html
   // fetchLeadData();
+}
+
+function submitForm(event) {
+  event.preventDefault(); // Prevent the default form submission behavior
+  const submitButton = document.getElementById("submitButton");
+  submitButton.disabled = true; // Disable the submit button
+
+  if (validateForm()) {
+    addlead().then(() => {
+      submitButton.disabled = false; // Enable the submit button
+    });
+  } else {
+    submitButton.disabled = false; // Enable the submit button in case of validation failure
+  }
 }
 
 function isValidMobileNumber(mobile) {

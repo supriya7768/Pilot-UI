@@ -344,7 +344,6 @@
       });
   }
 
-
   function getButtonClass(status) {
     switch (status) {
       case "Active":
@@ -430,8 +429,6 @@
       });
   }
 
-
-
   function getActionHTML(status, name, email) {
     // Remove double quotes from status if present
     // status = status.replaceAll('"', "");
@@ -509,8 +506,6 @@
                 <button class="main-btn primary-btn btn-hover" style="height: 5px; width: 5px; vertical-align: middle; margin-left: 5px; font-size:14px;" onclick="saveEdits(${leadId})">Save</button>
                <!-- Action part (initially hidden) -->
                 <div class="action" style="display: block;">
-                  <!-- Include your action content here -->
-                  <!-- Add a placeholder for the select element -->
                   <select style="display: none;"></select>
                   <button class="main-btn primary-btn btn-hover" style="font-size: 14px; margin-left: 5px;" onclick="changeAction(${leadId})">Action Change</button>
                 </div>
@@ -560,19 +555,25 @@
         const editSection = document.querySelector(".edit-section");
         editSection.remove();
 
-        // Update the calendar and table entry simultaneously
-        const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
-        const followDateCell = row.querySelector("td:nth-child(4)");
-        followDateCell.textContent = newFollowUpDate;
+                // Reload the page after saving edits
+                window.location.reload();
 
-        const commentCell = row.querySelector("td:nth-child(3)");
-        commentCell.textContent = newComment;
+        // Update the calendar and table entry simultaneously
+        // const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
+        // const followDateCell = row.querySelector("td:nth-child(4)");
+        // followDateCell.textContent = newFollowUpDate;
+
+        // const statusi = row.querySelector("td:nth-child(5)");
+        // statusi.textContent = changeStatus;
 
         // Remove the row from the table
-        row.remove();
-
+        if(status === "Done" || status === "Closed"){
+          row.remove();
+        }
+        
         // Update the calendar with the removed lead's date
         updateCalendarAfterRemove(removedLeadDate);
+
       })
       .catch((error) => {
         console.error("Error:", error);

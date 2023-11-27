@@ -1,319 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.svg"
+      type="image/x-icon"
+    />
+    <title>Shepherd</title>
+    <!-- ========== All CSS files linkup ========= -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="assets/css/lineicons.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/css/materialdesignicons.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+      .event-bubble {
+        cursor: pointer;
+      }
+    </style>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
-  <title>Shepherd</title>
-  <!-- ========== All CSS files linkup ========= -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="assets/css/lineicons.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="assets/css/fullcalendar.css" />
-  <link rel="stylesheet" href="assets/css/fullcalendar.css" />
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <style>
-    .event-bubble {
-      cursor: pointer;
-    }
-  </style>
-</head>
-
-<body>
-  <!-- ======== Preloader =========== -->
-  <div id="preloader">
-    <div class="spinner"></div>
-  </div>
-  <!-- ======== Preloader =========== -->
-  <!-- ======== sidebar-nav start =========== -->
-  <aside class="sidebar-nav-wrapper">
-    <div class="navbar-logo">
-      <a href="index.html">
-        <img style="height: 150px; width: 150px" src="./assets/images/SHEPHERD 2.jpg" />
-      </a>
+  <body>
+    <!-- ======== Preloader =========== -->
+    <div id="preloader">
+      <div class="spinner"></div>
     </div>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item">
-          <a href="index.html">
-            <span class="icon">
-              <img class="hi" src="./assets/images/dashboard.png" alt="" />
-            </span>
-            <span class="text">Dashboard</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item">
-          <a href="addlead.html">
-            <span class="icon">
-              <img class="hi" src="./assets/images/user.png" alt="" />
-            </span>
-            <span class="text">Add Lead</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item">
-          <a href="leadlist.html">
-            <span class="icon">
-              <img class="hi" src="./assets/images/group.png" alt="" />
-            </span>
-            <span class="text">Lead List</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item">
-          <a href="invoice.html">
-            <span class="icon">
-              <img class="hi" src="./assets/images/invoice.png" alt="" />
-            </span>
-            <span class="text">Invoice</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item">
-          <a href="studentpanel.html">
-            <span class="icon">
-              <img class="hi" src="./assets/images/students.png" alt="" />
-            </span>
-            <span class="text">Student Panel</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item">
-          <a href="adminpanel.html">
-            <span class="icon">
-              <img class="hi" src="./assets/images/admin.png" alt="" />
-            </span>
-            <span class="text">Admin Panel</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </aside>
-  <!-- ======== sidebar-nav end =========== -->
-  <div class="overlay"></div>
-  <!-- ======== sidebar-nav end =========== -->
-  <!-- ======== main-wrapper start =========== -->
-  <main class="main-wrapper">
-    <!-- ========== header start ========== -->
-    <header class="header">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-5 col-md-5 col-6">
-            <div class="header-left d-flex align-items-center">
-              <div class="menu-toggle-btn mr-15">
-                <button id="menu-toggle" class="main-btn primary-btn btn-hover">
-                  <i class="lni lni-chevron-left me-2"></i> Menu
-                </button>
+    <!-- ======== Preloader =========== -->
+    <!-- ======== sidebar-nav start =========== -->
+    <aside class="sidebar-nav-wrapper">
+      <div class="navbar-logo">
+        <a href="index.html">
+          <img
+            style="height: 150px; width: 150px"
+            src="./assets/images/SHEPHERD 2.jpg"
+          />
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="index.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/dashboard.png" alt="" />
+              </span>
+              <span class="text">Dashboard</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="addlead.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/user.png" alt="" />
+              </span>
+              <span class="text">Add Lead</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="leadlist.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/group.png" alt="" />
+              </span>
+              <span class="text">Lead List</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="invoice.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/invoice.png" alt="" />
+              </span>
+              <span class="text">Invoice</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="studentpanel.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/students.png" alt="" />
+              </span>
+              <span class="text">Student Panel</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="adminpanel.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/admin.png" alt="" />
+              </span>
+              <span class="text">Admin Panel</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- ======== sidebar-nav end =========== -->
+    <div class="overlay"></div>
+    <!-- ======== sidebar-nav end =========== -->
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <header class="header">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-6">
+              <div class="header-left d-flex align-items-center">
+                <div class="menu-toggle-btn mr-15">
+                  <button
+                    id="menu-toggle"
+                    class="main-btn primary-btn btn-hover"
+                  >
+                    <i class="lni lni-chevron-left me-2"></i> Menu
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-7 col-md-7 col-6">
-            <div class="header-right">
-              <!-- profile start -->
-              <div class="profile-box ml-15">
-                <button class="dropdown-toggle bg-transparent border-0" type="button" id="profile"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  <div class="profile-info">
-                    <div class="info">
-                      <div class="image">
-                        <img src="assets/images/logo.png" alt="" />
-                      </div>
-                      <div>
-                        <h6 class="fw-500">Testing Shastra</h6>
-                        <p>Admin</p>
-                      </div>
-                    </div>
-                  </div>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
-                  <li>
-                    <div class="author-info flex items-center !p-1">
-                      <div class="image">
-                        <img src="assets/images/profile/profile-image.png" alt="image" />
-                      </div>
-                      <div class="content">
-                        <h4 class="text-sm">Adam Joe</h4>
-                        <!-- <a class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs" href="#">Email@gmail.com</a> -->
+            <div class="col-lg-7 col-md-7 col-6">
+              <div class="header-right">
+                <!-- profile start -->
+                <div class="profile-box ml-15">
+                  <button
+                    class="dropdown-toggle bg-transparent border-0"
+                    type="button"
+                    id="profile"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <div class="profile-info">
+                      <div class="info">
+                        <div class="image">
+                          <img src="assets/images/logo.png" alt="" />
+                        </div>
+                        <div>
+                          <h6 class="fw-500">Testing Shastra</h6>
+                          <p>Admin</p>
+                        </div>
                       </div>
                     </div>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                    <a href="#0">
-                      <i class="lni lni-user"></i> View Profile
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#0">
-                      <i class="lni lni-alarm"></i> Notifications
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
-                  </li>
-                  <li>
-                    <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                    <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
-                  </li>
-                </ul>
+                  </button>
+                  <ul
+                    class="dropdown-menu dropdown-menu-end"
+                    aria-labelledby="profile"
+                  >
+                    <li>
+                      <div class="author-info flex items-center !p-1">
+                        <div class="image">
+                          <img
+                            src="assets/images/profile/profile-image.png"
+                            alt="image"
+                          />
+                        </div>
+                        <div class="content">
+                          <h4 class="text-sm">Adam Joe</h4>
+                          <!-- <a class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs" href="#">Email@gmail.com</a> -->
+                        </div>
+                      </div>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#0">
+                        <i class="lni lni-user"></i> View Profile
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#0">
+                        <i class="lni lni-alarm"></i> Notifications
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
+                    </li>
+                    <li>
+                      <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- profile end -->
               </div>
-              <!-- profile end -->
             </div>
           </div>
         </div>
-      </div>
-    </header>
-    <!-- ========== header end ========== -->
-    <!-- ========== section start ========== -->
-    <section class="section">
-      <div class="container-fluid">
-        <!-- ========== title-wrapper start ========== -->
-        <div class="title-wrapper pt-30">
-          <div class="row align-items-center">
-            <div class="col-md-6">
-              <div class="title">
-                <h2>Hello, Testing Shastra</h2>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="col-lg-5 text-sm">
-              <div class="card-style calendar-card mb-30">
-                <div id="calendar-mini" class="calendar2"></div>
-              </div>
-            </div>
-            <!-- End Col -->
-            <div class="col-lg-7 w-100 text-xs">
-              <div class="card-style mb-30">
-                <div class="title d-flex flex-wrap align-items-center justify-content-between">
-                  <div class="left">
-                    <h6 class="text-small mb-30">Follow Up</h6>
-                  </div>
-                  <div class="right">
-                    <div class="select-style-1">
-                      <!-- <h4>Check leads on</h4> -->
-                      <input type="date" id="followDateInput" />
-                    </div>
-                    <!-- end select -->
-                  </div>
+      </header>
+      <!-- ========== header end ========== -->
+      <!-- ========== section start ========== -->
+      <section class="section">
+        <div class="container-fluid">
+          <!-- ========== title-wrapper start ========== -->
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <div class="title">
+                  <h2>Hello, Testing Shastra</h2>
                 </div>
-                <!-- End Title -->
-                <div class="table-responsive">
-                  <table class="table top-selling-table">
-                    <thead>
-                      <tr>
-                        <th>
-                          <h6>Name</h6>
-                        </th>
-                        <th>
-                          <h6>Mobile No</h6>
-                        </th>
-                        <th>
-                          <h6>Recent Comment</h6>
-                        </th>
-                        <th>
-                          <h6>Follow On</h6>
-                        </th>
-                        <th>
-                          <h6>Status</h6>
-                        </th>
-                        <!-- <th>
+              </div>
+            </div>
+
+            <div>
+              <div class="col-lg-5 text-sm">
+                <div class="card-style calendar-card mb-30">
+                  <div id="calendar-mini" class="calendar2"></div>
+                </div>
+              </div>
+              <!-- End Col -->
+              <div class="col-lg-7 w-100 text-xs">
+                <div class="card-style mb-30">
+                  <div
+                    class="title d-flex flex-wrap align-items-center justify-content-between"
+                  >
+                    <div class="left">
+                      <h6 class="text-small mb-30">Follow Up</h6>
+                    </div>
+                    <div class="right">
+                      <div class="select-style-1">
+                        <!-- <h4>Check leads on</h4> -->
+                        <input type="date" id="followDateInput" />
+                      </div>
+                      <!-- end select -->
+                    </div>
+                  </div>
+                  <!-- End Title -->
+                  <div class="table-responsive">
+                    <table class="table top-selling-table">
+                      <thead>
+                        <tr>
+                          <th>
+                            <h6>Name</h6>
+                          </th>
+                          <th>
+                            <h6>Mobile No</h6>
+                          </th>
+                          <th>
+                            <h6>Recent Comment</h6>
+                          </th>
+                          <th>
+                            <h6>Follow On</h6>
+                          </th>
+                          <th>
+                            <h6>Status</h6>
+                          </th>
+                          <!-- <th>
                           <h6>Action</h6>
                         </th> -->
-                      </tr>
-                      <!-- end table row-->
-                    </thead>
+                        </tr>
+                        <!-- end table row-->
+                      </thead>
 
-                    <tbody id="leadTable">
-                      <!--Adding Leads Dynamically-->
-                    </tbody>
-                  </table>
-                  <!-- End Table -->
+                      <tbody id="leadTable">
+                        <!--Adding Leads Dynamically-->
+                      </tbody>
+                    </table>
+                    <!-- End Table -->
+                  </div>
                 </div>
               </div>
+              <!-- End Col -->
             </div>
-            <!-- End Col -->
+            <!-- End Row -->
           </div>
-          <!-- End Row -->
-        </div>
-        <!-- end container -->
-        <!-- </section> -->
-        <!-- ========== section end ========== -->
+          <!-- end container -->
+          <!-- </section> -->
+          <!-- ========== section end ========== -->
 
-        <!-- </main> -->
-        <!-- ======== main-wrapper end =========== -->
+          <!-- </main> -->
+          <!-- ======== main-wrapper end =========== -->
 
-        <!-- ========= All Javascript files linkup ======== -->
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/Chart.min.js"></script>
-        <script src="assets/js/dynamic-pie-chart.js"></script>
-        <script src="assets/js/moment.min.js"></script>
-        <script src="assets/js/fullcalendar.js"></script>
-        <script src="assets/js/jvectormap.min.js"></script>
-        <script src="assets/js/world-merc.js"></script>
-        <script src="assets/js/polyfill.js"></script>
-        <script src="assets/js/main.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="./assets/js/newcalender.js"></script>
-        <script src="./assets/js/user.js"></script>
-        <script src="./assets/js/jquery.js"></script>
+          <!-- ========= All Javascript files linkup ======== -->
+          <script src="assets/js/bootstrap.bundle.min.js"></script>
+          <script src="assets/js/Chart.min.js"></script>
+          <script src="assets/js/dynamic-pie-chart.js"></script>
+          <script src="assets/js/moment.min.js"></script>
+          <script src="assets/js/fullcalendar.js"></script>
+          <script src="assets/js/jvectormap.min.js"></script>
+          <script src="assets/js/world-merc.js"></script>
+          <script src="assets/js/polyfill.js"></script>
+          <script src="assets/js/main.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <script src="./assets/js/newcalender.js"></script>
+          <!-- <script src="./assets/js/user.js"></script> -->
+          <script src="./assets/js/jquery.js"></script>
 
-        <script>
-          document.addEventListener("DOMContentLoaded", function () {
-            var calendarMiniEl = document.getElementById("calendar-mini");
-            var calendarMini = new FullCalendar.Calendar(calendarMiniEl, {
-              initialView: "dayGridMonth",
-              headerToolbar: {
-                end: "today prev,next",
-              },
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              var calendarMiniEl = document.getElementById("calendar-mini");
+              var calendarMini = new FullCalendar.Calendar(calendarMiniEl, {
+                initialView: "dayGridMonth",
+                headerToolbar: {
+                  end: "today prev,next",
+                },
+              });
+              calendarMini.render();
             });
-            calendarMini.render();
-          });
-        </script>
+          </script>
 
-        <script>
-          function fetchLeadsByDate(selectedDate) {
-            fetch("http://localhost:8080/get-lead-data-dashboard")
-              .then((response) => response.json())
-              .then((data) => {
-                const leadData = document.getElementById("leadTable");
-                leadData.innerHTML = ""; // Clear existing data
+          <script>
+            function fetchLeadsByDate(selectedDate) {
+              fetch("http://localhost:8080/get-lead-data-dashboard")
+                .then((response) => response.json())
+                .then((data) => {
+                  const leadData = document.getElementById("leadTable");
+                  leadData.innerHTML = ""; // Clear existing data
 
-                data
-                  .filter(
-                    (lead) =>
-                      lead.status === "Active" || lead.status === "Pending"
-                  )
-                  .forEach((lead) => {
-                    const followDate = lead.follow.split("T")[0]; // Assuming the follow date is in 'YYYY-MM-DD' format
+                  data
+                    .filter(
+                      (lead) =>
+                        lead.status === "Active" || lead.status === "Pending"
+                    )
+                    .forEach((lead) => {
+                      const followDate = lead.follow.split("T")[0]; // Assuming the follow date is in 'YYYY-MM-DD' format
 
-                    if (followDate === selectedDate) {
-                      const row = document.createElement("tr");
-                      row.dataset.leadId = lead.id;
-                      row.innerHTML = `
+                      if (followDate === selectedDate) {
+                        const row = document.createElement("tr");
+                        row.dataset.leadId = lead.id;
+                        row.innerHTML = `
               <td>${lead.name}</td>
               <td>${lead.mobile}</td>
               <td>${lead.comment}</td>
@@ -321,8 +353,9 @@
               <td>${lead.status}</td>
               <td>    
                 <div class="action" style="display: none;"> <!-- Initially hidden -->
-                  ${lead.status === "Pending"
-                          ? `
+                  ${
+                    lead.status === "Pending"
+                      ? `
                       <select onchange="changeStatus(this)" style="color: black;">
                         <option value="">Select</option>
                         <option value="Active">Active</option>
@@ -330,8 +363,8 @@
                         <option value="Close">Close</option>
                       </select>
                     `
-                          : lead.status === "Active"
-                            ? `
+                      : lead.status === "Active"
+                      ? `
                         <select onchange="changeStatus(this)" style="color: black;">
                           <option value="">Select</option>
                           <option value="Pending">Pending</option>
@@ -339,16 +372,16 @@
                           <option value="Close">Close</option>
                         </select>
                       `
-                            : lead.status === "Done"
-                              ? `
+                      : lead.status === "Done"
+                      ? `
                           <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link" style="color: purple;">Invoice</a>
                         `
-                              : lead.status === "Close"
-                                ? `
+                      : lead.status === "Close"
+                      ? `
                             <a style="color: red;">Delete</a>
                           `
-                                : ""
-                        }
+                      : ""
+                  }
                 </div>
               </td>
               <td>
@@ -358,80 +391,79 @@
                 </div>
               </td>
             `;
-                      leadData.appendChild(row);
-                    }
-                  });
-              })
-              .catch((error) => {
-                console.error("Error fetching data: " + error);
-              });
-          }
-
-
-          function renderNumbersOnDates(datesWithNumbers) {
-            Object.keys(datesWithNumbers).forEach(function (date) {
-              const bubbleNumber = datesWithNumbers[date];
-              if (bubbleNumber > 0) {
-                const dateCell = $(`#calendar-mini [data-date="${date}"]`);
-                const bubble = $('<div class="event-bubble"></div>').text(bubbleNumber);
-
-                // Add an event listener to the bubble
-                bubble.click(function () {
-                  const clickedDate = $(this).parent().data('date'); // Retrieve the date from the parent element
-                  fetchLeadsByDate(clickedDate);
-                });
-
-                dateCell.append(bubble);
-              }
-            });
-          }
-
-          //=========================Count of Follow on the calender=================================================
-
-          $(document).ready(function () {
-            // Function to fetch lead counts for all dates
-            function fetchLeadCountsForAllDates() {
-              // Replace 'http://localhost:8080/get-all-lead-counts' with the actual API endpoint for fetching lead counts for all dates
-              fetch("http://localhost:8080/get-all-lead-counts")
-                .then((response) => response.json())
-                .then((data) => {
-                  // Assuming data is an object with the date as the key and lead count as the value
-                  renderNumbersOnDates(data);
-                  displayTotalLeadCount(data);
+                        leadData.appendChild(row);
+                      }
+                    });
                 })
                 .catch((error) => {
-                  console.error("Error fetching lead counts: " + error);
+                  console.error("Error fetching data: " + error);
                 });
             }
 
+            function renderNumbersOnDates(datesWithNumbers) {
+              Object.keys(datesWithNumbers).forEach(function (date) {
+                const bubbleNumber = datesWithNumbers[date];
+                if (bubbleNumber > 0) {
+                  const dateCell = $(`#calendar-mini [data-date="${date}"]`);
+                  const bubble = $('<div class="event-bubble"></div>').text(
+                    bubbleNumber
+                  );
 
+                  // Add an event listener to the bubble
+                  bubble.click(function () {
+                    const clickedDate = $(this).parent().data("date"); // Retrieve the date from the parent element
+                    fetchLeadsByDate(clickedDate);
+                  });
 
-            function displayTotalLeadCount(datesWithNumbers) {
-              const totalLeadCount = Object.values(datesWithNumbers).reduce(
-                (acc, count) => acc + count,
-                0
-              );
-              $("#totalCountElement").text(`Total Leads: ${totalLeadCount}`);
+                  dateCell.append(bubble);
+                }
+              });
             }
 
-            fetchLeadCountsForAllDates();
-          });
+            //=========================Count of Follow on the calender=================================================
 
+            $(document).ready(function () {
+              // Function to fetch lead counts for all dates
+              function fetchLeadCountsForAllDates() {
+                // Replace 'http://localhost:8080/get-all-lead-counts' with the actual API endpoint for fetching lead counts for all dates
+                fetch("http://localhost:8080/get-all-lead-counts")
+                  .then((response) => response.json())
+                  .then((data) => {
+                    // Assuming data is an object with the date as the key and lead count as the value
+                    renderNumbersOnDates(data);
+                    displayTotalLeadCount(data);
+                  })
+                  .catch((error) => {
+                    console.error("Error fetching lead counts: " + error);
+                  });
+              }
 
+              function displayTotalLeadCount(datesWithNumbers) {
+                const totalLeadCount = Object.values(datesWithNumbers).reduce(
+                  (acc, count) => acc + count,
+                  0
+                );
+                $("#totalCountElement").text(`Total Leads: ${totalLeadCount}`);
+              }
 
+              fetchLeadCountsForAllDates();
+            });
 
-          // Function to handle editing a lead
-          function editLead(event, leadId) {
-            event.preventDefault();
-            const existingEditSections = document.querySelectorAll(".edit-section");
-            existingEditSections.forEach((section) => section.remove());
+            // Function to handle editing a lead
+            function editLead(event, leadId) {
+              event.preventDefault();
+              const existingEditSections =
+                document.querySelectorAll(".edit-section");
+              existingEditSections.forEach((section) => section.remove());
 
-            const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
+              const row = document.querySelector(
+                `tr[data-lead-id="${leadId}"]`
+              );
 
-            // Create and append the edit section
-            const editSection = document.createElement("tr");
-            editSection.classList.add("edit-section");
-            editSection.innerHTML = `
+              // Create and append the edit section
+              const editSection = document.createElement("tr");
+              editSection.classList.add("edit-section");
+              editSection.innerHTML = `
               <td colspan="6">
                 <!-- Your edit form or content goes here -->
                 <label for="newFollowUpDate">New Follow-Up Date:</label>
@@ -460,270 +492,283 @@
               </td>
               `;
 
-            row.insertAdjacentElement("afterend", editSection);
+              row.insertAdjacentElement("afterend", editSection);
 
-            // Hide the action part in the row
-            const actionSection = row.querySelector(".action");
-            actionSection.style.display = "none";
-          }
-
-          function saveEdits(leadId) {
-            const newFollowUpDateInput = document.getElementById("newFollowUpDate");
-            const newCommentInput = document.getElementById("newComment");
-            const changeStatusInput = document.getElementById("changeStatus");
-
-            const newFollowUpDate = newFollowUpDateInput.value;
-            const newComment = newCommentInput.value;
-            const changeStatus = changeStatusInput.value;
-
-            // Validate that all three fields are filled
-            if (!newFollowUpDate || !newComment || !changeStatus) {
-              alert("Please fill in all required fields.");
-              return;
+              // Hide the action part in the row
+              const actionSection = row.querySelector(".action");
+              actionSection.style.display = "none";
             }
 
-            // Fetch API to send data to the server
-            const url = `http://localhost:8080/save-edits/${leadId}`;
-            fetch(url, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-              },
-              body: `newFollowUpDate=${newFollowUpDate}&newComment=${newComment}&changeStatus=${changeStatus}`,
-            })
-              .then((response) => {
-                if (!response.ok) {
-                  throw new Error("Error saving edits");
-                }
-                return response.text();
+            function saveEdits(leadId) {
+              const newFollowUpDateInput =
+                document.getElementById("newFollowUpDate");
+              const newCommentInput = document.getElementById("newComment");
+              const changeStatusInput = document.getElementById("changeStatus");
+
+              const newFollowUpDate = newFollowUpDateInput.value;
+              const newComment = newCommentInput.value;
+              const changeStatus = changeStatusInput.value;
+
+              // Validate that all three fields are filled
+              if (!newFollowUpDate || !newComment || !changeStatus) {
+                alert("Please fill in all required fields.");
+                return;
+              }
+
+              // Fetch API to send data to the server
+              const url = `http://localhost:8080/save-edits/${leadId}`;
+              fetch(url, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: `newFollowUpDate=${newFollowUpDate}&newComment=${newComment}&changeStatus=${changeStatus}`,
               })
-              .then((data) => {
-                console.log(data); // Log the response from the server
-                // Remove the edit section after saving
-                const editSection = document.querySelector(".edit-section");
-                editSection.remove();
+                .then((response) => {
+                  if (!response.ok) {
+                    throw new Error("Error saving edits");
+                  }
+                  return response.text();
+                })
+                .then((data) => {
+                  console.log(data); // Log the response from the server
+                  // Remove the edit section after saving
+                  const editSection = document.querySelector(".edit-section");
+                  editSection.remove();
 
-                // Update the calendar and table entry simultaneously
-                const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
-                const followDateCell = row.querySelector("td:nth-child(4)");
-                followDateCell.textContent = newFollowUpDate;
+                  // Update the calendar and table entry simultaneously
+                  const row = document.querySelector(
+                    `tr[data-lead-id="${leadId}"]`
+                  );
+                  const followDateCell = row.querySelector("td:nth-child(4)");
+                  followDateCell.textContent = newFollowUpDate;
 
-                const commentCell = row.querySelector("td:nth-child(3)");
-                commentCell.textContent = newComment;
+                  const commentCell = row.querySelector("td:nth-child(3)");
+                  commentCell.textContent = newComment;
+
+                  // Remove the row from the table
+                  row.remove();
+
+                  // Update the calendar with the removed lead's date
+                  updateCalendarAfterRemove(removedLeadDate);
+                })
+                .catch((error) => {
+                  console.error("Error:", error);
+                  // Handle the error, show an alert, or perform other actions
+                });
+            }
+
+            function getButtonClass(status) {
+              switch (status) {
+                case "Active":
+                  return "newbtnact";
+                case "Done":
+                  return "newbtndone";
+                case "Close":
+                  return "newbtnclose";
+                case "Pending":
+                  return "newbtnPending";
+                default:
+                  return "default-btn"; // You can define a default class for other statuses
+              }
+            }
+
+            function showConfirmationDialog(selectedStatus, row) {
+              const currentStatus =
+                row.querySelector("td:nth-child(5)").textContent;
+              return confirm(
+                `Do you want to change status from ${currentStatus} to ${selectedStatus}?`
+              );
+            }
+
+            function changeStatus(selectElement) {
+              const selectedStatus = selectElement.value;
+              const row = selectElement.closest("tr");
+              const leadId = row.dataset.leadId;
+              const comment = row.querySelector("td:nth-child(3)").textContent; // Assuming the comment is in the third column
+
+              // Check if a comment exists before allowing status change
+              if (!comment.trim()) {
+                alert(
+                  "Please add a compulsory comment before changing the status."
+                );
+                selectElement.value =
+                  row.querySelector("td:nth-child(5)").textContent; // Reset the select element
+                return;
+              }
+
+              if (!showConfirmationDialog(selectedStatus, row)) {
+                // User clicked Cancel in the confirmation dialog
+                selectElement.value =
+                  row.querySelector("td:nth-child(5)").textContent;
+                return;
+              }
+
+              const followDateCell = row.querySelector("td:nth-child(4)");
+
+              if (selectedStatus === "Done" || selectedStatus === "Close") {
+                // Update the follow date to empty when the status is "Done" or "Close"
+                const removedLeadDate = followDateCell.textContent;
+                followDateCell.textContent = "";
 
                 // Remove the row from the table
                 row.remove();
 
                 // Update the calendar with the removed lead's date
                 updateCalendarAfterRemove(removedLeadDate);
+              }
+
+              fetch(`http://localhost:8080/update-lead/${leadId}`, {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ status: selectedStatus }),
               })
-              .catch((error) => {
-                console.error("Error:", error);
-                // Handle the error, show an alert, or perform other actions
-              });
-          }
+                .then((response) => {
+                  if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                  }
+                  return response.json();
+                })
+                .then((updatedStatus) => {
+                  const statusCell = row.querySelector("td:nth-child(5)");
+                  const actionCell = row.querySelector("td:nth-child(6)");
 
-          function getButtonClass(status) {
-            switch (status) {
-              case "Active":
-                return "newbtnact";
-              case "Done":
-                return "newbtndone";
-              case "Close":
-                return "newbtnclose";
-              case "Pending":
-                return "newbtnPending";
-              default:
-                return "default-btn"; // You can define a default class for other statuses
-            }
-          }
-
-          function showConfirmationDialog(selectedStatus, row) {
-            const currentStatus =
-              row.querySelector("td:nth-child(5)").textContent;
-            return confirm(
-              `Do you want to change status from ${currentStatus} to ${selectedStatus}?`
-            );
-          }
-
-          function changeStatus(selectElement) {
-            const selectedStatus = selectElement.value;
-            const row = selectElement.closest("tr");
-            const leadId = row.dataset.leadId;
-            const comment = row.querySelector("td:nth-child(3)").textContent; // Assuming the comment is in the third column
-
-            // Check if a comment exists before allowing status change
-            if (!comment.trim()) {
-              alert("Please add a compulsory comment before changing the status.");
-              selectElement.value = row.querySelector("td:nth-child(5)").textContent; // Reset the select element
-              return;
+                  statusCell.textContent = selectedStatus;
+                  statusCell.className = getButtonClass(selectedStatus);
+                  actionCell.innerHTML = getActionHTML(
+                    selectedStatus,
+                    row.cells[0].textContent,
+                    row.cells[2].textContent
+                  );
+                })
+                .catch((error) => {
+                  console.error("Error updating status: " + error);
+                });
             }
 
-            if (!showConfirmationDialog(selectedStatus, row)) {
-              // User clicked Cancel in the confirmation dialog
-              selectElement.value = row.querySelector("td:nth-child(5)").textContent;
-              return;
+            function updateCalendarAfterRemove(removedLeadId) {
+              // Fetch the updated lead data and update the calendar
+              fetch("http://localhost:8080/get-lead-data-dashboard")
+                .then((response) => response.json())
+                .then((data) => {
+                  const filteredLeads = data.filter(
+                    (lead) => lead.id !== removedLeadId
+                  );
+
+                  // Update the calendar with the filtered leads
+                  updateCalendar(filteredLeads);
+                })
+                .catch((error) => {
+                  console.error("Error fetching data: " + error);
+                });
             }
 
-            const followDateCell = row.querySelector("td:nth-child(4)");
-
-            if (selectedStatus === "Done" || selectedStatus === "Close") {
-              // Update the follow date to empty when the status is "Done" or "Close"
-              const removedLeadDate = followDateCell.textContent;
-              followDateCell.textContent = "";
-
-              // Remove the row from the table
-              row.remove();
-
-              // Update the calendar with the removed lead's date
-              updateCalendarAfterRemove(removedLeadDate);
+            function getUpdatedCalendarEntries(removedLeadDate) {
+              const calendarEntries = { ...calendarEntries };
+              if (calendarEntries.hasOwnProperty(removedLeadDate)) {
+                calendarEntries[removedLeadDate] -= 1;
+              }
+              return calendarEntries;
             }
 
-            fetch(`http://localhost:8080/update-lead/${leadId}`, {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ status: selectedStatus }),
-            })
-              .then((response) => {
-                if (!response.ok) {
-                  throw new Error("Network response was not ok");
-                }
-                return response.json();
-              })
-              .then((updatedStatus) => {
-                const statusCell = row.querySelector("td:nth-child(5)");
-                const actionCell = row.querySelector("td:nth-child(6)");
-
-                statusCell.textContent = selectedStatus;
-                statusCell.className = getButtonClass(selectedStatus);
-                actionCell.innerHTML = getActionHTML(
-                  selectedStatus,
-                  row.cells[0].textContent,
-                  row.cells[2].textContent
-                );
-              })
-              .catch((error) => {
-                console.error("Error updating status: " + error);
-              });
-          }
-
-          function updateCalendarAfterRemove(removedLeadId) {
-            // Fetch the updated lead data and update the calendar
-            fetch("http://localhost:8080/get-lead-data-dashboard")
-              .then((response) => response.json())
-              .then((data) => {
-                const filteredLeads = data.filter(
-                  (lead) => lead.id !== removedLeadId
-                );
-
-                // Update the calendar with the filtered leads
-                updateCalendar(filteredLeads);
-              })
-              .catch((error) => {
-                console.error("Error fetching data: " + error);
-              });
-          }
-
-          function getUpdatedCalendarEntries(removedLeadDate) {
-            const calendarEntries = { ...calendarEntries };
-            if (calendarEntries.hasOwnProperty(removedLeadDate)) {
-              calendarEntries[removedLeadDate] -= 1;
-            }
-            return calendarEntries;
-          }
-
-          function getActionHTML(status, name, email) {
-            if (status === "Done") {
-              return `
+            function getActionHTML(status, name, email) {
+              if (status === "Done") {
+                return `
             <a href="invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
                 Invoice
             </a>
         `;
-            } else if (status === "Close") {
-              return `
+              } else if (status === "Close") {
+                return `
             <a style="color: red;">Delete</a>
         `;
-            } else if (status === "Active") {
-              return `
+              } else if (status === "Active") {
+                return `
           <select onchange="changeStatus(this)">
-                <option value="" ${status === "Active" ? "selected" : ""
+                <option value="" ${
+                  status === "Active" ? "selected" : ""
                 }>Edit</option>
-                <option value="Pending" ${status === "Pending" ? "selected" : ""
+                <option value="Pending" ${
+                  status === "Pending" ? "selected" : ""
                 }>Pending</option>
-                <option value="Done" ${status === "Done" ? "selected" : ""
+                <option value="Done" ${
+                  status === "Done" ? "selected" : ""
                 }>Done</option>
-                <option value="Close" ${status === "Close" ? "selected" : ""
+                <option value="Close" ${
+                  status === "Close" ? "selected" : ""
                 }>Close</option>
             </select>
           `;
-            } else if (status === "Pending") {
-              return `
+              } else if (status === "Pending") {
+                return `
           <select onchange="changeStatus(this)">
-                <option value="" ${status === "Pending" ? "selected" : ""
+                <option value="" ${
+                  status === "Pending" ? "selected" : ""
                 }>Edit</option>
-                <option value="Active" ${status === "Active" ? "selected" : ""
+                <option value="Active" ${
+                  status === "Active" ? "selected" : ""
                 }>Active</option>
-                <option value="Done" ${status === "Done" ? "selected" : ""
+                <option value="Done" ${
+                  status === "Done" ? "selected" : ""
                 }>Done</option>
-                <option value="Close" ${status === "Close" ? "selected" : ""
+                <option value="Close" ${
+                  status === "Close" ? "selected" : ""
                 }>Close</option>
             </select>
           `;
-            } else {
-              return "";
-            }
-          }
-
-          const dateInput = document.getElementById("followDateInput");
-          dateInput.addEventListener("change", function () {
-            let selectedDate = dateInput.value; // Get the selected date from the input
-
-            // If no date is selected, default to the current date
-            if (!selectedDate) {
-              const currentDate = new Date();
-              const year = currentDate.getFullYear();
-              const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-              const day = String(currentDate.getDate()).padStart(2, "0");
-              selectedDate = `${year}-${month}-${day}`;
-              dateInput.value = selectedDate; // Set the input value to the default date
-            }
-
-            fetchLeadsByDate(selectedDate);
-          });
-
-          // Trigger the change event to fetch data for the default date on page load
-          dateInput.dispatchEvent(new Event("change"));
-
-          // Modify the renderNumbersOnDates function to handle the addition of bubbles dynamically
-          function renderNumbersOnDates(datesWithNumbers) {
-            Object.keys(datesWithNumbers).forEach(function (date) {
-              const bubbleNumber = datesWithNumbers[date];
-              if (bubbleNumber > 0) {
-                const dateCell = $(`#calendar-mini [data-date="${date}"]`);
-                const bubble = $('<div class="event-bubble"></div>').text(bubbleNumber);
-
-                // Add an event listener to the bubble
-                bubble.click(function () {
-                  dateInput.value = date; // Set the input value to the clicked date
-                  dateInput.dispatchEvent(new Event("change")); // Trigger change event to fetch leads
-                });
-
-                dateCell.append(bubble);
+              } else {
+                return "";
               }
+            }
+
+            const dateInput = document.getElementById("followDateInput");
+            dateInput.addEventListener("change", function () {
+              let selectedDate = dateInput.value; // Get the selected date from the input
+
+              // If no date is selected, default to the current date
+              if (!selectedDate) {
+                const currentDate = new Date();
+                const year = currentDate.getFullYear();
+                const month = String(currentDate.getMonth() + 1).padStart(
+                  2,
+                  "0"
+                );
+                const day = String(currentDate.getDate()).padStart(2, "0");
+                selectedDate = `${year}-${month}-${day}`;
+                dateInput.value = selectedDate; // Set the input value to the default date
+              }
+
+              fetchLeadsByDate(selectedDate);
             });
-          }
 
+            // Trigger the change event to fetch data for the default date on page load
+            dateInput.dispatchEvent(new Event("change"));
 
+            // Modify the renderNumbersOnDates function to handle the addition of bubbles dynamically
+            function renderNumbersOnDates(datesWithNumbers) {
+              Object.keys(datesWithNumbers).forEach(function (date) {
+                const bubbleNumber = datesWithNumbers[date];
+                if (bubbleNumber > 0) {
+                  const dateCell = $(`#calendar-mini [data-date="${date}"]`);
+                  const bubble = $('<div class="event-bubble"></div>').text(
+                    bubbleNumber
+                  );
 
+                  // Add an event listener to the bubble
+                  bubble.click(function () {
+                    dateInput.value = date; // Set the input value to the clicked date
+                    dateInput.dispatchEvent(new Event("change")); // Trigger change event to fetch leads
+                  });
 
-        </script>
-
-
-      </div>
-    </section>
-  </main>
-</body>
-
+                  dateCell.append(bubble);
+                }
+              });
+            }
+          </script>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
