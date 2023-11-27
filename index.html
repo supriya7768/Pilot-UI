@@ -14,6 +14,11 @@
   <link rel="stylesheet" href="assets/css/fullcalendar.css" />
   <link rel="stylesheet" href="assets/css/fullcalendar.css" />
   <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    .event-bubble {
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
@@ -273,7 +278,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="./assets/js/newcalender.js"></script>
-        <!-- <script src="./assets/js/user.js"></script> -->
+        <script src="./assets/js/user.js"></script>
         <script src="./assets/js/jquery.js"></script>
 
         <script>
@@ -361,6 +366,59 @@
                 console.error("Error fetching data: " + error);
               });
           }
+
+
+          function renderNumbersOnDates(datesWithNumbers) {
+            Object.keys(datesWithNumbers).forEach(function (date) {
+              const bubbleNumber = datesWithNumbers[date];
+              if (bubbleNumber > 0) {
+                const dateCell = $(`#calendar-mini [data-date="${date}"]`);
+                const bubble = $('<div class="event-bubble"></div>').text(bubbleNumber);
+
+                // Add an event listener to the bubble
+                bubble.click(function () {
+                  const clickedDate = $(this).parent().data('date'); // Retrieve the date from the parent element
+                  fetchLeadsByDate(clickedDate);
+                });
+
+                dateCell.append(bubble);
+              }
+            });
+          }
+
+          //=========================Count of Follow on the calender=================================================
+
+          $(document).ready(function () {
+            // Function to fetch lead counts for all dates
+            function fetchLeadCountsForAllDates() {
+              // Replace 'http://localhost:8080/get-all-lead-counts' with the actual API endpoint for fetching lead counts for all dates
+              fetch("http://localhost:8080/get-all-lead-counts")
+                .then((response) => response.json())
+                .then((data) => {
+                  // Assuming data is an object with the date as the key and lead count as the value
+                  renderNumbersOnDates(data);
+                  displayTotalLeadCount(data);
+                })
+                .catch((error) => {
+                  console.error("Error fetching lead counts: " + error);
+                });
+            }
+
+
+
+            function displayTotalLeadCount(datesWithNumbers) {
+              const totalLeadCount = Object.values(datesWithNumbers).reduce(
+                (acc, count) => acc + count,
+                0
+              );
+              $("#totalCountElement").text(`Total Leads: ${totalLeadCount}`);
+            }
+
+            fetchLeadCountsForAllDates();
+          });
+
+
+
 
           // Function to handle editing a lead
           function editLead(event, leadId) {
@@ -474,7 +532,7 @@
               case "Close":
                 return "newbtnclose";
               case "Pending":
-                return "newbtnpending";
+                return "newbtnPending";
               default:
                 return "default-btn"; // You can define a default class for other statuses
             }
@@ -626,10 +684,7 @@
             if (!selectedDate) {
               const currentDate = new Date();
               const year = currentDate.getFullYear();
-              const month = String(currentDate.getMonth() + 1).padStart(
-                2,
-                "0"
-              );
+              const month = String(currentDate.getMonth() + 1).padStart(2, "0");
               const day = String(currentDate.getDate()).padStart(2, "0");
               selectedDate = `${year}-${month}-${day}`;
               dateInput.value = selectedDate; // Set the input value to the default date
@@ -640,7 +695,32 @@
 
           // Trigger the change event to fetch data for the default date on page load
           dateInput.dispatchEvent(new Event("change"));
+
+          // Modify the renderNumbersOnDates function to handle the addition of bubbles dynamically
+          function renderNumbersOnDates(datesWithNumbers) {
+            Object.keys(datesWithNumbers).forEach(function (date) {
+              const bubbleNumber = datesWithNumbers[date];
+              if (bubbleNumber > 0) {
+                const dateCell = $(`#calendar-mini [data-date="${date}"]`);
+                const bubble = $('<div class="event-bubble"></div>').text(bubbleNumber);
+
+                // Add an event listener to the bubble
+                bubble.click(function () {
+                  dateInput.value = date; // Set the input value to the clicked date
+                  dateInput.dispatchEvent(new Event("change")); // Trigger change event to fetch leads
+                });
+
+                dateCell.append(bubble);
+              }
+            });
+          }
+
+
+
+
         </script>
+
+
       </div>
     </section>
   </main>
