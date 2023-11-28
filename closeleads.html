@@ -1,258 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.svg"
+      type="image/x-icon"
+    />
+    <title>Closed Shepherd</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
-  <title>Closed Shepherd</title>
+    <!-- ========== All CSS files linkup ========= -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="assets/css/lineicons.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/css/materialdesignicons.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+      td {
+        color: grey;
+        font-size: 12px;
+        margin: 10px;
+        align-items: center;
+      }
 
-  <!-- ========== All CSS files linkup ========= -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="assets/css/lineicons.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="assets/css/fullcalendar.css" />
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <style>
-    td {
-      color: grey;
-      font-size: 12px;
-      margin: 10px;
-      align-items: center;
-    }
+      .arrow {
+        cursor: pointer;
+      }
+    </style>
+  </head>
 
-    .arrow {
-      cursor: pointer;
-    }
-  </style>
-</head>
-
-<body>
-  <!-- ======== Preloader =========== -->
-  <div id="preloader">
-    <div class="spinner"></div>
-  </div>
-  <!-- ======== Preloader =========== -->
-
-  <!-- ======== sidebar-nav start =========== -->
-  <aside class="sidebar-nav-wrapper">
-    <div class="navbar-logo">
-      <a href="index.html">
-        <img style="height: 150px; width: 150px" src="./assets/images/SHEPHERD 2.jpg" />
-      </a>
+  <body>
+    <!-- ======== Preloader =========== -->
+    <div id="preloader">
+      <div class="spinner"></div>
     </div>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item">
-          <a href="index.html">
-            <span class="icon">
-              <img class="hi" src="./assets/images/dashboard.png" alt="" />
-            </span>
-            <span class="text">Dashboard</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item">
-          <a href="addlead.html">
-            <span class="icon">
-              <img class="hi" src="./assets/images/user.png" alt="" />
-            </span>
-            <span class="text">Add Lead</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item">
-          <a href="leadlist.html">
-            <span class="icon">
-              <img class="hi" src="./assets/images/group.png" alt="" />
-            </span>
-            <span class="text">Lead List</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item">
-          <a href="invoice.html">
-            <span class="icon">
-              <img class="hi" src="./assets/images/invoice.png" alt="" />
-            </span>
-            <span class="text">Invoice</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item">
-          <a href="studentpanel.html">
-            <span class="icon">
-              <img class="hi" src="./assets/images/students.png" alt="" />
-            </span>
-            <span class="text">Student Panel</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item">
-          <a href="adminpanel.html">
-            <span class="icon">
-              <img class="hi" src="./assets/images/admin.png" alt="">
-            </span>
-            <span class="text">Admin Panel</span>
-          </a>
-        </li>
-      </ul>
-  </aside>
-  <!-- ======== sidebar-nav end =========== -->
+    <!-- ======== Preloader =========== -->
 
-  <div class="overlay"></div>
-
-  <!-- ======== main-wrapper start =========== -->
-  <main class="main-wrapper">
-    <!-- ========== header start ========== -->
-    <header class="header">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-5 col-md-5 col-6">
-            <div class="header-left d-flex align-items-center">
-              <div class="menu-toggle-btn mr-15">
-                <button id="menu-toggle" class="main-btn primary-btn btn-hover">
-                  <i class="lni lni-chevron-left me-2"></i> Menu
-                </button>
-              </div>
-              <div class="header-search d-none d-md-flex">
-                <form action="#" id="leadSearchForm">
-                  <input type="text" id="leadSearchInput" placeholder="Search Lead Name"
-                    style="font-size: 12px; text-align: center;" />
-                  <button type="button" onclick="searchLeads()">
-                    <i class="lni lni-search-alt"></i>
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-7 col-md-7 col-6">
-            <div class="header-right"></div>
-          </div>
-        </div>
-      </div>
-    </header>
-    <!-- ========== header end ========== -->
-
-    <!-- ========== section start ========== -->
-    <section class="section">
-      <div class="container-fluid">
-        <!-- ========== title-wrapper start ========== -->
-        <div class="title-wrapper pt-30">
-          <div class="row align-items-center">
-            <div class="col-md-6">
-              <div class="title">
-                <h2 style="color: red;" class="headings">Closed Leads</h2>
-              </div>
-            </div>
-            <!-- end col -->
-          </div>
-          <!-- end row -->
-        </div>
-
-        <a href="leadlist.html" class="main-btn primary-btn square-btn btn-hover closebtn headings">
-          All Leads
+    <!-- ======== sidebar-nav start =========== -->
+    <aside class="sidebar-nav-wrapper">
+      <div class="navbar-logo">
+        <a href="index.html">
+          <img
+            style="height: 150px; width: 150px"
+            src="./assets/images/SHEPHERD 2.jpg"
+          />
         </a>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="index.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/dashboard.png" alt="" />
+              </span>
+              <span class="text">Dashboard</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="addlead.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/user.png" alt="" />
+              </span>
+              <span class="text">Add Lead</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="leadlist.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/group.png" alt="" />
+              </span>
+              <span class="text">Lead List</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="invoice.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/invoice.png" alt="" />
+              </span>
+              <span class="text">Invoice</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="studentpanel.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/students.png" alt="" />
+              </span>
+              <span class="text">Subscribers</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="businesspanel.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/admin.png" alt="" />
+              </span>
+              <span class="text">Business Panel</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- ======== sidebar-nav end =========== -->
 
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card-style mb-30">
-              <h6 class="mb-10">Data Table</h6>
-              <div class="table-wrapper table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>
-                        <h6>Name</h6>
-                      </th>
-                      <th>
-                        <h6>Mobile No</h6>
-                      </th>
-                      <th>
-                        <h6>Email</h6>
-                      </th>
-                      <th>
-                        <h6>Course</h6>
-                      </th>
-                      <th>
-                        <h6>Status</h6>
-                      </th>
-                      <!-- <th>
+    <div class="overlay"></div>
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <header class="header">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-6">
+              <div class="header-left d-flex align-items-center">
+                <div class="menu-toggle-btn mr-15">
+                  <button
+                    id="menu-toggle"
+                    class="main-btn primary-btn btn-hover"
+                  >
+                    <i class="lni lni-chevron-left me-2"></i> Menu
+                  </button>
+                </div>
+                <div class="header-search d-none d-md-flex">
+                  <form action="#" id="leadSearchForm">
+                    <input
+                      type="text"
+                      id="leadSearchInput"
+                      placeholder="Search Lead Name"
+                      style="font-size: 12px; text-align: center"
+                    />
+                    <button type="button" onclick="searchLeads()">
+                      <i class="lni lni-search-alt"></i>
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-6">
+              <div class="header-right"></div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- ========== header end ========== -->
+
+      <!-- ========== section start ========== -->
+      <section class="section">
+        <div class="container-fluid">
+          <!-- ========== title-wrapper start ========== -->
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <div class="title">
+                  <h2 style="color: red" class="headings">Closed Leads</h2>
+                </div>
+              </div>
+              <!-- end col -->
+            </div>
+            <!-- end row -->
+          </div>
+
+          <a
+            href="leadlist.html"
+            class="main-btn primary-btn square-btn btn-hover closebtn headings"
+          >
+            All Leads
+          </a>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card-style mb-30">
+                <h6 class="mb-10">Data Table</h6>
+                <div class="table-wrapper table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>
+                          <h6>Name</h6>
+                        </th>
+                        <th>
+                          <h6>Mobile No</h6>
+                        </th>
+                        <th>
+                          <h6>Email</h6>
+                        </th>
+                        <th>
+                          <h6>Course</h6>
+                        </th>
+                        <th>
+                          <h6>Status</h6>
+                        </th>
+                        <!-- <th>
                         <h6>Action</h6>
                       </th> -->
-                    </tr>
-                    <!-- end table row-->
-                  </thead>
+                      </tr>
+                      <!-- end table row-->
+                    </thead>
 
-                  <tbody id="leadData">
-                    <!-- Lead data will be dynamically added here -->
-                  </tbody>
-                </table>
+                    <tbody id="leadData">
+                      <!-- Lead data will be dynamically added here -->
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <!-- ========== section end ========== -->
-  </main>
-  <!-- ======== main-wrapper end =========== -->
+      </section>
+      <!-- ========== section end ========== -->
+    </main>
+    <!-- ======== main-wrapper end =========== -->
 
-  <!-- ========= All Javascript files linkup ======== -->
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/Chart.min.js"></script>
-  <script src="assets/js/dynamic-pie-chart.js"></script>
-  <script src="assets/js/moment.min.js"></script>
-  <script src="assets/js/fullcalendar.js"></script>
-  <script src="assets/js/jvectormap.min.js"></script>
-  <script src="assets/js/world-merc.js"></script>
-  <script src="assets/js/polyfill.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/jquery.js"></script>
-  <!-- <script src="assets/js/user.js"></script> -->
-  <script>
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/Chart.min.js"></script>
+    <script src="assets/js/dynamic-pie-chart.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/fullcalendar.js"></script>
+    <script src="assets/js/jvectormap.min.js"></script>
+    <script src="assets/js/world-merc.js"></script>
+    <script src="assets/js/polyfill.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <!-- <script src="assets/js/user.js"></script> -->
+    <script>
+      function fetchLeadData() {
+        fetch("http://localhost:8080/get-lead-data")
+          .then((response) => response.json())
+          .then((data) => {
+            const leadData = document.getElementById("leadData");
+            // Clear existing data
+            leadData.innerHTML = "";
 
-    function fetchLeadData() {
-      fetch("http://localhost:8080/get-lead-data")
-        .then((response) => response.json())
-        .then((data) => {
-          const leadData = document.getElementById("leadData");
-          // Clear existing data
-          leadData.innerHTML = "";
+            data
+              .filter((lead) => lead.status === "Close")
+              .forEach((lead) => {
+                const row = document.createElement("tr");
+                // Set the lead id as a data attribute
+                row.dataset.leadId = lead.id; // Assuming lead has a property called 'id'
 
-          data
-            .filter((lead) => lead.status === "Close")
-            .forEach((lead) => {
-              const row = document.createElement("tr");
-              // Set the lead id as a data attribute
-              row.dataset.leadId = lead.id; // Assuming lead has a property called 'id'
-
-              row.innerHTML += `
-              <td>${lead.name}</td>
+                row.innerHTML += `
+              <td><a href="leadInfo.html?leadId=${lead.id}">${
+                  lead.name
+                }</a></td>
               <td>${lead.mobile}</td>
               <td>${lead.email}</td>
               <td>${lead.courseIntrested}</td>
               <td>${lead.status}</td>
               <td>
                   <div class="action"  style="display: none;">
-                      ${lead.status === "Pending" || lead.status === "Active"
-                  ? `
+                      ${
+                        lead.status === "Pending" || lead.status === "Active"
+                          ? `
                           <select onchange="changeStatus(this)">
                               <option value="">Edit</option>
                               <option value="Active">Active</option>
@@ -260,18 +289,18 @@
                               <option value="Close">Close</option>
                           </select>
                       `
-                  : lead.status === "Done"
-                    ? `
+                          : lead.status === "Done"
+                          ? `
                           <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
                               Invoice
                           </a>
                       `
-                    : lead.status === "Close"
-                      ? `
+                          : lead.status === "Close"
+                          ? `
                           <a style="color: red;">Delete</a>
                       `
-                      : ""
-                }
+                          : ""
+                      }
                   </div>
               </td>
               <td>
@@ -282,31 +311,28 @@
               </td>
           `;
 
-              leadData.appendChild(row);
+                leadData.appendChild(row);
+              });
+          })
+          .catch((error) => {
+            console.error("Error fetching data: " + error);
+          });
+      }
+    </script>
 
-            });
-        })
-        .catch((error) => {
-          console.error("Error fetching data: " + error);
-        });
-    }
+    <script>
+      // Function to handle editing a lead
+      function editLead(event, leadId) {
+        event.preventDefault();
+        const existingEditSections = document.querySelectorAll(".edit-section");
+        existingEditSections.forEach((section) => section.remove());
 
-  </script>
+        const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
 
-  <script>
-
-    // Function to handle editing a lead
-    function editLead(event, leadId) {
-      event.preventDefault();
-      const existingEditSections = document.querySelectorAll(".edit-section");
-      existingEditSections.forEach((section) => section.remove());
-
-      const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
-
-      // Create and append the edit section
-      const editSection = document.createElement("tr");
-      editSection.classList.add("edit-section");
-      editSection.innerHTML = `
+        // Create and append the edit section
+        const editSection = document.createElement("tr");
+        editSection.classList.add("edit-section");
+        editSection.innerHTML = `
               <td colspan="6">
                 <!-- Your edit form or content goes here -->
                 <label for="newFollowUpDate">New Follow-Up Date:</label>
@@ -336,244 +362,254 @@
               </td>
               `;
 
-      row.insertAdjacentElement("afterend", editSection);
+        row.insertAdjacentElement("afterend", editSection);
 
-      // Hide the action part in the row
-      const actionSection = row.querySelector(".action");
-      actionSection.style.display = "none";
-    }
-
-    function saveEdits(leadId) {
-      const newFollowUpDateInput = document.getElementById("newFollowUpDate");
-      const newCommentInput = document.getElementById("newComment");
-      const changeStatusInput = document.getElementById("changeStatus");
-
-      const newFollowUpDate = newFollowUpDateInput.value;
-      const newComment = newCommentInput.value;
-      const changeStatus = changeStatusInput.value;
-
-      // Validate that all three fields are filled
-      if (!newFollowUpDate || !newComment || !changeStatus) {
-        alert("Please fill in all required fields.");
-        return;
+        // Hide the action part in the row
+        const actionSection = row.querySelector(".action");
+        actionSection.style.display = "none";
       }
 
-      // Fetch API to send data to the server
-      const url = `http://localhost:8080/save-edits/${leadId}`;
-      fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: `newFollowUpDate=${newFollowUpDate}&newComment=${newComment}&changeStatus=${changeStatus}`,
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Error saving edits");
-          }
-          return response.text();
-        })
-        .then((data) => {
-          console.log(data); // Log the response from the server
-          // Remove the edit section after saving
-          const editSection = document.querySelector(".edit-section");
-          editSection.remove();
+      function saveEdits(leadId) {
+        const newFollowUpDateInput = document.getElementById("newFollowUpDate");
+        const newCommentInput = document.getElementById("newComment");
+        const changeStatusInput = document.getElementById("changeStatus");
 
-          // Update the calendar and table entry simultaneously
-          const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
-          const followDateCell = row.querySelector("td:nth-child(4)");
-          followDateCell.textContent = newFollowUpDate;
+        const newFollowUpDate = newFollowUpDateInput.value;
+        const newComment = newCommentInput.value;
+        const changeStatus = changeStatusInput.value;
 
-          const commentCell = row.querySelector("td:nth-child(3)");
-          commentCell.textContent = newComment;
-
-          // Remove the row from the table
-          row.remove();
-
-          // Update the calendar with the removed lead's date
-          updateCalendarAfterRemove(removedLeadDate);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          // Handle the error, show an alert, or perform other actions
-        });
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      fetchLeadData();
-      document.addEventListener("change", function (event) {
-        if (event.target.tagName === "SELECT") {
-          changeStatus(event.target);
+        // Validate that all three fields are filled
+        if (!newFollowUpDate || !newComment || !changeStatus) {
+          alert("Please fill in all required fields.");
+          return;
         }
-      });
-    });
 
-  </script>
-  <script>
-
-    function getButtonClass(status) {
-      switch (status) {
-        case "Active":
-          return "newbtnact";
-        case "Done":
-          return "newbtndone";
-        case "Close":
-          return "newbtnclose";
-        case "Pending":
-          return "newbtnPending";
-        default:
-          return "default-btn"; // You can define a default class for other statuses
-      }
-    }
-
-    function showConfirmationDialog(selectedStatus, row) {
-      const currentStatus = row.querySelector("td:nth-child(5)").textContent;
-      return confirm(
-        `Do you want to change status from ${currentStatus} to ${selectedStatus}?`
-      );
-    }
-
-    function changeStatus(selectElement) {
-      const selectedStatus = selectElement.value;
-      const row = selectElement.closest("tr");
-      const leadId = row.dataset.leadId;
-
-      if (!showConfirmationDialog(selectedStatus, row)) {
-        // User clicked Cancel in the confirmation dialog
-        selectElement.value =
-          row.querySelector("td:nth-child(5)").textContent;
-        return;
-      }
-
-      fetch(`http://localhost:8080/update-lead/${leadId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ status: selectedStatus }),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
+        // Fetch API to send data to the server
+        const url = `http://localhost:8080/save-edits/${leadId}`;
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: `newFollowUpDate=${newFollowUpDate}&newComment=${newComment}&changeStatus=${changeStatus}`,
         })
-        .then((updatedStatus) => {
-          const statusCell = row.querySelector("td:nth-child(5)");
-          const actionCell = row.querySelector("td:nth-child(6)");
-
-          statusCell.textContent = updatedStatus;
-          statusCell.className = getButtonClass(updatedStatus);
-          actionCell.innerHTML = getActionHTML(
-            updatedStatus,
-            row.cells[0].textContent,
-            row.cells[2].textContent
-          );
-
-          if (updatedStatus === "Done") {
-            if (confirm("Do you want to change status as Done?")) {
-              statusCell.textContent = updatedStatus;
-              statusCell.className = getButtonClass(updatedStatus);
-              actionCell.innerHTML = getActionHTML(
-                updatedStatus,
-                row.cells[0].textContent,
-                row.cells[2].textContent
-              );
-            } else {
-              // Revert to the previous status
-              selectElement.value = statusCell.textContent;
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Error saving edits");
             }
-          } else {
+            return response.text();
+          })
+          .then((data) => {
+            console.log(data); // Log the response from the server
+            // Remove the edit section after saving
+            const editSection = document.querySelector(".edit-section");
+            editSection.remove();
+
+            // Update the calendar and table entry simultaneously
+            const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
+            const followDateCell = row.querySelector("td:nth-child(4)");
+            followDateCell.textContent = newFollowUpDate;
+
+            const commentCell = row.querySelector("td:nth-child(3)");
+            commentCell.textContent = newComment;
+
+            // Remove the row from the table
+            row.remove();
+
+            // Update the calendar with the removed lead's date
+            updateCalendarAfterRemove(removedLeadDate);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            // Handle the error, show an alert, or perform other actions
+          });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        fetchLeadData();
+        document.addEventListener("change", function (event) {
+          if (event.target.tagName === "SELECT") {
+            changeStatus(event.target);
+          }
+        });
+      });
+    </script>
+    <script>
+      function getButtonClass(status) {
+        switch (status) {
+          case "Active":
+            return "newbtnact";
+          case "Done":
+            return "newbtndone";
+          case "Close":
+            return "newbtnclose";
+          case "Pending":
+            return "newbtnPending";
+          default:
+            return "default-btn"; // You can define a default class for other statuses
+        }
+      }
+
+      function showConfirmationDialog(selectedStatus, row) {
+        const currentStatus = row.querySelector("td:nth-child(5)").textContent;
+        return confirm(
+          `Do you want to change status from ${currentStatus} to ${selectedStatus}?`
+        );
+      }
+
+      function changeStatus(selectElement) {
+        const selectedStatus = selectElement.value;
+        const row = selectElement.closest("tr");
+        const leadId = row.dataset.leadId;
+
+        if (!showConfirmationDialog(selectedStatus, row)) {
+          // User clicked Cancel in the confirmation dialog
+          selectElement.value =
+            row.querySelector("td:nth-child(5)").textContent;
+          return;
+        }
+
+        fetch(`http://localhost:8080/update-lead/${leadId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ status: selectedStatus }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((updatedStatus) => {
+            const statusCell = row.querySelector("td:nth-child(5)");
+            const actionCell = row.querySelector("td:nth-child(6)");
+
             statusCell.textContent = updatedStatus;
             statusCell.className = getButtonClass(updatedStatus);
-            actionCell.innerHTML = getActionHTML(updatedStatus);
-          }
+            actionCell.innerHTML = getActionHTML(
+              updatedStatus,
+              row.cells[0].textContent,
+              row.cells[2].textContent
+            );
 
-          // Reload the page after updating the status
-          window.location.reload();
-        })
-        .catch((error) => {
-          console.error("Error updating status: " + error);
-        });
-    }
+            if (updatedStatus === "Done") {
+              if (confirm("Do you want to change status as Done?")) {
+                statusCell.textContent = updatedStatus;
+                statusCell.className = getButtonClass(updatedStatus);
+                actionCell.innerHTML = getActionHTML(
+                  updatedStatus,
+                  row.cells[0].textContent,
+                  row.cells[2].textContent
+                );
+              } else {
+                // Revert to the previous status
+                selectElement.value = statusCell.textContent;
+              }
+            } else {
+              statusCell.textContent = updatedStatus;
+              statusCell.className = getButtonClass(updatedStatus);
+              actionCell.innerHTML = getActionHTML(updatedStatus);
+            }
 
-    function getActionHTML(status, name, email) {
-      // Remove double quotes from status if present
-      // status = status.replaceAll('"', "");
+            // Reload the page after updating the status
+            window.location.reload();
+          })
+          .catch((error) => {
+            console.error("Error updating status: " + error);
+          });
+      }
 
-      if (status === "Done") {
-        return `
+      function getActionHTML(status, name, email) {
+        // Remove double quotes from status if present
+        // status = status.replaceAll('"', "");
+
+        if (status === "Done") {
+          return `
             <a href="invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
                 Invoice
             </a>
         `;
-      } else if (status === "Close") {
-        return `
+        } else if (status === "Close") {
+          return `
             <a style="color: red;">Delete</a>
         `;
-      } else if (status === "Active") {
-        return `
+        } else if (status === "Active") {
+          return `
           <select onchange="changeStatus(this)">
-                <option value="" ${status === "Active" ? "selected" : ""
-          }>Edit</option>
-                <option value="Pending" ${status === "Pending" ? "selected" : ""
-          }>Pending</option>
-                <option value="Done" ${status === "Done" ? "selected" : ""
-          }>Done</option>
-                <option value="Close" ${status === "Close" ? "selected" : ""
-          }>Close</option>
+                <option value="" ${
+                  status === "Active" ? "selected" : ""
+                }>Edit</option>
+                <option value="Pending" ${
+                  status === "Pending" ? "selected" : ""
+                }>Pending</option>
+                <option value="Done" ${
+                  status === "Done" ? "selected" : ""
+                }>Done</option>
+                <option value="Close" ${
+                  status === "Close" ? "selected" : ""
+                }>Close</option>
             </select>
           `;
-      } else if (status === "Pending") {
-        return `
+        } else if (status === "Pending") {
+          return `
           <select onchange="changeStatus(this)">
-                <option value="" ${status === "Pending" ? "selected" : ""
-          }>Edit</option>
-                <option value="Active" ${status === "Active" ? "selected" : ""
-          }>Active</option>
-                <option value="Done" ${status === "Done" ? "selected" : ""
-          }>Done</option>
-                <option value="Close" ${status === "Close" ? "selected" : ""
-          }>Close</option>
+                <option value="" ${
+                  status === "Pending" ? "selected" : ""
+                }>Edit</option>
+                <option value="Active" ${
+                  status === "Active" ? "selected" : ""
+                }>Active</option>
+                <option value="Done" ${
+                  status === "Done" ? "selected" : ""
+                }>Done</option>
+                <option value="Close" ${
+                  status === "Close" ? "selected" : ""
+                }>Close</option>
             </select>
           `;
-      } else {
-        return "";
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      fetchLeadData();
-      document.addEventListener("change", function (event) {
-        if (event.target.tagName === "SELECT") {
-          changeStatus(event.target);
-        }
-      });
-    });
-  </script>
-  <script>
-    function searchLeads() {
-      var searchTerm = document.getElementById("leadSearchInput").value.toLowerCase();
-      var leadRows = document.querySelectorAll("#leadData tr");
-
-      leadRows.forEach(function (leadRow) {
-        var leadNameText = leadRow.querySelector("td:nth-child(1)").textContent.toLowerCase();
-
-        if (leadNameText.includes(searchTerm)) {
-          leadRow.style.display = "table-row";
         } else {
-          leadRow.style.display = "none";
+          return "";
         }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        fetchLeadData();
+        document.addEventListener("change", function (event) {
+          if (event.target.tagName === "SELECT") {
+            changeStatus(event.target);
+          }
+        });
       });
-    }
+    </script>
+    <script>
+      function searchLeads() {
+        var searchTerm = document
+          .getElementById("leadSearchInput")
+          .value.toLowerCase();
+        var leadRows = document.querySelectorAll("#leadData tr");
 
-    // Add an event listener for the "input" event on the search input field
-    document.getElementById("leadSearchInput").addEventListener("input", function () {
-      // Call the searchLeads function whenever the user types or deletes characters
-      searchLeads();
-    });
+        leadRows.forEach(function (leadRow) {
+          var leadNameText = leadRow
+            .querySelector("td:nth-child(1)")
+            .textContent.toLowerCase();
 
-  </script>
-</body>
+          if (leadNameText.includes(searchTerm)) {
+            leadRow.style.display = "table-row";
+          } else {
+            leadRow.style.display = "none";
+          }
+        });
+      }
 
+      // Add an event listener for the "input" event on the search input field
+      document
+        .getElementById("leadSearchInput")
+        .addEventListener("input", function () {
+          // Call the searchLeads function whenever the user types or deletes characters
+          searchLeads();
+        });
+    </script>
+  </body>
 </html>
