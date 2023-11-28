@@ -105,7 +105,7 @@
               <span class="icon">
                 <img class="hi" src="./assets/images/students.png" alt="" />
               </span>
-              <span class="text">Student Panel</span>
+              <span class="text">Subscribers</span>
             </a>
           </li>
         </ul>
@@ -113,11 +113,11 @@
       <nav class="sidebar-nav">
         <ul>
           <li class="nav-item">
-            <a href="adminpanel.html">
+            <a href="businesspanel.html">
               <span class="icon">
                 <img class="hi" src="./assets/images/admin.png" alt="" />
               </span>
-              <span class="text">Admin Panel</span>
+              <span class="text">Business Panel</span>
             </a>
           </li>
         </ul>
@@ -346,12 +346,14 @@
                         const row = document.createElement("tr");
                         row.dataset.leadId = lead.id;
                         row.innerHTML = `
-              <td>${lead.name}</td>
-              <td>${lead.mobile}</td>
-              <td>${lead.comment}</td>
-              <td>${lead.follow}</td>
-              <td>${lead.status}</td>
-              <td>    
+                        <td><a href="leadInfo.html?leadId=${lead.id}">${
+                          lead.name
+                        }</a></td>
+                        <td>${lead.mobile}</td>
+                        <td>${lead.comment}</td>
+                        <td>${lead.follow}</td>
+                        <td>${lead.status}</td>
+                        <td>    
                 <div class="action" style="display: none;"> <!-- Initially hidden -->
                   ${
                     lead.status === "Pending"

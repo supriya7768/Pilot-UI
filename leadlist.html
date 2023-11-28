@@ -1,254 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.svg"
+      type="image/x-icon"
+    />
+    <title>Leads Shepherd</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
-  <title>Leads Shepherd</title>
-
-  <!-- ========== All CSS files linkup ========= -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="assets/css/lineicons.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="assets/css/fullcalendar.css" />
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <style>
-    td {
-      color: grey;
-      font-size: 12px;
-      margin: 10px;
-      align-items: center;
-    }
-  </style>
-</head>
-
-
-<!-- ======== sidebar-nav start =========== -->
-<aside class="sidebar-nav-wrapper">
-  <div class="navbar-logo">
-    <a href="index.html">
-      <img style="height: 150px; width: 150px" src="./assets/images/SHEPHERD 2.jpg" />
-    </a>
-  </div>
-  <nav class="sidebar-nav">
-    <ul>
-      <li class="nav-item">
+    <!-- ========== All CSS files linkup ========= -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="assets/css/lineicons.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="assets/css/materialdesignicons.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+      td {
+        color: grey;
+        font-size: 12px;
+        margin: 10px;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ======== sidebar-nav start =========== -->
+    <aside class="sidebar-nav-wrapper">
+      <div class="navbar-logo">
         <a href="index.html">
-          <span class="icon">
-            <img class="hi" src="./assets/images/dashboard.png" alt="" />
-          </span>
-          <span class="text">Dashboard</span>
+          <img
+            style="height: 150px; width: 150px"
+            src="./assets/images/SHEPHERD 2.jpg"
+          />
         </a>
-      </li>
-    </ul>
-  </nav>
-  <nav class="sidebar-nav">
-    <ul>
-      <li class="nav-item">
-        <a href="addlead.html">
-          <span class="icon">
-            <img class="hi" src="./assets/images/user.png" alt="" />
-          </span>
-          <span class="text">Add Lead</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <nav class="sidebar-nav">
-    <ul>
-      <li class="nav-item">
-        <a href="leadlist.html">
-          <span class="icon">
-            <img class="hi" src="./assets/images/group.png" alt="" />
-          </span>
-          <span class="text">Lead List</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <nav class="sidebar-nav">
-    <ul>
-      <li class="nav-item">
-        <a href="invoice.html">
-          <span class="icon">
-            <img class="hi" src="./assets/images/invoice.png" alt="" />
-          </span>
-          <span class="text">Invoice</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <nav class="sidebar-nav">
-    <ul>
-      <li class="nav-item">
-        <a href="studentpanel.html">
-          <span class="icon">
-            <img class="hi" src="./assets/images/students.png" alt="" />
-          </span>
-          <span class="text">Student Panel</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <nav class="sidebar-nav">
-    <ul>
-      <li class="nav-item">
-        <a href="adminpanel.html">
-          <span class="icon">
-            <img class="hi" src="./assets/images/admin.png" alt="" />
-          </span>
-          <span class="text">Admin Panel</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-</aside>
-<!-- ======== sidebar-nav end =========== -->
-
-
-<div class="overlay"></div>
-
-<!-- ======== main-wrapper start =========== -->
-<main class="main-wrapper">
-  <!-- ========== header start ========== -->
-  <header class="header">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-5 col-md-5 col-6">
-          <div class="header-left d-flex align-items-center">
-            <div class="menu-toggle-btn mr-15">
-              <button id="menu-toggle" class="main-btn primary-btn btn-hover">
-                <i class="lni lni-chevron-left me-2"></i> Menu
-              </button>
-            </div>
-            <div class="header-search d-none d-md-flex">
-              <form action="#" id="leadSearchForm">
-                <input type="text" id="leadSearchInput" placeholder="Search Lead Name"
-                  style="font-size: 12px; text-align: center;" />
-                <button type=" button" onclick="searchLeads()">
-                  <i class="lni lni-search-alt"></i>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-7 col-md-7 col-6">
-          <div class="header-right"></div>
-        </div>
       </div>
-    </div>
-  </header>
-  <!-- ========== header end ========== -->
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="index.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/dashboard.png" alt="" />
+              </span>
+              <span class="text">Dashboard</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="addlead.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/user.png" alt="" />
+              </span>
+              <span class="text">Add Lead</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="leadlist.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/group.png" alt="" />
+              </span>
+              <span class="text">Lead List</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="invoice.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/invoice.png" alt="" />
+              </span>
+              <span class="text">Invoice</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="studentpanel.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/students.png" alt="" />
+              </span>
+              <span class="text">Subscribers</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item">
+            <a href="businesspanel.html">
+              <span class="icon">
+                <img class="hi" src="./assets/images/admin.png" alt="" />
+              </span>
+              <span class="text">Business Panel</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- ======== sidebar-nav end =========== -->
 
-  <!-- ========== section start ========== -->
-  <section class="section">
-    <div class="container-fluid">
-      <!-- ========== title-wrapper start ========== -->
-      <div class="title-wrapper pt-30">
-        <div class="row align-items-center">
-          <div class="col-md-6">
-            <div class="title">
-              <h2 style="color: #365cf5;" class="headings">Lead List</h2>
+    <div class="overlay"></div>
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <header class="header">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-6">
+              <div class="header-left d-flex align-items-center">
+                <div class="menu-toggle-btn mr-15">
+                  <button
+                    id="menu-toggle"
+                    class="main-btn primary-btn btn-hover"
+                  >
+                    <i class="lni lni-chevron-left me-2"></i> Menu
+                  </button>
+                </div>
+                <div class="header-search d-none d-md-flex">
+                  <form action="#" id="leadSearchForm">
+                    <input
+                      type="text"
+                      id="leadSearchInput"
+                      placeholder="Search Lead Name"
+                      style="font-size: 12px; text-align: center"
+                    />
+                    <button type=" button" onclick="searchLeads()">
+                      <i class="lni lni-search-alt"></i>
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7 col-md-7 col-6">
+              <div class="header-right"></div>
             </div>
           </div>
-          <!-- end col -->
         </div>
+      </header>
+      <!-- ========== header end ========== -->
 
+      <!-- ========== section start ========== -->
+      <section class="section">
+        <div class="container-fluid">
+          <!-- ========== title-wrapper start ========== -->
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <div class="title">
+                  <h2 style="color: #365cf5" class="headings">Lead List</h2>
+                </div>
+              </div>
+              <!-- end col -->
+            </div>
 
-        <a href="closeleads.html" class="main-btn danger-btn square-btn btn-hover delbtn headings">
-          Closed Leads
-        </a>
+            <a
+              href="closeleads.html"
+              class="main-btn danger-btn square-btn btn-hover delbtn headings"
+            >
+              Closed Leads
+            </a>
 
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card-style mb-30">
-              <h6 class="mb-10">Data Table</h6>
-              <div class="table-wrapper table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>
-                        <h6>Name</h6>
-                      </th>
-                      <th>
-                        <h6>Mobile No</h6>
-                      </th>
-                      <th>
-                        <h6>Email</h6>
-                      </th>
-                      <th>
-                        <h6>Course</h6>
-                      </th>
-                      <th>
-                        <h6>Status</h6>
-                      </th>
-                      <!-- <th>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card-style mb-30">
+                  <h6 class="mb-10">Data Table</h6>
+                  <div class="table-wrapper table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>
+                            <h6>Name</h6>
+                          </th>
+                          <th>
+                            <h6>Mobile No</h6>
+                          </th>
+                          <th>
+                            <h6>Email</h6>
+                          </th>
+                          <th>
+                            <h6>Course</h6>
+                          </th>
+                          <th>
+                            <h6>Status</h6>
+                          </th>
+                          <!-- <th>
                         <h6>Action</h6>
                       </th> -->
-                    </tr>
-                    <!-- end table row-->
-                  </thead>
+                        </tr>
+                        <!-- end table row-->
+                      </thead>
 
-
-                  <tbody id="leadData">
-                    <!-- Lead data will be dynamically added here -->
-                  </tbody>
-                </table>
+                      <tbody id="leadData">
+                        <!-- Lead data will be dynamically added here -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
+      <!-- ========== section end ========== -->
+    </main>
+    <!-- ======== main-wrapper end =========== -->
 
-      </div>
-  </section>
-  <!-- ========== section end ========== -->
-</main>
-<!-- ======== main-wrapper end =========== -->
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/Chart.min.js"></script>
+    <script src="assets/js/dynamic-pie-chart.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/fullcalendar.js"></script>
+    <script src="assets/js/jvectormap.min.js"></script>
+    <script src="assets/js/world-merc.js"></script>
+    <script src="assets/js/polyfill.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <!-- <script src="assets/js/user.js"></script> -->
+    <script>
+      function fetchLeadData() {
+        fetch("http://localhost:8080/get-lead-data")
+          .then((response) => response.json())
+          .then((data) => {
+            const leadData = document.getElementById("leadData");
+            // Clear existing data
+            //leadData.innerHTML = "";
 
-<!-- ========= All Javascript files linkup ======== -->
-<script src="assets/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/Chart.min.js"></script>
-<script src="assets/js/dynamic-pie-chart.js"></script>
-<script src="assets/js/moment.min.js"></script>
-<script src="assets/js/fullcalendar.js"></script>
-<script src="assets/js/jvectormap.min.js"></script>
-<script src="assets/js/world-merc.js"></script>
-<script src="assets/js/polyfill.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/jquery.js"></script>
-<!-- <script src="assets/js/user.js"></script> -->
-<script>
-  function fetchLeadData() {
-    fetch("http://localhost:8080/get-lead-data")
-      .then((response) => response.json())
-      .then((data) => {
-        const leadData = document.getElementById("leadData");
-        // Clear existing data
-        //leadData.innerHTML = "";
+            data
+              .filter(
+                (lead) => lead.status === "Active" || lead.status === "Pending"
+              )
+              .forEach((lead) => {
+                const row = document.createElement("tr");
+                // Set the lead id as a data attribute
+                row.dataset.leadId = lead.id; // Assuming lead has a property called 'id'
 
-
-        data
-          .filter(
-            (lead) => lead.status === "Active" || lead.status === "Pending"
-          )
-          .forEach((lead) => {
-            const row = document.createElement("tr");
-            // Set the lead id as a data attribute
-            row.dataset.leadId = lead.id; // Assuming lead has a property called 'id'
-
-
-            row.innerHTML = `
-                      <td>${lead.name}</td>
+                row.innerHTML = `
+                      <td><a href="leadInfo.html?leadId=${lead.id}">${
+                  lead.name
+                }</a></td>
                       <td>${lead.mobile}</td>
                       <td>${lead.email}</td>
                       <td>${lead.courseIntrested}</td>
                       <td>${lead.status}</td>
                       <td>
                           <div class="action" style="display: none;">
-                              ${lead.status === "Pending"
-                ? `
+                              ${
+                                lead.status === "Pending"
+                                  ? `
                                       <select onchange="changeStatus(this)">
                                           <option value="">Select</option>
                                           <option value="Active">Active</option>
@@ -256,8 +279,8 @@
                                           <option value="Close">Close</option>
                                       </select>
                                   `
-                : lead.status === "Active"
-                  ? `
+                                  : lead.status === "Active"
+                                  ? `
                                       <select onchange="changeStatus(this)">
                                           <option value="">Select</option>
                                           <option value="Pending">Pending</option>
@@ -265,18 +288,18 @@
                                           <option value="Close">Close</option>
                                       </select>
                                   `
-                  : lead.status === "Done"
-                    ? `
+                                  : lead.status === "Done"
+                                  ? `
                                       <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
                                           Invoice
                                       </a>
                                   `
-                    : lead.status === "Close"
-                      ? `
+                                  : lead.status === "Close"
+                                  ? `
                                       <a style="color: red;">Delete</a>
                                   `
-                      : ""
-              }
+                                  : ""
+                              }
                           </div>
                       </td>
                       <td>
@@ -285,207 +308,217 @@
                 <a href="#" onclick="editLead(event, ${lead.id})">Edit</a>
             </td>    
                   `;
-            const arrowCell = document.createElement("td");
-            const arrow = document.createElement("span");
-            arrow.className = "arrow";
-            arrow.innerHTML = "&#9660;"; // Down arrow by default
-            arrow.style.cursor = "pointer"; // Set cursor property to pointer
-            arrowCell.appendChild(arrow);
-            // row.appendChild(arrowCell);
+                const arrowCell = document.createElement("td");
+                const arrow = document.createElement("span");
+                arrow.className = "arrow";
+                arrow.innerHTML = "&#9660;"; // Down arrow by default
+                arrow.style.cursor = "pointer"; // Set cursor property to pointer
+                arrowCell.appendChild(arrow);
+                // row.appendChild(arrowCell);
 
-            // Create a new row for the dropdown
-            const dropdownRow = document.createElement("tr");
-            dropdownRow.style.display = "none"; // Initially hide the row for the dropdown
-            const dropdownCell = document.createElement("td");
-            dropdownCell.colSpan = 6; // Set colspan to cover all columns
-            const dropdown = document.createElement("div");
-            dropdown.className = "dropdown";
-            dropdown.style.display = "none"; // Initially hide the dropdown
+                // Create a new row for the dropdown
+                const dropdownRow = document.createElement("tr");
+                dropdownRow.style.display = "none"; // Initially hide the row for the dropdown
+                const dropdownCell = document.createElement("td");
+                dropdownCell.colSpan = 6; // Set colspan to cover all columns
+                const dropdown = document.createElement("div");
+                dropdown.className = "dropdown";
+                dropdown.style.display = "none"; // Initially hide the dropdown
 
-            // Display some random examples initially
-            dropdown.innerHTML = `
+                // Display some random examples initially
+                dropdown.innerHTML = `
             <ul>
               <li>2023-01-01: Example comment 1</li>
               <li>2023-01-02: Example comment 2</li>
             </ul>
           `;
 
-            dropdownCell.appendChild(dropdown);
-            dropdownRow.appendChild(dropdownCell);
+                dropdownCell.appendChild(dropdown);
+                dropdownRow.appendChild(dropdownCell);
 
-            // Initially hide the lead row
-            row.style.display = "table-row";
+                // Initially hide the lead row
+                row.style.display = "table-row";
 
-            leadData.appendChild(row);
-            // leadData.appendChild(dropdownRow);
+                leadData.appendChild(row);
+                // leadData.appendChild(dropdownRow);
 
-            // Toggle dropdown visibility and arrow direction on arrow click
-            arrow.addEventListener("click", () => {
-              if (dropdownRow.style.display === "none") {
-                dropdownRow.style.display = "table-row"; // Show the row for the dropdown
-                arrow.innerHTML = "&#9650;"; // Up arrow when dropdown is shown
-              } else {
-                dropdownRow.style.display = "none"; // Hide the row for the dropdown
-                arrow.innerHTML = "&#9660;"; // Down arrow when dropdown is hidden
-              }
+                // Toggle dropdown visibility and arrow direction on arrow click
+                arrow.addEventListener("click", () => {
+                  if (dropdownRow.style.display === "none") {
+                    dropdownRow.style.display = "table-row"; // Show the row for the dropdown
+                    arrow.innerHTML = "&#9650;"; // Up arrow when dropdown is shown
+                  } else {
+                    dropdownRow.style.display = "none"; // Hide the row for the dropdown
+                    arrow.innerHTML = "&#9660;"; // Down arrow when dropdown is hidden
+                  }
 
-              // Toggle dropdown visibility
-              if (dropdown.style.display === "none") {
-                dropdown.style.display = "block"; // Show the dropdown
-              } else {
-                dropdown.style.display = "none"; // Hide the dropdown
-              }
-            });
+                  // Toggle dropdown visibility
+                  if (dropdown.style.display === "none") {
+                    dropdown.style.display = "block"; // Show the dropdown
+                  } else {
+                    dropdown.style.display = "none"; // Hide the dropdown
+                  }
+                });
+              });
+          })
+
+          .catch((error) => {
+            console.error("Error fetching data: " + error);
           });
-      })
+      }
 
-      .catch((error) => {
-        console.error("Error fetching data: " + error);
-      });
-  }
-
-  function getButtonClass(status) {
-    switch (status) {
-      case "Active":
-        return "newbtnact";
-      case "Done":
-        return "newbtndone";
-      case "Close":
-        return "newbtnclose";
-      case "Pending":
-        return "newbtnPending";
-      default:
-        return "default-btn"; // You can define a default class for other statuses
-    }
-  }
-
-  function showConfirmationDialog(selectedStatus, row) {
-    const currentStatus = row.querySelector("td:nth-child(5)").textContent;
-    return confirm(
-      `Do you want to change status from ${currentStatus} to ${selectedStatus}?`
-    );
-  }
-
-  function changeStatus(selectElement) {
-    const selectedStatus = selectElement.value;
-    const row = selectElement.closest("tr");
-    const leadId = row.dataset.leadId;
-    const comment = row.querySelector("td:nth-child(3)").textContent; // Assuming the comment is in the third column
-
-    // Check if a comment exists before allowing status change
-    if (!comment.trim()) {
-      alert("Please add a compulsory comment before changing the status.");
-      selectElement.value = row.querySelector("td:nth-child(5)").textContent; // Reset the select element
-      return;
-    }
-
-    if (!showConfirmationDialog(selectedStatus, row)) {
-      // User clicked Cancel in the confirmation dialog
-      selectElement.value = row.querySelector("td:nth-child(5)").textContent;
-      return;
-    }
-
-    const followDateCell = row.querySelector("td:nth-child(4)");
-
-    if (selectedStatus === "Done" || selectedStatus === "Close") {
-      // Update the follow date to empty when the status is "Done" or "Close"
-      const removedLeadDate = followDateCell.textContent;
-      followDateCell.textContent = "";
-
-      // Remove the row from the table
-      row.remove();
-
-      // Update the calendar with the removed lead's date
-      updateCalendarAfterRemove(removedLeadDate);
-    }
-
-    fetch(`http://localhost:8080/update-lead/${leadId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ status: selectedStatus }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+      function getButtonClass(status) {
+        switch (status) {
+          case "Active":
+            return "newbtnact";
+          case "Done":
+            return "newbtndone";
+          case "Close":
+            return "newbtnclose";
+          case "Pending":
+            return "newbtnPending";
+          default:
+            return "default-btn"; // You can define a default class for other statuses
         }
-        return response.json();
-      })
-      .then((updatedStatus) => {
-        const statusCell = row.querySelector("td:nth-child(5)");
-        const actionCell = row.querySelector("td:nth-child(6)");
+      }
 
-        statusCell.textContent = selectedStatus;
-        statusCell.className = getButtonClass(selectedStatus);
-        actionCell.innerHTML = getActionHTML(
-          selectedStatus,
-          row.cells[0].textContent,
-          row.cells[2].textContent
+      function showConfirmationDialog(selectedStatus, row) {
+        const currentStatus = row.querySelector("td:nth-child(5)").textContent;
+        return confirm(
+          `Do you want to change status from ${currentStatus} to ${selectedStatus}?`
         );
-      })
-      .catch((error) => {
-        console.error("Error updating status: " + error);
-      });
-  }
+      }
 
-  function getActionHTML(status, name, email) {
-    // Remove double quotes from status if present
-    // status = status.replaceAll('"', "");
+      function changeStatus(selectElement) {
+        const selectedStatus = selectElement.value;
+        const row = selectElement.closest("tr");
+        const leadId = row.dataset.leadId;
+        const comment = row.querySelector("td:nth-child(3)").textContent; // Assuming the comment is in the third column
 
-    if (status === "Done") {
-      return `
+        // Check if a comment exists before allowing status change
+        if (!comment.trim()) {
+          alert("Please add a compulsory comment before changing the status.");
+          selectElement.value =
+            row.querySelector("td:nth-child(5)").textContent; // Reset the select element
+          return;
+        }
+
+        if (!showConfirmationDialog(selectedStatus, row)) {
+          // User clicked Cancel in the confirmation dialog
+          selectElement.value =
+            row.querySelector("td:nth-child(5)").textContent;
+          return;
+        }
+
+        const followDateCell = row.querySelector("td:nth-child(4)");
+
+        if (selectedStatus === "Done" || selectedStatus === "Close") {
+          // Update the follow date to empty when the status is "Done" or "Close"
+          const removedLeadDate = followDateCell.textContent;
+          followDateCell.textContent = "";
+
+          // Remove the row from the table
+          row.remove();
+
+          // Update the calendar with the removed lead's date
+          updateCalendarAfterRemove(removedLeadDate);
+        }
+
+        fetch(`http://localhost:8080/update-lead/${leadId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ status: selectedStatus }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((updatedStatus) => {
+            const statusCell = row.querySelector("td:nth-child(5)");
+            const actionCell = row.querySelector("td:nth-child(6)");
+
+            statusCell.textContent = selectedStatus;
+            statusCell.className = getButtonClass(selectedStatus);
+            actionCell.innerHTML = getActionHTML(
+              selectedStatus,
+              row.cells[0].textContent,
+              row.cells[2].textContent
+            );
+          })
+          .catch((error) => {
+            console.error("Error updating status: " + error);
+          });
+      }
+
+      function getActionHTML(status, name, email) {
+        // Remove double quotes from status if present
+        // status = status.replaceAll('"', "");
+
+        if (status === "Done") {
+          return `
             <a href="invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
                 Invoice
             </a>
         `;
-    } else if (status === "Close") {
-      return `
+        } else if (status === "Close") {
+          return `
             <a style="color: red;">Delete</a>
         `;
-    } else if (status === "Active") {
-      return `
+        } else if (status === "Active") {
+          return `
           <select onchange="changeStatus(this)">
-                <option value="" ${status === "Active" ? "selected" : ""
-        }>Edit</option>
-                <option value="Pending" ${status === "Pending" ? "selected" : ""
-        }>Pending</option>
-                <option value="Done" ${status === "Done" ? "selected" : ""
-        }>Done</option>
-                <option value="Close" ${status === "Close" ? "selected" : ""
-        }>Close</option>
+                <option value="" ${
+                  status === "Active" ? "selected" : ""
+                }>Edit</option>
+                <option value="Pending" ${
+                  status === "Pending" ? "selected" : ""
+                }>Pending</option>
+                <option value="Done" ${
+                  status === "Done" ? "selected" : ""
+                }>Done</option>
+                <option value="Close" ${
+                  status === "Close" ? "selected" : ""
+                }>Close</option>
             </select>
           `;
-    } else if (status === "Pending") {
-      return `
+        } else if (status === "Pending") {
+          return `
           <select onchange="changeStatus(this)">
-                <option value="" ${status === "Pending" ? "selected" : ""
-        }>Edit</option>
-                <option value="Active" ${status === "Active" ? "selected" : ""
-        }>Active</option>
-                <option value="Done" ${status === "Done" ? "selected" : ""
-        }>Done</option>
-                <option value="Close" ${status === "Close" ? "selected" : ""
-        }>Close</option>
+                <option value="" ${
+                  status === "Pending" ? "selected" : ""
+                }>Edit</option>
+                <option value="Active" ${
+                  status === "Active" ? "selected" : ""
+                }>Active</option>
+                <option value="Done" ${
+                  status === "Done" ? "selected" : ""
+                }>Done</option>
+                <option value="Close" ${
+                  status === "Close" ? "selected" : ""
+                }>Close</option>
             </select>
           `;
-    } else {
-      return "";
-    }
-  }
+        } else {
+          return "";
+        }
+      }
 
-  // Function to handle editing a lead
-  function editLead(event, leadId) {
-    event.preventDefault();
-    const existingEditSections = document.querySelectorAll(".edit-section");
-    existingEditSections.forEach((section) => section.remove());
+      // Function to handle editing a lead
+      function editLead(event, leadId) {
+        event.preventDefault();
+        const existingEditSections = document.querySelectorAll(".edit-section");
+        existingEditSections.forEach((section) => section.remove());
 
-    const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
+        const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
 
-    // Create and append the edit section
-    const editSection = document.createElement("tr");
-    editSection.classList.add("edit-section");
-    editSection.innerHTML = `
+        // Create and append the edit section
+        const editSection = document.createElement("tr");
+        editSection.classList.add("edit-section");
+        editSection.innerHTML = `
               <td colspan="6">
                 <!-- Your edit form or content goes here -->
                 <label for="newFollowUpDate">New Follow-Up Date:</label>
@@ -512,129 +545,135 @@
               </td>
               `;
 
-    row.insertAdjacentElement("afterend", editSection);
+        row.insertAdjacentElement("afterend", editSection);
 
-    // Hide the action part in the row
-    const actionSection = row.querySelector(".action");
-    actionSection.style.display = "none";
-  }
+        // Hide the action part in the row
+        const actionSection = row.querySelector(".action");
+        actionSection.style.display = "none";
+      }
 
-  function saveEdits(leadId) {
-    const newFollowUpDateInput = document.getElementById("newFollowUpDate");
-    const newCommentInput = document.getElementById("newComment");
-    const changeStatusInput = document.getElementById("changeStatus");
+      function saveEdits(leadId) {
+        const newFollowUpDateInput = document.getElementById("newFollowUpDate");
+        const newCommentInput = document.getElementById("newComment");
+        const changeStatusInput = document.getElementById("changeStatus");
 
-    const newFollowUpDate = newFollowUpDateInput.value;
-    const newComment = newCommentInput.value;
-    const changeStatus = changeStatusInput.value;
+        const newFollowUpDate = newFollowUpDateInput.value;
+        const newComment = newCommentInput.value;
+        const changeStatus = changeStatusInput.value;
 
-    // Validate that all three fields are filled
-    if (!newFollowUpDate || !newComment || !changeStatus) {
-      alert("Please fill in all required fields.");
-      return;
-    }
-
-    // Fetch API to send data to the server
-    const url = `http://localhost:8080/save-edits/${leadId}`;
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: `newFollowUpDate=${newFollowUpDate}&newComment=${newComment}&changeStatus=${changeStatus}`,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Error saving edits");
+        // Validate that all three fields are filled
+        if (!newFollowUpDate || !newComment || !changeStatus) {
+          alert("Please fill in all required fields.");
+          return;
         }
-        return response.text();
-      })
-      .then((data) => {
-        console.log(data); // Log the response from the server
-        // Remove the edit section after saving
-        const editSection = document.querySelector(".edit-section");
-        editSection.remove();
 
-                // Reload the page after saving edits
-                window.location.reload();
+        // Fetch API to send data to the server
+        const url = `http://localhost:8080/save-edits/${leadId}`;
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: `newFollowUpDate=${newFollowUpDate}&newComment=${newComment}&changeStatus=${changeStatus}`,
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Error saving edits");
+            }
+            return response.text();
+          })
+          .then((data) => {
+            console.log(data); // Log the response from the server
+            // Remove the edit section after saving
+            const editSection = document.querySelector(".edit-section");
+            editSection.remove();
 
-        // Update the calendar and table entry simultaneously
-        // const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
-        // const followDateCell = row.querySelector("td:nth-child(4)");
-        // followDateCell.textContent = newFollowUpDate;
+            // Reload the page after saving edits
+            window.location.reload();
 
-        // const statusi = row.querySelector("td:nth-child(5)");
-        // statusi.textContent = changeStatus;
+            // Update the calendar and table entry simultaneously
+            // const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
+            // const followDateCell = row.querySelector("td:nth-child(4)");
+            // followDateCell.textContent = newFollowUpDate;
 
-        // Remove the row from the table
-        if(status === "Done" || status === "Closed"){
-          row.remove();
-        }
-        
-        // Update the calendar with the removed lead's date
-        updateCalendarAfterRemove(removedLeadDate);
+            // const statusi = row.querySelector("td:nth-child(5)");
+            // statusi.textContent = changeStatus;
 
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        // Handle the error, show an alert, or perform other actions
+            // Remove the row from the table
+            if (status === "Done" || status === "Closed") {
+              row.remove();
+            }
+
+            // Update the calendar with the removed lead's date
+            updateCalendarAfterRemove(removedLeadDate);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            // Handle the error, show an alert, or perform other actions
+          });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        fetchLeadData();
+        document.addEventListener("change", function (event) {
+          if (event.target.tagName === "SELECT") {
+            changeStatus(event.target);
+          }
+        });
       });
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    fetchLeadData();
-    document.addEventListener("change", function (event) {
-      if (event.target.tagName === "SELECT") {
-        changeStatus(event.target);
+    </script>
+    <script>
+      // Function to reset the display of all leads
+      function resetLeadDisplay() {
+        var leadRows = document.querySelectorAll("#leadData tr");
+        leadRows.forEach(function (leadRow) {
+          leadRow.style.display = "table-row";
+        });
       }
-    });
-  });
-</script>
-<script>
-  // Function to reset the display of all leads
-  function resetLeadDisplay() {
-    var leadRows = document.querySelectorAll("#leadData tr");
-    leadRows.forEach(function (leadRow) {
-      leadRow.style.display = "table-row";
-    });
-  }
 
-  // Function to search leads
-  function searchLeads() {
-    var searchTerm = document.getElementById("leadSearchInput").value.toLowerCase();
-    var leadRows = document.querySelectorAll("#leadData tr");
+      // Function to search leads
+      function searchLeads() {
+        var searchTerm = document
+          .getElementById("leadSearchInput")
+          .value.toLowerCase();
+        var leadRows = document.querySelectorAll("#leadData tr");
 
-    var matchingLeads = [];
+        var matchingLeads = [];
 
-    leadRows.forEach(function (leadRow) {
-      var leadNameText = leadRow.querySelector("td:nth-child(1)").textContent.toLowerCase();
-      var leadMobileText = leadRow.querySelector("td:nth-child(2)").textContent.toLowerCase();
+        leadRows.forEach(function (leadRow) {
+          var leadNameText = leadRow
+            .querySelector("td:nth-child(1)")
+            .textContent.toLowerCase();
+          var leadMobileText = leadRow
+            .querySelector("td:nth-child(2)")
+            .textContent.toLowerCase();
 
-      if (leadNameText.includes(searchTerm) || leadMobileText.includes(searchTerm)) {
-        matchingLeads.push(leadRow);
-      } else {
-        leadRow.style.display = "none";
+          if (
+            leadNameText.includes(searchTerm) ||
+            leadMobileText.includes(searchTerm)
+          ) {
+            matchingLeads.push(leadRow);
+          } else {
+            leadRow.style.display = "none";
+          }
+        });
+
+        // Display only the matching leads
+        matchingLeads.forEach(function (matchingLead) {
+          matchingLead.style.display = "table-row";
+        });
       }
-    });
 
-    // Display only the matching leads
-    matchingLeads.forEach(function (matchingLead) {
-      matchingLead.style.display = "table-row";
-    });
-  }
+      // Attach an event listener to the search input field
+      document
+        .getElementById("leadSearchInput")
+        .addEventListener("input", function () {
+          // Reset display before searching
+          resetLeadDisplay();
 
-  // Attach an event listener to the search input field
-  document.getElementById("leadSearchInput").addEventListener("input", function () {
-    // Reset display before searching
-    resetLeadDisplay();
-
-    // Perform the search
-    searchLeads();
-  });
-
-
-
-</script>
-</body>
-
+          // Perform the search
+          searchLeads();
+        });
+    </script>
+  </body>
 </html>

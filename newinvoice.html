@@ -1,67 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Invoice Form</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <table id="invoiceTable">
-        <thead>
-            <tr>
-                <th class="service">
-                    <h6 class="text-sm text-medium">Sr.No</h6>
-                </th>
-                <th class="desc">
-                    <h6 class="text-sm text-medium">Course</h6>
-                </th>
-                <th class="qty">
-                    <h6 class="text-sm text-medium">Rate</h6>
-                </th>
-                <th class="amount">
-                    <h6 class="text-sm text-medium">Amount</h6>
-                </th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Initial row for demonstration -->
-            <tr>
-                <td>1</td>
-                <td>
-                    <select class="course">
-                        <option value="">Select category</option>
-                        <option>Software Testing(Java Selenium)</option>
-                        <option>Automation Testing(Python Selenium)</option>
-                        <option>Rest API Testing</option>
-                        <option>Java Full Stack Development</option>
-                        <option>MERN Java Full Stack Development</option>
-                        <option>.NET Full Stack Development</option>
-                        <option>Diploma in UI/UX Design</option>
-                    </select>
-                </td>
-                <td><input type="text" class="rate"></td>
-                <td><input type="text" class="amount"></td>
-                <td><button class="deleteRow">Delete</button></td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th class="service">
+            <h6 class="text-sm text-medium">Sr.No</h6>
+          </th>
+          <th class="desc">
+            <h6 class="text-sm text-medium">Course</h6>
+          </th>
+          <th class="qty">
+            <h6 class="text-sm text-medium">Rate</h6>
+          </th>
+          <th class="amount">
+            <h6 class="text-sm text-medium">Amount</h6>
+          </th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Initial row for demonstration -->
+        <tr>
+          <td>1</td>
+          <td>
+            <select class="course">
+              <option value="">Select category</option>
+              <option>Software Testing(Java Selenium)</option>
+              <option>Automation Testing(Python Selenium)</option>
+              <option>Rest API Testing</option>
+              <option>Java Full Stack Development</option>
+              <option>MERN Java Full Stack Development</option>
+              <option>.NET Full Stack Development</option>
+              <option>Diploma in UI/UX Design</option>
+            </select>
+          </td>
+          <td><input type="text" class="rate" /></td>
+          <td><input type="text" class="amount" /></td>
+          <td><button class="deleteRow">Delete</button></td>
+        </tr>
+      </tbody>
     </table>
 
     <button id="addRow">Add Row</button>
     <button id="savePDF">Save as PDF</button>
 
     <script>
-        $(document).ready(function () {
-            // Add Row button functionality
-            $("#addRow").on("click", function () {
-                var newRow = $("<tr>");
-                newRow.append("<td>" + ($("#invoiceTable tbody tr").length + 1) + "</td>");
-                newRow.append(`
+      $(document).ready(function () {
+        // Add Row button functionality
+        $("#addRow").on("click", function () {
+          var newRow = $("<tr>");
+          newRow.append(
+            "<td>" + ($("#invoiceTable tbody tr").length + 1) + "</td>"
+          );
+          newRow.append(`
                 <td>
                     <select class="course">
                         <option value="">Select category</option>
@@ -75,29 +75,27 @@
                     </select>
                 </td>
             `);
-                newRow.append("<td><input type='text' class='rate'></td>");
-                newRow.append("<td><input type='text' class='amount'></td>");
-                newRow.append("<td><button class='deleteRow'>Delete</button></td>");
+          newRow.append("<td><input type='text' class='rate'></td>");
+          newRow.append("<td><input type='text' class='amount'></td>");
+          newRow.append("<td><button class='deleteRow'>Delete</button></td>");
 
-                $("#invoiceTable tbody").append(newRow);
-            });
-
-            // Delete Row button functionality
-            $(document).on("click", ".deleteRow", function () {
-                $(this).closest("tr").remove();
-            });
-
-            // Save as PDF button functionality
-            $("#savePDF").on("click", function () {
-                var pdf = new jsPDF();
-                pdf.autoTable({
-                    html: '#invoiceTable'
-                });
-                pdf.save('invoice.pdf');
-            });
+          $("#invoiceTable tbody").append(newRow);
         });
+
+        // Delete Row button functionality
+        $(document).on("click", ".deleteRow", function () {
+          $(this).closest("tr").remove();
+        });
+
+        // Save as PDF button functionality
+        $("#savePDF").on("click", function () {
+          var pdf = new jsPDF();
+          pdf.autoTable({
+            html: "#invoiceTable",
+          });
+          pdf.save("invoice.pdf");
+        });
+      });
     </script>
-
-</body>
-
+  </body>
 </html>
