@@ -427,7 +427,6 @@
             $(document).ready(function () {
               // Function to fetch lead counts for all dates
               function fetchLeadCountsForAllDates() {
-                // Replace 'http://localhost:8080/get-all-lead-counts' with the actual API endpoint for fetching lead counts for all dates
                 fetch("http://localhost:8080/get-all-lead-counts")
                   .then((response) => response.json())
                   .then((data) => {
@@ -656,7 +655,10 @@
                 .then((response) => response.json())
                 .then((data) => {
                   const filteredLeads = data.filter(
-                    (lead) => lead.id !== removedLeadId
+                    (lead) =>
+                      lead.id !== removedLeadId &&
+                      lead.status !== "Done" &&
+                      lead.status !== "Closed"
                   );
 
                   // Update the calendar with the filtered leads
