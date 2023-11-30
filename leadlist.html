@@ -9,6 +9,10 @@
       href="assets/images/favicon.svg"
       type="image/x-icon"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Leads Shepherd</title>
 
     <!-- ========== All CSS files linkup ========= -->
@@ -33,6 +37,68 @@
         font-size: 12px;
         margin: 10px;
         align-items: center;
+      }
+
+      .search-box {
+        width: fit-content;
+        height: fit-content;
+        position: relative;
+        margin-bottom: 5px;
+        margin-left: 0px;
+      }
+      .input-search {
+        height: 50px;
+        width: 30px;
+        border-style: none;
+
+        padding: 10px;
+        font-size: 12px;
+        letter-spacing: 2px;
+        outline: none;
+        border-radius: 25px;
+        transition: all 0.5s ease-in-out;
+        background-color: #5977ef;
+        padding-right: 40px;
+        color: #000;
+      }
+      .input-search::placeholder {
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 12px;
+        letter-spacing: 2px;
+        font-weight: 300;
+      }
+      .btn-search {
+        width: 50px;
+        height: 50px;
+        border-style: none;
+        font-size: 20px;
+        font-weight: bold;
+        outline: none;
+        cursor: pointer;
+        border-radius: 50%;
+        position: absolute;
+        right: 0px;
+        color: #c1bebe;
+        background-color: transparent;
+        pointer-events: painted;
+      }
+      .btn-search:focus ~ .input-search {
+        width: 300px;
+        border-radius: 0px;
+        background-color: transparent;
+        border-bottom: 1px solid rgba(12, 12, 12, 0.5);
+        transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+        left: 0; /* Set the left position to 0 */
+      }
+
+      .input-search:focus {
+        width: 300px;
+        border-radius: 0px;
+        background-color: transparent;
+        border-bottom: 1px solid rgba(6, 5, 5, 0.5);
+        transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+        left: 5; /* Set the left position to 0 */
+        left: 5; /* Set the left position to 0 */
       }
     </style>
   </head>
@@ -137,21 +203,11 @@
                     id="menu-toggle"
                     class="main-btn primary-btn btn-hover"
                   >
-                    <i class="lni lni-chevron-left me-2"></i> Menu
+                    <i
+                      class="lni lni-chevron-left me-2"
+                      style="align-items: center"
+                    ></i>
                   </button>
-                </div>
-                <div class="header-search d-none d-md-flex">
-                  <form action="#" id="leadSearchForm">
-                    <input
-                      type="text"
-                      id="leadSearchInput"
-                      placeholder="Search Lead Name"
-                      style="font-size: 12px; text-align: center"
-                    />
-                    <button type=" button" onclick="searchLeads()">
-                      <i class="lni lni-search-alt"></i>
-                    </button>
-                  </form>
                 </div>
               </div>
             </div>
@@ -168,26 +224,55 @@
         <div class="container-fluid">
           <!-- ========== title-wrapper start ========== -->
           <div class="title-wrapper pt-30">
-            <div class="row align-items-center">
-              <div class="col-md-6">
-                <div class="title">
-                  <h2 style="color: #365cf5" class="headings">Lead List</h2>
+            <div style="display: flex; justify-content: space-between">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="title">
+                    <!--  <h2 class="headings">Lead List</h2> -->
+                  </div>
                 </div>
               </div>
-              <!-- end col -->
+              <div class="col-md-6">
+                <div
+                  class="title d-flex align-items-center flex-wrap"
+                  style="margin-left: 70%"
+                >
+                  <a
+                    href="addlead.html"
+                    class="main-btn primary-btn btn-hover btn-sm"
+                    id="editInvoiceButton"
+                  >
+                    <i class="lni lni-plus mr-5"></i> Add Lead
+                  </a>
+                </div>
+              </div>
             </div>
-
-            <a
-              href="closeleads.html"
-              class="main-btn danger-btn square-btn btn-hover delbtn headings"
-            >
-              Closed Leads
-            </a>
 
             <div class="row">
               <div class="col-lg-12">
                 <div class="card-style mb-30">
-                  <h6 class="mb-10">Data Table</h6>
+                  <!--Search Box-->
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      width: 100%;
+                    "
+                  >
+                    <div class="search-box">
+                      <button class="btn-search" onclick="searchLeads()">
+                        <i style="margin-bottom: 0px" class="fa fa-search"></i>
+                      </button>
+                      <input
+                        id="leadSearchInput"
+                        type="text"
+                        class="input-search"
+                        placeholder="Type to Search..."
+                      />
+                    </div>
+                  </div>
+
+                  <div class="header-search d-none d-md-flex"></div>
                   <div class="table-wrapper table-responsive">
                     <table class="table">
                       <thead>
@@ -240,7 +325,7 @@
     <script src="assets/js/polyfill.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/jquery.js"></script>
-    <!-- <script src="assets/js/user.js"></script> -->
+
     <script>
       function fetchLeadData() {
         fetch("http://localhost:8080/get-lead-data")
@@ -260,49 +345,12 @@
                 row.dataset.leadId = lead.id; // Assuming lead has a property called 'id'
 
                 row.innerHTML = `
-                      <td><a href="leadInfo.html?leadId=${lead.id}">${
-                  lead.name
-                }</a></td>
+                      <td><a href="leadInfo.html?leadId=${lead.id}">${lead.name}</a></td>
                       <td>${lead.mobile}</td>
                       <td>${lead.email}</td>
                       <td>${lead.courseIntrested}</td>
                       <td>${lead.status}</td>
-                      <td>
-                          <div class="action" style="display: none;">
-                              ${
-                                lead.status === "Pending"
-                                  ? `
-                                      <select onchange="changeStatus(this)">
-                                          <option value="">Select</option>
-                                          <option value="Active">Active</option>
-                                          <option value="Done">Done</option>
-                                          <option value="Close">Close</option>
-                                      </select>
-                                  `
-                                  : lead.status === "Active"
-                                  ? `
-                                      <select onchange="changeStatus(this)">
-                                          <option value="">Select</option>
-                                          <option value="Pending">Pending</option>
-                                          <option value="Done">Done</option>
-                                          <option value="Close">Close</option>
-                                      </select>
-                                  `
-                                  : lead.status === "Done"
-                                  ? `
-                                      <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
-                                          Invoice
-                                      </a>
-                                  `
-                                  : lead.status === "Close"
-                                  ? `
-                                      <a style="color: red;">Delete</a>
-                                  `
-                                  : ""
-                              }
-                          </div>
-                      </td>
-                      <td>
+                      
               <div class="action">
                 <!-- Edit option -->
                 <a href="#" onclick="editLead(event, ${lead.id})">Edit</a>
@@ -521,7 +569,7 @@
         editSection.innerHTML = `
               <td colspan="6">
                 <!-- Your edit form or content goes here -->
-                <label for="newFollowUpDate">New Follow-Up Date:</label>
+                <label for="newFollowUpDate">New Date</label>
                 <input type="date" id="newFollowUpDate" placeholder="DD/MM/YYYY" style="text-transform: uppercase; vertical-align: middle; margin-left: 5px; font-size:10px;">
                 <label style="margin-left:10px" for="newComment">New Comment:</label>
                 <textarea id="newComment" rows="1" style="vertical-align: middle; margin-left: 5px;" placeholder="Add new comment"></textarea>
@@ -529,10 +577,11 @@
                 <!-- Add a new select element for changing status -->
                 <label style="margin-left:10px" for="changeStatus">Change Status:</label>
                 <select id="changeStatus" style="color: black;">
-                  <option value="">Select</option>
-                  <option value="Pending">Pending</option>
-                  <option value="Active">Active</option>
-                  <option value="Done">Done</option>
+                  <option value="">Select</option> 
+                  <option value="Open">Open</option>
+                  <option value="Contacted">Contacted</option>
+                  <option value="Proposal">Proposal Sent</option> 
+                  <option value="Done">Deal Done</option>
                   <option value="Close">Close</option>
                 </select>
 

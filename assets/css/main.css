@@ -4165,7 +4165,7 @@ h6,
 
 /* ============ Calendar Css ============= */
 .calendar-card .fc {
-  height: 450px;
+  height: 400px;
 }
 
 .calendar-card .fc#calendar-full {
@@ -4239,7 +4239,7 @@ h6,
 /* =========== Sidebar css =========== */
 .sidebar-nav-wrapper {
   background: #fff;
-  width: 250px;
+  width: 210px;
   padding: 20px 0px;
   height: 100vh;
   position: fixed;
@@ -4613,7 +4613,7 @@ h6,
   -ms-transition: all 0.3s ease-out 0s;
   -o-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
-  margin-left: 250px;
+  margin-left: 210px;
   min-height: 100vh;
   padding-bottom: 85px;
   position: relative;
@@ -5467,7 +5467,7 @@ h6,
 }
 
 .pt-30 {
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 .pt-35 {
@@ -7019,7 +7019,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .headings {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: large;
 }
 
 .profile-image {

@@ -25,12 +25,45 @@
       type="text/css"
     />
     <link rel="stylesheet" href="assets/css/fullcalendar.css" />
-    <link rel="stylesheet" href="assets/css/fullcalendar.css" />
+    <!-- <link rel="stylesheet" href="assets/css/fullcalendar.css" /> -->
     <link rel="stylesheet" href="assets/css/main.css" />
     <style>
       .event-bubble {
         cursor: pointer;
       }
+    </style>
+    <style>
+      .flex-containerc {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .col-lg-5c {
+        flex: 0 0 auto; /* Do not grow or shrink */
+        width: 45%; /* Adjust the width as needed */
+      }
+
+      .col-xl-6c {
+        flex: 0 0 auto; /* Do not grow or shrink */
+        width: 50%; /* Adjust the width as needed */
+      }
+      .col-xl-6c {
+        width: 50%; /* Adjust the width as needed */
+      }
+
+      .card-style-5c {
+        padding: 20px;
+        text-align: center;
+      }
+      #dynamicNumbers {
+        transition: transform 0.5s ease-in-out;
+      }
+      .dnum {
+        font-weight: 800;
+        font-size: x-large;
+        color: #4064f6;
+      }
+      /* Add any additional styling as needed */
     </style>
   </head>
 
@@ -223,169 +256,171 @@
             <div class="row align-items-center">
               <div class="col-md-6">
                 <div class="title">
-                  <h2>Hello, Testing Shastra</h2>
+                  <h5>Hello, Testing Shastra</h5>
                 </div>
               </div>
             </div>
 
-            <div>
-              <div class="col-lg-5 text-sm">
-                <div class="card-style calendar-card mb-30">
+            <div class="flex-containerc">
+              <div class="col-lg-5c text-xs">
+                <div class="card-style calendar-card mb-20">
                   <div id="calendar-mini" class="calendar2"></div>
                 </div>
               </div>
-              <!-- End Col -->
-              <div class="col-lg-7 w-100 text-xs">
-                <div class="card-style mb-30">
-                  <div
-                    class="title d-flex flex-wrap align-items-center justify-content-between"
-                  >
-                    <div class="left">
-                      <h6 class="text-small mb-30">Follow Up</h6>
-                    </div>
-                    <div class="right">
-                      <div class="select-style-1">
-                        <!-- <h4>Check leads on</h4> -->
-                        <input type="date" id="followDateInput" />
-                      </div>
-                      <!-- end select -->
-                    </div>
-                  </div>
-                  <!-- End Title -->
-                  <div class="table-responsive">
-                    <table class="table top-selling-table">
-                      <thead>
-                        <tr>
-                          <th>
-                            <h6>Name</h6>
-                          </th>
-                          <th>
-                            <h6>Mobile No</h6>
-                          </th>
-                          <th>
-                            <h6>Recent Comment</h6>
-                          </th>
-                          <th>
-                            <h6>Follow On</h6>
-                          </th>
-                          <th>
-                            <h6>Status</h6>
-                          </th>
-                          <!-- <th>
-                          <h6>Action</h6>
-                        </th> -->
-                        </tr>
-                        <!-- end table row-->
-                      </thead>
 
-                      <tbody id="leadTable">
-                        <!--Adding Leads Dynamically-->
-                      </tbody>
-                    </table>
-                    <!-- End Table -->
+              <div class="col-xl-6c">
+                <div class="card-style-5 mb-30">
+                  <!-- <div class="card-image"> -->
+                  <div
+                    id="dynamicNumbers"
+                    style="
+                      display: flex;
+                      margin-left: 20px;
+                      margin-right: 20px;
+                      font-family: Nunito, sans-serif;
+                    "
+                  >
+                    <!-- Placeholder for dynamic numbers -->
+                    <div id="label1" class="ml-50">
+                      All Leads
+                      <br />
+                      <span class="mt-1 dnum" id="number1">0</span>
+                    </div>
+                    <!-- <div id="number1">0</div> -->
+                    <div id="label2" class="ml-50">
+                      Done <br />
+                      <span class="fit-content mt-1 dnum" id="number2">0</span>
+                    </div>
+                    <!-- <div id="number2">0</div> -->
+                    <div id="label3" class="ml-50">
+                      Closed
+                      <br />
+                      <span class="fit-content mt-1 dnum" id="number3">0</span>
+                    </div>
+                    <!-- <div id="number3">0</div> -->
                   </div>
+                  <!-- </div> -->
                 </div>
               </div>
-              <!-- End Col -->
             </div>
-            <!-- End Row -->
+            <!-- End Col -->
+            <div class="col-lg-7 w-100 text-xs">
+              <div class="card-style mb-30">
+                <div
+                  class="title d-flex flex-wrap align-items-center justify-content-between"
+                >
+                  <div class="left">
+                    <h6 class="text-small mb-30">Follow Up</h6>
+                  </div>
+                  <div class="right">
+                    <div class="select-style-1">
+                      <!-- <h4>Check leads on</h4> -->
+                      <input type="date" id="followDateInput" />
+                    </div>
+                    <!-- end select -->
+                  </div>
+                </div>
+                <!-- End Title -->
+                <div class="table-responsive">
+                  <table class="table top-selling-table">
+                    <thead>
+                      <tr>
+                        <th>
+                          <h6>Name</h6>
+                        </th>
+                        <th>
+                          <h6>Mobile No</h6>
+                        </th>
+                        <th>
+                          <h6>Recent Comment</h6>
+                        </th>
+                        <th>
+                          <h6>Follow On</h6>
+                        </th>
+                        <th>
+                          <h6>Status</h6>
+                        </th>
+                        <!-- <th>
+                          <h6>Action</h6>
+                        </th> -->
+                      </tr>
+                      <!-- end table row-->
+                    </thead>
+
+                    <tbody id="leadTable">
+                      <!--Adding Leads Dynamically-->
+                    </tbody>
+                  </table>
+                  <!-- End Table -->
+                </div>
+              </div>
+            </div>
+            <!-- End Col -->
           </div>
-          <!-- end container -->
-          <!-- </section> -->
-          <!-- ========== section end ========== -->
+          <!-- End Row -->
+        </div>
+        <!-- end container -->
+        <!-- </section> -->
+        <!-- ========== section end ========== -->
 
-          <!-- </main> -->
-          <!-- ======== main-wrapper end =========== -->
+        <!-- </main> -->
+        <!-- ======== main-wrapper end =========== -->
 
-          <!-- ========= All Javascript files linkup ======== -->
-          <script src="assets/js/bootstrap.bundle.min.js"></script>
-          <script src="assets/js/Chart.min.js"></script>
-          <script src="assets/js/dynamic-pie-chart.js"></script>
-          <script src="assets/js/moment.min.js"></script>
-          <script src="assets/js/fullcalendar.js"></script>
-          <script src="assets/js/jvectormap.min.js"></script>
-          <script src="assets/js/world-merc.js"></script>
-          <script src="assets/js/polyfill.js"></script>
-          <script src="assets/js/main.js"></script>
-          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-          <script src="./assets/js/newcalender.js"></script>
-          <!-- <script src="./assets/js/user.js"></script> -->
-          <script src="./assets/js/jquery.js"></script>
+        <!-- ========= All Javascript files linkup ======== -->
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/Chart.min.js"></script>
+        <script src="assets/js/dynamic-pie-chart.js"></script>
+        <script src="assets/js/moment.min.js"></script>
+        <script src="assets/js/fullcalendar.js"></script>
+        <script src="assets/js/jvectormap.min.js"></script>
+        <script src="assets/js/world-merc.js"></script>
+        <script src="assets/js/polyfill.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="./assets/js/newcalender.js"></script>
+        <!-- <script src="./assets/js/user.js"></script> -->
+        <script src="./assets/js/jquery.js"></script>
 
-          <script>
-            document.addEventListener("DOMContentLoaded", function () {
-              var calendarMiniEl = document.getElementById("calendar-mini");
-              var calendarMini = new FullCalendar.Calendar(calendarMiniEl, {
-                initialView: "dayGridMonth",
-                headerToolbar: {
-                  end: "today prev,next",
-                },
-              });
-              calendarMini.render();
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            var calendarMiniEl = document.getElementById("calendar-mini");
+            var calendarMini = new FullCalendar.Calendar(calendarMiniEl, {
+              initialView: "dayGridMonth",
+              headerToolbar: {
+                end: "today prev,next",
+              },
             });
-          </script>
+            calendarMini.render();
+          });
+        </script>
 
-          <script>
-            function fetchLeadsByDate(selectedDate) {
-              fetch("http://localhost:8080/get-lead-data-dashboard")
-                .then((response) => response.json())
-                .then((data) => {
-                  const leadData = document.getElementById("leadTable");
-                  leadData.innerHTML = ""; // Clear existing data
+        <script>
+          function fetchLeadsByDate(selectedDate) {
+            fetch("http://localhost:8080/get-lead-data-dashboard")
+              .then((response) => response.json())
+              .then((data) => {
+                const leadData = document.getElementById("leadTable");
+                leadData.innerHTML = ""; // Clear existing data
 
-                  data
-                    .filter(
-                      (lead) =>
-                        lead.status === "Active" || lead.status === "Pending"
-                    )
-                    .forEach((lead) => {
-                      const followDate = lead.follow.split("T")[0]; // Assuming the follow date is in 'YYYY-MM-DD' format
+                data
+                  .filter(
+                    (lead) =>
+                      lead.status === "Active" || lead.status === "Pending"
+                  )
+                  .forEach((lead) => {
+                    const followDate = lead.follow.split("T")[0]; // Assuming the follow date is in 'YYYY-MM-DD' format
 
-                      if (followDate === selectedDate) {
-                        const row = document.createElement("tr");
-                        row.dataset.leadId = lead.id;
-                        row.innerHTML = `
-                        <td><a href="leadInfo.html?leadId=${lead.id}">${
-                          lead.name
-                        }</a></td>
+                    if (followDate === selectedDate) {
+                      const row = document.createElement("tr");
+                      row.dataset.leadId = lead.id;
+                      row.innerHTML = `
+                        <td><a href="leadInfo.html?leadId=${lead.id}">${lead.name}</a></td>
                         <td>${lead.mobile}</td>
                         <td>${lead.comment}</td>
                         <td>${lead.follow}</td>
                         <td>${lead.status}</td>
-                        <td>    
-                <div class="action" style="display: none;"> <!-- Initially hidden -->
-                  ${
-                    lead.status === "Pending"
-                      ? `
-                      <select onchange="changeStatus(this)" style="color: black;">
-                        <option value="">Select</option>
-                        <option value="Active">Active</option>
-                        <option value="Done">Done</option>
-                        <option value="Close">Close</option>
-                      </select>
-                    `
-                      : lead.status === "Active"
-                      ? `
-                        <select onchange="changeStatus(this)" style="color: black;">
-                          <option value="">Select</option>
-                          <option value="Pending">Pending</option>
-                          <option value="Done">Done</option>
-                          <option value="Close">Close</option>
-                        </select>
-                      `
-                      : lead.status === "Done"
-                      ? `
-                          <a href="invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link" style="color: purple;">Invoice</a>
-                        `
-                      : lead.status === "Close"
-                      ? `
-                            <a style="color: red;">Delete</a>
-                          `
-                      : ""
-                  }
-                </div>
-              </td>
+                        
               <td>
                 <div class="action">
                   <!-- Edit option -->
@@ -393,81 +428,79 @@
                 </div>
               </td>
             `;
-                        leadData.appendChild(row);
-                      }
-                    });
+                      leadData.appendChild(row);
+                    }
+                  });
+              })
+              .catch((error) => {
+                console.error("Error fetching data: " + error);
+              });
+          }
+
+          function renderNumbersOnDates(datesWithNumbers) {
+            Object.keys(datesWithNumbers).forEach(function (date) {
+              const bubbleNumber = datesWithNumbers[date];
+              if (bubbleNumber > 0) {
+                const dateCell = $(`#calendar-mini [data-date="${date}"]`);
+                const bubble = $('<div class="event-bubble"></div>').text(
+                  bubbleNumber
+                );
+
+                // Add an event listener to the bubble
+                bubble.click(function () {
+                  const clickedDate = $(this).parent().data("date"); // Retrieve the date from the parent element
+                  fetchLeadsByDate(clickedDate);
+                });
+
+                dateCell.append(bubble);
+              }
+            });
+          }
+
+          //=========================Count of Follow on the calender=================================================
+
+          $(document).ready(function () {
+            // Function to fetch lead counts for all dates
+            function fetchLeadCountsForAllDates() {
+              fetch("http://localhost:8080/get-all-lead-counts")
+                .then((response) => response.json())
+                .then((data) => {
+                  // Assuming data is an object with the date as the key and lead count as the value
+                  renderNumbersOnDates(data);
+                  displayTotalLeadCount(data);
                 })
                 .catch((error) => {
-                  console.error("Error fetching data: " + error);
+                  console.error("Error fetching lead counts: " + error);
                 });
             }
 
-            function renderNumbersOnDates(datesWithNumbers) {
-              Object.keys(datesWithNumbers).forEach(function (date) {
-                const bubbleNumber = datesWithNumbers[date];
-                if (bubbleNumber > 0) {
-                  const dateCell = $(`#calendar-mini [data-date="${date}"]`);
-                  const bubble = $('<div class="event-bubble"></div>').text(
-                    bubbleNumber
-                  );
-
-                  // Add an event listener to the bubble
-                  bubble.click(function () {
-                    const clickedDate = $(this).parent().data("date"); // Retrieve the date from the parent element
-                    fetchLeadsByDate(clickedDate);
-                  });
-
-                  dateCell.append(bubble);
-                }
-              });
+            function displayTotalLeadCount(datesWithNumbers) {
+              const totalLeadCount = Object.values(datesWithNumbers).reduce(
+                (acc, count) => acc + count,
+                0
+              );
+              $("#totalCountElement").text(`Total Leads: ${totalLeadCount}`);
             }
 
-            //=========================Count of Follow on the calender=================================================
+            fetchLeadCountsForAllDates();
+          });
 
-            $(document).ready(function () {
-              // Function to fetch lead counts for all dates
-              function fetchLeadCountsForAllDates() {
-                fetch("http://localhost:8080/get-all-lead-counts")
-                  .then((response) => response.json())
-                  .then((data) => {
-                    // Assuming data is an object with the date as the key and lead count as the value
-                    renderNumbersOnDates(data);
-                    displayTotalLeadCount(data);
-                  })
-                  .catch((error) => {
-                    console.error("Error fetching lead counts: " + error);
-                  });
-              }
+          // Function to handle editing a lead
+          function editLead(event, leadId) {
+            event.preventDefault();
+            const existingEditSections =
+              document.querySelectorAll(".edit-section");
+            existingEditSections.forEach((section) => section.remove());
 
-              function displayTotalLeadCount(datesWithNumbers) {
-                const totalLeadCount = Object.values(datesWithNumbers).reduce(
-                  (acc, count) => acc + count,
-                  0
-                );
-                $("#totalCountElement").text(`Total Leads: ${totalLeadCount}`);
-              }
+            const row = document.querySelector(`tr[data-lead-id="${leadId}"]`);
 
-              fetchLeadCountsForAllDates();
-            });
-
-            // Function to handle editing a lead
-            function editLead(event, leadId) {
-              event.preventDefault();
-              const existingEditSections =
-                document.querySelectorAll(".edit-section");
-              existingEditSections.forEach((section) => section.remove());
-
-              const row = document.querySelector(
-                `tr[data-lead-id="${leadId}"]`
-              );
-
-              // Create and append the edit section
-              const editSection = document.createElement("tr");
-              editSection.classList.add("edit-section");
-              editSection.innerHTML = `
+            // Create and append the edit section
+            const editSection = document.createElement("tr");
+            editSection.classList.add("edit-section");
+            editSection.innerHTML = `
               <td colspan="6">
                 <!-- Your edit form or content goes here -->
-                <label for="newFollowUpDate">New Follow-Up Date:</label>
+                <label for="newFollowUpDate">New Date</label>
                 <input type="date" id="newFollowUpDate" placeholder="DD/MM/YYYY" style="text-transform: uppercase; vertical-align: middle; margin-left: 5px; font-size:10px;">
                 <label style="margin-left:10px" for="newComment">New Comment:</label>
                 <textarea id="newComment" rows="1" style="vertical-align: middle; margin-left: 5px;" placeholder="Add new comment"></textarea>
@@ -476,9 +509,10 @@
                 <label style="margin-left:10px" for="changeStatus">Change Status:</label>
                 <select id="changeStatus" style="color: black;">
                   <option value="">Select</option>
-                  <option value="Pending">Pending</option>
-                  <option value="Active">Active</option>
-                  <option value="Done">Done</option>
+                  <option value="Open">Open</option>
+                  <option value="Contacted">Contacted</option>
+                  <option value="Proposal">Proposal Sent</option> 
+                  <option value="Done">Deal Done</option>
                   <option value="Close">Close</option>
                 </select>
 
@@ -493,203 +527,203 @@
               </td>
               `;
 
-              row.insertAdjacentElement("afterend", editSection);
+            row.insertAdjacentElement("afterend", editSection);
 
-              // Hide the action part in the row
-              const actionSection = row.querySelector(".action");
-              actionSection.style.display = "none";
+            // Hide the action part in the row
+            const actionSection = row.querySelector(".action");
+            actionSection.style.display = "none";
+          }
+
+          function saveEdits(leadId) {
+            const newFollowUpDateInput =
+              document.getElementById("newFollowUpDate");
+            const newCommentInput = document.getElementById("newComment");
+            const changeStatusInput = document.getElementById("changeStatus");
+
+            const newFollowUpDate = newFollowUpDateInput.value;
+            const newComment = newCommentInput.value;
+            const changeStatus = changeStatusInput.value;
+
+            // Validate that all three fields are filled
+            if (!newFollowUpDate || !newComment || !changeStatus) {
+              alert("Please fill in all required fields.");
+              return;
             }
 
-            function saveEdits(leadId) {
-              const newFollowUpDateInput =
-                document.getElementById("newFollowUpDate");
-              const newCommentInput = document.getElementById("newComment");
-              const changeStatusInput = document.getElementById("changeStatus");
-
-              const newFollowUpDate = newFollowUpDateInput.value;
-              const newComment = newCommentInput.value;
-              const changeStatus = changeStatusInput.value;
-
-              // Validate that all three fields are filled
-              if (!newFollowUpDate || !newComment || !changeStatus) {
-                alert("Please fill in all required fields.");
-                return;
-              }
-
-              // Fetch API to send data to the server
-              const url = `http://localhost:8080/save-edits/${leadId}`;
-              fetch(url, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: `newFollowUpDate=${newFollowUpDate}&newComment=${newComment}&changeStatus=${changeStatus}`,
+            // Fetch API to send data to the server
+            const url = `http://localhost:8080/save-edits/${leadId}`;
+            fetch(url, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+              body: `newFollowUpDate=${newFollowUpDate}&newComment=${newComment}&changeStatus=${changeStatus}`,
+            })
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Error saving edits");
+                }
+                return response.text();
               })
-                .then((response) => {
-                  if (!response.ok) {
-                    throw new Error("Error saving edits");
-                  }
-                  return response.text();
-                })
-                .then((data) => {
-                  console.log(data); // Log the response from the server
-                  // Remove the edit section after saving
-                  const editSection = document.querySelector(".edit-section");
-                  editSection.remove();
+              .then((data) => {
+                console.log(data); // Log the response from the server
+                // Remove the edit section after saving
+                const editSection = document.querySelector(".edit-section");
+                editSection.remove();
 
-                  // Update the calendar and table entry simultaneously
-                  const row = document.querySelector(
-                    `tr[data-lead-id="${leadId}"]`
-                  );
-                  const followDateCell = row.querySelector("td:nth-child(4)");
-                  followDateCell.textContent = newFollowUpDate;
-
-                  const commentCell = row.querySelector("td:nth-child(3)");
-                  commentCell.textContent = newComment;
-
-                  // Remove the row from the table
-                  row.remove();
-
-                  // Update the calendar with the removed lead's date
-                  updateCalendarAfterRemove(removedLeadDate);
-                })
-                .catch((error) => {
-                  console.error("Error:", error);
-                  // Handle the error, show an alert, or perform other actions
-                });
-            }
-
-            function getButtonClass(status) {
-              switch (status) {
-                case "Active":
-                  return "newbtnact";
-                case "Done":
-                  return "newbtndone";
-                case "Close":
-                  return "newbtnclose";
-                case "Pending":
-                  return "newbtnPending";
-                default:
-                  return "default-btn"; // You can define a default class for other statuses
-              }
-            }
-
-            function showConfirmationDialog(selectedStatus, row) {
-              const currentStatus =
-                row.querySelector("td:nth-child(5)").textContent;
-              return confirm(
-                `Do you want to change status from ${currentStatus} to ${selectedStatus}?`
-              );
-            }
-
-            function changeStatus(selectElement) {
-              const selectedStatus = selectElement.value;
-              const row = selectElement.closest("tr");
-              const leadId = row.dataset.leadId;
-              const comment = row.querySelector("td:nth-child(3)").textContent; // Assuming the comment is in the third column
-
-              // Check if a comment exists before allowing status change
-              if (!comment.trim()) {
-                alert(
-                  "Please add a compulsory comment before changing the status."
+                // Update the calendar and table entry simultaneously
+                const row = document.querySelector(
+                  `tr[data-lead-id="${leadId}"]`
                 );
-                selectElement.value =
-                  row.querySelector("td:nth-child(5)").textContent; // Reset the select element
-                return;
-              }
+                const followDateCell = row.querySelector("td:nth-child(4)");
+                followDateCell.textContent = newFollowUpDate;
 
-              if (!showConfirmationDialog(selectedStatus, row)) {
-                // User clicked Cancel in the confirmation dialog
-                selectElement.value =
-                  row.querySelector("td:nth-child(5)").textContent;
-                return;
-              }
-
-              const followDateCell = row.querySelector("td:nth-child(4)");
-
-              if (selectedStatus === "Done" || selectedStatus === "Close") {
-                // Update the follow date to empty when the status is "Done" or "Close"
-                const removedLeadDate = followDateCell.textContent;
-                followDateCell.textContent = "";
+                const commentCell = row.querySelector("td:nth-child(3)");
+                commentCell.textContent = newComment;
 
                 // Remove the row from the table
                 row.remove();
 
                 // Update the calendar with the removed lead's date
                 updateCalendarAfterRemove(removedLeadDate);
-              }
-
-              fetch(`http://localhost:8080/update-lead/${leadId}`, {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ status: selectedStatus }),
               })
-                .then((response) => {
-                  if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                  }
-                  return response.json();
-                })
-                .then((updatedStatus) => {
-                  const statusCell = row.querySelector("td:nth-child(5)");
-                  const actionCell = row.querySelector("td:nth-child(6)");
+              .catch((error) => {
+                console.error("Error:", error);
+                // Handle the error, show an alert, or perform other actions
+              });
+          }
 
-                  statusCell.textContent = selectedStatus;
-                  statusCell.className = getButtonClass(selectedStatus);
-                  actionCell.innerHTML = getActionHTML(
-                    selectedStatus,
-                    row.cells[0].textContent,
-                    row.cells[2].textContent
-                  );
-                })
-                .catch((error) => {
-                  console.error("Error updating status: " + error);
-                });
+          function getButtonClass(status) {
+            switch (status) {
+              case "Active":
+                return "newbtnact";
+              case "Done":
+                return "newbtndone";
+              case "Close":
+                return "newbtnclose";
+              case "Pending":
+                return "newbtnPending";
+              default:
+                return "default-btn"; // You can define a default class for other statuses
+            }
+          }
+
+          function showConfirmationDialog(selectedStatus, row) {
+            const currentStatus =
+              row.querySelector("td:nth-child(5)").textContent;
+            return confirm(
+              `Do you want to change status from ${currentStatus} to ${selectedStatus}?`
+            );
+          }
+
+          function changeStatus(selectElement) {
+            const selectedStatus = selectElement.value;
+            const row = selectElement.closest("tr");
+            const leadId = row.dataset.leadId;
+            const comment = row.querySelector("td:nth-child(3)").textContent; // Assuming the comment is in the third column
+
+            // Check if a comment exists before allowing status change
+            if (!comment.trim()) {
+              alert(
+                "Please add a compulsory comment before changing the status."
+              );
+              selectElement.value =
+                row.querySelector("td:nth-child(5)").textContent; // Reset the select element
+              return;
             }
 
-            function updateCalendarAfterRemove(removedLeadId) {
-              // Fetch the updated lead data and update the calendar
-              fetch("http://localhost:8080/get-lead-data-dashboard")
-                .then((response) => response.json())
-                .then((data) => {
-                  const filteredLeads = data.filter(
-                    (lead) =>
-                      lead.id !== removedLeadId &&
-                      lead.status !== "Done" &&
-                      lead.status !== "Closed"
-                  );
-
-                  // Update the calendar with the filtered leads
-                  updateCalendar(filteredLeads);
-                })
-                .catch((error) => {
-                  console.error("Error fetching data: " + error);
-                });
+            if (!showConfirmationDialog(selectedStatus, row)) {
+              // User clicked Cancel in the confirmation dialog
+              selectElement.value =
+                row.querySelector("td:nth-child(5)").textContent;
+              return;
             }
 
-            function getUpdatedCalendarEntries(removedLeadDate) {
-              const calendarEntries = { ...calendarEntries };
-              if (calendarEntries.hasOwnProperty(removedLeadDate)) {
-                calendarEntries[removedLeadDate] -= 1;
-              }
-              return calendarEntries;
+            const followDateCell = row.querySelector("td:nth-child(4)");
+
+            if (selectedStatus === "Done" || selectedStatus === "Close") {
+              // Update the follow date to empty when the status is "Done" or "Close"
+              const removedLeadDate = followDateCell.textContent;
+              followDateCell.textContent = "";
+
+              // Remove the row from the table
+              row.remove();
+
+              // Update the calendar with the removed lead's date
+              updateCalendarAfterRemove(removedLeadDate);
             }
 
-            function getActionHTML(status, name, email) {
-              if (status === "Done") {
-                return `
+            fetch(`http://localhost:8080/update-lead/${leadId}`, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ status: selectedStatus }),
+            })
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((updatedStatus) => {
+                const statusCell = row.querySelector("td:nth-child(5)");
+                const actionCell = row.querySelector("td:nth-child(6)");
+
+                statusCell.textContent = selectedStatus;
+                statusCell.className = getButtonClass(selectedStatus);
+                actionCell.innerHTML = getActionHTML(
+                  selectedStatus,
+                  row.cells[0].textContent,
+                  row.cells[2].textContent
+                );
+              })
+              .catch((error) => {
+                console.error("Error updating status: " + error);
+              });
+          }
+
+          function updateCalendarAfterRemove(removedLeadId) {
+            // Fetch the updated lead data and update the calendar
+            fetch("http://localhost:8080/get-lead-data-dashboard")
+              .then((response) => response.json())
+              .then((data) => {
+                const filteredLeads = data.filter(
+                  (lead) =>
+                    lead.id !== removedLeadId &&
+                    lead.status !== "Done" &&
+                    lead.status !== "Closed"
+                );
+
+                // Update the calendar with the filtered leads
+                updateCalendar(filteredLeads);
+              })
+              .catch((error) => {
+                console.error("Error fetching data: " + error);
+              });
+          }
+
+          function getUpdatedCalendarEntries(removedLeadDate) {
+            const calendarEntries = { ...calendarEntries };
+            if (calendarEntries.hasOwnProperty(removedLeadDate)) {
+              calendarEntries[removedLeadDate] -= 1;
+            }
+            return calendarEntries;
+          }
+
+          function getActionHTML(status, name, email) {
+            if (status === "Done") {
+              return `
             <a href="invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
                 Invoice
             </a>
         `;
-              } else if (status === "Close") {
-                return `
+            } else if (status === "Close") {
+              return `
             <a style="color: red;">Delete</a>
         `;
-              } else if (status === "Active") {
-                return `
+            } else if (status === "Active") {
+              return `
           <select onchange="changeStatus(this)">
                 <option value="" ${
                   status === "Active" ? "selected" : ""
@@ -705,8 +739,8 @@
                 }>Close</option>
             </select>
           `;
-              } else if (status === "Pending") {
-                return `
+            } else if (status === "Pending") {
+              return `
           <select onchange="changeStatus(this)">
                 <option value="" ${
                   status === "Pending" ? "selected" : ""
@@ -722,56 +756,83 @@
                 }>Close</option>
             </select>
           `;
-              } else {
-                return "";
-              }
+            } else {
+              return "";
+            }
+          }
+
+          const dateInput = document.getElementById("followDateInput");
+          dateInput.addEventListener("change", function () {
+            let selectedDate = dateInput.value; // Get the selected date from the input
+
+            // If no date is selected, default to the current date
+            if (!selectedDate) {
+              const currentDate = new Date();
+              const year = currentDate.getFullYear();
+              const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+              const day = String(currentDate.getDate()).padStart(2, "0");
+              selectedDate = `${year}-${month}-${day}`;
+              dateInput.value = selectedDate; // Set the input value to the default date
             }
 
-            const dateInput = document.getElementById("followDateInput");
-            dateInput.addEventListener("change", function () {
-              let selectedDate = dateInput.value; // Get the selected date from the input
+            fetchLeadsByDate(selectedDate);
+          });
 
-              // If no date is selected, default to the current date
-              if (!selectedDate) {
-                const currentDate = new Date();
-                const year = currentDate.getFullYear();
-                const month = String(currentDate.getMonth() + 1).padStart(
-                  2,
-                  "0"
+          // Trigger the change event to fetch data for the default date on page load
+          dateInput.dispatchEvent(new Event("change"));
+
+          // Modify the renderNumbersOnDates function to handle the addition of bubbles dynamically
+          function renderNumbersOnDates(datesWithNumbers) {
+            Object.keys(datesWithNumbers).forEach(function (date) {
+              const bubbleNumber = datesWithNumbers[date];
+              if (bubbleNumber > 0) {
+                const dateCell = $(`#calendar-mini [data-date="${date}"]`);
+                const bubble = $('<div class="event-bubble"></div>').text(
+                  bubbleNumber
                 );
-                const day = String(currentDate.getDate()).padStart(2, "0");
-                selectedDate = `${year}-${month}-${day}`;
-                dateInput.value = selectedDate; // Set the input value to the default date
+
+                // Add an event listener to the bubble
+                bubble.click(function () {
+                  dateInput.value = date; // Set the input value to the clicked date
+                  dateInput.dispatchEvent(new Event("change")); // Trigger change event to fetch leads
+                });
+
+                dateCell.append(bubble);
               }
-
-              fetchLeadsByDate(selectedDate);
             });
+          }
+        </script>
+        <script>
+          // Function to update numbers dynamically
+          function updateNumbers() {
+            let number1 = 0;
+            let number2 = 0;
+            let number3 = 0;
 
-            // Trigger the change event to fetch data for the default date on page load
-            dateInput.dispatchEvent(new Event("change"));
+            // Function to update numbers and check if the final number is reached
+            function updateAndCheck() {
+              // Update numbers
+              document.getElementById("number1").textContent = number1;
+              document.getElementById("number2").textContent = number2;
+              document.getElementById("number3").textContent = number3;
 
-            // Modify the renderNumbersOnDates function to handle the addition of bubbles dynamically
-            function renderNumbersOnDates(datesWithNumbers) {
-              Object.keys(datesWithNumbers).forEach(function (date) {
-                const bubbleNumber = datesWithNumbers[date];
-                if (bubbleNumber > 0) {
-                  const dateCell = $(`#calendar-mini [data-date="${date}"]`);
-                  const bubble = $('<div class="event-bubble"></div>').text(
-                    bubbleNumber
-                  );
+              // Increment numbers
+              number1 += 10;
+              number2 += 5;
+              number3 += 2;
 
-                  // Add an event listener to the bubble
-                  bubble.click(function () {
-                    dateInput.value = date; // Set the input value to the clicked date
-                    dateInput.dispatchEvent(new Event("change")); // Trigger change event to fetch leads
-                  });
-
-                  dateCell.append(bubble);
-                }
-              });
+              // Check if the final number is reached
+              if (number1 > 100 && number2 > 30 && number3 > 10) {
+                clearInterval(updateInterval);
+              }
             }
-          </script>
-        </div>
+
+            const updateInterval = setInterval(updateAndCheck, 500); // 1000 milliseconds (1 second) interval
+          }
+
+          // Call the function to start updating numbers
+          updateNumbers();
+        </script>
       </section>
     </main>
   </body>
