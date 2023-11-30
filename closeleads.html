@@ -335,7 +335,7 @@
         editSection.innerHTML = `
               <td colspan="6">
                 <!-- Your edit form or content goes here -->
-                <label for="newFollowUpDate">New Follow-Up Date:</label>
+                <label for="newFollowUpDate">New Date</label>
                 <input type="date" id="newFollowUpDate" placeholder="DD/MM/YYYY" style="text-transform: uppercase; vertical-align: middle; margin-left: 5px; font-size:10px;">
                 <label style="margin-left:10px" for="newComment">New Comment:</label>
                 <textarea id="newComment" rows="1" style="vertical-align: middle; margin-left: 5px;" placeholder="Add new comment"></textarea>
@@ -344,9 +344,10 @@
                 <label style="margin-left:10px" for="changeStatus">Change Status:</label>
                 <select id="changeStatus" style="color: black;">
                   <option value="">Select</option>
-                  <option value="Pending">Pending</option>
-                  <option value="Active">Active</option>
-                  <option value="Done">Done</option>
+                  <option value="Open">Open</option>
+                  <option value="Contacted">Contacted</option>
+                  <option value="Proposal">Proposal Sent</option> 
+                  <option value="Done">Deal Done</option>
                   <option value="Close">Close</option>
                 </select>
 

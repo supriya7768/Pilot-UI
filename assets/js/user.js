@@ -1,12 +1,5 @@
 //===========================field in addlead.html========================
 
-// function submitForm(event) {
-//   event.preventDefault(); // Prevent the default form submission behavior
-//   if (validateForm()) {
-//     addlead(); // If form is valid, proceed with adding the lead
-//   }
-// }
-
 function validateForm() {
   let isValid = true;
   const formFields = document.querySelectorAll("input[required]");
@@ -113,16 +106,6 @@ async function addlead() {
   const follow = $("#follow").val();
   const date = $("#date").val();
 
-  if (!isValidMobileNumber(mobile)) {
-    $("#dt").html("Error: Invalid mobile number.");
-    return;
-  }
-
-  if (!isValidEmail(email)) {
-    $("#dt").html("Error: Invalid email address. Please enter a valid email.");
-    return;
-  }
-
   const url = "http://localhost:8080/add-lead";
   const result = await fetch(url, {
     method: "POST",
@@ -155,10 +138,56 @@ async function addlead() {
     headers: { "Content-Type": "application/json" },
   });
 
+  if (!isValidEmail(email)) {
+    // Show error notification for invalid email address
+    Toastify({
+      text: "Error: Invalid email address.",
+      backgroundColor: "red",
+      position: "right-bottom",
+      duration: 6000, // 6 seconds
+      close: true,
+      gravity: "bottom",
+      stopOnFocus: true,
+    }).showToast();
+    return;
+  }
+
+  if (!isValidMobileNumber(mobile)) {
+    // Show error notification for invalid mobile number
+    Toastify({
+      text: "Error: Invalid mobile number.",
+      backgroundColor: "red",
+      position: "right-bottom",
+      duration: 6000, // 6 seconds
+      close: true,
+      gravity: "bottom",
+      stopOnFocus: true,
+    }).showToast();
+    return;
+  }
+
   if (result.ok) {
-    $("#dt").html(formattedName + " is added as lead");
+    // Show success notification
+    Toastify({
+      text: formattedName + " is added as lead",
+      backgroundColor: "green",
+      position: "left-bottom",
+      duration: 6000, // 6 seconds
+      close: true,
+      gravity: "bottom",
+      stopOnFocus: true,
+    }).showToast();
   } else {
-    $("#dt").html("Error: Failed to add lead. Please try again later.");
+    // Show error notification
+    Toastify({
+      text: "Error: Failed to add lead. Please try again later.",
+      backgroundColor: "red",
+      position: "right-bottom",
+      duration: 6000, // 6 seconds
+      close: true,
+      gravity: "bottom",
+      stopOnFocus: true,
+    }).showToast();
   }
 
   // After adding the lead, fetch and update the lead data in leadlist.html
