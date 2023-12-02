@@ -286,18 +286,17 @@
                       <br />
                       <span class="mt-1 dnum" id="number1">0</span>
                     </div>
-                    <!-- <div id="number1">0</div> -->
+
                     <div id="label2" class="ml-50">
-                      Done <br />
+                      Deal Done <br />
                       <span class="fit-content mt-1 dnum" id="number2">0</span>
                     </div>
-                    <!-- <div id="number2">0</div> -->
+
                     <div id="label3" class="ml-50">
                       Closed
                       <br />
                       <span class="fit-content mt-1 dnum" id="number3">0</span>
                     </div>
-                    <!-- <div id="number3">0</div> -->
                   </div>
                   <!-- </div> -->
                 </div>
@@ -406,7 +405,9 @@
                 data
                   .filter(
                     (lead) =>
-                      lead.status === "Active" || lead.status === "Pending"
+                      lead.status === "Open" ||
+                      lead.status === "Contacted" ||
+                      lead.status === "Proposal Sent"
                   )
                   .forEach((lead) => {
                     const followDate = lead.follow.split("T")[0]; // Assuming the follow date is in 'YYYY-MM-DD' format
@@ -511,8 +512,8 @@
                   <option value="">Select</option>
                   <option value="Open">Open</option>
                   <option value="Contacted">Contacted</option>
-                  <option value="Proposal">Proposal Sent</option> 
-                  <option value="Done">Deal Done</option>
+                  <option value="Proposal Sent">Proposal Sent</option> 
+                  <option value="Deal Done">Deal Done</option>
                   <option value="Close">Close</option>
                 </select>
 
@@ -595,14 +596,17 @@
 
           function getButtonClass(status) {
             switch (status) {
-              case "Active":
-                return "newbtnact";
-              case "Done":
-                return "newbtndone";
+              case "Open":
+                return "newbtnopen";
+              case "Contacted":
+                return "newbtncontacted";
+              case "Proposal Sent":
+                return "newbtnproposalsent";
+              case "Deal Done":
+                return "newbtndealdone";
               case "Close":
                 return "newbtnclose";
-              case "Pending":
-                return "newbtnPending";
+
               default:
                 return "default-btn"; // You can define a default class for other statuses
             }
@@ -641,8 +645,8 @@
 
             const followDateCell = row.querySelector("td:nth-child(4)");
 
-            if (selectedStatus === "Done" || selectedStatus === "Close") {
-              // Update the follow date to empty when the status is "Done" or "Close"
+            if (selectedStatus === "Deal Done" || selectedStatus === "Close") {
+              // Update the follow date to empty when the status is "Deal Done" or "Close"
               const removedLeadDate = followDateCell.textContent;
               followDateCell.textContent = "";
 
@@ -691,7 +695,7 @@
                 const filteredLeads = data.filter(
                   (lead) =>
                     lead.id !== removedLeadId &&
-                    lead.status !== "Done" &&
+                    lead.status !== "Deal Done" &&
                     lead.status !== "Closed"
                 );
 
@@ -712,7 +716,7 @@
           }
 
           function getActionHTML(status, name, email) {
-            if (status === "Done") {
+            if (status === "Deal Done") {
               return `
             <a href="invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
                 Invoice
@@ -722,35 +726,61 @@
               return `
             <a style="color: red;">Delete</a>
         `;
-            } else if (status === "Active") {
+            } else if (status === "Open") {
               return `
           <select onchange="changeStatus(this)">
                 <option value="" ${
-                  status === "Active" ? "selected" : ""
+                  status === "Open" ? "selected" : ""
                 }>Edit</option>
-                <option value="Pending" ${
-                  status === "Pending" ? "selected" : ""
-                }>Pending</option>
-                <option value="Done" ${
-                  status === "Done" ? "selected" : ""
-                }>Done</option>
+                <option value="Contacted" ${
+                  status === "Contacted" ? "selected" : ""
+                }>Contacted</option>
+                <option value="Proposal Sent" ${
+                  status === "Proposal Sent" ? "selected" : ""
+                }>Proposal Sent</option>
+                <option value="Deal Done" ${
+                  status === "Deal Done" ? "selected" : ""
+                }>Deal Done</option>
                 <option value="Close" ${
                   status === "Close" ? "selected" : ""
                 }>Close</option>
             </select>
           `;
-            } else if (status === "Pending") {
+            } else if (status === "Contacted") {
               return `
           <select onchange="changeStatus(this)">
                 <option value="" ${
-                  status === "Pending" ? "selected" : ""
+                  status === "Contacted" ? "selected" : ""
                 }>Edit</option>
-                <option value="Active" ${
-                  status === "Active" ? "selected" : ""
-                }>Active</option>
-                <option value="Done" ${
-                  status === "Done" ? "selected" : ""
-                }>Done</option>
+                <option value="Open" ${
+                  status === "Open" ? "selected" : ""
+                }>Open</option>
+                <option value="Proposal Sent" ${
+                  status === "Proposal Sent" ? "selected" : ""
+                }>Proposal Sent</option>
+                <option value="Deal Done" ${
+                  status === "Deal Done" ? "selected" : ""
+                }>Deal Done</option>
+                <option value="Close" ${
+                  status === "Close" ? "selected" : ""
+                }>Close</option>
+            </select>
+          `;
+            } else if (status === "Proposal Sent") {
+              return `
+          <select onchange="changeStatus(this)">
+                <option value="" ${
+                  status === "Proposal Sent" ? "selected" : ""
+                }>Edit</option>
+                <option value="Open" ${
+                  status === "Open" ? "selected" : ""
+                }>Open</option>
+                <option value="Contacted" ${
+                  status === "Contacted" ? "selected" : ""
+                }>Contacted</option>
+                <option value="Deal Done" ${
+                  status === "Deal Done" ? "selected" : ""
+                }>Deal Done</option>
                 <option value="Close" ${
                   status === "Close" ? "selected" : ""
                 }>Close</option>
@@ -802,37 +832,136 @@
             });
           }
         </script>
+
         <script>
           // Function to update numbers dynamically
           function updateNumbers() {
+            // Initialize numbers
             let number1 = 0;
             let number2 = 0;
             let number3 = 0;
 
-            // Function to update numbers and check if the final number is reached
-            function updateAndCheck() {
-              // Update numbers
-              document.getElementById("number1").textContent = number1;
-              document.getElementById("number2").textContent = number2;
-              document.getElementById("number3").textContent = number3;
+            // Make a GET request to fetch total lead counts
+            fetch("http://localhost:8080/get-total-lead-counts")
+              .then((response) => response.json())
+              .then((data) => {
+                // Check if the response has the expected structure
+                if (data !== undefined) {
+                  // Calculate the increment based on the total count
+                  const increment1 = Math.ceil(data / 3);
 
-              // Increment numbers
-              number1 += 10;
-              number2 += 5;
-              number3 += 2;
+                  // Function to increment numbers gradually for number1
+                  function incrementNumber1() {
+                    number1 = Math.min(number1 + increment1, data);
+                    document.getElementById("number1").textContent = number1;
 
-              // Check if the final number is reached
-              if (number1 > 100 && number2 > 30 && number3 > 10) {
-                clearInterval(updateInterval);
-              }
-            }
+                    // Check if the final number is reached for number1
+                    if (number1 >= data) {
+                      clearInterval(incrementInterval1);
+                    }
+                  }
 
-            const updateInterval = setInterval(updateAndCheck, 500); // 1000 milliseconds (1 second) interval
+                  // Call the function to increment number1 at a certain interval
+                  const incrementInterval1 = setInterval(incrementNumber1, 500);
+
+                  // Make a GET request to fetch total lead counts for "Deal Done"
+                  fetch("http://localhost:8080/get-total-lead-counts-done")
+                    .then((response) => response.json())
+                    .then((dataDone) => {
+                      // Update number2 with the count for "Deal Done"
+                      number2 = Math.min(dataDone, data);
+                      document.getElementById("number2").textContent = number2;
+
+                      // Check if the final number is reached for number2
+                      if (number2 >= data) {
+                        clearInterval(incrementInterval2);
+                      }
+                    })
+                    .catch((error) => {
+                      console.error(
+                        "Error fetching total lead counts for Deal Done:",
+                        error
+                      );
+                    });
+
+                  // Make a GET request to fetch total lead counts for "Close"
+                  fetch("http://localhost:8080/get-total-lead-counts-close")
+                    .then((response) => response.json())
+                    .then((dataClose) => {
+                      // Update number3 with the count for "Close"
+                      number3 = Math.min(dataClose, data);
+                      document.getElementById("number3").textContent = number3;
+
+                      // Check if the final number is reached for number3
+                      if (number3 >= data) {
+                        clearInterval(incrementInterval3);
+                      }
+                    })
+                    .catch((error) => {
+                      console.error(
+                        "Error fetching total lead counts for Close:",
+                        error
+                      );
+                    });
+                }
+              })
+              .catch((error) => {
+                console.error("Error fetching total lead counts:", error);
+              });
           }
 
           // Call the function to start updating numbers
           updateNumbers();
         </script>
+
+        <!-- <script>
+          // Function to update numbers dynamically
+          function updateNumbers() {
+            // Initialize numbers
+            let number1 = 0;
+            let number2 = 0;
+            let number3 = 0;
+
+            // Make a GET request to fetch total lead counts
+            fetch("http://localhost:8080/get-total-lead-counts")
+              .then((response) => response.json())
+              .then((data) => {
+                // Check if the response has the expected structure
+                if (data !== undefined) {
+                  // Calculate the increment based on the total count
+                  const increment1 = Math.ceil(data / 3);
+                  const increment2 = Math.ceil(data / 6);
+                  const increment3 = Math.ceil(data / 9);
+
+                  // Function to increment numbers gradually
+                  function incrementNumbers() {
+                    number1 = Math.min(number1 + increment1, data);
+                    number2 = Math.min(number2 + increment2, data);
+                    number3 = Math.min(number3 + increment3, data);
+
+                    // Update the displayed numbers
+                    document.getElementById("number1").textContent = number1;
+                    document.getElementById("number2").textContent = number2;
+                    document.getElementById("number3").textContent = number3;
+
+                    // Check if the final number is reached
+                    if (number1 >= data && number2 >= data && number3 >= data) {
+                      clearInterval(incrementInterval);
+                    }
+                  }
+
+                  // Call the function to increment numbers at a certain interval
+                  const incrementInterval = setInterval(incrementNumbers, 500);
+                }
+              })
+              .catch((error) => {
+                console.error("Error fetching total lead counts:", error);
+              });
+          }
+
+          // Call the function to start updating numbers
+          updateNumbers();
+        </script> -->
       </section>
     </main>
   </body>

@@ -1038,7 +1038,7 @@ h6,
   font-weight: 400;
 }
 
-.newbtnact {
+.newbtnopen {
   padding: 7px 15px;
   margin-left: 10px;
   /* border-radius: 30px; */
@@ -1048,7 +1048,7 @@ h6,
   background: rgba(54, 92, 245, 0.1);
 }
 
-.newbtndone {
+.newbtndealdone {
   padding: 7px 15px;
   margin-left: 10px;
   /* border-radius: 30px; */
@@ -1068,7 +1068,17 @@ h6,
   /* background: rgba(54, 92, 245, 0.1); */
 }
 
-.newbtnPending {
+.newbtnproposalsent{
+  padding: 7px 15px;
+  margin-left: 10px;
+  /* border-radius: 30px; */
+  font-size: 14px;
+  font-weight: 400;
+  color: #f0950c;
+  /* background: rgba(54, 92, 245, 0.1); */
+}
+
+.newbtncontacted {
   padding: 7px 15px;
   margin-left: 10px;
   /* border-radius: 30px; */

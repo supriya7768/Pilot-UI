@@ -244,7 +244,7 @@
             //leadData.innerHTML = "";
 
             data
-              .filter((lead) => lead.status === "Done")
+              .filter((lead) => lead.status === "Deal Done")
               .forEach((lead) => {
                 const row = document.createElement("tr");
                 // Set the lead id as a data attribute
@@ -259,25 +259,37 @@
                       <td>
                           <div class="action">
                               ${
-                                lead.status === "Pending"
+                                lead.status === "Contacted"
                                   ? `
                                       <select onchange="changeStatus(this)">
                                           <option value="">Edit</option>
-                                          <option value="Active">Active</option>
-                                          <option value="Done">Done</option>
+                                          <option value="Open">Open</option>
+                                          <option value="Proposal Sent">Proposal Sent</option>
+                                          <option value="Deal Done">Deal Done</option>
                                           <option value="Close">Close</option>
                                       </select>
                                   `
-                                  : lead.status === "Active"
+                                  : lead.status === "Open"
                                   ? `
                                       <select onchange="changeStatus(this)">
                                           <option value="">Edit</option>
-                                          <option value="Pending">Pending</option>
-                                          <option value="Done">Done</option>
+                                          <option value="Contacted">Contacted</option>
+                                          <option value="Proposal Sent">Proposal Sent</option>
+                                          <option value="Deal Done">Deal Done</option>
                                           <option value="Close">Close</option>
                                       </select>
                                   `
-                                  : lead.status === "Done"
+                                  : lead.status === "Proposal Sent"
+                                  ? `
+                                      <select onchange="changeStatus(this)">
+                                          <option value="">Edit</option>
+                                          <option value="Open">Open</option>
+                                          <option value="Contacted">Contacted</option>
+                                          <option value="Deal Done">Deal Done</option>
+                                          <option value="Close">Close</option>
+                                      </select>
+                                  `
+                                  : lead.status === "Deal Done"
                                   ? `
                                       <a href="edit-invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
                                           Invoice
@@ -303,14 +315,17 @@
 
       function getButtonClass(status) {
         switch (status) {
-          case "Active":
-            return "newbtnact";
-          case "Done":
-            return "newbtndone";
+          case "Open":
+            return "newbtnopen";
+          case "Contacted":
+            return "newbtncontacted";
+          case "Proposal Sent":
+            return "newbtnproposalsent";
+          case "Deal Done":
+            return "newbtndealdone";
           case "Close":
             return "newbtnclose";
-          case "Pending":
-            return "newbtnPending";
+
           default:
             return "default-btn"; // You can define a default class for other statuses
         }
@@ -360,8 +375,8 @@
               row.cells[2].textContent
             );
 
-            if (updatedStatus === "Done") {
-              if (confirm("Do you want to change status as Done?")) {
+            if (updatedStatus === "Deal Done") {
+              if (confirm("Do you want to change status as Deal Done?")) {
                 statusCell.textContent = updatedStatus;
                 statusCell.className = getButtonClass(updatedStatus);
                 actionCell.innerHTML = getActionHTML(
@@ -388,12 +403,9 @@
       }
 
       function getActionHTML(status, name, email) {
-        // Remove double quotes from status if present
-        // status = status.replaceAll('"', "");
-
-        if (status === "Done") {
+        if (status === "Deal Done") {
           return `
-            <a href="edit-invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
+            <a href="invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
                 Invoice
             </a>
         `;
@@ -401,35 +413,61 @@
           return `
             <a style="color: red;">Delete</a>
         `;
-        } else if (status === "Active") {
+        } else if (status === "Open") {
           return `
           <select onchange="changeStatus(this)">
                 <option value="" ${
-                  status === "Active" ? "selected" : ""
+                  status === "Open" ? "selected" : ""
                 }>Edit</option>
-                <option value="Pending" ${
-                  status === "Pending" ? "selected" : ""
-                }>Pending</option>
-                <option value="Done" ${
-                  status === "Done" ? "selected" : ""
-                }>Done</option>
+                <option value="Contacted" ${
+                  status === "Contacted" ? "selected" : ""
+                }>Contacted</option>
+                <option value="Proposal Sent" ${
+                  status === "Proposal Sent" ? "selected" : ""
+                }>Proposal Sent</option>
+                <option value="Deal Done" ${
+                  status === "Deal Done" ? "selected" : ""
+                }>Deal Done</option>
                 <option value="Close" ${
                   status === "Close" ? "selected" : ""
                 }>Close</option>
             </select>
           `;
-        } else if (status === "Pending") {
+        } else if (status === "Contacted") {
           return `
           <select onchange="changeStatus(this)">
                 <option value="" ${
-                  status === "Pending" ? "selected" : ""
+                  status === "Contacted" ? "selected" : ""
                 }>Edit</option>
-                <option value="Active" ${
-                  status === "Active" ? "selected" : ""
-                }>Active</option>
-                <option value="Done" ${
-                  status === "Done" ? "selected" : ""
-                }>Done</option>
+                <option value="Open" ${
+                  status === "Open" ? "selected" : ""
+                }>Open</option>
+                <option value="Proposal Sent" ${
+                  status === "Proposal Sent" ? "selected" : ""
+                }>Proposal Sent</option>
+                <option value="Deal Done" ${
+                  status === "Deal Done" ? "selected" : ""
+                }>Deal Done</option>
+                <option value="Close" ${
+                  status === "Close" ? "selected" : ""
+                }>Close</option>
+            </select>
+          `;
+        } else if (status === "Proposal Sent") {
+          return `
+          <select onchange="changeStatus(this)">
+                <option value="" ${
+                  status === "Proposal Sent" ? "selected" : ""
+                }>Edit</option>
+                <option value="Open" ${
+                  status === "Open" ? "selected" : ""
+                }>Open</option>
+                <option value="Contacted" ${
+                  status === "Contacted" ? "selected" : ""
+                }>Contacted</option>
+                <option value="Deal Done" ${
+                  status === "Deal Done" ? "selected" : ""
+                }>Deal Done</option>
                 <option value="Close" ${
                   status === "Close" ? "selected" : ""
                 }>Close</option>
