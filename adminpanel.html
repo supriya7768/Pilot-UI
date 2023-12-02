@@ -34,10 +34,28 @@
         margin: 10px;
         align-items: center;
       }
+
+      .menu-toggle-btn {
+        position: sticky;
+        top: 3px;
+        left: 0px;
+        z-index: 9999;
+        /* width: 10px; */
+      }
+
+      #menu-toggle {
+        background-color: #4064f6;
+        color: #fff;
+        padding: 8px;
+        border: none;
+        border-radius: 90%;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
     <!-- ======== sidebar-nav start =========== -->
+
     <aside class="sidebar-nav-wrapper">
       <div class="navbar-logo">
         <a href="index.html">
@@ -47,6 +65,7 @@
           />
         </a>
       </div>
+
       <nav class="sidebar-nav">
         <ul>
           <li class="nav-item">
@@ -127,24 +146,21 @@
     <main class="main-wrapper">
       <!-- ========== header start ========== -->
       <header class="header">
+        <div class="menu-toggle-btn">
+          <button id="menu-toggle">
+            <i class="lni lni-chevron-left"></i>
+          </button>
+        </div>
         <div class="container-fluid">
           <div class="row">
             <div class="col-lg-5 col-md-5 col-6">
               <div class="header-left d-flex align-items-center">
-                <div class="menu-toggle-btn mr-15">
-                  <button
-                    id="menu-toggle"
-                    class="main-btn primary-btn btn-hover"
-                  >
-                    <i class="lni lni-chevron-left me-2"></i> Menu
-                  </button>
-                </div>
-                <div class="header-search d-none d-md-flex">
+                <!-- <div class="header-search d-none d-md-flex">
                   <form action="#">
                     <input type="text" placeholder="Search..." />
                     <button><i class="lni lni-search-alt"></i></button>
                   </form>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="col-lg-7 col-md-7 col-6">
