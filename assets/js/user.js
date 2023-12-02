@@ -268,7 +268,7 @@ const statusElement = document.getElementById("status");
 const followOnFieldElement = document.getElementById("followOnField");
 
 statusElement.addEventListener("change", function () {
-  if (statusElement.value === "Active" || statusElement.value === "Pending") {
+  if (statusElement.value === "Open" || statusElement.value === "Contacted" || statusElement.value === "Proposal Sent") {
     followOnFieldElement.style.display = "block";
   } else {
     followOnFieldElement.style.display = "none";
