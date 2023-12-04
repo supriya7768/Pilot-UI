@@ -274,7 +274,7 @@
                       </p>
                       <p class="text-sm">
                         <span class="text-medium">Mobile No:</span>
-                        <span id="mobile"></span>
+                        <span id="leadMobile"></span>
                       </p>
                     </div>
                   </div>
@@ -299,7 +299,7 @@
                           <th class="amount">
                             <h6 class="text-sm text-medium">Amount</h6>
                           </th>
-                          <th class="text-sm">Action</th>
+                          <!-- <th class="text-sm">Action</th> -->
                         </tr>
                       </thead>
                       <tbody>
@@ -358,11 +358,11 @@
                               <input type="text" placeholder="Amount paying" />
                             </div>
                           </td>
-                          <td>
+                          <!-- <td>
                             <button class="deleteRow delbtn main-btn btn-hover">
                               Delete
                             </button>
-                          </td>
+                          </td> -->
                         </tr>
                       </tbody>
                     </table>
@@ -410,7 +410,8 @@
                       </li>
                     </ul>
                   </div>
-                  <div class="card-style mb-30">
+
+                  <div class="invoice-action">
                     <h6 class="mb-25">Description</h6>
                     <div class="input-style-1">
                       <label>Due Date</label>
@@ -433,10 +434,40 @@
               </div>
               <!-- End Row -->
             </div>
-            <!-- Invoice Wrapper End -->
           </div>
+          <!-- Invoice Wrapper End -->
           <div class="h-20">
             <h1 id="dt"></h1>
+          </div>
+          <div class="invoice-action">
+            <ul
+              class="d-flex flex-wrap align-items-center justify-content-center"
+            >
+              <li class="m-2">
+                <a
+                  href="#0"
+                  class="main-btn primary-btn-outline btn-hover"
+                  id="downloadPdfButton"
+                >
+                  Download pdf
+                </a>
+              </li>
+              <li class="m-2">
+                <a href="#0" class="main-btn primary-btn-outline btn-hover">
+                  Send via whatsapp
+                </a>
+              </li>
+              <li class="m-2">
+                <a href="#0" class="main-btn primary-btn-outline btn-hover">
+                  Send via email
+                </a>
+              </li>
+              <!-- <li class="m-2">
+                <a href="#0" class="main-btn primary-btn btn-hover">
+                  Send Invoice
+                </a>
+              </li> -->
+            </ul>
           </div>
         </div>
 
@@ -448,8 +479,8 @@
 
     <!-- ========= All Javascript files linkup ======== -->
     <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/Chart.min.js"></script>
-    <script src="assets/js/dynamic-pie-chart.js"></script>
+    <!-- <script src="assets/js/Chart.min.js"></script> -->
+    <!-- <script src="assets/js/dynamic-pie-chart.js"></script> -->
     <script src="assets/js/moment.min.js"></script>
     <script src="assets/js/fullcalendar.js"></script>
     <script src="assets/js/jvectormap.min.js"></script>
@@ -458,106 +489,87 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/invoice.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
     <script>
-      var date = new Date();
-      var dd = date.getDate();
-      var mm = date.getMonth() + 1;
-      var yyyy = date.getFullYear();
-      var newDate = dd + "-" + mm + "-" + yyyy;
-      var p = document.getElementById("myId");
-      p.innerHTML = newDate;
+      document.addEventListener("DOMContentLoaded", function () {
+        var date = new Date();
+        var dd = date.getDate();
+        var mm = date.getMonth() + 1;
+        var yyyy = date.getFullYear();
+        var newDate = dd + "-" + mm + "-" + yyyy;
+        var p = document.getElementById("myId");
+        p.innerHTML = newDate;
+
+        // Extract the lead's name from the URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const leadName = urlParams.get("leadName");
+        const leadEmail = urlParams.get("leadEmail");
+        const leadMobile = urlParams.get("leadMobile");
+
+        // Update the <h1> tag with the lead's name
+        if (leadName) {
+          document.getElementById("leadName").textContent = leadName;
+        }
+        if (leadEmail) {
+          document.getElementById("leadEmail").textContent = leadEmail;
+        }
+        if (leadMobile) {
+          document.getElementById("leadMobile").textContent = leadMobile;
+        }
+        // Handle click event on "Download pdf" button
+        document
+          .getElementById("downloadPdfButton")
+          .addEventListener("click", function () {
+            // Target the element containing the content you want to convert to PDF
+            const element = document.querySelector(".invoice-wrapper");
+
+            // Configure the PDF options
+            const pdfOptions = {
+              margin: [10, 10, 10, 10], // Set margins (top, right, bottom, left)
+              filename: "invoice.pdf",
+              image: { type: "jpeg", quality: 0.98 },
+              html2canvas: { scale: 5 },
+              jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+              // pagebreak: { before: ".page-break" }, // Use .page-break class to force page breaks
+              yOffset: -20, // Set a negative yOffset to move content up (adjust this value as needed)
+            };
+
+            // Generate the PDF
+            html2pdf(element, pdfOptions);
+          });
+      });
     </script>
 
-    <script>
-      // Extract the lead's name from the URL parameter
-      const urlParams = new URLSearchParams(window.location.search);
-      const leadName = urlParams.get("leadName");
-      const leadEmail = urlParams.get("leadEmail");
+    <!-- <script>
+      $(document).ready(function () {
+        // Get the current date
+        var currentDate = new Date();
+        var formattedDate = currentDate.toISOString().slice(0, 10);
 
-      // Update the <h1> tag with the lead's name
-      if (leadName) {
-        document.getElementById("leadName").textContent = leadName;
-      }
-      if (leadEmail) {
-        document.getElementById("leadEmail").textContent = leadEmail;
-      }
-    </script>
-    <script>
-      var invoiceItems = [];
+        // Set the date in the #myId element
+        $("#myId").text(formattedDate);
 
-      function addItem() {
-        var srNo = $("#srNo").val();
-        var course = $("#course").val();
-        var rate = $("#rate").val();
-        var amount = $("#amount").val();
+        // Generate Invoice ID starting from 2301
+        //var startingInvoiceId = 2301;
+        //var generatedInvoiceId = startingInvoiceId;
 
-        var newItem = {
-          srNo: srNo,
-          course: course,
-          rate: rate,
-          amount: amount,
-        };
+        // Fetch the last used Invoice ID from storage (localStorage)
+        var lastUsedInvoiceId = localStorage.getItem("lastUsedInvoiceId");
 
-        invoiceItems.push(newItem);
-
-        var newRow = $("#invoiceBody tr:first").clone();
-        $("#invoiceBody").append(newRow);
-        newRow.find("input").val("");
-      }
-
-      function displayList() {
-        // Display the list of items in the second table
-        var listTable = $(".list-table");
-        var listBody = $("#listBody");
-        listBody.empty(); // Clear existing entries
-
-        for (var i = 0; i < invoiceItems.length; i++) {
-          var item = invoiceItems[i];
-          var row =
-            "<tr><td>" +
-            item.srNo +
-            "</td><td>" +
-            item.course +
-            "</td><td>" +
-            item.rate +
-            "</td><td>" +
-            item.amount +
-            "</td></tr>";
-          listBody.append(row);
+        // Check if there's a last used Invoice ID in storage
+        if (lastUsedInvoiceId) {
+          // If there is, use it as the starting point for the next Invoice ID
+          generatedInvoiceId = parseInt(lastUsedInvoiceId) + 1;
         }
 
-        listTable.show(); // Display the second table
-      }
-    </script>
-    <script>
-      // $(document).ready(function () {
-      //   // Get the current date
-      //   var currentDate = new Date();
-      //   var formattedDate = currentDate.toISOString().slice(0, 10);
+        // Set the generated Invoice ID in the input field
+        $("#invoiceId").val(generatedInvoiceId);
 
-      //   // Set the date in the #myId element
-      //   $("#myId").text(formattedDate);
+        // Save the generated Invoice ID for future use
+        localStorage.setItem("lastUsedInvoiceId", generatedInvoiceId);
+      });
+    </script> -->
 
-      //   // Generate Invoice ID starting from 2301
-      //   //var startingInvoiceId = 2301;
-      //   //var generatedInvoiceId = startingInvoiceId;
-
-      //   // Fetch the last used Invoice ID from storage (localStorage)
-      //   var lastUsedInvoiceId = localStorage.getItem("lastUsedInvoiceId");
-
-      //   // Check if there's a last used Invoice ID in storage
-      //   if (lastUsedInvoiceId) {
-      //     // If there is, use it as the starting point for the next Invoice ID
-      //     generatedInvoiceId = parseInt(lastUsedInvoiceId) + 1;
-      //   }
-
-      //   // Set the generated Invoice ID in the input field
-      //   $("#invoiceId").val(generatedInvoiceId);
-
-      //   // Save the generated Invoice ID for future use
-      //   localStorage.setItem("lastUsedInvoiceId", generatedInvoiceId);
-      // });
-    </script>
     <script>
       $(document).ready(function () {
         // Add Row button functionality
@@ -569,7 +581,6 @@
           newRow.append(`
             <td>
               <div class="select-style-1">
-                              <!-- <label>Category</label> -->
                               <div class="select-position">
                                 <select id="course" class="course">
                                   <option value="">Select category</option>

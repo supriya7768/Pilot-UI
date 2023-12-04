@@ -291,9 +291,7 @@
                                   `
                                   : lead.status === "Deal Done"
                                   ? `
-                                      <a href="edit-invoice.html?leadName=${lead.name}&leadEmail=${lead.email}" class="create-invoice-link">
-                                          Invoice
-                                      </a>
+                                  <a href="edit-invoice.html?leadName=${lead.name}&leadEmail=${lead.email}&leadMobile=${lead.mobile}" class="create-invoice-link"> Invoice </a>
                                   `
                                   : lead.status === "Close"
                                   ? `

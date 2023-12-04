@@ -141,7 +141,7 @@ async function addlead() {
   if (!isValidEmail(email)) {
     // Show error notification for invalid email address
     Toastify({
-      text: "Error: Invalid email address.",
+      text: "Error: Enter valid Emailid.",
       backgroundColor: "red",
       position: "right-bottom",
       duration: 6000, // 6 seconds
@@ -155,7 +155,7 @@ async function addlead() {
   if (!isValidMobileNumber(mobile)) {
     // Show error notification for invalid mobile number
     Toastify({
-      text: "Error: Invalid mobile number.",
+      text: "Error: Enter valid Mobile number.",
       backgroundColor: "red",
       position: "right-bottom",
       duration: 6000, // 6 seconds
@@ -180,7 +180,7 @@ async function addlead() {
   } else {
     // Show error notification
     Toastify({
-      text: "Error: Failed to add lead. Please try again later.",
+      text: "Error: Email or mobile already exist.",
       backgroundColor: "red",
       position: "right-bottom",
       duration: 6000, // 6 seconds
