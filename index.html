@@ -40,7 +40,7 @@
 
       .col-lg-5c {
         flex: 0 0 auto; /* Do not grow or shrink */
-        width: 45%; /* Adjust the width as needed */
+        width: 49%; /* Adjust the width as needed */
       }
 
       .col-xl-6c {
@@ -63,8 +63,17 @@
         font-size: x-large;
         color: #4064f6;
       }
+
       /* Add any additional styling as needed */
     </style>
+    <!-- <style type="text/css">
+      #container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style> -->
   </head>
 
   <body>
@@ -300,6 +309,29 @@
                   </div>
                   <!-- </div> -->
                 </div>
+                <!-- End Row -->
+                <!-- <div class="row"> -->
+                <div class="col-lg-7" style="width: 100%">
+                  <div class="card-style mb-10">
+                    <div
+                      class="title d-flex flex-wrap align-items-center justify-content-between"
+                    >
+                      <div class="left">
+                        <h6 class="text-medium mb-2">Sales Forecast</h6>
+                      </div>
+                      <div class="right">
+                        <div class="select-style-1 mb-2">
+                          <div class="select-position select-sm"></div>
+                        </div>
+                        <!-- end select -->
+                      </div>
+                    </div>
+                    <!-- End Title -->
+                    <div class="chart">
+                      <div id="container"></div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <!-- End Col -->
@@ -380,6 +412,7 @@
         <script src="./assets/js/newcalender.js"></script>
         <!-- <script src="./assets/js/user.js"></script> -->
         <script src="./assets/js/jquery.js"></script>
+        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-base.min.js"></script>
 
         <script>
           document.addEventListener("DOMContentLoaded", function () {
@@ -914,54 +947,64 @@
           updateNumbers();
         </script>
 
-        <!-- <script>
-          // Function to update numbers dynamically
-          function updateNumbers() {
-            // Initialize numbers
-            let number1 = 0;
-            let number2 = 0;
-            let number3 = 0;
+        <script>
+          anychart.onDocumentReady(function () {
+            // add data
+            var data = [
+              ["2003", 1, 0, 0],
+              ["2004", 4, 0, 0],
+              ["2005", 6, 0, 0],
+              ["2006", 9, 1, 0],
+              ["2007", 12, 2, 0],
+              ["2008", 13, 5, 1],
+              ["2009", 15, 6, 1],
+              ["2010", 16, 9, 1],
+              ["2011", 16, 10, 4],
+              ["2012", 17, 11, 5],
+              ["2013", 17, 13, 6],
+              ["2014", 17, 14, 7],
+              ["2015", 17, 14, 10],
+              ["2016", 17, 14, 12],
+              ["2017", 19, 16, 12],
+              ["2018", 20, 17, 14],
+              ["2019", 20, 19, 16],
+              ["2020", 20, 20, 17],
+              ["2021", 20, 20, 20],
+              ["2022", 20, 22, 20],
+            ];
 
-            // Make a GET request to fetch total lead counts
-            fetch("http://localhost:8080/get-total-lead-counts")
-              .then((response) => response.json())
-              .then((data) => {
-                // Check if the response has the expected structure
-                if (data !== undefined) {
-                  // Calculate the increment based on the total count
-                  const increment1 = Math.ceil(data / 3);
-                  const increment2 = Math.ceil(data / 6);
-                  const increment3 = Math.ceil(data / 9);
+            // create a data set
+            var dataSet = anychart.data.set(data);
 
-                  // Function to increment numbers gradually
-                  function incrementNumbers() {
-                    number1 = Math.min(number1 + increment1, data);
-                    number2 = Math.min(number2 + increment2, data);
-                    number3 = Math.min(number3 + increment3, data);
+            // map the data for all series
+            var firstSeriesData = dataSet.mapAs({ x: 0, value: 1 });
+            var secondSeriesData = dataSet.mapAs({ x: 0, value: 2 });
+            var thirdSeriesData = dataSet.mapAs({ x: 0, value: 3 });
 
-                    // Update the displayed numbers
-                    document.getElementById("number1").textContent = number1;
-                    document.getElementById("number2").textContent = number2;
-                    document.getElementById("number3").textContent = number3;
+            // create a line chart
+            var chart = anychart.line();
 
-                    // Check if the final number is reached
-                    if (number1 >= data && number2 >= data && number3 >= data) {
-                      clearInterval(incrementInterval);
-                    }
-                  }
+            // create the series and name them
+            var firstSeries = chart.line(firstSeriesData);
+            firstSeries.name("Roger Federer");
+            var secondSeries = chart.line(secondSeriesData);
+            secondSeries.name("Rafael Nadal");
+            var thirdSeries = chart.line(thirdSeriesData);
+            thirdSeries.name("Novak Djokovic");
 
-                  // Call the function to increment numbers at a certain interval
-                  const incrementInterval = setInterval(incrementNumbers, 500);
-                }
-              })
-              .catch((error) => {
-                console.error("Error fetching total lead counts:", error);
-              });
-          }
+            // // add a legend
+            // chart.legend().enabled(true);
 
-          // Call the function to start updating numbers
-          updateNumbers();
-        </script> -->
+            // // add a title
+            // chart.title("Big Three's Grand Slam Title Race");
+
+            // specify where to display the chart
+            chart.container("container");
+
+            // draw the resulting chart
+            chart.draw();
+          });
+        </script>
       </section>
     </main>
   </body>
