@@ -1,101 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Invoice Form</title>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    <meta charset="utf-8" />
+    <title>Example 1</title>
+    <link rel="stylesheet" href="/assets/css/newinvoice.css" media="all" />
+    <style>
+      @media print {
+        body {
+          font-size: 12px;
+        }
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   </head>
 
   <body>
-    <table id="invoiceTable">
-      <thead>
-        <tr>
-          <th class="service">
-            <h6 class="text-sm text-medium">Sr.No</h6>
-          </th>
-          <th class="desc">
-            <h6 class="text-sm text-medium">Course</h6>
-          </th>
-          <th class="qty">
-            <h6 class="text-sm text-medium">Rate</h6>
-          </th>
-          <th class="amount">
-            <h6 class="text-sm text-medium">Amount</h6>
-          </th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Initial row for demonstration -->
-        <tr>
-          <td>1</td>
-          <td>
-            <select class="course">
-              <option value="">Select category</option>
-              <option>Software Testing(Java Selenium)</option>
-              <option>Automation Testing(Python Selenium)</option>
-              <option>Rest API Testing</option>
-              <option>Java Full Stack Development</option>
-              <option>MERN Java Full Stack Development</option>
-              <option>.NET Full Stack Development</option>
-              <option>Diploma in UI/UX Design</option>
-            </select>
-          </td>
-          <td><input type="text" class="rate" /></td>
-          <td><input type="text" class="amount" /></td>
-          <td><button class="deleteRow">Delete</button></td>
-        </tr>
-      </tbody>
-    </table>
+    <div id="print">
+      <div class="clearfix">
+        <div id="logo">
+          <img src="/assets/images/logo.png" />
+        </div>
+        <h1>INVOICE</h1>
+        <div id="company" class="clearfix">
+          <div>To,</div>
+          <div style="font-size: large">Client Name</div>
+          <div>Address</div>
+          <div>Mobile No.</div>
+          <div><a href="mailto:company@example.com">email</a></div>
+        </div>
+        <div id="project">
+          <div>From,</div>
+          <div style="font-size: large">Testing Shastra</div>
 
-    <button id="addRow">Add Row</button>
-    <button id="savePDF">Save as PDF</button>
+          <div>Pimple Saudagar, Pune</div>
+          <div>
+            <a href="mailto:john@example.com">email</a>
+          </div>
+          <div>August 17, 2015</div>
+        </div>
+      </div>
+      <main>
+        <table>
+          <thead>
+            <tr>
+              <th class="service">SERVICE</th>
+              <th class="desc">DESCRIPTION</th>
+              <th>PRICE</th>
+              <th>QTY</th>
+              <th>TOTAL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="service">Design</td>
+              <td class="desc">
+                Creating a recognizable design solution based on the company's
+                existing visual identity
+              </td>
+              <td class="unit">$40.00</td>
+              <td class="qty">26</td>
+              <td class="total">$1,040.00</td>
+            </tr>
+            <tr>
+              <td class="service">Development</td>
+              <td class="desc">
+                Developing a Content Management System-based Website
+              </td>
+              <td class="unit">$40.00</td>
+              <td class="qty">80</td>
+              <td class="total">$3,200.00</td>
+            </tr>
+            <tr>
+              <td class="service">SEO</td>
+              <td class="desc">Optimize the site for search engines (SEO)</td>
+              <td class="unit">$40.00</td>
+              <td class="qty">20</td>
+              <td class="total">$800.00</td>
+            </tr>
+            <tr>
+              <td class="service">Training</td>
+              <td class="desc">
+                Initial training sessions for staff responsible for uploading
+                web content
+              </td>
+              <td class="unit">$40.00</td>
+              <td class="qty">4</td>
+              <td class="total">$160.00</td>
+            </tr>
+            <tr>
+              <td colspan="4">SUBTOTAL</td>
+              <td class="total">$5,200.00</td>
+            </tr>
+            <tr>
+              <td colspan="4">TAX 25%</td>
+              <td class="total">$1,300.00</td>
+            </tr>
+            <tr>
+              <td colspan="4" class="grand total">GRAND TOTAL</td>
+              <td class="grand total">$6,500.00</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="notices">
+          <div>NOTICE:</div>
+          <div class="notice">
+            1. Fees paid is not transferrable and no refundable<br />
+            2. Placement charges are applicable upon receipt of offer letter<br />
+            3. Fees paid shall be applicable for the batch only for which
+            admission is taken<br />
+            4. Batch transfer charges (Rs. 5000) shall be applicable in case you
+            want to change your current batch<br />
+            5. If fees is paid in instalment, then first instalment shall be
+            paid at the time of admission and next instalment shall be paid
+            within 25 days of admission.
+          </div>
+        </div>
+      </main>
+
+      Invoice was created on a computer and is valid without the signature and
+      seal.
+    </div>
+    <button onclick="generatePDF()">Print PDF</button>
 
     <script>
-      $(document).ready(function () {
-        // Add Row button functionality
-        $("#addRow").on("click", function () {
-          var newRow = $("<tr>");
-          newRow.append(
-            "<td>" + ($("#invoiceTable tbody tr").length + 1) + "</td>"
-          );
-          newRow.append(`
-                <td>
-                    <select class="course">
-                        <option value="">Select category</option>
-                        <option>Software Testing(Java Selenium)</option>
-                        <option>Automation Testing(Python Selenium)</option>
-                        <option>Rest API Testing</option>
-                        <option>Java Full Stack Development</option>
-                        <option>MERN Java Full Stack Development</option>
-                        <option>.NET Full Stack Development</option>
-                        <option>Diploma in UI/UX Design</option>
-                    </select>
-                </td>
-            `);
-          newRow.append("<td><input type='text' class='rate'></td>");
-          newRow.append("<td><input type='text' class='amount'></td>");
-          newRow.append("<td><button class='deleteRow'>Delete</button></td>");
-
-          $("#invoiceTable tbody").append(newRow);
-        });
-
-        // Delete Row button functionality
-        $(document).on("click", ".deleteRow", function () {
-          $(this).closest("tr").remove();
-        });
-
-        // Save as PDF button functionality
-        $("#savePDF").on("click", function () {
-          var pdf = new jsPDF();
-          pdf.autoTable({
-            html: "#invoiceTable",
-          });
-          pdf.save("invoice.pdf");
-        });
-      });
+      // function printPage() {
+      //   window.print();
+      // }
+      function generatePDF() {
+        const element = document.getElementById("#print");
+      }
+      html2pdf().from(element).save();
     </script>
   </body>
 </html>
