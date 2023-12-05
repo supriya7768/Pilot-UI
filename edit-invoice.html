@@ -241,7 +241,7 @@
                       <p>
                         <span>Invoice ID:</span
                         ><input
-                          style="width: 25%"
+                          style="width: 35%; border: none"
                           type="text"
                           id="invoiceId"
                           readonly
@@ -296,8 +296,14 @@
                           <th class="rate">
                             <h6 class="text-sm text-medium">Rate</h6>
                           </th>
+                          <th class="gst">
+                            <h6 class="text-sm text-medium">GST</h6>
+                          </th>
+                          <th class="gst">
+                            <h6 class="text-sm text-medium">GST Value</h6>
+                          </th>
                           <th class="amount">
-                            <h6 class="text-sm text-medium">Amount</h6>
+                            <h6 class="text-sm text-medium">Subtotal</h6>
                           </th>
                           <!-- <th class="text-sm">Action</th> -->
                         </tr>
@@ -307,20 +313,6 @@
                         <tr>
                           <td>1</td>
                           <td>
-                            <!-- <select class="course tablestyle" id="course">
-                            <option value="">Select category</option>
-                            <option>Software Testing(Java Selenium)</option>
-                            <option>
-                              Automation Testing(Python Selenium)
-                            </option>
-                            <option>Rest API Testing</option>
-                            <option>Java Full Stack Development</option>
-                            <option>MERN Java Full Stack Development</option>
-                            <option>.NET Full Stack Development</option>
-                            <option>Diploma in UI/UX Design</option>
-                          </select> -->
-                            <!-- <div class="card-style mb-30"> -->
-                            <!-- <h6 class="mb-25">Selects</h6> -->
                             <div class="select-style-1">
                               <!-- <label>Category</label> -->
                               <div class="select-position">
@@ -341,21 +333,39 @@
                                   <option>Diploma in UI/UX Design</option>
                                 </select>
                               </div>
-                              <!-- </div> -->
                             </div>
                           </td>
                           <td>
-                            <!-- <input type="text" class="rate tablestyle" id="rate" /> -->
-                            <!-- <div class="card-style mb-30"> -->
-                            <!-- <h6 class="mb-25">Input Fields</h6> -->
                             <div class="input-style-1">
-                              <input type="text" placeholder="Rate of Course" />
+                              <input
+                                type="number"
+                                id="rateOfCourse"
+                                placeholder="Rate of Course"
+                              />
                             </div>
                           </td>
                           <td>
-                            <!-- <input type="text" class="amount tablestyle" id="amount" /> -->
                             <div class="input-style-1">
-                              <input type="text" placeholder="Amount paying" />
+                              <input type="number" placeholder="%" />
+                            </div>
+                          </td>
+                          <td>
+                            <div class="input-style-1">
+                              <input
+                                type="number"
+                                placeholder="GST value"
+                                readonly
+                              />
+                            </div>
+                          </td>
+                          <td>
+                            <div class="input-style-1">
+                              <input
+                                type="number"
+                                id="subtotal"
+                                placeholder="Subtotal"
+                                readonly
+                              />
                             </div>
                           </td>
                           <!-- <td>
@@ -377,21 +387,31 @@
                     <!-- <button id="savePDF">Save as PDF</button> -->
                   </div>
 
-                  <!-- Table to display the list of items -->
-                  <div class="table-responsive">
-                    <table class="list-table table" style="display: none">
-                      <thead>
-                        <tr>
-                          <th>Sr.No</th>
-                          <th>Course</th>
-                          <th>rate</th>
-                          <th>Amount</th>
-                        </tr>
-                      </thead>
-                      <tbody id="listBody">
-                        <!-- List items will be added here dynamically -->
-                      </tbody>
-                    </table>
+                  <div class="invoice-action">
+                    <div class="input-style-1">
+                      <label>Paid Amount</label>
+                      <input
+                        type="number"
+                        id="paidAmount"
+                        placeholder="Paid Amount"
+                      />
+                      <label>Due Amount</label>
+                      <input
+                        type="number"
+                        id="dueAmount"
+                        placeholder="Pending Amount"
+                        readonly
+                      />
+                      <label>Due Date</label>
+                      <input type="date" id="dueDate" />
+                      <label>Total</label>
+                      <input
+                        type="number"
+                        id="totalAmount"
+                        placeholder="Total Amount"
+                        readonly
+                      />
+                    </div>
                   </div>
 
                   <div class="invoice-action">
@@ -401,7 +421,7 @@
                       <li class="m-2">
                         <a
                           href="#0"
-                          onclick="addinvoice()"
+                          onclick="addInvoice()"
                           class="main-btn primary-btn-outline btn-hover"
                           style="height: 30px; width: 30px"
                         >
@@ -410,29 +430,8 @@
                       </li>
                     </ul>
                   </div>
-
-                  <div class="invoice-action">
-                    <h6 class="mb-25">Description</h6>
-                    <div class="input-style-1">
-                      <label>Due Date</label>
-                      <input type="date" />
-                      <label>Due Amount</label>
-                      <input
-                        type="text"
-                        placeholder="Amount remaining to be paid"
-                      />
-                      <label>Sub-Total</label>
-                      <input type="text" placeholder="Fees paid" />
-                      <label>Total</label>
-                      <input type="text" placeholder="Total fees paid" />
-                    </div>
-                  </div>
-
-                  <!-- End Card -->
                 </div>
-                <!-- ENd Col -->
               </div>
-              <!-- End Row -->
             </div>
           </div>
           <!-- Invoice Wrapper End -->
@@ -490,8 +489,28 @@
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/invoice.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
+    <!-- Add this script to the end of your HTML body -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // Fetch the last used Invoice ID from storage (localStorage)
+        $.ajax({
+          type: "GET",
+          url: "http://localhost:8080/last-invoice-id",
+          success: function (lastUsedInvoiceId) {
+            // Check if there's a last used Invoice ID from the server
+            if (lastUsedInvoiceId) {
+              // If there is, use it as the starting point for the next Invoice ID
+              $("#invoiceId").val(parseInt(lastUsedInvoiceId)+1);
+            } else {
+              // If there is no last used Invoice ID, set a default starting point
+              $("#invoiceId").val(231201); // You can adjust this value as needed
+            }
+          },
+          error: function (error) {
+            console.error("Error fetching last used Invoice ID:", error);
+          },
+        });
+
         var date = new Date();
         var dd = date.getDate();
         var mm = date.getMonth() + 1;
@@ -516,6 +535,7 @@
         if (leadMobile) {
           document.getElementById("leadMobile").textContent = leadMobile;
         }
+
         // Handle click event on "Download pdf" button
         document
           .getElementById("downloadPdfButton")
@@ -530,45 +550,26 @@
               image: { type: "jpeg", quality: 0.98 },
               html2canvas: { scale: 5 },
               jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-              // pagebreak: { before: ".page-break" }, // Use .page-break class to force page breaks
               yOffset: -20, // Set a negative yOffset to move content up (adjust this value as needed)
             };
 
             // Generate the PDF
             html2pdf(element, pdfOptions);
           });
+        updateTotal();
       });
     </script>
 
-    <!-- <script>
+    <script>
       $(document).ready(function () {
-        // Get the current date
-        var currentDate = new Date();
-        var formattedDate = currentDate.toISOString().slice(0, 10);
-
-        // Set the date in the #myId element
-        $("#myId").text(formattedDate);
-
-        // Generate Invoice ID starting from 2301
-        //var startingInvoiceId = 2301;
-        //var generatedInvoiceId = startingInvoiceId;
-
-        // Fetch the last used Invoice ID from storage (localStorage)
-        var lastUsedInvoiceId = localStorage.getItem("lastUsedInvoiceId");
-
-        // Check if there's a last used Invoice ID in storage
-        if (lastUsedInvoiceId) {
-          // If there is, use it as the starting point for the next Invoice ID
-          generatedInvoiceId = parseInt(lastUsedInvoiceId) + 1;
-        }
-
-        // Set the generated Invoice ID in the input field
-        $("#invoiceId").val(generatedInvoiceId);
-
-        // Save the generated Invoice ID for future use
-        localStorage.setItem("lastUsedInvoiceId", generatedInvoiceId);
+        $("#paidAmount").on("input", function () {
+          var paidAmount = parseFloat($(this).val()) || 0;
+          var totalAmount = parseFloat($("#totalAmount").val()) || 0;
+          var dueAmount = totalAmount - paidAmount;
+          $("#dueAmount").val(dueAmount.toFixed(2));
+        });
       });
-    </script> -->
+    </script>
 
     <script>
       $(document).ready(function () {
@@ -584,7 +585,7 @@
                               <div class="select-position">
                                 <select id="course" class="course">
                                   <option value="">Select category</option>
-                            <option>Software Testing(Java Selenium)</option>
+                            <option value="Software Testing(Java Selenium)">Software Testing(Java Selenium)</option>
                             <option>
                               Automation Testing(Python Selenium)
                             </option>
@@ -598,34 +599,189 @@
             </td>
         `);
           newRow.append(`"<td><div class="input-style-1">
-                              <input type="text" placeholder="Rate of Course" />
+                              <input type="number" placeholder="Rate of Course" />
                             </div></td>"`);
           newRow.append(
             `"<td> <div class="input-style-1">
-                            <input type="text" placeholder="Amount paying" />
+                            <input type="number" placeholder="%" />
+                          </div></td>"`
+          );
+          newRow.append(
+            `"<td> <div class="input-style-1">
+                            <input type="number" placeholder="GST value" readonly/> 
+                          </div></td>"`
+          );
+          newRow.append(
+            `"<td> <div class="input-style-1">
+                            <input type="number" placeholder="Subtotal" readonly/>
                           </div></td>"`
           );
           newRow.append(
             "<td><button class='deleteRow delbtn main-btn btn-hover'>Delete</button></td>"
           );
 
+          newRow
+            .find(".input-style-1 input[placeholder='Rate of Course']")
+            .on("input", function () {
+              calculateRowValues(newRow);
+            });
+
+          newRow
+            .find(".input-style-1 input[placeholder='%']")
+            .on("input", function () {
+              calculateRowValues(newRow);
+            });
+
+          // Append the new row to the table body
           $("#invoiceTable tbody").append(newRow);
         });
 
+        // Input event listeners for rate and percentage calculation
+        $("#invoiceTable tbody").on(
+          "input",
+          ".input-style-1 input[placeholder='Rate of Course'], .input-style-1 input[placeholder='%']",
+          function () {
+            var row = $(this).closest("tr");
+            calculateRowValues(row);
+          }
+        );
+
         // Delete Row button functionality
         $(document).on("click", ".deleteRow", function () {
-          $(this).closest("tr").remove();
-        });
+          // $(this).closest("tr").remove();
+          var row = $(this).closest("tr");
 
-        // Save as PDF button functionality
-        $("#savePDF").on("click", function () {
-          var pdf = new jsPDF();
-          pdf.autoTable({
-            html: "#invoiceTable",
+          // Remove the row from the database
+          removeRowFromDatabase(row);
+
+          // Remove the row from the table
+          row.remove();
+
+          // Update row numbers in the first column
+          $("#invoiceTable tbody tr").each(function (index) {
+            $(this)
+              .find("td:first")
+              .text(index + 1);
           });
-          pdf.save("invoice.pdf");
+
+          updateTotal();
         });
       });
+
+      function removeRowFromDatabase(row) {
+        // Extract the subtotal from the row being removed
+        var subtotal =
+          parseFloat(
+            row.find(".input-style-1 input[placeholder='Subtotal']").val()
+          ) || 0;
+
+        var currentTotal = parseFloat($("#totalAmount").val()) || 0;
+        var newTotal = currentTotal - subtotal;
+
+        $("#totalAmount").val(newTotal.toFixed(2));
+        console.log("Row removed from the database. Subtotal:", subtotal);
+        console.log("Total amount updated. New total:", newTotal);
+      }
+    </script>
+
+    //
+    <script>
+      function updateTotal() {
+        console.log("updateTotal called");
+        var total = 0;
+        $("#invoiceTable tbody tr").each(function () {
+          var subtotalInput = $(this).find(
+            ".input-style-1 input[placeholder='Subtotal']"
+          );
+          var subtotal = parseFloat(subtotalInput.val()) || 0;
+
+          console.log("Subtotal for row:", subtotal);
+          total += subtotal;
+        });
+
+        console.log("Total:", total);
+
+        $("#totalAmount").val(total.toFixed(2));
+
+        $("input[placeholder='Paid Amount']").trigger("input");
+      }
+
+      $("#invoiceTable tbody").on(
+        "input",
+        ".input-style-1 input[placeholder='Subtotal']",
+        function () {
+          updateTotal();
+        }
+      );
+
+      function calculateRowValues(row) {
+        var rateInput = row.find(
+          ".input-style-1 input[placeholder='Rate of Course']"
+        );
+        var percentageInput = row.find(".input-style-1 input[placeholder='%']");
+        var gstValueInput = row.find(
+          ".input-style-1 input[placeholder='GST value']"
+        );
+        var subtotalInput = row.find(
+          ".input-style-1 input[placeholder='Subtotal']"
+        );
+
+        var rate = parseFloat(rateInput.val()) || 0;
+        var percentage = parseFloat(percentageInput.val()) || 0;
+
+        var gstValue = (rate * percentage) / 100;
+        var subtotal = rate + gstValue;
+
+        console.log("Rate:", rate);
+        console.log("Percentage:", percentage);
+        console.log("GST Value:", gstValue);
+        console.log("Subtotal:", subtotal);
+
+        gstValueInput.val(gstValue.toFixed(2));
+        subtotalInput.val(subtotal.toFixed(2));
+
+        subtotalInput.trigger("input");
+      }
+
+      $("#invoiceTable tbody").on(
+        "input",
+        ".input-style-1 input[placeholder='Subtotal']",
+        function () {
+          updateTotal();
+        }
+      );
+    </script>
+
+    <script>
+      function addInvoice() {
+        var invoiceData = {
+          invoiceId: parseInt($("#invoiceId").val()),
+          name: $("#leadName").text(),
+          email: $("#leadEmail").text(),
+          mobile: $("#leadMobile").text(),
+          course: $("#course").val(), // Use .val() to get the selected option's value
+          rate: parseFloat($("#rateOfCourse").val()),
+          subtotal: parseFloat($("#subtotal").val()),
+          paidAmount: parseFloat($("#paidAmount").val()),
+          dueDate: $("#dueDate").val(),
+          dueAmount: parseFloat($("#dueAmount").val()),
+          total: parseFloat($("#totalAmount").val()),
+        };
+
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:8080/add-invoice", // Replace with your actual backend endpoint
+          contentType: "application/json",
+          data: JSON.stringify(invoiceData),
+          success: function (response) {
+            console.log("Invoice added successfully:", response);
+            $("#dt").text(response);
+          },
+          error: function (error) {
+            console.error("Error adding invoice:", error);
+          },
+        });
+      }
     </script>
   </body>
 </html>
