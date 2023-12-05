@@ -433,6 +433,7 @@
                         <a
                           href="#0"
                           class="main-btn primary-btn-outline btn-hover"
+                          id="downloadPdfButton"
                         >
                           Download pdf
                         </a>
@@ -487,29 +488,51 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/invoice.js"></script>
-    <script>
-      var date = new Date();
-      var dd = date.getDate();
-      var mm = date.getMonth() + 1;
-      var yyyy = date.getFullYear();
-      var newDate = dd + "-" + mm + "-" + yyyy;
-      var p = document.getElementById("myId");
-      p.innerHTML = newDate;
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
 
     <script>
-      // Extract the lead's name from the URL parameter
-      const urlParams = new URLSearchParams(window.location.search);
-      const leadName = urlParams.get("leadName");
-      const leadEmail = urlParams.get("leadEmail");
+      document.addEventListener("DOMContentLoaded", function () {
+        var date = new Date();
+        var dd = date.getDate();
+        var mm = date.getMonth() + 1;
+        var yyyy = date.getFullYear();
+        var newDate = dd + "-" + mm + "-" + yyyy;
+        var p = document.getElementById("myId");
+        p.innerHTML = newDate;
 
-      // Update the <h1> tag with the lead's name
-      if (leadName) {
-        document.getElementById("leadName").textContent = leadName;
-      }
-      if (leadEmail) {
-        document.getElementById("leadEmail").textContent = leadEmail;
-      }
+        // Extract the lead's name from the URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const leadName = urlParams.get("leadName");
+        const leadEmail = urlParams.get("leadEmail");
+
+        // Update the <h1> tag with the lead's name
+        if (leadName) {
+          document.getElementById("leadName").textContent = leadName;
+        }
+        if (leadEmail) {
+          document.getElementById("leadEmail").textContent = leadEmail;
+        }
+
+        // Handle click event on "Download pdf" button
+        document
+          .getElementById("downloadPdfButton")
+          .addEventListener("click", function () {
+            // Target the element containing the content you want to convert to PDF
+            const element = document.querySelector(".invoice-wrapper");
+
+            // Configure the PDF options
+            const pdfOptions = {
+              margin: 10,
+              filename: "invoice.pdf",
+              image: { type: "jpeg", quality: 0.98 },
+              html2canvas: { scale: 2 },
+              jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+            };
+
+            // Generate the PDF
+            html2pdf(element, pdfOptions);
+          });
+      });
     </script>
   </body>
 </html>

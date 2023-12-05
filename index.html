@@ -748,10 +748,10 @@
             return calendarEntries;
           }
 
-          function getActionHTML(status, name, email) {
+          function getActionHTML(status, name, email, mobile) {
             if (status === "Deal Done") {
               return `
-            <a href="invoice.html?leadName=${name}&leadEmail=${email}" class="create-invoice-link">
+            <a href="invoice.html?leadName=${name}&leadEmail=${email}&leadMobile=${mobile}" class="create-invoice-link">
                 Invoice
             </a>
         `;

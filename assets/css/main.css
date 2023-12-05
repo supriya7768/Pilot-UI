@@ -4011,7 +4011,7 @@ h6,
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  flex: 1;
+  /* flex: 1; */
   padding-bottom: 30px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
