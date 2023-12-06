@@ -13,6 +13,9 @@
 
     <!-- ========== All CSS files linkup ========= -->
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
     <link
       rel="stylesheet"
       href="/assets/css/lineicons.css"
@@ -28,6 +31,13 @@
     <link rel="stylesheet" href="/assets/css/fullcalendar.css" />
     <link rel="stylesheet" href="/assets/css/fullcalendar.css" />
     <link rel="stylesheet" href="/assets/css/main.css" />
+    <style
+    >.input-style-1{
+padding-left: 20px;
+    }
+    .lp{
+      padding-left: 37%;
+    }</style>
   </head>
 
   <body>
@@ -51,7 +61,7 @@
                     <span
                       ><img
                         style="padding-left: 30px; width: 55px"
-                        src="/"
+                        src="./assets/images/logo.png"
                         alt="" /></span
                     ><br />
                     <span style="padding-top: 5px">
@@ -74,8 +84,8 @@
                     </span>
                   </div>
                 </div>
-                <div class="invoice-address" >
-                  <div class="address-item mr-5" style="background-color:#a5b6f9; width: 40%; height: 12%;">
+                <div class="invoice-address" style="display: flex;">
+                  <div class="address-item">
                     <h5 class="text-bold">Bill from</h5>
                     <h1>Testing Shastra</h1>
                     <p class="text-sm">
@@ -86,7 +96,7 @@
                       info@testingshastra.com
                     </p>
                   </div>
-                  <div class="address-item ml-5">
+                  <div class="address-item">
                     <h5 class="text-bold">Bill to</h5>
                     <h1 id="leadName"></h1>
                     <p class="text-sm">
@@ -101,41 +111,48 @@
                 </div>
                 <div class="table-responsive">
                   <table id="invoiceTable">
-                    <thead>
+                    <thead >
                       <tr>
-                        <th class="service">
-                          <h6 class="text-sm text-medium">Sr.No</h6>
+                        <th class="service ">
+                          <h6 class="text-sm text-medium mb-4  ">Sr.No</h6>
                         </th>
                         <th class="desc">
                           <h6
-                            style="padding-left: 25%"
-                            class="text-sm text-medium"
+                            
+                            class="text-sm text-medium mb-4 lp"
                           >
                             Course
                           </h6>
                         </th>
                         <th class="rate">
-                          <h6 class="text-sm text-medium">Rate</h6>
+                          <h6 class="text-sm text-medium mb-4" style="padding-left: 45%;">Rate</h6>
                         </th>
                         <th class="gst">
-                          <h6 class="text-sm text-medium">GST</h6>
+                          <h6 class="text-sm text-medium mb-4 "  style="padding-left: 46%;">GST</h6>
                         </th>
                         <th class="gst">
-                          <h6 class="text-sm text-medium">GST Value</h6>
+                          <h6 class="text-sm text-medium mb-4" style="padding-left: 34%;">GST Value</h6>
                         </th>
                         <th class="amount">
-                          <h6 class="text-sm text-medium">Subtotal</h6>
+                          <h6 class="text-sm text-medium mb-4" style="padding-left: 37%;">Subtotal</h6>
                         </th>
-                        <!-- <th class="text-sm">Action</th> -->
+                        
                       </tr>
                     </thead>
-                    <tbody>
-                      <!-- Initial row for demonstration -->
+                    
+                     <tbody>
+                      
                       <tr>
-                        <td>1</td>
+                        <td>
+                          <div
+                            class="select-style-1">
+                            1
+                          </div>
+
+                        </td> 
                         <td>
                           <div class="select-style-1">
-                            <!-- <label>Category</label> -->
+                           
                             <div class="select-position">
                               <select id="course" class="course">
                                 <option value="">Select category</option>
@@ -187,23 +204,12 @@
                             />
                           </div>
                         </td>
-                        <!-- <td>
-                          <button class="deleteRow delbtn main-btn btn-hover">
-                            Delete
-                          </button>
-                        </td> -->
+                       
                       </tr>
-                    </tbody>
+                    </tbody> 
                   </table>
 
-                  <button
-                    style="margin-left: 40px"
-                    class="primary-btn primary-btn-light closebtn main-btn btn-hover"
-                    id="addRow"
-                  >
-                    Add
-                  </button>
-                  <!-- <button id="savePDF">Save as PDF</button> -->
+                  
                 </div>
 
                 <div class="invoice-action">
@@ -233,7 +239,7 @@
                   </div>
                 </div>
 
-                <div class="invoice-action">
+                <!-- <div class="invoice-action">
                   <ul
                     class="d-flex flex-wrap align-items-center justify-content-center"
                   >
@@ -249,15 +255,21 @@
                       </a>
                     </li>
                   </ul>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
         </div>
-        <button type="button" onclick="previewForm()">Preview</button>
+      </form>
+      <div class="buttons-container">
+        <button onclick="downloadPDF()">Download PDF</button>
+        <button onclick="shareOnWhatsApp()">Share on WhatsApp</button>
+        <button onclick="shareViaEmail()">Share via Email</button>
+      </div>
+
+       
       
 
-      <div id="previewContainer"></div>
     </main>
 
     <!-- ========= All Javascript files linkup ======== -->
@@ -270,5 +282,33 @@
     <script src="/assets/js/world-merc.js"></script>
     <script src="/assets/js/polyfill.js"></script>
     <script src="/assets/js/main.js"></script>
-  </body>
+    <script>
+      function downloadPDF() {
+        const pdfElement = document.getElementById('myprint');
+        
+        html2canvas(pdfElement).then(canvas => {
+          const pdf = new jsPDF();
+          const imgData = canvas.toDataURL('image/png');
+          pdf.addImage(imgData, 'PNG', 0, 0);
+          pdf.save('invoice.pdf');
+        });
+      }
+    
+      function shareOnWhatsApp() {
+        // You can create a deep link with the PDF and open it in WhatsApp
+        // Note: WhatsApp API for direct sharing may not be available
+        const pdfLink = 'https://example.com/invoice.pdf';
+        window.open(`https://api.whatsapp.com/send?text=Check+this+invoice&url=${pdfLink}`);
+      }
+    
+      function shareViaEmail() {
+        const subject = encodeURIComponent('Invoice');
+        const body = encodeURIComponent('Please find attached the invoice.');
+        // Replace 'base64data' with the actual base64 data of the generated PDF
+        const base64Data = 'base64data';
+        const attachment = `data:application/pdf;base64,${base64Data}`;
+        window.open(`mailto:?subject=${subject}&body=${body}&attachment=${attachment}`);
+      }
+    </script>
+    </body>
 </html>
