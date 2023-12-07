@@ -221,219 +221,222 @@
           <!-- ========== title-wrapper end ========== -->
 
           <!-- Invoice Wrapper Start -->
-          <div class="invoice-wrapper">
-            <div class="row">
-              <div class="col-12">
-                <div class="invoice-card card-style mb-30">
-                  <div class="invoice-header">
-                    <div class="invoice-for">
-                      <span
-                        ><img
-                          style="padding-left: 30px; width: 55px"
-                          src="./assets/images/logo.png"
-                          alt="" /></span
-                      ><br />
-                      <span style="padding-top: 5px">
-                        <h2 class="mb-10">Invoice</h2>
-                      </span>
+          <form id="myprint">
+            <div class="invoice-wrapper">
+              <div class="row">
+                <div class="col-12">
+                  <div class="invoice-card card-style mb-30">
+                    <div class="invoice-header">
+                      <div class="invoice-for">
+                        <span
+                          ><img
+                            style="padding-left: 30px; width: 55px"
+                            src="./assets/images/logo.png"
+                            alt="" /></span
+                        ><br />
+                        <span style="padding-top: 5px">
+                          <h2 class="mb-10">Invoice</h2>
+                        </span>
+                      </div>
+                      <div class="invoice-date">
+                        <p>
+                          <span>Invoice ID:</span
+                          ><input
+                            style="width: 35%; border: none"
+                            type="text"
+                            id="invoiceId"
+                            readonly
+                          />
+                        </p>
+                        <span>Date:</span
+                        ><span style="padding-left: 25px">
+                          <p id="myId"></p>
+                        </span>
+                      </div>
                     </div>
-                    <div class="invoice-date">
-                      <p>
-                        <span>Invoice ID:</span
-                        ><input
-                          style="width: 35%; border: none"
-                          type="text"
-                          id="invoiceId"
-                          readonly
-                        />
-                      </p>
-                      <span>Date:</span
-                      ><span style="padding-left: 25px">
-                        <p id="myId"></p>
-                      </span>
+                    <div class="invoice-address">
+                      <div class="address-item">
+                        <h5 class="text-bold">Bill from</h5>
+                        <h1>Testing Shastra</h1>
+                        <p class="text-sm">
+                          504, Ganeesham E, Pimple Saudagar, Pune
+                        </p>
+                        <p class="text-sm">
+                          <span class="text-medium">Email:</span>
+                          info@testingshastra.com
+                        </p>
+                      </div>
+                      <div class="address-item">
+                        <h5 class="text-bold">Bill to</h5>
+                        <h1 id="leadName"></h1>
+                        <p class="text-sm">
+                          <span class="text-medium">Email:</span>
+                          <span id="leadEmail"></span>
+                        </p>
+                        <p class="text-sm">
+                          <span class="text-medium">Mobile No:</span>
+                          <span id="leadMobile"></span>
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="invoice-address">
-                    <div class="address-item">
-                      <h5 class="text-bold">Bill from</h5>
-                      <h1>Testing Shastra</h1>
-                      <p class="text-sm">
-                        504, Ganeesham E, Pimple Saudagar, Pune
-                      </p>
-                      <p class="text-sm">
-                        <span class="text-medium">Email:</span>
-                        info@testingshastra.com
-                      </p>
-                    </div>
-                    <div class="address-item">
-                      <h5 class="text-bold">Bill to</h5>
-                      <h1 id="leadName"></h1>
-                      <p class="text-sm">
-                        <span class="text-medium">Email:</span>
-                        <span id="leadEmail"></span>
-                      </p>
-                      <p class="text-sm">
-                        <span class="text-medium">Mobile No:</span>
-                        <span id="leadMobile"></span>
-                      </p>
-                    </div>
-                  </div>
-                  <div class="table-responsive">
-                    <table id="invoiceTable">
-                      <thead>
-                        <tr>
-                          <th class="service">
-                            <h6 class="text-sm text-medium">Sr.No</h6>
-                          </th>
-                          <th class="desc">
-                            <h6
-                              style="padding-left: 25%"
-                              class="text-sm text-medium"
-                            >
-                              Course
-                            </h6>
-                          </th>
-                          <th class="rate">
-                            <h6 class="text-sm text-medium">Rate</h6>
-                          </th>
-                          <th class="gst">
-                            <h6 class="text-sm text-medium">GST</h6>
-                          </th>
-                          <th class="gst">
-                            <h6 class="text-sm text-medium">GST Value</h6>
-                          </th>
-                          <th class="amount">
-                            <h6 class="text-sm text-medium">Subtotal</h6>
-                          </th>
-                          <!-- <th class="text-sm">Action</th> -->
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <!-- Initial row for demonstration -->
-                        <tr>
-                          <td>1</td>
-                          <td>
-                            <div class="select-style-1">
-                              <!-- <label>Category</label> -->
-                              <div class="select-position">
-                                <select id="course" class="course">
-                                  <option value="">Select category</option>
-                                  <option>
-                                    Software Testing(Java Selenium)
-                                  </option>
-                                  <option>
-                                    Automation Testing(Python Selenium)
-                                  </option>
-                                  <option>Rest API Testing</option>
-                                  <option>Java Full Stack Development</option>
-                                  <option>
-                                    MERN Java Full Stack Development
-                                  </option>
-                                  <option>.NET Full Stack Development</option>
-                                  <option>Diploma in UI/UX Design</option>
-                                </select>
+                    <div class="table-responsive">
+                      <table id="invoiceTable">
+                        <thead>
+                          <tr>
+                            <th class="service">
+                              <h6 class="text-sm text-medium">Sr.No</h6>
+                            </th>
+                            <th class="desc">
+                              <h6
+                                style="padding-left: 25%"
+                                class="text-sm text-medium"
+                              >
+                                Course
+                              </h6>
+                            </th>
+                            <th class="rate">
+                              <h6 class="text-sm text-medium">Rate</h6>
+                            </th>
+                            <th class="gst">
+                              <h6 class="text-sm text-medium">GST</h6>
+                            </th>
+                            <th class="gst">
+                              <h6 class="text-sm text-medium">GST Value</h6>
+                            </th>
+                            <th class="amount">
+                              <h6 class="text-sm text-medium">Subtotal</h6>
+                            </th>
+                            <!-- <th class="text-sm">Action</th> -->
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- Initial row for demonstration -->
+                          <tr>
+                            <td>1</td>
+                            <td>
+                              <div class="select-style-1">
+                                <!-- <label>Category</label> -->
+                                <div class="select-position">
+                                  <select id="course" class="course">
+                                    <option value="">Select category</option>
+                                    <option>
+                                      Software Testing(Java Selenium)
+                                    </option>
+                                    <option>
+                                      Automation Testing(Python Selenium)
+                                    </option>
+                                    <option>Rest API Testing</option>
+                                    <option>Java Full Stack Development</option>
+                                    <option>
+                                      MERN Java Full Stack Development
+                                    </option>
+                                    <option>.NET Full Stack Development</option>
+                                    <option>Diploma in UI/UX Design</option>
+                                  </select>
+                                </div>
                               </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="input-style-1">
-                              <input
-                                type="number"
-                                id="rateOfCourse"
-                                placeholder="Rate of Course"
-                              />
-                            </div>
-                          </td>
-                          <td>
-                            <div class="input-style-1">
-                              <input type="number" placeholder="%" />
-                            </div>
-                          </td>
-                          <td>
-                            <div class="input-style-1">
-                              <input
-                                type="number"
-                                placeholder="GST value"
-                                readonly
-                              />
-                            </div>
-                          </td>
-                          <td>
-                            <div class="input-style-1">
-                              <input
-                                type="number"
-                                id="subtotal"
-                                placeholder="Subtotal"
-                                readonly
-                              />
-                            </div>
-                          </td>
-                          <!-- <td>
+                            </td>
+                            <td>
+                              <div class="input-style-1">
+                                <input
+                                  type="number"
+                                  id="rateOfCourse"
+                                  placeholder="Rate of Course"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div class="input-style-1">
+                                <input type="number" placeholder="%" />
+                              </div>
+                            </td>
+                            <td>
+                              <div class="input-style-1">
+                                <input
+                                  type="number"
+                                  placeholder="GST value"
+                                  readonly
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div class="input-style-1">
+                                <input
+                                  type="number"
+                                  id="subtotal"
+                                  placeholder="Subtotal"
+                                  readonly
+                                />
+                              </div>
+                            </td>
+                            <!-- <td>
                             <button class="deleteRow delbtn main-btn btn-hover">
                               Delete
                             </button>
                           </td> -->
-                        </tr>
-                      </tbody>
-                    </table>
+                          </tr>
+                        </tbody>
+                      </table>
 
-                    <button
-                      style="margin-left: 40px"
-                      class="primary-btn primary-btn-light closebtn main-btn btn-hover"
-                      id="addRow"
-                    >
-                      Add
-                    </button>
-                    <!-- <button id="savePDF">Save as PDF</button> -->
-                  </div>
-
-                  <div class="invoice-action">
-                    <div class="input-style-1">
-                      <label>Paid Amount</label>
-                      <input
-                        type="number"
-                        id="paidAmount"
-                        placeholder="Paid Amount"
-                      />
-                      <label>Due Amount</label>
-                      <input
-                        type="number"
-                        id="dueAmount"
-                        placeholder="Pending Amount"
-                        readonly
-                      />
-                      <label>Due Date</label>
-                      <input type="date" id="dueDate" />
-                      <label>Total</label>
-                      <input
-                        type="number"
-                        id="totalAmount"
-                        placeholder="Total Amount"
-                        readonly
-                      />
+                      <button
+                        style="margin-left: 40px"
+                        class="primary-btn primary-btn-light closebtn main-btn btn-hover"
+                        id="addRow"
+                      >
+                        Add
+                      </button>
+                      <!-- <button id="savePDF">Save as PDF</button> -->
                     </div>
-                  </div>
 
-                  <div class="invoice-action">
-                    <ul
-                      class="d-flex flex-wrap align-items-center justify-content-center"
-                    >
-                      <li class="m-2">
-                        <a
-                          href="#0"
-                          onclick="addInvoice()"
-                          class="main-btn primary-btn-outline btn-hover"
-                          style="height: 30px; width: 30px"
-                        >
-                          Save
-                        </a>
-                      </li>
-                    </ul>
+                    <div class="invoice-action">
+                      <div class="input-style-1">
+                        <label>Paid Amount</label>
+                        <input
+                          type="number"
+                          id="paidAmount"
+                          placeholder="Paid Amount"
+                        />
+                        <label>Due Amount</label>
+                        <input
+                          type="number"
+                          id="dueAmount"
+                          placeholder="Pending Amount"
+                          readonly
+                        />
+                        <label>Due Date</label>
+                        <input type="date" id="dueDate" />
+                        <label>Total</label>
+                        <input
+                          type="number"
+                          id="totalAmount"
+                          placeholder="Total Amount"
+                          readonly
+                        />
+                      </div>
+                    </div>
+
+                    <div class="invoice-action">
+                      <ul
+                        class="d-flex flex-wrap align-items-center justify-content-center"
+                      >
+                        <li class="m-2">
+                          <a
+                            target="_blank"
+                            href="./invoice-print.html"
+                            onclick="addInvoice()"
+                            class="main-btn primary-btn-outline btn-hover"
+                            style="height: 30px; width: 30px"
+                          >
+                            Save
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </form>
           <!-- Invoice Wrapper End -->
           <div class="h-20">
             <h1 id="dt"></h1>
@@ -500,7 +503,7 @@
             // Check if there's a last used Invoice ID from the server
             if (lastUsedInvoiceId) {
               // If there is, use it as the starting point for the next Invoice ID
-              $("#invoiceId").val(parseInt(lastUsedInvoiceId)+1);
+              $("#invoiceId").val(parseInt(lastUsedInvoiceId) + 1);
             } else {
               // If there is no last used Invoice ID, set a default starting point
               $("#invoiceId").val(231201); // You can adjust this value as needed
