@@ -13,9 +13,12 @@
 
     <!-- ========== All CSS files linkup ========= -->
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+
+     <!-- Include jsPDF library -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+ 
+
     <link
       rel="stylesheet"
       href="/assets/css/lineicons.css"
@@ -262,7 +265,7 @@ padding-left: 20px;
         </div>
       </form>
       <div class="buttons-container">
-        <button onclick="downloadPDF()">Download PDF</button>
+        <button id="downloadPdfButton" onclick="generatePDF()">Download PDF</button>
         <button onclick="shareOnWhatsApp()">Share on WhatsApp</button>
         <button onclick="shareViaEmail()">Share via Email</button>
       </div>
@@ -282,17 +285,84 @@ padding-left: 20px;
     <script src="/assets/js/world-merc.js"></script>
     <script src="/assets/js/polyfill.js"></script>
     <script src="/assets/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
+
     <script>
-      function downloadPDF() {
-        const pdfElement = document.getElementById('myprint');
+      // function downloadPDF() {
+      //   const pdfElement = document.getElementById('myprint');
         
-        html2canvas(pdfElement).then(canvas => {
-          const pdf = new jsPDF();
-          const imgData = canvas.toDataURL('image/png');
-          pdf.addImage(imgData, 'PNG', 0, 0);
-          pdf.save('invoice.pdf');
-        });
-      }
+      //   html2canvas(pdfElement).then(canvas => {
+      //     const pdf = new jsPDF();
+      //     const imgData = canvas.toDataURL('image/png');
+      //     pdf.addImage(imgData, 'PNG', 0, 0);
+      //     pdf.save('invoice.pdf');
+      //   });
+      // }
+
+     
+      // function generatePDF() {
+      //   // Check if jsPDF is defined
+      //   if (typeof jsPDF !== 'undefined') {
+      //     // Create a new jsPDF instance
+      //     const pdf = new jsPDF();
+
+      //     // Get the HTML content of the #myprint element
+      //     const element = document.getElementById('myprint');
+
+      //     // Use html2canvas to capture the content as an image
+      //     html2canvas(element).then((canvas) => {
+      //       const imageData = canvas.toDataURL('image/png');
+
+      //       // Add the image to the PDF
+      //       pdf.addImage(imageData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
+
+      //       // Save the PDF as a file
+      //       pdf.save('invoice.pdf');
+      //     });
+      //   } else {
+      //     console.error('jsPDF is not defined. Check the library inclusion.');
+      //   }
+      // }
+
+      document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("downloadPdfButton").addEventListener("click", function () {
+    // Clone the entire HTML document
+    const element = document.documentElement.cloneNode(true);
+
+    // Remove the buttons from the cloned element
+    const buttonsContainer = element.querySelector('.buttons-container');
+    if (buttonsContainer) {
+      buttonsContainer.remove();
+    }
+
+    // Configure the PDF options with custom margins
+    const pdfOptions = {
+      margin: 1, // Adjust these values to set the margins
+      filename: "invoice.pdf",
+      image: { type: "jpeg", quality: 1 },
+      html2canvas: { scale: 2, scrollY: 0 }, // Ensure capturing entire content
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+    };
+
+    // Generate the PDF
+    html2pdf(element, pdfOptions)
+      .then(() => {
+        // Download was successful
+        console.log('PDF download successful.');
+      })
+      .catch((error) => {
+        // Handle any errors that occurred during PDF generation
+        console.error('Error generating PDF:', error);
+      });
+  });
+});
+
+
+
+
+
+    
+
     
       function shareOnWhatsApp() {
         // You can create a deep link with the PDF and open it in WhatsApp
